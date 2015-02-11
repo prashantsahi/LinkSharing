@@ -1,7 +1,7 @@
 LINUX exercise..
 
 q1- add your custom alias
-ans1. alias print='cat'
+ans1. alias ='cat'
 
 q2- create a soft link to a dir 
 ans2. ln -s jquery j
