@@ -49,7 +49,7 @@ ans15.  mysqldump -u root -p data table1 > new_dump       //To create the dump
 	mysql> source /home/prashant/new_dump.sql;	  //to restore table from the dump
 
 
-
+// comment in the last.....
 
 
 
