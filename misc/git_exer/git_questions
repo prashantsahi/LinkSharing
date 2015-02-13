@@ -1,0 +1,111 @@
+GIT
+
+- Upload your ssh key to gitlab account
+ans :  ssh-keygen -t rsa
+
+- Initialize a Git Repository
+ans : 	mkdir bootcamp
+	cd bootcamp 
+	git init
+
+- Add files to the repository
+ans : git add linux_commands
+
+- Unstage 1 file
+ans : we can unstaged the file by using two commands : 
+	1. git rm --cached a.txt
+	2. git reset
+
+- Commit the files
+ans :	git commit -m "file added a.txt" a.txt
+
+- Add a remote
+ans :	git remote add origin git@gitlab.intelligrape.net:bootcamp/prashant-sahi.git
+
+- Undo changes to a particular file
+ans : git checkout -- a.txt
+
+- Push changes to Github
+ans:	git remote add origin git@github.com:prashantsahi/git-bootcamp.git
+	git checkout -b dev
+	git add misc/linux_commands
+	git commit -m "new file misc/linux_commands added"
+	git push origin dev
+
+- Clone the repository
+ans : git clone git@gitlab.intelligrape.net:bootcamp/prashant-sahi.git
+
+- Add changes to one of the copies and pull the changes in the other.
+ans :   clone/prashant-sahi/
+
+	git add file1.txt
+	git commit -m "file1.txt added"
+	git push origin dev
+
+	bootcamp/prashant-sahi
+	git checkout dev
+	git pull origin dev	
+
+- Add changes to both repos, try to push from both without taking a pull.
+ans:	rashant@prashant-Inspiron-3537:~/bootcamp/prashant-sahi$ git push origin dev
+	To git@gitlab.intelligrape.net:bootcamp/prashant-sahi.git
+ 	! [rejected]        dev -> dev (fetch first)
+	error: failed to push some refs to 'git@gitlab.intelligrape.net:bootcamp/prashant-sahi.git'
+	hint: Updates were rejected because the remote contains work that you do
+	hint: not have locally. This is usually caused by another repository pushing
+	hint: to the same ref. You may want to first integrate the remote changes
+	hint: (e.g., 'git pull ...') before pushing again.
+	hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+	prashant@prashant-Inspiron-3537:~/bootcamp/prashant-sahi$ ^C
+	prashant@prashant-Inspiron-3537:~/bootcamp/prashant-sahi$ 
+
+
+- Check differences between a file and its staged version
+ans: git diff misc/dummy 
+
+- Ignore a few files to be checked in
+ans : put the files you want to ignore in .gitignore file.
+
+- Ignore already committed files
+ans : 
+	add already commited file in .gitignore file.. 	
+	git rm -- cached misc/sahi
+	
+		
+- Create a new branch. Diverge them with commit+s
+ans : git checkout 3093dc3052fa26881105157c9debe0cdc8ee6eae
+	git checkout -b test 
+	git add test.txt
+	
+- Creating tags, pushing them and checking out
+	
+ans : 	git tag -a firsttag -m "tag to the commit"
+	git push --tag
+	git checkout firsttag
+
+- Edit the same file at the same line on both branches and commit n try merging and resolve merge conflicts.
+ans :	git checkout dev
+	vim misc/linux_commands
+	git commit -m "file modified from dev" misc/linux_commands
+	git push origin dev
+
+	git checkout new
+	vim misc/linux_commands
+	git commit -m "file modified from new" misc/linux_commands
+	git push origin new
+
+	git merge origin dev
+	vim misc/linix_commands
+
+	git add misc/linix_commands
+	git commit -m "merge resolved"
+	git push origin new
+
+
+
+- Stash the changes and pop them
+ans : git add a.txt
+	git stash
+	git stash pop stash{0}
+	git stash apply stash{0}
+
