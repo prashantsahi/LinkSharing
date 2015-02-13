@@ -1,4 +1,4 @@
-GIT
+GIT EXERCISES
 
 - Upload your ssh key to gitlab account
 ans :  ssh-keygen -t rsa
