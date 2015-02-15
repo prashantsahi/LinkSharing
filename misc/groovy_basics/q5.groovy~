@@ -1,0 +1,58 @@
+List l1=[]
+List l2 = new ArrayList()
+if('test')
+{
+    println "test evaluated to true"
+}
+else { println "test evauates to false"}
+
+if("test")
+{
+    println "test evaluated to true"
+}
+else { println "test evauates to false"}
+
+
+if('null')
+{
+    println "'null' evaluated to true"
+}
+else { println "'null' evauates to false"}
+
+
+if(null)
+{
+    println "null evaluated to true"
+}
+else { println "null evauates to false"}
+
+
+if(100)
+{
+    println "100 evaluated to true"
+}
+else { println "100 evauates to false"}
+
+
+if(0)
+{
+    println "0 evaluated to true"
+}
+else { println "0 evauates to false"}
+
+println "hello"
+if(l1)
+{
+    println "List evaluated to true"
+}
+else { println "list evauates to false"}
+
+
+if(l2)
+{
+    println "list evaluated to true"
+}
+else { println "list evauates to false"}
+
+
+
