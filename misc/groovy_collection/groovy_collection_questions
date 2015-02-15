@@ -1,0 +1,112 @@
+
+
+0. Initialize an empty list and give the output of the following code:
+l[11] = "myelement"
+println l[11]
+println l.get(5)
+println l
+
+1. Initialize a list using a range and find all elements which are even.
+
+2. Create a set from a list containing duplicate elements. What do you observe? How can you achieve the same result without converting a list to a set?
+
+3. Given two lists [11, 12, 13, 14] and [13, 14, 15], how would we obtain the list of items from the first that are not in the second?
+
+4. Find whether two lists have a common element or not
+
+5. Remove all records from a list whose index is odd
+
+6. Consider the following list:
+[1, 2, 3, "element1", 0.3, [2, 4, 6], 0..10 ]
+
+Print the class name of each element. What's the output of the following statement?
+list.get(6).get(9)
+
+7. Sort the given list in descending order having distinct elements:
+[14,12, 11,10, 16, 15,12, 10, 99, 90, 14, 16, 35]
+
+8. Consider a class Employee with following details
+* Name
+* Age
+* Salary
+Create a list consisting of 10 Employee objects.
+6(a). Get a list of employees who earn less than 5000
+6(b). Get the name of the youngest employee and oldest employee
+6(c). Get the employee with maximum salary
+6(d). Get the list of names of all the employees
+
+9. Consider the following piece of code:
+String s = "this string needs to be split"
+println s.tokenize(" ")
+println s.tokenize()
+
+
+Compare this with the following code:
+String s = "this string needs to be split"
+println s.split(" ")
+println s.split(/\s/) (Try Same Parameter with tokenize)
+
+Also try the following exercise:
+String s = "are.you.trying.to.split.me.mister?"
+s.tokenize(".")
+s.split(".")
+
+10. Get first, second and last element of Range.
+
+11. Print the table of a given number : 2 and 12
+
+12. We have a sorted list of alphabets a-z, print all alphabets appearing after j
+
+13. Find the number of occurences of a character in a string
+14. Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print "FizzBuzz".
+15. Consider a class named "Stack" that holds a list of objects and has the following operations associated:
+1) POP - Pops the last element off the stack
+2) PUSH - Pushes an element on top of the stack
+3) TOP - Returns the element at the top of the list
+
+Implement the aforesaid class
+
+16. Create a new map consisting of 10 of your friend's name's as keys and their ages as value.
+
+17. Iterate over the previous map in as many ways as possible
+
+18. Create a new map by adding two existing maps
+
+19. Try the following code on a map:
+println map.class
+println map.getClass()
+What do you observe?
+
+20. Consider the following map:
+
+Map m = ['1' : 2, '2' : 3, '3' : 4, '2':5]
+
+Is this a valid construction? What is the value of m['2']?
+
+21. Find if a map contains a particular key.
+
+22. Consider the following map:
+Map m = [‘Computing’ : [‘Computing’ : 600, ‘Information Systems’ : 300],
+‘Engineering’ : [‘Civil’ : 200, ‘Mechanical’ : 100],
+‘Management’ : [‘Management’ : 800] ]
+
+22a) How many university departments are there?
+22b) How many programs are delivered by the Computing department?
+22c) How many students are enrolled in the Civil Engineering program?
+
+23. Conside a class named "Employee" which has the following properties:
+1) Name
+2) Age
+3) DepartmentName
+4) EmployeeNumber
+5) Salary
+
+Let's say that there's a list of 50 employees available. Perform the following operations on the list of employees:
+a) Group the employees on the basis of the bracket in which their salary falls. The ranges are 0-5000, 5001 and 10000, and so on.
+b) Get a count of the number of employees in each department
+c) Get the list of employees whose age is between 18 and 35
+d) Group the employees according to the alphabet with which their first name starts and display the number of employees in each group whose age is greater than 20
+e) Group the employees according to their department.
+
+24. Write a method which returns the value of passed key from a search string of the form "http://www.google.com?name=johny&age=20&hobby=cricket"
+
