@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Mouse Event
+</title>
+<style type="text/css">
+div{color:blue}
+p:hover{color:red}
+</style>
+<script src="q7.js"></script>
+</head>
+<body>
+<div id = "one" onMouseOut="out()" onMouseOver="hover()">
+<p>hello hii byee byeee !!</p></div>
+</div>
+</body>
+</html>

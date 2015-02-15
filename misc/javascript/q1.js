@@ -1,0 +1,8 @@
+function calc()
+{
+  	var p =prompt("Enter principal","100");
+  	  var r =prompt("Enter rate of interest","10");
+	  var t =prompt("Enter time interval","2");	
+	var si= (p*r*t)/100;
+	document.getElementById("one").innerHTML=si;
+}

@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>copy text
+</title>
+<script src="q5.js"></script>
+</head>
+<body>
+
+Change<input type = "textbox" id = "one">
+</br>
+Display1<input type = "textbox" id = "two">
+</br>
+Display2<input type = "textbox" id = "three">
+</br>
+<button onClick="calc()" >click</button>
+</div>
+</body>
+</html>
