@@ -1,0 +1,50 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.0.js">
+</script>
+<script>
+ $(document).ready(function(){
+    $('.div1').find(".div121").hover(function (){
+
+	$(this).css("color","green");
+});
+	
+
+        
+    
+	
+});
+	
+</script>
+</head>
+<body>
+
+<p class="message">hii i m prashant sahi 
+I m from TTN digital
+</p>
+<p class="message">hii i m prashant sahi 
+I m from TTN digital
+</p>
+<p class="message">hii i m prashant sahi 
+I m from TTN digital
+</p>
+<p class="message">hii i m prashant sahi 
+I m from TTN digital
+</p>
+
+<div class="div1"> i m from div1 
+	<div class ="div11">first child of div1</div>
+	<div class ="div12">second child of div1
+		<div class ="div121">first child of div12</div>
+
+	</div>
+
+	
+</div>
+<div>another sibling</div>
+<div>another sibling</div><div>another sibling</div><div>another sibling</div><div>another sibling</div><div>another sibling</div>
+
+
+</body>
+</html>
+

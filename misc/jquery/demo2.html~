@@ -1,0 +1,39 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.0.js">
+</script>
+<script>
+ $(document).ready(function(){
+    $('ol li:odd').hover(function(){
+	$(this).css("color","green")
+});
+    $('ol li:even').hover(function(){
+	$(this).css("color","blue")
+});    
+    
+	    $(':header').hover(function(){
+	$(this).css("color","pink")
+});    
+	
+});
+	
+</script>
+</head>
+
+<body>
+
+<h1>hello h1</h1>
+
+<h2>hello h2</h2>
+<ol>
+	<li>first</li>
+	<li>second</li>
+	<li>third</li>
+	<li>fourth</li>
+	<li>fifth</li>
+
+
+</ol>
+</body>
+</html>
+
