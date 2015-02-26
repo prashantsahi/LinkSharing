@@ -1,0 +1,31 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.0.js">
+</script>
+<script>
+ $(document).ready(function(){
+$('#button1').click(function(){
+$('#target').html($('#target').html().replace(/red/g,"<span style ='color:$&' >$&</span>").replace(/blue/g,"<span style ='color:blue' >$&</span>").replace(/green/g,"<span style ='color:green' >$&</span>"));
+});
+
+
+});
+	
+</script>
+</head>
+
+<body>
+<div id ="target">
+<span>
+red redredredbluegreenblue
+<br>
+blue
+<br>
+green
+<br>
+</span>
+<input type = "button" id ="button1"value="click to change"/>
+</div>
+</body>
+</html>
+

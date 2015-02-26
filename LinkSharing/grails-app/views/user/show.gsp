@@ -1,5 +1,5 @@
 
-<%@ page import="first_grail_project.User" %>
+<%@ page import="com.intelligrape.prashant.linksharing.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -48,6 +48,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.lastName}">
+				<li class="fieldcontain">
+					<span id="lastName-label" class="property-label"><g:message code="user.lastName.label" default="Last Name" /></span>
+					
+						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${userInstance}" field="lastName"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.active}">
 				<li class="fieldcontain">
 					<span id="active-label" class="property-label"><g:message code="user.active.label" default="Active" /></span>
@@ -80,15 +89,6 @@
 					<span id="firstName-label" class="property-label"><g:message code="user.firstName.label" default="First Name" /></span>
 					
 						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${userInstance}" field="firstName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.lastName}">
-				<li class="fieldcontain">
-					<span id="lastName-label" class="property-label"><g:message code="user.lastName.label" default="Last Name" /></span>
-					
-						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${userInstance}" field="lastName"/></span>
 					
 				</li>
 				</g:if>

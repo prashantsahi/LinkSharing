@@ -1,4 +1,4 @@
-<%@ page import="first_grail_project.User" %>
+<%@ page import="com.intelligrape.prashant.linksharing.User" %>
 
 
 
@@ -29,6 +29,30 @@
 
 </div>
 
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
+    <label for="password">
+        <g:message code="user.password.label" default="Password" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="password" maxlength="15" required="" value="${userInstance?.password}"/>
+
+</div>
+
+
+
+
+
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'lastName', 'error')} required">
+	<label for="lastName">
+		<g:message code="user.lastName.label" default="Last Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="lastName" required="" value="${userInstance?.lastName}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'active', 'error')} ">
 	<label for="active">
 		<g:message code="user.active.label" default="Active" />
@@ -53,15 +77,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="firstName" required="" value="${userInstance?.firstName}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'lastName', 'error')} required">
-	<label for="lastName">
-		<g:message code="user.lastName.label" default="Last Name" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="lastName" required="" value="${userInstance?.lastName}"/>
 
 </div>
 

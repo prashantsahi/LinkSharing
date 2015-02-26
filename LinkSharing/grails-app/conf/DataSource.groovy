@@ -19,6 +19,7 @@ environments {
     development {
         dataSource {
             driverClassName="com.mysql.jdbc.Driver"
+          //  logSql=true
             username="root"
             password="igdefault"
             pooled="true"
