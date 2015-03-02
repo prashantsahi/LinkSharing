@@ -1,5 +1,5 @@
 
-<%@ page import="first_grail_project.LinkResource" %>
+<%@ page import="com.intelligrape.prashant.linksharing.LinkResource" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${linkResourceInstance?.linkUrl}">
-				<li class="fieldcontain">
-					<span id="linkUrl-label" class="property-label"><g:message code="linkResource.linkUrl.label" default="Link Url" /></span>
-					
-						<span class="property-value" aria-labelledby="linkUrl-label"><g:fieldValue bean="${linkResourceInstance}" field="linkUrl"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${linkResourceInstance?.createdBy}">
 				<li class="fieldcontain">
 					<span id="createdBy-label" class="property-label"><g:message code="linkResource.createdBy.label" default="Created By" /></span>
@@ -68,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${linkResourceInstance?.linkUrl}">
+				<li class="fieldcontain">
+					<span id="linkUrl-label" class="property-label"><g:message code="linkResource.linkUrl.label" default="Link Url" /></span>
+					
+						<span class="property-value" aria-labelledby="linkUrl-label"><g:fieldValue bean="${linkResourceInstance}" field="linkUrl"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${linkResourceInstance?.readingitems}">
 				<li class="fieldcontain">
 					<span id="readingitems-label" class="property-label"><g:message code="linkResource.readingitems.label" default="Readingitems" /></span>
@@ -86,6 +86,15 @@
 						<g:each in="${linkResourceInstance.resourceratings}" var="r">
 						<span class="property-value" aria-labelledby="resourceratings-label"><g:link controller="resourceRating" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${linkResourceInstance?.title}">
+				<li class="fieldcontain">
+					<span id="title-label" class="property-label"><g:message code="linkResource.title.label" default="Title" /></span>
+					
+						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${linkResourceInstance}" field="title"/></span>
 					
 				</li>
 				</g:if>

@@ -4,6 +4,7 @@ import javax.xml.soap.Text
 
 abstract class Resource {
     User createdBy
+    String title
     String description
     Date dateCreated
     Date lastUpdated
@@ -14,7 +15,8 @@ abstract class Resource {
         description maxSize: 1024
         description unique:true
     }
-    static  mapping = {tablePerHierarchy false
-    description sqlType: 'text'
+    static  mapping = {
+        //tablePerHierarchy false
+    title sqlType: 'text'
     }
 }

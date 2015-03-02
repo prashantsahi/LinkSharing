@@ -1,5 +1,5 @@
 
-<%@ page import="first_grail_project.Subscription" %>
+<%@ page import="com.intelligrape.prashant.linksharing.Subscription" %>
 <!DOCTYPE html>
 <html>
 	<head>

@@ -1,9 +1,8 @@
 package com.intelligrape.prashant.linksharing
 
-import com.intelligrape.prashant.linksharing.ResourceRating
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ResourceRatingController {

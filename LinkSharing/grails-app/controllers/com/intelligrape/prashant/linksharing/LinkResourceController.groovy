@@ -1,9 +1,8 @@
 package com.intelligrape.prashant.linksharing
 
-import com.intelligrape.prashant.linksharing.LinkResource
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class LinkResourceController {
@@ -25,6 +24,14 @@ class LinkResourceController {
 
     @Transactional
     def save(LinkResource linkResourceInstance) {
+
+        if(session['username'])
+        {
+            User user = User.findByUsername(session['username'])
+            linkResourceInstance.createdBy=user
+            linkResourceInstance.validate()
+        }
+
         if (linkResourceInstance == null) {
             notFound()
             return

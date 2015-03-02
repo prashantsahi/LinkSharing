@@ -1,9 +1,8 @@
 package com.intelligrape.prashant.linksharing
 
-import com.intelligrape.prashant.linksharing.Topic
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TopicController {
@@ -25,6 +24,14 @@ class TopicController {
 
     @Transactional
     def save(Topic topicInstance) {
+
+        if(session['username'])
+        {
+            User user = User.findByUsername(session['username'])
+            topicInstance.createdBy=user
+            println topicInstance.validate()
+        }
+
         if (topicInstance == null) {
             notFound()
             return
@@ -65,6 +72,7 @@ class TopicController {
         topicInstance.save flush: true
 
         request.withFormat {
+
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Topic.label', default: 'Topic'), topicInstance.id])
                 redirect topicInstance

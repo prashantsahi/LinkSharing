@@ -1,9 +1,8 @@
 package com.intelligrape.prashant.linksharing
 
-import com.intelligrape.prashant.linksharing.DocumentResource
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class DocumentResourceController {
@@ -25,6 +24,15 @@ class DocumentResourceController {
 
     @Transactional
     def save(DocumentResource documentResourceInstance) {
+
+        if(session['username'])
+        {
+            User user = User.findByUsername(session['username'])
+            documentResourceInstance.createdBy=user
+            documentResourceInstance.validate()
+        }
+
+
         if (documentResourceInstance == null) {
             notFound()
             return

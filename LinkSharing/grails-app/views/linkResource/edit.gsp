@@ -1,4 +1,4 @@
-<%@ page import="first_grail_project.LinkResource" %>
+<%@ page import="com.intelligrape.prashant.linksharing.LinkResource" %>
 <!DOCTYPE html>
 <html>
 	<head>

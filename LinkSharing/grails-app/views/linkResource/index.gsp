@@ -1,5 +1,5 @@
 
-<%@ page import="first_grail_project.LinkResource" %>
+<%@ page import="com.intelligrape.prashant.linksharing.LinkResource" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,15 +26,15 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'linkResource.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="linkUrl" title="${message(code: 'linkResource.linkUrl.label', default: 'Link Url')}" />
-					
 						<th><g:message code="linkResource.createdBy.label" default="Created By" /></th>
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'linkResource.dateCreated.label', default: 'Date Created')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'linkResource.lastUpdated.label', default: 'Last Updated')}" />
 					
-						<th><g:message code="linkResource.topic.label" default="Topic" /></th>
+						<g:sortableColumn property="linkUrl" title="${message(code: 'linkResource.linkUrl.label', default: 'Link Url')}" />
+					
+						<g:sortableColumn property="title" title="${message(code: 'linkResource.title.label', default: 'Title')}" />
 					
 					</tr>
 				</thead>
@@ -44,15 +44,15 @@
 					
 						<td><g:link action="show" id="${linkResourceInstance.id}">${fieldValue(bean: linkResourceInstance, field: "description")}</g:link></td>
 					
-						<td>${fieldValue(bean: linkResourceInstance, field: "linkUrl")}</td>
-					
 						<td>${fieldValue(bean: linkResourceInstance, field: "createdBy")}</td>
 					
 						<td><g:formatDate date="${linkResourceInstance.dateCreated}" /></td>
 					
 						<td><g:formatDate date="${linkResourceInstance.lastUpdated}" /></td>
 					
-						<td>${fieldValue(bean: linkResourceInstance, field: "topic")}</td>
+						<td>${fieldValue(bean: linkResourceInstance, field: "linkUrl")}</td>
+					
+						<td>${fieldValue(bean: linkResourceInstance, field: "title")}</td>
 					
 					</tr>
 				</g:each>

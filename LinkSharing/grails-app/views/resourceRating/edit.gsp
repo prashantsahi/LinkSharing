@@ -1,4 +1,4 @@
-<%@ page import="first_grail_project.ResourceRating" %>
+<%@ page import="com.intelligrape.prashant.linksharing.ResourceRating" %>
 <!DOCTYPE html>
 <html>
 	<head>

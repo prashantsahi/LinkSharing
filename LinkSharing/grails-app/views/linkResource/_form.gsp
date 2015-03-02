@@ -1,4 +1,4 @@
-<%@ page import="com.intelligrape.prashant.linksharing.Topic; com.intelligrape.prashant.linksharing.User; first_grail_project.LinkResource" %>
+<%@ page import="com.intelligrape.prashant.linksharing.LinkResource" %>
 
 
 
@@ -11,21 +11,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'linkUrl', 'error')} ">
-	<label for="linkUrl">
-		<g:message code="linkResource.linkUrl.label" default="Link Url" />
-		
-	</label>
-	<g:textField name="linkUrl" value="${linkResourceInstance?.linkUrl}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'createdBy', 'error')} required">
 	<label for="createdBy">
 		<g:message code="linkResource.createdBy.label" default="Created By" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="createdBy" name="createdBy.id" from="${com.intelligrape.prashant.linksharing.User.list()}" optionKey="id" required="" value="${linkResourceInstance?.createdBy?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'linkUrl', 'error')} required">
+	<label for="linkUrl">
+		<g:message code="linkResource.linkUrl.label" default="Link Url" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="linkUrl" required="" value="${linkResourceInstance?.linkUrl}"/>
 
 </div>
 
@@ -62,6 +62,15 @@
 </li>
 </ul>
 
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'title', 'error')} required">
+	<label for="title">
+		<g:message code="linkResource.title.label" default="Title" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="title" required="" value="${linkResourceInstance?.title}"/>
 
 </div>
 

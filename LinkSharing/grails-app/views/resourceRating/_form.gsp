@@ -1,4 +1,4 @@
-<%@ page import="com.intelligrape.prashant.linksharing.Resource; com.intelligrape.prashant.linksharing.User; first_grail_project.ResourceRating" %>
+<%@ page import="com.intelligrape.prashant.linksharing.Resource; com.intelligrape.prashant.linksharing.User; com.intelligrape.prashant.linksharing.ResourceRating" %>
 
 
 

@@ -2,6 +2,16 @@ package com.intelligrape.prashant.linksharing
 
 class DemoController {
 
+    def demoPage()
+    {
+        render(view: "/demoPage")
+
+    }
+    def loginController(){
+        println("from login controller")
+        render( view: '/user/dashboard')
+    }
+
     def hello()
     {
 
@@ -9,7 +19,7 @@ class DemoController {
 
     }
     def index() {
-        String name="prashant"
+     //   String name="prashant"
        // render (view : "hello",model: [name:name])
         render("firstname: $params.firstname")
 
