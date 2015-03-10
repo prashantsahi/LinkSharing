@@ -8,15 +8,15 @@
                 </div>
 
                 <div class="panel-body">
-                    <g:form name="document" controller="documentResource" class="form-box">
+                    <g:uploadForm name="document" controller="documentResource" class="form-box">
                         <div>
                             <span class="span-label">Document*</span>
-                            <g:textField name="documentResourceInstance.filePath"/>
+                            <input type="file" name="file"/>
                         </div>
 
                         <br>
 
-                        <div>
+                     %{--   <div>
                             <span class="span-label">FileType*</span>
                             <g:textField name="documentResourceInstance.fileType"/>
                         </div>
@@ -27,7 +27,7 @@
                             <g:textField name="documentResourceInstance.fileName"/>
                         </div>
                         <br>
-
+--}%
 
                         <div>
                             <span class="span-label">Title*</span>
@@ -63,7 +63,7 @@
                             <span class="span-label"></span>
                             <g:actionSubmit value="Cancel" action="delete"/>
                         </div>
-                    </g:form>
+                    </g:uploadForm>
                 </div>
 
             </div>

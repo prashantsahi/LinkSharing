@@ -3,16 +3,16 @@ package linksharing
 class LinksharingFilters {
 
     def filters = {
-        applicationFilter(controller: '*',action: '*' )
-                {
-                    before={
-                        log.info("request params: ${params}")
-                    }
-                    after={
-
-//                        println("afterrrrrrrrrr")
-                    }
-                }
+//        applicationFilter(controller: '*',action: '*' )
+//                {
+//                    before={
+//                        log.info("request params: ${params}")
+//                    }
+//                    after={
+//
+////                        println("afterrrrrrrrrr")
+//                    }
+//                }
 
         restrictLogin(controller:'login|assets', action:'loginHandler|index|register',invert :true) {
             before = {

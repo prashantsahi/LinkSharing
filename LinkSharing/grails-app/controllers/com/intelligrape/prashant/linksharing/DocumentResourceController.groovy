@@ -29,6 +29,17 @@ class DocumentResourceController {
             User user = User.findByUsername(session['username'])
             documentResourceInstance.createdBy = user
 
+            def file = request.getFile('file')
+            if(file.empty) {
+                flash.message = "File cannot be empty"
+            } else {
+//                def documentInstance = new Document()
+                documentResourceInstance.fileType=file.contentType
+                println(documentResourceInstance.fileType)
+                documentResourceInstance.fileName = file.originalFilename
+                documentResourceInstance.filePath = grailsApplication.config.uploadFolder + documentResourceInstance.fileName
+                file.transferTo(new File(documentResourceInstance.filePath))
+            }
             documentResourceInstance.validate()
         }
         if (documentResourceInstance == null) {

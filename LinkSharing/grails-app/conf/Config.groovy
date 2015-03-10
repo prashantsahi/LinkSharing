@@ -87,7 +87,7 @@ grails.hibernate.osiv.readonly = false
 
 environments {
     development {
-        uploadFolder = "/home/intelligrape/documentUpload"
+
         grails.logging.jul.usebridge = true
         grails {
             mail {
@@ -129,4 +129,15 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 
     info 'grails.app'
+}
+
+environments {
+    development {
+        uploadFolder = "/home/intelligrape/documentUpload/"
+    }
+    test {
+        uploadFolder = "/home/intelligrape/documentUpload/"
+    }
+    production {
+        uploadFolder = "/home/intelligrape/documentUpload/"    }
 }
