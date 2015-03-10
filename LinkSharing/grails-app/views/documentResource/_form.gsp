@@ -14,7 +14,7 @@
 <div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'filePath', 'error')} ">
 	<label for="filePath">
 		<g:message code="documentResource.filePath.label" default="File Path" />
-		
+
 	</label>
 	<g:textField name="filePath" value="${documentResourceInstance?.filePath}"/>
 
@@ -32,9 +32,9 @@
 <div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'readingitems', 'error')} ">
 	<label for="readingitems">
 		<g:message code="documentResource.readingitems.label" default="Readingitems" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${documentResourceInstance?.readingitems?}" var="r">
     <li><g:link controller="readingItem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
@@ -50,9 +50,9 @@
 <div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'resourceratings', 'error')} ">
 	<label for="resourceratings">
 		<g:message code="documentResource.resourceratings.label" default="Resourceratings" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${documentResourceInstance?.resourceratings?}" var="r">
     <li><g:link controller="resourceRating" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>

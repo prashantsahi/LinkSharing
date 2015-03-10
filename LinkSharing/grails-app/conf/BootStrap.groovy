@@ -9,7 +9,7 @@ class BootStrap {
         bootstrapService.createUser()
         bootstrapService.topics()
         bootstrapService.resources()
-        bootstrapService.readingItems()
+//        bootstrapService.readingItems()
         bootstrapService.ratings()
     }
 

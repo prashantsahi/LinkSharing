@@ -6,8 +6,7 @@ class CustomDateTagLib {
     static namespace = "gt"
     def cusDate= { attr, body ->
         out << "DATE IS ${new Date().format(attr.format)}"
-
-    }
+   }
         def cusRep={attr,body->
         def a=attr.max as Integer
         def b=attr.min as Integer

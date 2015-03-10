@@ -1,5 +1,6 @@
 package com.intelligrape.prashant.linksharing
 
+import linkSharingCommandClass.RegisterCommand
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -13,36 +14,6 @@ class UserController {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model: [userInstanceCount: User.count()]
     }
-
-
-    def loginHandler(String username,String password)
-    {
-
-        if(User.findByUsernameAndPassword(username,password))
-        {
-
-            session["username"] = username
-            println("session created successfully !!!!")
-            redirect(controller: 'home', action: "dashboard")
-        }
-        else{
-
-            session.invalidate()
-            redirect(controller :'home',action: 'index')
-        }
-//        def username=params.username
-//        def password=params.password
-//        println(username+ "\t"+ password)
-//        println(username.equals("grails"))
-//        if (username.equals("grails")  && password.equals("grails") ) {
-//            session["username"] = username
-//            println("session created successfully !!!!")
-//            redirect(controller: 'home', action: "dashboard")
-//        }
-//        redirect(controller :'home',action: 'index')
-    }
-
-
 
     def show(User userInstance) {
         respond userInstance
@@ -58,7 +29,7 @@ class UserController {
             notFound()
             return
         }
-
+        userInstance.photo = params.photo           //convert to byte array and den validate and den save..
         if (userInstance.hasErrors()) {
             respond userInstance.errors, view: 'create'
             return

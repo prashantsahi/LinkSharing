@@ -23,29 +23,29 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="dateCreated" title="${message(code: 'subscription.dateCreated.label', default: 'Date Created')}" />
-					
+
 						<g:sortableColumn property="seriousness" title="${message(code: 'subscription.seriousness.label', default: 'Seriousness')}" />
-					
+
 						<th><g:message code="subscription.topic.label" default="Topic" /></th>
-					
+
 						<th><g:message code="subscription.user.label" default="User" /></th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${subscriptionInstanceList}" status="i" var="subscriptionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${subscriptionInstance.id}">${fieldValue(bean: subscriptionInstance, field: "dateCreated")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: subscriptionInstance, field: "seriousness")}</td>
-					
+
 						<td>${fieldValue(bean: subscriptionInstance, field: "topic")}</td>
-					
+
 						<td>${fieldValue(bean: subscriptionInstance, field: "user")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

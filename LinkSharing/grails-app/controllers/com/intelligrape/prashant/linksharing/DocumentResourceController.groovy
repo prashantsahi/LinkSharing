@@ -25,14 +25,12 @@ class DocumentResourceController {
     @Transactional
     def save(DocumentResource documentResourceInstance) {
 
-        if(session['username'])
-        {
+        if (session['username']) {
             User user = User.findByUsername(session['username'])
-            documentResourceInstance.createdBy=user
+            documentResourceInstance.createdBy = user
+
             documentResourceInstance.validate()
         }
-
-
         if (documentResourceInstance == null) {
             notFound()
             return

@@ -22,43 +22,43 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list subscription">
-			
+
 				<g:if test="${subscriptionInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="subscription.dateCreated.label" default="Date Created" /></span>
-					
+
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${subscriptionInstance?.dateCreated}" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${subscriptionInstance?.seriousness}">
 				<li class="fieldcontain">
 					<span id="seriousness-label" class="property-label"><g:message code="subscription.seriousness.label" default="Seriousness" /></span>
-					
+
 						<span class="property-value" aria-labelledby="seriousness-label"><g:fieldValue bean="${subscriptionInstance}" field="seriousness"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${subscriptionInstance?.topic}">
 				<li class="fieldcontain">
 					<span id="topic-label" class="property-label"><g:message code="subscription.topic.label" default="Topic" /></span>
-					
+
 						<span class="property-value" aria-labelledby="topic-label"><g:link controller="topic" action="show" id="${subscriptionInstance?.topic?.id}">${subscriptionInstance?.topic?.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${subscriptionInstance?.user}">
 				<li class="fieldcontain">
 					<span id="user-label" class="property-label"><g:message code="subscription.user.label" default="User" /></span>
-					
+
 						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${subscriptionInstance?.user?.id}">${subscriptionInstance?.user?.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:subscriptionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

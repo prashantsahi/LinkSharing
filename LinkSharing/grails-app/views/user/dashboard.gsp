@@ -8,37 +8,30 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name ="layout" content ="master">
+    <meta name ="layout" content ="masterPage2">
     <title>Dashboard</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="jquery.min.js"></script>
+    %{--<asset:stylesheet src="bootstrap.min.css"/>
+    <asset:stylesheet src="bootstrap-theme.min.css"/>
+    <asset:javascript src="bootstrap.min.js"/>
 
-
+    <script type="text/javascript" src="jquery.min.js"></script>--}%
 
 </head>
 
 <body>
-
 <script>
     alert("User ${name} has successfully logged in")
-</script>>
-
+</script>
 <div class="row">
     <div class="col-md-4">
-
-        <div class="panel panel-default">
+            <div class="panel panel-default">
             <div class="panel-body">
 
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
-                            <img name="Mee" class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png">
+                            <asset:image class = "media-object" src="linksharing/user.jpg" width="60px" height="60px"/>
                         </a>
                     </div>
                     <div class="media-body">
@@ -62,9 +55,9 @@
     <div class="col-md-8">
 
         <g:render template="/templates/inbox"/>
-        <g:render template="/templates/sharelink"/>
-        <g:render template="/templates/sharedocument"/>
-        <g:render template="/templates/createtopic"/>
+        %{--<g:render template="/templates/sharelink"/>--}%
+        %{--<g:render template="/templates/sharedocument"/>--}%
+        %{--<g:render template="/templates/createtopic"/>--}%
 
     </div><!--col 8-->
 </div><!--row-->

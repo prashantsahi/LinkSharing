@@ -1,23 +1,54 @@
 package com.intelligrape.prashant.linksharing
 
+import bootcamp.Visibility
+import linkSharingCommandClass.RegisterCommand
+
 class LoginController {
     static defaultAction = "index"
 
     def index() {
         List<Resource> resources = Resource.list(max: 5,offset: 0,order: "desc",sort:"id" )
-        def rating = ResourceRating.createCriteria().list (max: 5,offset: 0)
+        List<ResourceRating> rating = ResourceRating.createCriteria().list (max: 5,offset: 0)
                 {
                     eq("score",5)
                     order("score","desc")
-
-                }
-        println "top 5 ratings : $rating \n"
-        println("top resources : $resources \n")
-        render(view: "login1", model: [res:resources,rating:rating])
+                     }
+              render(view: "login1", model: [res:resources,rating:rating])
     }
 
-    def dash() {
-        render(view: "/user/dashboard")
+    def loginHandler(RegisterCommand registerCommand)
+    {
 
+        if(User.findByUsernameAndPassword(registerCommand.username,registerCommand.password))
+        {
+
+            session["username"] = registerCommand.username
+            println("session created successfully !!!!")
+            println(session["username"])
+            redirect(controller: 'home', action: "dashboard")
+        }
+        else{
+//            session.invalidate()
+            render(view: "login1")
+        }
+    }
+
+    def register(RegisterCommand registerCommand){
+        println "from register action before validation"
+//        log.debug "params from register action"+params
+        println(registerCommand.firstName)
+        if(registerCommand.validate())
+        {
+            session["username"] = registerCommand.username
+            User user = new User()
+            user.properties=registerCommand
+            user.save(failOnError: true)
+            render(view : "/user/dashboard")
+        }
+        else {
+            println registerCommand.errors
+            render(view :"login1")
+        }
     }
 }
+

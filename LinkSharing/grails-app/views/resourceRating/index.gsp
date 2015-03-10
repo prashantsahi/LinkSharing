@@ -23,25 +23,25 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="score" title="${message(code: 'resourceRating.score.label', default: 'Score')}" />
-					
+
 						<th><g:message code="resourceRating.resource.label" default="Resource" /></th>
-					
+
 						<th><g:message code="resourceRating.user.label" default="User" /></th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${resourceRatingInstanceList}" status="i" var="resourceRatingInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${resourceRatingInstance.id}">${fieldValue(bean: resourceRatingInstance, field: "score")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: resourceRatingInstance, field: "resource")}</td>
-					
+
 						<td>${fieldValue(bean: resourceRatingInstance, field: "user")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

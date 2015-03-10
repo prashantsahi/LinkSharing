@@ -7,20 +7,13 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png">
+                    <asset:image src="linksharing/user.jpg" width="70px" height="70px"/>
                 </a>
             </div>
             <div class="media-body">
                 <h4 class="media-heading">Uday Pratap Singh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4><p class="des-head"> @uday 5minutes </p>
 
-                <br> <br>
-
-                <a href="www.facebook.com" ><img  width="30px" height="30px" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/social-icons.png"/></a>
-
-                <a href="www.googleplus.com" ><img  width="30px" height="30px" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/social-icons (another copy).png"/></a>
-
-                <a href="www.twitter.com"> <img width="30px" height="30px" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/social-icons (copy).png"/></a>
-
+           <g:render template="/templates/logos"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#">Download </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,20 +27,13 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png">
+                    <asset:image src="linksharing/user.jpg" width="70px" height="70px"/>
                 </a>
             </div>
             <div class="media-body">
                 Uday Pratap Singh &nbsp;&nbsp;&nbsp;&nbsp; @uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#"> Grails</a>
-
-                <br><br> <br> <br>
-
-                <a href="www.facebook.com" ><img  width="30px" height="30px" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/social-icons.png"/></a>
-
-                <a href="www.googleplus.com" ><img  width="30px" height="30px" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/social-icons (another copy).png"/></a>
-
-                <a href="www.twitter.com"> <img width="30px" height="30px" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/social-icons (copy).png"/></a>
-
+                <br>
+                <g:render template="/templates/logos"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#">Download </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

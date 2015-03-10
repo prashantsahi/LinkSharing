@@ -32,9 +32,9 @@
 <div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'readingitems', 'error')} ">
 	<label for="readingitems">
 		<g:message code="linkResource.readingitems.label" default="Readingitems" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${linkResourceInstance?.readingitems?}" var="r">
     <li><g:link controller="readingItem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
@@ -50,9 +50,9 @@
 <div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'resourceratings', 'error')} ">
 	<label for="resourceratings">
 		<g:message code="linkResource.resourceratings.label" default="Resourceratings" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${linkResourceInstance?.resourceratings?}" var="r">
     <li><g:link controller="resourceRating" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>

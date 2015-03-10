@@ -23,9 +23,9 @@
 <div class="fieldcontain ${hasErrors(bean: topicInstance, field: 'resources', 'error')} ">
 	<label for="resources">
 		<g:message code="topic.resources.label" default="Resources" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${topicInstance?.resources?}" var="r">
     <li><g:link controller="resource" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
@@ -41,9 +41,9 @@
 <div class="fieldcontain ${hasErrors(bean: topicInstance, field: 'subscriptions', 'error')} ">
 	<label for="subscriptions">
 		<g:message code="topic.subscriptions.label" default="Subscriptions" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${topicInstance?.subscriptions?}" var="s">
     <li><g:link controller="subscription" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>

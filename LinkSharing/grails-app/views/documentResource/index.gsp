@@ -23,37 +23,37 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="description" title="${message(code: 'documentResource.description.label', default: 'Description')}" />
-					
+
 						<g:sortableColumn property="filePath" title="${message(code: 'documentResource.filePath.label', default: 'File Path')}" />
-					
+
 						<th><g:message code="documentResource.createdBy.label" default="Created By" /></th>
-					
+
 						<g:sortableColumn property="dateCreated" title="${message(code: 'documentResource.dateCreated.label', default: 'Date Created')}" />
-					
+
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'documentResource.lastUpdated.label', default: 'Last Updated')}" />
-					
+
 						<th><g:message code="documentResource.topic.label" default="Topic" /></th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${documentResourceInstanceList}" status="i" var="documentResourceInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${documentResourceInstance.id}">${fieldValue(bean: documentResourceInstance, field: "description")}</g:link></td>
 					
 						<td>${fieldValue(bean: documentResourceInstance, field: "filePath")}</td>
-					
+
 						<td>${fieldValue(bean: documentResourceInstance, field: "createdBy")}</td>
-					
+
 						<td><g:formatDate date="${documentResourceInstance.dateCreated}" /></td>
-					
+
 						<td><g:formatDate date="${documentResourceInstance.lastUpdated}" /></td>
-					
+
 						<td>${fieldValue(bean: documentResourceInstance, field: "topic")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

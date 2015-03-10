@@ -2,10 +2,19 @@ package com.intelligrape.prashant.linksharing
 
 class DemoController {
 
-    def demoPage()
+    def posts()
     {
-        render(view: "/demoPage")
-
+       render(view: "/post")
+    }
+    def editProfile(){
+        render(view: '/Edit profile')
+    }
+    def myDemo(){
+        println(params)
+    }
+    def topicShow(){
+        println "from top posts : "+params.topic
+        render(view : '/topicShow' ,model: [topics:params.topic])
     }
     def loginController(){
         println("from login controller")

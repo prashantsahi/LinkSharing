@@ -28,7 +28,14 @@ class LinkResourceController {
         if(session['username'])
         {
             User user = User.findByUsername(session['username'])
+            println "***************************************************"
+//            println linkResourceInstance
+            println params
             linkResourceInstance.createdBy=user
+            println linkResourceInstance.topic
+
+            println "***************************************************"
+//            println linkResourceInstance
             linkResourceInstance.validate()
         }
 

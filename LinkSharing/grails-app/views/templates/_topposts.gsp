@@ -3,28 +3,24 @@
         <h3 class="panel-title">Top Stories</h3>
     </div>
     <div class="panel-body">
+
+
         <g:each in="${ratings}" var="rating">
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="/User.png" alt="...">
+                    <asset:image src="linksharing/user.jpg" width="60px" height="60px"/>
                 </a>
             </div>
             <div class="media-body media-marg">
+                    <a href="${createLink(controller: 'demo' ,action: 'topicShow', params: ['topic':rating?.resource?.topic?.name])}" style="float: right;">${rating?.resource?.topic?.name}</a></h4>
+               <p> Resource Name : ${rating?.resource?.title}</p>
 
-                <h4 class="media-heading">User name : <a href="#">Grails</a></h4>
-                %{--Resource Name : ${rating?.resource}--}%
+                <h4 class="media-heading"><g:render template="/templates/logos"/><a href="${createLink(controller: 'demo',action: 'posts')}" style="float: right;">View post</a></h4>
 
             </div>
         </div>
         </g:each>
-
-
-
-
-
-
-
     </div>
 
 </div>

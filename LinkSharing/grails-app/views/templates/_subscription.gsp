@@ -7,7 +7,8 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png"  alt="Displayed Alt !!!">
+                    %{--<img class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png"  alt="Displayed Alt !!!">--}%
+                    <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/>
                 </a>
             </div>
             <div class="media-body">
@@ -47,8 +48,7 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png">
-                </a>
+                    <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/>                </a>
             </div>
             <div class="media-body">
                 <h4 class="media-heading"></h4>

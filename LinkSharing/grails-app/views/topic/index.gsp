@@ -23,33 +23,33 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="name" title="${message(code: 'topic.name.label', default: 'Name')}" />
-					
+
 						<th><g:message code="topic.createdBy.label" default="Created By" /></th>
-					
+
 						<g:sortableColumn property="dateCreated" title="${message(code: 'topic.dateCreated.label', default: 'Date Created')}" />
-					
+
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'topic.lastUpdated.label', default: 'Last Updated')}" />
-					
+
 						<g:sortableColumn property="visibility" title="${message(code: 'topic.visibility.label', default: 'Visibility')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${topicInstanceList}" status="i" var="topicInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: topicInstance, field: "createdBy")}</td>
-					
+
 						<td><g:formatDate date="${topicInstance.dateCreated}" /></td>
-					
+
 						<td><g:formatDate date="${topicInstance.lastUpdated}" /></td>
-					
+
 						<td>${fieldValue(bean: topicInstance, field: "visibility")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

@@ -87,6 +87,7 @@ grails.hibernate.osiv.readonly = false
 
 environments {
     development {
+        uploadFolder = "/home/intelligrape/documentUpload"
         grails.logging.jul.usebridge = true
     }
     production {
@@ -114,4 +115,6 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    info 'filters'
 }
