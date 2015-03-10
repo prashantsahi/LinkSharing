@@ -41,8 +41,8 @@ class RegisterCommand {
             }
         })
         confirmPassword(validator: {val,obj->
-            if(val?.equals(obj.password)){
-                return true
+            if(val!=obj.password){
+                return false
             }
         })
     }

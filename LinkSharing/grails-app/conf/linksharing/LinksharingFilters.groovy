@@ -3,10 +3,21 @@ package linksharing
 class LinksharingFilters {
 
     def filters = {
-        all(controller:'login|assets', action:'loginHandler|index|register',invert :true) {
+        applicationFilter(controller: '*',action: '*' )
+                {
+                    before={
+                        log.info("request params: ${params}")
+                    }
+                    after={
+
+//                        println("afterrrrrrrrrr")
+                    }
+                }
+
+        restrictLogin(controller:'login|assets', action:'loginHandler|index|register',invert :true) {
             before = {
-                println "session username :  "+session['username']
-                println("controller: ${params.controller} , action: ${params.action}")
+
+//              println("controller: ${params.controller} , action: ${params.action}")
                 if(!session['username'])
                 {
                     redirect(controller: 'login',action: 'index')
@@ -24,20 +35,6 @@ class LinksharingFilters {
         }
 
 
-
-//        home(controller: 'home')
-
-    /*    myFilter(controller: 'demo',action: '*' )
-                {
-                    before={
-                        println("before")
-                    }
-                    after={
-
-                        println("afterrrrrrrrrr")
-                    }
-                }
-      */
 //        myUri(uri:'/demo/**')
 //                {
 //                    before={

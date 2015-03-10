@@ -128,5 +128,5 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 
-    info 'filters'
+    info 'grails.app'
 }
