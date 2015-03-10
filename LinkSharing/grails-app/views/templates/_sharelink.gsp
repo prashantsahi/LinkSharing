@@ -36,9 +36,8 @@
 
                             <g:select name="linkResourceInstance.topic" style="width:175px"
                                       from="${com.intelligrape.prashant.linksharing.Topic.list()}"
-                                        optionKey="id"
-
-                            />
+                                      optionKey="id"
+                                      optionValue="name"/>
 
 
                             <%--             from="${['Grails', 'Mobility','AWS','Adobe CQ']}"/> --%>

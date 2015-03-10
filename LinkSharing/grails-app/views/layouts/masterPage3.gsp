@@ -24,7 +24,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
 
-            <g:link class="navbar-brand" controller="home" action="index" style="color:#0000ff" >Link Sharing</g:link>
+            <g:link class="navbar-brand" controller="home" action="index" style="color:#0000ff">Link Sharing</g:link>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,22 +35,12 @@
                     <g:textField name="search" class="form-control" placeholder="Search"/>
                     <g:submitButton name="search" value="Search"/>
 
-                    <a href="#createTopic" data-toggle="modal" title="Create topic" style="text-decoration: none"><span
-                            class="glyphicon-user" style="font-size: 40px "/></a>
-                    <a href="#sendInvitation" data-toggle="modal" title="Send invitation"
-                       style="text-decoration: none"><span class="glyphicon-envelope" style="font-size: 40px"/>
-                    </a>&nbsp;&nbsp;
                     <a href="#link" data-toggle="modal" title="Share Link" style="text-decoration: none"><span
                             class="glyphicon-comment" style="font-size: 40px "/></a>
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
                             class="glyphicon-apple" style="font-size: 40px "/></a>
                     <a href="#" data-toggle="modal" title="User" style="text-decoration: none"><span
                             class="glyphicon-bishop" style="font-size: 40px "/></a>
-                    <g:render template="/templates/createtopic"/>
-                    <g:render template="/templates/sharelink"/>
-                    <g:render template="/templates/sharedocument"/>
-                    %{--<g:render template="/templates/trendingtopics"/>--}%
-                    <g:render template="/templates/sendinvitation"/>
 
                     %{--<div class="dropdown">--}%
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
@@ -60,16 +50,23 @@
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Users</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Topic</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Post</a></li>
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
                                                         action="logout">Logout</g:link></li>
+                        %{-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Users</a></li>
+                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Topic</a></li>
+                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Post</a></li>--}%
+
                     </ul>
                     %{--</div>--}%
 
                 </div>
             </g:form>
+
+
+            <g:render template="/templates/sharelink"/>
+            <g:render template="/templates/sharedocument"/>
+        %{--<g:render template="/templates/trendingtopics"/>--}%
+        %{--<g:render template="/templates/sendinvitation"/>--}%
 
         </div>
         <!-- /.navbar-collapse -->

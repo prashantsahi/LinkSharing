@@ -46,11 +46,6 @@
                             class="glyphicon-apple" style="font-size: 40px "/></a>
                     <a href="#" data-toggle="modal" title="User" style="text-decoration: none"><span
                             class="glyphicon-bishop" style="font-size: 40px "/></a>
-                    <g:render template="/templates/createtopic"/>
-                    <g:render template="/templates/sharelink"/>
-                    <g:render template="/templates/sharedocument"/>
-                    %{--<g:render template="/templates/trendingtopics"/>--}%
-                    <g:render template="/templates/sendinvitation"/>
 
                     %{--<div class="dropdown">--}%
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
@@ -71,7 +66,13 @@
                 </div>
             </g:form>
 
-        </div>
+        <g:render template="/templates/createtopic"/>
+        <g:render template="/templates/sharelink"/>
+        <g:render template="/templates/sharedocument"/>
+    %{--<g:render template="/templates/trendingtopics"/>--}%
+        <g:render template="/templates/sendinvitation"/>
+
+    </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->

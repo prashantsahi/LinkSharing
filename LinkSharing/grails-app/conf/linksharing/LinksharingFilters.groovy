@@ -11,7 +11,7 @@ class LinksharingFilters {
                 {
                     redirect(controller: 'login',action: 'index')
                     flash.message="Please log-in to the system"
-                    return true
+                    return false
                 }
             }
             after = { Map model ->

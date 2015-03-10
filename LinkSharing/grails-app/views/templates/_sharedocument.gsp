@@ -18,7 +18,7 @@
 
                         <div>
                             <span class="span-label">FileType*</span>
-                            <g:textField name="documentResourceInstance.contentType"/>
+                            <g:textField name="documentResourceInstance.fileType"/>
                         </div>
                         <br>
 

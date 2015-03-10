@@ -6,13 +6,15 @@ class BootStrap {
 
         def bootstrapService
     def init = { servletContext ->
+    if(!User.count()){
+
         bootstrapService.createUser()
         bootstrapService.topics()
         bootstrapService.resources()
 //        bootstrapService.readingItems()
         bootstrapService.ratings()
     }
-
+    }
     def destroy = {
     }
 

@@ -3,12 +3,7 @@ package com.intelligrape.prashant.linksharing
 class HomeController {
 
     def index() {
-        if (session['username']) {
-            println session['username']
-            redirect(action: 'dashboard')
-        } else {
-            redirect(action: 'logout')
-        }
+       redirect(action: 'dashboard')
     }
 
     def logout() {

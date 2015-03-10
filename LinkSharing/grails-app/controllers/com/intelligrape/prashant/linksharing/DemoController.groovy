@@ -2,54 +2,78 @@ package com.intelligrape.prashant.linksharing
 
 class DemoController {
 
-    def posts()
-    {
-       render(view: "/post")
+    def mail() {
+        println "from mail"
+        sendMail{
+            async true
+            to "sahiprashant@gmail.com"
+            subject "Hello Sahi "
+            body 'How are you?'
+        }
+        render 'mail successfully sent'
     }
-    def editProfile(){
+
+    /*def mail() {
+        println "from mail"
+        sendMail {
+            async true
+            to $ { params.emailId }
+            subject $ { params.emailTopic }
+            body 'Subscription link'
+        }
+        render 'mail successfully sent'
+    }*/
+
+    def posts() {
+        render(view: "/post")
+    }
+
+    def editProfile() {
         render(view: '/Edit profile')
     }
-    def myDemo(){
+
+    def myDemo() {
         println(params)
     }
-    def topicShow(){
-        println "from top posts : "+params.topic
-        render(view : '/topicShow' ,model: [topics:params.topic])
+
+    def topicShow() {
+        println "from top posts : " + params.topic
+        render(view: '/topicShow', model: [topics: params.topic])
     }
-    def loginController(){
+
+    def loginController() {
         println("from login controller")
-        render( view: '/user/dashboard')
+        render(view: '/user/dashboard')
     }
 
-    def hello()
-    {
+    def hello() {
 
-        redirect(action : 'index')
+        redirect(action: 'index')
 
     }
+
     def index() {
-     //   String name="prashant"
-       // render (view : "hello",model: [name:name])
+        //   String name="prashant"
+        // render (view : "hello",model: [name:name])
         render("firstname: $params.firstname")
 
 
     }
-    def a()
-    {
+
+    def a() {
         render(view: "hello")
 
     }
-    def demo1()
-    {
-        String name="sahi"
-        render(view: "hello",model: [name:name])
+
+    def demo1() {
+        String name = "sahi"
+        render(view: "hello", model: [name: name])
 
     }
 
-    def demoTemp()
-    {
-        String name="sahi"
-        render(template: "demoTemplate",model: [name:name])
+    def demoTemp() {
+        String name = "sahi"
+        render(template: "demoTemplate", model: [name: name])
 
     }
 }

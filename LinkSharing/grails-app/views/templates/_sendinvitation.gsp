@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <g:form class="form-box">
+                    <g:form class="form-box" controller="user">
                         <div>
                             <span class="span-label">Email Id*</span>
                             <g:textField name="emailId" placeholder="Email"/>
@@ -17,14 +17,10 @@
 
                         <div>
                             <span class="span-label">Topic*</span>
-                            <select style="width:175px">
-                                <option>----select---</option>
-                                <option>Grails</option>
-                                <option>Mobility</option>
-                                <option>AWS</option>
-                                <option>Adobe CQ</option>
-                            </select>
-
+                            <g:select name="emailTopic" style="width:175px"
+                                      from="${com.intelligrape.prashant.linksharing.Topic.list()}"
+                                      optionKey="name"
+                                      optionValue="name"/>
                         </div>
 
                         <br>
@@ -33,9 +29,9 @@
 
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <g:actionSubmit  value="Invite"/>
+                            <g:actionSubmit value="Invite" action="mail"/>
                             <span class="span-label"></span>
-                            <g:actionSubmit value="Cancel"/>
+                            <g:actionSubmit value="Cancel" />
                         </div>
                     </g:form>
                 </div>
