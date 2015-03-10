@@ -45,7 +45,7 @@ class LoginController {
             user.save(failOnError: true)
             render(view : "/user/dashboard")
         }
-        else {
+        else if (registerCommand.hasErrors()){
             println registerCommand.errors
             render(view :"login1")
         }

@@ -29,7 +29,7 @@ class DemoController {
     }
 
     def editProfile() {
-        render(view: '/Edit profile')
+        render(view: '/user/editProfile')
     }
 
     def myDemo() {

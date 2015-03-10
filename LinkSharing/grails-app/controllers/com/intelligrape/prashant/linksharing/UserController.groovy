@@ -15,9 +15,15 @@ class UserController {
             async true
             to "$params.emailId"
             subject "$params.emailTopic"
-            body 'Subscription link'
+            html "${g.link(action:"showProfile", controller:"user",absolute:"true", {"text of the link here"})}"
         }
         render 'mail successfully sent'
+    }
+
+    def showProfile()
+    {
+        render(view: 'editProfile')
+
     }
 
     def index(Integer max) {

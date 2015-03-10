@@ -1,5 +1,3 @@
-
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -49,6 +47,7 @@
 <div class="row">
     <div class="col-md-1">
     </div>
+
     <div class="col-md-4">
         <div class="panel panel-primary">
             <div class="panel-body">
@@ -58,8 +57,9 @@
                             <asset:image class="media-object img-size" src="profile-icon.png"></asset:image>
                         </a>
                     </div>
+
                     <div class="media-body">
-                            <h4 class="media-heading">Prashant Sahi</a> </h4>
+                        <h4 class="media-heading">Prashant Sahi</h4>
                         @Prashant<br>
                         <h5 class="des-head">@Prashant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
                         <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Topics<input type="text" placeholder="search" style="float:right;"></h3>
@@ -77,7 +78,7 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <asset:image class="media-object img-size"   src="profile-icon.png" ></asset:image>
+                            <asset:image class="media-object img-size" src="profile-icon.png"></asset:image>
                         </a>
                     </div>
 
@@ -120,12 +121,11 @@
             <!--panel body-->
         </div>
 
-
-
-
     </div>
+
     <div class="col-md-1">
     </div>
+
     <div class="col-md-4">
 
         <div class="panel panel-primary">
@@ -164,21 +164,22 @@
                     <form>
             </div>
         </div>
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Change Password</h3>
             </div>
 
             <div class="panel-body">
-                <g:form class="form-box" >
+                <g:form class="form-box">
                     <div>
                         <span class="span-label">Password</span>
-                        <input type="text"  placeholder="Password">
+                        <input type="text" placeholder="Password">
                     </div><br>
 
                     <div>
                         <span class="span-label">Confirm Password*</span>
-                        <input type="password"  placeholder="Confirm Password">
+                        <input type="password" placeholder="Confirm Password">
                     </div><br>
 
                     <div>
@@ -189,9 +190,11 @@
             </div>
         </div>
     </div>
+
     <div class="col-md-2">
     </div>
 </div>
 </div>
+
 </body>
 </html>
