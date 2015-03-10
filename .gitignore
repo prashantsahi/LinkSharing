@@ -4,6 +4,6 @@ misc/sahi
 misc/ignore.txt
 LinkSharing-grailsPlugins.iml
 LinkSharing.iml
-Linksharing/.idea/
-Linksharing/target/
+.idea/
+target/
 
