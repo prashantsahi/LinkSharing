@@ -14,6 +14,12 @@ class TopicController {
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 
+    //to render the showTopic page
+    def topicShow() {
+        println "from top posts : " + params.topic
+        render(view: '/topic/topicShow', model: [topics: params.topic])
+    }
+
     def show(Topic topicInstance) {
         respond topicInstance
     }

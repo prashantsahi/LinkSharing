@@ -10,12 +10,12 @@
                 <div class="media-left">
                     <a href="#">
                         <img width="60px" height="60px"
-                             src="${createLink(controller: "demo", action: 'showImage', params: [path: rating?.user?.photoPath])}"/>
+                             src="${createLink(controller: "user", action: 'showImage', params: [path: rating?.user?.photoPath])}"/>
                     </a>
                 </div>
 
                 <div class="media-body media-marg">
-                    <h4><a href="${createLink(controller: 'demo', action: 'topicShow', params: ['topic': rating?.resource?.topic?.name])}"
+                    <h4><a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': rating?.resource?.topic?.name])}"
                            style="float: right;">${rating?.resource?.topic?.name}</a></h4>
 
                     <p>Resource Name : ${rating?.resource?.title}</p>

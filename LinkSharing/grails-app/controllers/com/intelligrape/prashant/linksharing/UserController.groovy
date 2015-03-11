@@ -20,6 +20,14 @@ class UserController {
         render 'mail successfully sent'
     }
 
+// to show the user images
+    def showImage(String path){
+        println("path: ${path}")
+        File file=new File(path)
+        response.contentLength=file.bytes.length
+        response.outputStream<<file.bytes
+    }
+
     def showProfile()
     {
         render(view: 'editProfile')

@@ -11,12 +11,12 @@
                     %{--<g:img uri="../../web-app/images/linksharing/user.jpg"/>--}%
                     %{--<asset:image src="linksharing/user.jpg" width="60px" height="60px"/>--}%
                     %{--${resource?.createdBy?.photoPath}--}%
-                    <img width="60px" height="60px" src="${createLink(controller: "demo", action: 'showImage',params: [path:resource?.createdBy?.photoPath])}" />
+                    <img width="60px" height="60px" src="${createLink(controller: "user", action: 'showImage',params: [path:resource?.createdBy?.photoPath])}" />
                     %{--<img src="${resource?.createdBy?.photoPath}" absolute="false" width="60px" height="60px" />--}%
                 </a>
             </div>
             <div class="media-body media-marg">
-                <h4 class="media-heading">${resource?.createdBy?.username}<a href="${createLink(controller: 'demo',action: 'topicShow', params: ['topic' :resource?.topic?.name])}" style="float: right;">${resource?.topic?.name}</a></h4>
+                <h4 class="media-heading">${resource?.createdBy?.username}<a href="${createLink(controller: 'topic',action: 'topicShow', params: ['topic' :resource?.topic?.name])}" style="float: right;">${resource?.topic?.name}</a></h4>
                 <p>${resource?.description}</p>
                 <h4 class="media-heading"><g:render template="/templates/logos"/><a href="${createLink(controller: 'demo',action: 'posts')}" style="float: right;">View post</a></h4>
 

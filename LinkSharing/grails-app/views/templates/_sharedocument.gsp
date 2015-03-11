@@ -4,7 +4,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Share Document(Pop Up)</h3>
+                    <h3 class="panel-title">Share Document</h3>
                 </div>
 
                 <div class="panel-body">
@@ -15,19 +15,6 @@
                         </div>
 
                         <br>
-
-                     %{--   <div>
-                            <span class="span-label">FileType*</span>
-                            <g:textField name="documentResourceInstance.fileType"/>
-                        </div>
-                        <br>
-
-                        <div>
-                            <span class="span-label">FileName*</span>
-                            <g:textField name="documentResourceInstance.fileName"/>
-                        </div>
-                        <br>
---}%
 
                         <div>
                             <span class="span-label">Title*</span>

@@ -36,10 +36,10 @@ class DemoController {
         println(params)
     }
 
-    def topicShow() {
+    /*def topicShow() {
         println "from top posts : " + params.topic
         render(view: '/topicShow', model: [topics: params.topic])
-    }
+    }*/
 
     def loginController() {
         println("from login controller")
