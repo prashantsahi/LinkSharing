@@ -34,9 +34,9 @@ class LoginController {
         println "from register action before validation"
 
         def file = request.getFile('file')
-        println(file)
         if (file.empty) {
-            flash.message = "please uploaded the photo"
+            registerCommand.photoPath="/home/intelligrape/Upload/imageUpload/user.jpg"
+//            flash.message = "please uploaded the photo"
         } else {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
         }

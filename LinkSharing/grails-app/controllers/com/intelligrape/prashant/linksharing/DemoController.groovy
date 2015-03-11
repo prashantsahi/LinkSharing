@@ -76,4 +76,12 @@ class DemoController {
         render(template: "demoTemplate", model: [name: name])
 
     }
+
+
+    def showImage(String path){
+        println("path: ${path}")
+        File file=new File(path)
+        response.contentLength=file.bytes.length
+        response.outputStream<<file.bytes
+    }
 }
