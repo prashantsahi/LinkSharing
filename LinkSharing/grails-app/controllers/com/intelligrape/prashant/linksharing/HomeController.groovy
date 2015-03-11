@@ -13,7 +13,7 @@ class HomeController {
 
     def dashboard() {
         println('from dashboard')
-//            render("from dashboard ")
-        render(view: '/user/dashboard', model: [name: session['username']])
+        def userObj = User.findByUsername(session['username'])
+        render(view: '/user/dashboard', model: [user: userObj])
     }
 }

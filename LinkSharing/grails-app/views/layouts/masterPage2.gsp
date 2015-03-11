@@ -24,7 +24,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
 
-        <g:link class="navbar-brand" controller="home" action="index" style="color:#0000ff" >Link Sharing</g:link>
+            <g:link class="navbar-brand" controller="home" action="index" style="color:#0000ff">Link Sharing</g:link>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,8 +44,10 @@
                             class="glyphicon-comment" style="font-size: 40px "/></a>
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
                             class="glyphicon-apple" style="font-size: 40px "/></a>
-                    <a href="#" data-toggle="modal" title="User" style="text-decoration: none"><span
-                            class="glyphicon-bishop" style="font-size: 40px "/></a>
+                    <a href="#" data-toggle="modal" title="${user.username}" style="text-decoration: none">
+                        <img width="35px" height="35px"
+                             src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
+                    </a>
 
                     %{--<div class="dropdown">--}%
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
@@ -66,13 +68,13 @@
                 </div>
             </g:form>
 
-        <g:render template="/templates/createtopic"/>
-        <g:render template="/templates/sharelink"/>
-        <g:render template="/templates/sharedocument"/>
-    %{--<g:render template="/templates/trendingtopics"/>--}%
-        <g:render template="/templates/sendinvitation"/>
+            <g:render template="/templates/createtopic"/>
+            <g:render template="/templates/sharelink"/>
+            <g:render template="/templates/sharedocument"/>
+        %{--<g:render template="/templates/trendingtopics"/>--}%
+            <g:render template="/templates/sendinvitation"/>
 
-    </div>
+        </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
