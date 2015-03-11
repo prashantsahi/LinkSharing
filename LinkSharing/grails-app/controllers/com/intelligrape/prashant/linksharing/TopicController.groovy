@@ -31,10 +31,9 @@ class TopicController {
     @Transactional
     def save(Topic topicInstance) {
 
-        if(session['username'])
-        {
+        if (session['username']) {
             User user = User.findByUsername(session['username'])
-            topicInstance.createdBy=user
+            topicInstance.createdBy = user
             println topicInstance.validate()
         }
 
@@ -114,5 +113,14 @@ class TopicController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    def viewAllTemp() {
+        params.max=params.max?:10
+        params.offset=params.offset?:0
+        List<Topic> topicList = Topic.createCriteria().list(params) {
+
+        }
+        [topics: topicList, totalCount: Topic.count]
     }
 }

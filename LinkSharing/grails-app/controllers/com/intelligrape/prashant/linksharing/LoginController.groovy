@@ -1,19 +1,22 @@
 package com.intelligrape.prashant.linksharing
 
-//import bootcamp.Visibility
+import bootcamp.Visibility
 import linkSharingCommandClass.RegisterCommand
 
 class LoginController {
     static defaultAction = "index"
 
     def index() {
-        List<Resource> resources = Resource.list(max: 5, offset: 0, order: "desc", sort: "id")
-        List<ResourceRating> rating = ResourceRating.createCriteria().list(max: 5, offset: 0)
-                {
-                    eq("score", 5)
-                    order("score", "desc")
-                }
-        render(view: "login1", model: [res: resources, rating: rating])
+        params.max= params.max?:10
+        params.offset= params.offset?:0
+        List<Resource> resources = Resource.list(params)
+//        List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
+//            eq("score", 5)
+//            order("score", "desc")
+//        }
+        render(view: "login1", model: [res: resources, resCount:Resource.count/*, rating: rating*/])
+//        params.max = Math.min(max ?: 3, 6)
+//        render(view: "login1", model: [res: Resource.list(), resCount: Resource.count()], params: params)
     }
 
     def loginHandler(RegisterCommand registerCommand) {
@@ -35,7 +38,7 @@ class LoginController {
 
         def file = request.getFile('file')
         if (file.empty) {
-            registerCommand.photoPath="/home/intelligrape/Upload/imageUpload/user.jpg"
+            registerCommand.photoPath = "/home/intelligrape/Upload/imageUpload/user.jpg"
 //            flash.message = "please uploaded the photo"
         } else {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename

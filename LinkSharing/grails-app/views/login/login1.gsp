@@ -22,13 +22,18 @@
 <body>
 <g:if test="${flash.message}">
     ${flash.message}
-    </g:if>
+</g:if>
 <div class="row">
     <div class="col-md-8">
-    <g:if test="${session['username'] != null }">
-        <g:render template="/templates/recentshare" model="[resources: res]"/>
-        <g:render template="/templates/topposts" model="[ratings: rating]"/>
-    </g:if>
+        <g:if test="${session['username'] != null}">
+
+            <g:render template="/templates/recentshare" model="[resources: res, resCount: resCount]"/>
+
+
+
+        %{--<g:render template="/templates/topposts" model="[ratings: rating]"/>--}%
+
+        </g:if>
     </div>
 
     <div class="col-md-4">

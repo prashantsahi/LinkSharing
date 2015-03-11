@@ -32,5 +32,8 @@
                 </div>
             </div>
         </g:each>
+
+        <g:paginate total="${resCount}" controller="login" action="index"/>
+
     </div>
 </div>
