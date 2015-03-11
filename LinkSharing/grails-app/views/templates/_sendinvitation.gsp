@@ -31,7 +31,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Invite" action="mail"/>
                             <span class="span-label"></span>
-                            <g:actionSubmit value="Cancel" />
+                            <g:actionSubmit value="Cancel"/>
                         </div>
                     </g:form>
                 </div>

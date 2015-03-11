@@ -11,24 +11,25 @@
                     <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/>
                 </a>
             </div>
+
             <div class="media-body">
                 <h4 class="media-heading"></h4>
 
-                <a href="#"> Grails</a>
+                <a href="#">Grails</a>
                 <br><br>
-                <h5 class="des-head">@uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts  </h5>
+                <h5 class="des-head">@uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
 
                 <br>
 
                 <select>
                     <option>Serious</option>
-                    <option >Imp.</option>
+                    <option>Imp.</option>
                 </select>
 
                 <select>
                     <option>Private</option>
-                    <option >Edit</option>
-                    <option >Delete</option>
+                    <option>Edit</option>
+                    <option>Delete</option>
                 </select>
 
                 <button type="button" class="btn btn-default" aria-label="Left Align">
@@ -39,36 +40,34 @@
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </button>
 
-
             </div>
-
 
         </div>
 
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/>                </a>
+                    <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/></a>
             </div>
+
             <div class="media-body">
                 <h4 class="media-heading"></h4>
 
-                <a href="#"> Grails</a>
+                <a href="#">Grails</a>
 
-                <h5 class="des-head">@uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts  </h5>
+                <h5 class="des-head">@uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
 
                 <br>
 
                 <select align="right">
                     <option>Serious</option>
-                    <option >Imp.</option>
+                    <option>Imp.</option>
                 </select>
 
 
                 <button type="button" class="btn btn-default" aria-label="Left Align">
                     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                 </button>
-
 
             </div>
         </div>
