@@ -10,13 +10,13 @@ class User {
     Boolean active
     Date dateCreated
     Date lastUpdated
-//    Byte photo
+    String photoPath
 //    static transients =['confirmPassword']
 
 
     static hasMany = [subscriptions: Subscription, resources: Resource, readingitems: ReadingItem, resourceratings: ResourceRating, topics: Topic]
     static constraints = {
-//        photo nullable: true
+        photoPath nullable: true
         admin nullable :true
         active nullable: true
 

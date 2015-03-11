@@ -4,7 +4,7 @@
     </div>
 
     <div class="panel-body">
-        <g:form name="registration" controller="login">
+        <g:uploadForm name="registration" controller="login">
             <div>
                 <span class="span-label1">FirstName</span>
                 <g:textField name="firstName"/>
@@ -37,7 +37,7 @@
 
             <div>
                 <span class="span-label1">Photo</span>
-                <input type="file">
+                <input type="file" name="file">
 
             </div><br>
 
@@ -45,7 +45,7 @@
                 <g:actionSubmit action="register" name="register" value="Register"
                                 style="float:right; margin-right: 150px"/>
             </div>
-        </g:form>
+        </g:uploadForm>
 
     </div>
 

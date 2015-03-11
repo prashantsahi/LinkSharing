@@ -2,7 +2,7 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'photo', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'photoPath', 'error')} ">
 	<label for="photo">
 		<g:message code="user.photo.label" default="Photo" />
 

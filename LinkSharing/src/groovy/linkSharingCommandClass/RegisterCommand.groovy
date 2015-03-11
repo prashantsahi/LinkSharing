@@ -22,13 +22,12 @@ class RegisterCommand {
     Boolean active
     Date dateCreated
     Date lastUpdated
-//    Byte photo
-       String confirmPassword
+    String photoPath
+    String confirmPassword
 
 
     static hasMany = [subscriptions: Subscription, resources: Resource, readingitems: ReadingItem, resourceratings: ResourceRating, topics: Topic]
     static constraints = {
-//        photo nullable: true
         dateCreated nullable: true
         lastUpdated nullable: true
         admin nullable :true
