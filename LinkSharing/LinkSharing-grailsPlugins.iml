@@ -9,6 +9,7 @@
           <root url="file://$MODULE_DIR$/target/work/plugins/console-1.5.3/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/console-1.5.3/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/mail-1.0.7/grails-app/views" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/remote-pagination-0.4.8/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -57,6 +58,10 @@
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/mail-1.0.7/grails-app/i18n" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/mail-1.0.7/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/mail-1.0.7/grails-app/taglib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/remote-pagination-0.4.8">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/remote-pagination-0.4.8/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/remote-pagination-0.4.8/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.1.2">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.1.2/src/java" isTestSource="false" />

@@ -26,12 +26,12 @@
 <div class="row">
     <div class="col-md-8">
         <g:if test="${session['username'] != null}">
+            <div id="recentshares">
+                <g:render template="/templates/recentshare" model="[resources: res, resCount: resCount]"/>
+            </div>
 
-            <g:render template="/templates/recentshare" model="[resources: res, resCount: resCount]"/>
 
-
-
-        %{--<g:render template="/templates/topposts" model="[ratings: rating]"/>--}%
+            <g:render template="/templates/topposts" model="[ratings: rating]"/>
 
         </g:if>
     </div>

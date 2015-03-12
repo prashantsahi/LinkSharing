@@ -7,16 +7,17 @@ class LoginController {
     static defaultAction = "index"
 
     def index() {
-        params.max= params.max?:10
-        params.offset= params.offset?:0
+        params.max = params.max ?: 10
+        params.offset = params.offset ?: 0
+        params.sort = params.sort ?: 'id'
+        params.order = params.order ?: 'desc'
         List<Resource> resources = Resource.list(params)
-//        List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
-//            eq("score", 5)
-//            order("score", "desc")
-//        }
-        render(view: "login1", model: [res: resources, resCount:Resource.count/*, rating: rating*/])
-//        params.max = Math.min(max ?: 3, 6)
-//        render(view: "login1", model: [res: Resource.list(), resCount: Resource.count()], params: params)
+        List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
+            eq("score", 5)
+            order("score", "desc")
+        }
+        render(view: "login1", model: [res: resources, resCount: Resource.count, rating: rating])
+//        render(template: "/templates/recentshare", model: [res: resources, resCount: Resource.count, rating: rating])
     }
 
     def loginHandler(RegisterCommand registerCommand) {
