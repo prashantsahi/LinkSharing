@@ -6,9 +6,9 @@
     <div class="panel-body">
         <div class="media">
             <div class="media-left">
-                <a href="#">
+                <g:link controller="user" action="showProfile">
                     <asset:image src="linksharing/user.jpg" width="60px" height="60px"/>
-                </a>
+                </g:link>
             </div>
 
             <div class="media-body">

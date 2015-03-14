@@ -27,18 +27,18 @@
     <div class="col-md-8">
         <g:if test="${session['username'] != null}">
             <div id="recentshares">
-                <g:render template="/templates/recentshare" model="[resources: res, resCount: resCount]"/>
+                <g:render template="/login/recentshare" model="[resources: res, resCount: resCount]"/>
             </div>
 
 
-            <g:render template="/templates/topposts" model="[ratings: rating]"/>
+            <g:render template="/login/topposts" model="[ratings: rating]"/>
 
         </g:if>
     </div>
 
     <div class="col-md-4">
-        <g:render template="/templates/login"/>
-        <g:render template="/templates/register"/>
+        <g:render template="/login/login"/>
+        <g:render template="/login/register"/>
 
     </div>
 </div>

@@ -1,6 +1,6 @@
 package com.intelligrape.prashant.linksharing
 
-import first_grail_project.CustomDateTagLib
+import linksharing.CustomDateTagLib
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

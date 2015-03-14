@@ -19,4 +19,7 @@ abstract class Resource {
         //tablePerHierarchy false
     title sqlType: 'text'
     }
+
+
+
 }

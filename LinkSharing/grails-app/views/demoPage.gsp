@@ -30,7 +30,7 @@
     <div id="sendInvitation" class="modal fade">
         <div class="modal-dialog">
                 <div class="modal-body">
-                    <g:render template="/templates/sendinvitation"/>
+                    <g:render template="/user/sendinvitation"/>
                 </div>
         </div>
     </div>

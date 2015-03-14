@@ -31,7 +31,7 @@
     <g:render template="/templates/subscription"/>
 
     <g:render template="/templates/trendingtopics"/>
-    <g:render template="/templates/sendinvitation"/>
+    <g:render template="/user/sendinvitation"/>
     <!-- col md 4 --></div>
 
     <div class="col-md-8">

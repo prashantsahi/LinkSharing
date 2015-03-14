@@ -4,11 +4,10 @@ import bootcamp.Seriousness
 
 class Subscription
 {
-    User user
     Date dateCreated
     Seriousness seriousness
 
-    static belongsTo = [topic:Topic]
+    static belongsTo = [topic:Topic,user:User]
 
     static constraints = {
         user unique:'topic'

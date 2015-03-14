@@ -3,12 +3,12 @@
 
         <div class="media">
             <div class="media-left media-middle">
-                <a href="#">
+                <g:link controller="user" action="showProfile">
                     %{--<asset:image class="media-object" src="linksharing/user.jpg" width="60px" height="60px"/>--}%
                     <img width="150px" height="150px"
                          src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
 
-                </a>
+                </g:link>
             </div>
 
             <div class="media-body">

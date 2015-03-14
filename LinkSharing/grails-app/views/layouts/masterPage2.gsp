@@ -68,11 +68,11 @@
                 </div>
             </g:form>
 
-            <g:render template="/templates/createtopic"/>
+            <g:render template="/user/createtopic"/>
             <g:render template="/templates/sharelink"/>
             <g:render template="/templates/sharedocument"/>
         %{--<g:render template="/templates/trendingtopics"/>--}%
-            <g:render template="/templates/sendinvitation"/>
+            <g:render template="/user/sendinvitation"/>
 
         </div>
         <!-- /.navbar-collapse -->

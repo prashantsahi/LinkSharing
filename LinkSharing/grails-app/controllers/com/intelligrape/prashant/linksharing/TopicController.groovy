@@ -1,10 +1,11 @@
 package com.intelligrape.prashant.linksharing
 
+import bootcamp.Seriousness
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional
 class TopicController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -34,7 +35,7 @@ class TopicController {
         if (session['username']) {
             User user = User.findByUsername(session['username'])
             topicInstance.createdBy = user
-            println topicInstance.validate()
+            println "from to[pic save action -----------------------------------------------"+topicInstance.validate()
         }
 
         if (topicInstance == null) {
@@ -46,8 +47,15 @@ class TopicController {
             respond topicInstance.errors, view: 'create'
             return
         }
+        topicInstance.save(flush: true, failOnError:true )
 
-        topicInstance.save flush: true
+//        if(topicInstance.save(flush: true, failOnError:true ))
+//        {
+//            Subscription subscription = new Subscription(user: topicInstance.createdBy, topic: topicInstance, seriousness: Seriousness.Serious)
+//            topicInstance.addToSubscriptions(subscription)
+//            println "subscription validation : \t" + subscription.validate()
+//            subscription.save(failOnError: true)
+//        }
 
         request.withFormat {
             form multipartForm {

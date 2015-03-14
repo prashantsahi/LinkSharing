@@ -60,7 +60,6 @@ class BootstrapService {
 
     void createResources(User user1, Topic topic1) {
         5.times {
-
             LinkResource link = new LinkResource(createdBy: user1, topic: topic1,title:"titleLink$linkCount"  ,description: "$topic1.name-link$it-description", linkUrl: "http://www.link$linkCount" + ".com")
             DocumentResource document = new DocumentResource(createdBy: user1, topic: topic1,title: "titleDoc$documentCount" ,description: "$topic1.name-doc$it-description", filePath: "/path/file${documentCount}",fileName: "file$documentCount",fileType:".txt" )
             ++linkCount
