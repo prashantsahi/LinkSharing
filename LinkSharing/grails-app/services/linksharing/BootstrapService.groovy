@@ -25,14 +25,11 @@ class BootstrapService {
         5.times {
             if ((it % 2) != 0) {
                 Topic topic = new Topic(name: "$user.firstName" + "-topic$it", createdBy: user, visibility: Visibility.Public)
-                if (topic.save(flush: true, failOnError: true)) {
-                    subscribeTopic(user, topic, it)
-                }
+                topic.save(flush: true, failOnError: true)
+
             } else {
                 Topic topic1 = new Topic(name: "$user.firstName" + "-topic$it", createdBy: user, visibility: Visibility.Private)
-                if (topic1.save(flush: true, failOnError: true)) {
-                    subscribeTopic(user, topic1, it)
-                }
+                topic1.save(flush: true, failOnError: true)
             }
 
         }
@@ -46,28 +43,16 @@ class BootstrapService {
         }
     }
 
-    void subscribeTopic(User user1, Topic topic1, int index) {
-        Subscription subscription
-        if ((index % 3) == 0) {
-            subscription= new Subscription(user: user1, topic: topic1, seriousness: Seriousness.VerySerious)
-        } else if ((index % 3) == 1) {
-            subscription = new Subscription(user: user1, topic: topic1, seriousness: Seriousness.Serious)
-        } else {
-            subscription = new Subscription(user: user1, topic: topic1, seriousness: Seriousness.Casual)
-        }
-        subscription.save(failOnError: true, flush: true)
-    }
-
     void createResources(User user1, Topic topic1) {
         5.times {
-            LinkResource link = new LinkResource(createdBy: user1, topic: topic1,title:"titleLink$linkCount"  ,description: "$topic1.name-link$it-description", linkUrl: "http://www.link$linkCount" + ".com")
-            DocumentResource document = new DocumentResource(createdBy: user1, topic: topic1,title: "titleDoc$documentCount" ,description: "$topic1.name-doc$it-description", filePath: "/path/file${documentCount}",fileName: "file$documentCount",fileType:".txt" )
+            LinkResource link = new LinkResource(createdBy: user1, topic: topic1, title: "titleLink$linkCount", description: "$topic1.name-link$it-description", linkUrl: "http://www.link$linkCount" + ".com")
+            DocumentResource document = new DocumentResource(createdBy: user1, topic: topic1, title: "titleDoc$documentCount", description: "$topic1.name-doc$it-description", filePath: "/path/file${documentCount}", fileName: "file$documentCount", fileType: ".txt")
             ++linkCount
             ++documentCount
             link.save(flush: true, failOnError: true)
             document.save(flush: true, failOnError: true)
-            createReadingItems(user1,link,true)
-            createReadingItems(user1,document,true)
+            createReadingItems(user1, link, true)
+            createReadingItems(user1, document, true)
         }
 
     }
@@ -78,7 +63,7 @@ class BootstrapService {
             def topic = Topic.findAllByCreatedBy(user)
 
             topic.each {
-                         createResources(user, it)
+                createResources(user, it)
             }
         }
     }
