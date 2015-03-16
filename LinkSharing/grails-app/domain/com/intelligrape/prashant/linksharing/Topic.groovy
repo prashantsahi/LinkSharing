@@ -17,8 +17,6 @@ class Topic {
     }
 
     def afterInsert={
-
-
           addToSubscriptions(user: createdBy, topic: this, seriousness: Seriousness.Serious)
     }
 }
