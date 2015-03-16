@@ -51,8 +51,8 @@ class BootstrapService {
             ++documentCount
             link.save(flush: true, failOnError: true)
             document.save(flush: true, failOnError: true)
-            createReadingItems(user1, link, true)
-            createReadingItems(user1, document, true)
+//            createReadingItems(user1, link, true)
+//            createReadingItems(user1, document, true)
         }
     }
 
@@ -67,11 +67,11 @@ class BootstrapService {
         }
     }
 
-    void createReadingItems(User user1, Resource resource1, Boolean read) {
+    /*void createReadingItems(User user1, Resource resource1, Boolean read) {
         ReadingItem readingitem = new ReadingItem(user: user1, resource: resource1, isRead: read)
         readingitem.save(flush: true, failOnError: true)
     }
-
+*/
 //    void readingItems() {
 //        (1..5).each {
 //            User user = User.get(it)

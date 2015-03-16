@@ -22,7 +22,7 @@
     </div>
 
     <div class="col-md-7">
-        <g:render template="/templates/inbox" model="[top: topics]"/>
+        <g:render template="/user/inbox" model="[top: topics]"/>
     </div>
 </div>
 

@@ -3,7 +3,7 @@ package com.intelligrape.prashant.linksharing
 class HomeController {
 
     def index() {
-       redirect(action: 'dashboard')
+        redirect(action: 'dashboard')
     }
 
     def logout() {
@@ -14,10 +14,13 @@ class HomeController {
     def dashboard() {
         println('from dashboard')
         def userObj = User.findByUsername(session['username'])
-        List<Subscription> subscription=userObj.subscriptions.asList()
-        println "------------------------------------------------"
-        println subscription.topic
-        println "------------------------------------------------"
-        render(view: '/user/dashboard', model: [user: userObj,subscriptions:subscription])
+        List<Subscription> subscription = userObj.subscriptions.asList().sort { it.dateCreated }
+        List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
+
+            readingitems{
+                eq('isRead',false)
+            }
+        }
+        render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources])
     }
 }

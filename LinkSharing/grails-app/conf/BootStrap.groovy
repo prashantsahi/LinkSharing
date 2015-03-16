@@ -4,9 +4,9 @@ import com.intelligrape.prashant.linksharing.*
 
 class BootStrap {
 
-        def bootstrapService
+    def bootstrapService
     def init = { servletContext ->
-    if(!User.count()){
+        /*   if(!User.count()){
 
         bootstrapService.createUser()
         bootstrapService.topics()
@@ -14,8 +14,8 @@ class BootStrap {
 //        bootstrapService.readingItems()
         bootstrapService.ratings()
     }
+    }*/
+        def destroy = {
+        }
     }
-    def destroy = {
-    }
-
 }

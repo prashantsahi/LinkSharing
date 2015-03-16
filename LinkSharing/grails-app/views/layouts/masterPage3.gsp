@@ -49,7 +49,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
+                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
+                                                        action="showProfile">Profile</g:link></li>
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
                                                         action="logout">Logout</g:link></li>
                         %{-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Users</a></li>

@@ -1,18 +1,17 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Recent Shares   </h3>
+        <h3 class="panel-title">Recent Shares</h3>
     </div>
 
     <div class="panel-body">
         <g:each in="${resources}" var="resource">
             <div class="media">
                 <div class="media-left">
-                    <a href="#">
-
+                    <g:link controller="user" action="showProfile">
                         <img width="60px" height="60px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
+                    </g:link>
 
-                    </a>
                 </div>
 
                 <div class="media-body media-marg">

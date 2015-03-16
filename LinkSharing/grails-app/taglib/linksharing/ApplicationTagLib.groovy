@@ -15,10 +15,13 @@ class ApplicationTagLib {
         out << g.render(template: "/login/topposts", model: [ratings: attr.rate])
     }
 
+    def inbox = { attr ->
+        out << g.render(template: '/user/inbox', model: [resources: attr.resource])
+    }
+
     def isSubscribed = { attr ->
         def subscribed = attr.sub1.user.username
         if (subscribed.contains(session['username'])) {
-            println ":::::::::::::::::::::::::from isSubscribed:::::::::::::::::::::::::::::::::::::::"
             out << g.render(template: "/home/isSubscribed", model: [sub: attr.sub1])
         }
 
@@ -27,7 +30,6 @@ class ApplicationTagLib {
     def isNotSubscribed = { attr ->
         def subscribed = attr.sub1.user.username
         if (!subscribed.contains(session['username'])) {
-            println ":::::::::::::::::::::::::from isNotSubscribed:::::::::::::::::::::::::::::::::::::::"
             out << g.render(template: "/home/isNotSubscribed", model: [sub: attr.sub1])
         }
     }

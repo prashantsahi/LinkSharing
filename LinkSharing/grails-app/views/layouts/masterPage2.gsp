@@ -56,7 +56,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1">Profile</g:link></li>
+                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
+                                                        action="showProfile">Profile</g:link></li>
                         <li role="presentation"><g:link role="menuitem" tabindex="-1">Users</g:link></li>
                         <li role="presentation"><g:link role="menuitem" tabindex="-1">Topic</g:link></li>
                         <li role="presentation"><g:link role="menuitem" tabindex="-1">Post</g:link></li>

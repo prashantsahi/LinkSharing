@@ -26,17 +26,19 @@
 
 <div class="row">
     <div class="col-md-4">
-    <g:render template="/templates/userInformation"/>
+        <g:render template="/templates/userInformation"/>
 
-    <g:render template="/home/subscription"/>
+        <g:render template="/home/subscription"/>
 
-    <g:render template="/templates/trendingtopics"/>
-    <g:render template="/user/sendinvitation"/>
-    <!-- col md 4 --></div>
+        <g:render template="/templates/trendingtopics"/>
+        %{--<g:render template="/user/sendinvitation"/>--}%
+        <!-- col md 4 -->
+    </div>
 
     <div class="col-md-8">
 
-        <g:render template="/templates/inbox"/>
+        <ls:inbox resource="${res}"/>
+
 
     </div><!--col 8-->
 </div><!--row-->
