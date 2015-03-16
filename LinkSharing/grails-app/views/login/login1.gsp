@@ -27,11 +27,12 @@
     <div class="col-md-8">
         <g:if test="${session['username'] != null}">
             <div id="recentshares">
+                %{--<ls:recentShare resources="${res}" resCnt="${resCount}"/>--}%
                 <g:render template="/login/recentshare" model="[resources: res, resCount: resCount]"/>
             </div>
 
-
-            <g:render template="/login/topposts" model="[ratings: rating]"/>
+            <ls:top rate="${rating}"/>
+            %{--<g:render template="/login/topposts" model="[ratings: rating]"/>--}%
 
         </g:if>
     </div>

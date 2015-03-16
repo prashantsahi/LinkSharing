@@ -14,6 +14,10 @@ class HomeController {
     def dashboard() {
         println('from dashboard')
         def userObj = User.findByUsername(session['username'])
-        render(view: '/user/dashboard', model: [user: userObj])
+        List<Subscription> subscription=userObj.subscriptions.asList()
+        println "------------------------------------------------"
+        println subscription.topic
+        println "------------------------------------------------"
+        render(view: '/user/dashboard', model: [user: userObj,subscriptions:subscription])
     }
 }

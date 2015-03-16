@@ -4,79 +4,85 @@
     </div>
 
     <div class="panel-body">
-        <div class="media">
-            <div class="media-left">
-                %{--<a href="#">
-                    --}%%{--<img class="media-object" src="/home/intelligrape/Documents/bootcamp/bootcamp day6/resources/icons/User.png"  alt="Displayed Alt !!!">--}%%{--
-                    <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/>
-                </a>--}%
+        <ls:isSubscribed sub1="${subscriptions}" />
+        <ls:isNotSubscribed sub1="${subscriptions}" />
+        %{--<g:each in="${subscriptions}" var="subs">
 
-                <g:link controller="user" action="showProfile">
-                %{--<asset:image class="media-object" src="linksharing/user.jpg" width="60px" height="60px"/>--}%
-                    <img width="70px" height="70px"
-                         src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
-                </g:link>
-            </div>
+            <div class="media">
+                <div class="media-left">
 
-            <div class="media-body">
-                <h4 class="media-heading"></h4>
+                    <g:link controller="user" action="showProfile">
+                        <img width="70px" height="70px"
+                             src="${createLink(controller: "user", action: 'showImage', params: [path: subs.user.photoPath])}"/>
+                    </g:link>
+                </div>
 
-                <a href="#">Grails</a>
-                <br><br>
-                <h5 class="des-head">@uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
+                <div class="media-body">
+                    <h4 class="media-heading"></h4>
 
-                <br>
+                    <a href="#">${subs?.topic?.name}</a>
+                    <br><br>
+                    <h5 class="des-head">@${subs.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
+                    <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.topic?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        ${subs?.topic?.resources?.size()}</h5>
 
-                <select>
-                    <option>Serious</option>
-                    <option>Imp.</option>
-                </select>
-
-                <select>
-                    <option>Private</option>
-                    <option>Edit</option>
-                    <option>Delete</option>
-                </select>
-
-                <button type="button" class="btn btn-default" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                </button>
-
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <asset:image src="linksharing/user.jpg" width="60px" height="60px" class="media-object"/></a>
-            </div>
-
-            <div class="media-body">
-                <h4 class="media-heading"></h4>
-
-                <a href="#">Grails</a>
-
-                <h5 class="des-head">@uday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
-
-                <br>
-
-                <select align="right">
-                    <option>Serious</option>
-                    <option>Imp.</option>
-                </select>
+                    <g:select name="subs.seriousness"
+                              from="${bootcamp.Seriousness.values()}"/>
 
 
-                <button type="button" class="btn btn-default" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                </button>
+                    <select>
+                        <option>Private</option>
+                        <option>Edit</option>
+                        <option>Delete</option>
+                    </select>
+
+                    <g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"
+                            action="">
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </g:link>
+                    <g:link class="btn btn-default" aria-label="Left Align" title='create topic' controller="home"
+                            action="">
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                    </g:link>
+
+                    <g:link class="btn btn-default" title='Delete'>&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </g:link>
+
+                </div>
 
             </div>
-        </div>
+        </g:each>--}%
+        %{--        <g:each in="${subscriptions}" var="subs">
+                    <div class="media">
+                        <div class="media-left">
+                            <g:link controller="user" action="showProfile">
+                                <img width="70px" height="70px"
+                                     src="${createLink(controller: "user", action: 'showImage', params: [path: subs.user.photoPath])}"/>
+                            </g:link>
+                        </div>
 
+                        <div class="media-body">
+                            <h4 class="media-heading"></h4>
+
+                            <a href="#">${subs?.topic?.name}</a>
+
+                            <h5 class="des-head">@${subs.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
+                            <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.topic?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                ${subs?.topic?.resources?.size()}</h5>
+
+                            <g:select name="subs.seriousness"
+                                      from="${bootcamp.Seriousness.values()}"/>
+
+
+                            <g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"
+                                    action="">
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            </g:link>
+                        </div>
+                    </div>
+                </g:each>--}%
     </div>
 </div>

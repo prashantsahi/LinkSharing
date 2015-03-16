@@ -54,7 +54,6 @@ class BootstrapService {
             createReadingItems(user1, link, true)
             createReadingItems(user1, document, true)
         }
-
     }
 
     void resources() {
