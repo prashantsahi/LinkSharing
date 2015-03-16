@@ -14,20 +14,21 @@
 
             <a href="#">${subs?.topic?.name}</a>
             <br><br>
-            <h5 class="des-head">@${subs.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <g:link>Subscriptions</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<g:link>Posts</g:link> </h5>
+            <h5 class="des-head">@${subs.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <g:link>Subscriptions</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<g:link>Posts</g:link></h5>
             <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.topic?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.topic?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 ${subs?.topic?.resources?.size()}</h5>
 
             <g:select name="subs.seriousness"
                       from="${bootcamp.Seriousness.values()}"/>
 
-            <g:render template="isEditable"/>
-            %{--<select>
-                <option>Private</option>
-                <option>Edit</option>
-                <option>Delete</option>
-            </select>--}%
+            <ls:isEditable subscriber="${subs}"/>
+        %{--<g:render template="isEditable"/>--}%
+        %{--<select>
+            <option>Private</option>
+            <option>Edit</option>
+            <option>Delete</option>
+        </select>--}%
 
             <g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"
                     action="">

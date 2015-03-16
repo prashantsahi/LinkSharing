@@ -12,11 +12,11 @@
     <meta name="layout" content="master">
     <title>Page2</title>
 
-    <asset:stylesheet src="bootstrap.min.css"/>
+   %{-- <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:stylesheet src="span.css"/>
     <asset:javascript src="bootstrap.min.js"/>
-
+--}%
 </head>
 
 <body>
@@ -27,8 +27,8 @@
     <div class="col-md-8">
         <g:if test="${session['username'] != null}">
             <div id="recentshares">
-                %{--<ls:recentShare resources="${res}" resCnt="${resCount}"/>--}%
-                <g:render template="/login/recentshare" model="[resources: res, resCount: resCount]"/>
+                <ls:recentShare resources="${res}" resCnt="${resCount}"/>
+                %{--<g:render template="/login/recentshare" model="[resources: res, resCount: resCount]"/>--}%
             </div>
 
             <ls:top rate="${rating}"/>

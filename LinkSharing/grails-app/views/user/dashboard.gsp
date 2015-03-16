@@ -28,7 +28,7 @@
     <div class="col-md-4">
     <g:render template="/templates/userInformation"/>
 
-    <g:render template="/templates/subscription"/>
+    <g:render template="/home/subscription"/>
 
     <g:render template="/templates/trendingtopics"/>
     <g:render template="/user/sendinvitation"/>
