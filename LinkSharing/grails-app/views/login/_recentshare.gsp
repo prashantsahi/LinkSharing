@@ -1,6 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Recent Shares</h3>
+        <h3 class="panel-title">Recent Shares
+        <span style="float:right "><g:link> View ALL</g:link></span>
+        </h3>
     </div>
 
     <div class="panel-body">
@@ -34,6 +36,6 @@
     %{--<g:paginate total="${resCount}" controller="login" action="index"/>--}%
 
         %{--<util:remotePaginate controller="login" action="index" total="${resCount}"
-                             update="#recentshares" pageSizes="[5, 10, 20, 50, 100]"/>
---}%    </div>
+                             update="#recentshares" pageSizes="[5, 10, 20, 50, 100]"/>--}%
+    </div>
 </div>

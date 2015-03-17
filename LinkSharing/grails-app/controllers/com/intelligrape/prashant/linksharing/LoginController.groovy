@@ -12,16 +12,21 @@ class LoginController {
         params.sort = params.sort ?: 'id'
         params.order = params.order ?: 'desc'
 //        List<Resource> resources = Resource.list(params)
-        List<Resource> resources = Resource.createCriteria().list {
+        List<Resource> resources = Resource.createCriteria().list(params) {
             'topic' {
-                eq('visibility',Visibility.Public )
+                eq('visibility', Visibility.Public)
             }
         }
-        resources.sort {it.createdBy}
+        resources.sort { it.createdBy }
 
         List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
-            eq("score", 5)
+//            eq("score", 5)
             order("score", "desc")
+            'resource' {
+                'topic' {
+                    eq('visibility', Visibility.Public)
+                }
+            }
         }
         render(view: "login", model: [res: resources, resCount: Resource.count, rating: rating])
     }
@@ -29,7 +34,6 @@ class LoginController {
     def loginHandler(RegisterCommand registerCommand) {
 
         if (User.findByUsernameAndPassword(registerCommand.username, registerCommand.password)) {
-
             session["username"] = registerCommand.username
             println("session created successfully !!!!")
             println(session["username"])

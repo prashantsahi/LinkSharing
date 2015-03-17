@@ -98,7 +98,7 @@ class BootstrapService {
 
     void ratings() {
         int count = 1
-        (1..5).each {
+        (1..2).each {
             User user = User.get(it)
             def resource = Resource.findAllByCreatedBy(user)
             resource.each {

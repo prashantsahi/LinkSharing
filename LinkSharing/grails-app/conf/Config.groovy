@@ -148,3 +148,4 @@ environments {
 
 // for g:remote paginate to use twitter bootstrap classes in g:paginate
 grails.plugins.remotepagination.enableBootstrap=true
+grails.app.context='/'
