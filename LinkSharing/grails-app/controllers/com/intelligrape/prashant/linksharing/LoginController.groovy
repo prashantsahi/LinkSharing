@@ -7,11 +7,11 @@ class LoginController {
     static defaultAction = "index"
 
     def index() {
+        println('::::::::::::::::::::::::::::::from login/index:::::::::::::::::::::::::::::::::')
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
         params.sort = params.sort ?: 'id'
         params.order = params.order ?: 'desc'
-//        List<Resource> resources = Resource.list(params)
         List<Resource> resources = Resource.createCriteria().list(params) {
             'topic' {
                 eq('visibility', Visibility.Public)
@@ -72,23 +72,10 @@ class LoginController {
             }
             render 'mail successfully sent'
 
-//            redirect(controller: 'login', action: 'mail', params: params)
-//            redirect(controller: 'home' ,action: 'dashboard')
-//            render(view: "/user/dashboard")
         } else if (registerCommand.hasErrors()) {
             println registerCommand.errors
-            render(view: "login")
+            redirect(action: 'index')
         }
     }
 
-/*    def mail() {
-        println "from mail"
-        sendMail {
-            async true
-            to "$params.email"
-            subject "Verification mail"
-            html "${g.link(controller: "home", action: "dashboard", dashboard: "true", { "click on the link to verify your account" })}"
-        }
-        render 'mail successfully sent'
-    }*/
 }

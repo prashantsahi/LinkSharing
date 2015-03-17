@@ -4,15 +4,12 @@
     <title><g:layoutTitle default="Linksharing"/></title>
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
-    <asset:javascript src="bootstrap.min.js"/>
-    %{--    <asset:javascript src="jquery-1.11.1.min.js"/>
-        <asset:javascript src="jquery.validate.js"/>
-        <asset:javascript src="register.js"/>--}%
+    <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="jquery.validate.js"/>
     <g:layoutHead/>
 </head>
 
 <body>
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -29,7 +26,6 @@
         </div>
     </div>
 </nav>
-
 <g:layoutBody/>
 </body>
 </html>

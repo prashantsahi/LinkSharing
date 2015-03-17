@@ -4,15 +4,15 @@
     </div>
 
     <div class="panel-body">
-        <g:uploadForm name="registration" controller="login" id="register">
+        <g:uploadForm name="registration" controller="login" id="registration">
             <div>
                 <span class="span-label1">FirstName</span>
-                <g:textField name="firstName"/>
+                <g:textField name="firstName" id="firstName"/>
             </div><br>
 
             <div id="div5">
                 <span class="span-label1">LastName</span>
-                <g:textField name="lastName" placeholder="Last Name"/>
+                <g:textField name="lastName" placeholder="Last Name" id="lastName"/>
             </div><br>
 
             <div>

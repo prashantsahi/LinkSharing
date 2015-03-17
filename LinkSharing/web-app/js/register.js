@@ -2,12 +2,16 @@
  * Created by intelligrape on 17/3/15.
  */
 
-$().ready(function () {
-    $('#register').validate({
+$(document).ready(function () {
+    $('.register').validate({
         rules: {
-            firstName: "required",
-            lastName: "required",
-            username: {
+            firstName: {
+                required:true
+            },
+            lastName:{
+                required:true
+            }
+            /*username: {
                 required: true,
                 minlength: 3
             },
@@ -23,10 +27,10 @@ $().ready(function () {
             email: {
                 required: true,
                 email: true
-            }
-        },
+            }*/
+        }
 
-        messages: {
+        /*messages: {
             firstName: "Please Enter your first name",
             lastName: "Please enter your lastname",
             username: {
@@ -46,6 +50,6 @@ $().ready(function () {
                 required: "Please enter the email",
                 email: "Please enter the valid email id"
             }
-        }
+        }*/
     });
 });

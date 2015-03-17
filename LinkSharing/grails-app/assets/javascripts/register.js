@@ -1,13 +1,9 @@
-/**
- * Created by intelligrape on 17/3/15.
- */
-
-$().ready(function () {
+$(document).ready(function () {
     $('#register').validate({
         rules: {
             firstName: "required",
-            lastName: "required",
-            username: {
+            lastName: "required"
+            /*username: {
                 required: true,
                 minlength: 3
             },
@@ -23,13 +19,13 @@ $().ready(function () {
             email: {
                 required: true,
                 email: true
-            }
+            }*/
         },
 
         messages: {
             firstName: "Please Enter your first name",
-            lastName: "Please enter your lastname",
-            username: {
+            lastName: "Please enter your lastname"
+            /*username: {
                 required: "Please Enter username",
                 minlength: "your username must consists of atleast 3 characters"
             },
@@ -45,7 +41,8 @@ $().ready(function () {
             email: {
                 required: "Please enter the email",
                 email: "Please enter the valid email id"
-            }
+            }*/
         }
     });
+    $('#register').valid()
 });
