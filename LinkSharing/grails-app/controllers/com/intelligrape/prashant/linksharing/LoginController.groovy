@@ -17,7 +17,7 @@ class LoginController {
                 eq('visibility', Visibility.Public)
             }
         }
-        resources.sort { it.createdBy }
+        resources.sort { it.dateCreated }
 
         List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
 //            eq("score", 5)
@@ -37,7 +37,7 @@ class LoginController {
             session["username"] = registerCommand.username
             println("session created successfully !!!!")
             println(session["username"])
-            flash.message="User ${session["username"]} has successfully logged into the system"
+            flash.message = "User ${session["username"]} has successfully logged into the system"
             redirect(controller: 'home', action: "dashboard")
         } else {
             render(view: "login")
@@ -48,26 +48,47 @@ class LoginController {
         println "from register action before validation"
 
         def file = request.getFile('file')
-        if (!file.empty) {
+        /*if (!file.empty) {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
         }
-        /*if (file.empty) {
+        */ if (file.empty) {
             registerCommand.photoPath = "/home/intelligrape/Upload/imageUpload/user.jpg"
 //            flash.message = "please uploaded the photo"
         } else {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
-        }*/
+        }
         if (registerCommand.validate()) {
             session["username"] = registerCommand.username
             User user = new User()
             file.transferTo(new File(registerCommand.photoPath))
             user.properties = registerCommand
-            user.save(failOnError: true)
-            render(view: "/user/dashboard")
+            user.save(failOnError: true, flush: true)
+
+            sendMail {
+                async true
+                to "$registerCommand.email"
+                subject "Verification mail"
+                html "${g.link(controller: "home", action: "dashboard", absolute: "true", { "click on the link to verify your account" })}"
+            }
+            render 'mail successfully sent'
+
+//            redirect(controller: 'login', action: 'mail', params: params)
+//            redirect(controller: 'home' ,action: 'dashboard')
+//            render(view: "/user/dashboard")
         } else if (registerCommand.hasErrors()) {
             println registerCommand.errors
             render(view: "login")
         }
     }
-}
 
+/*    def mail() {
+        println "from mail"
+        sendMail {
+            async true
+            to "$params.email"
+            subject "Verification mail"
+            html "${g.link(controller: "home", action: "dashboard", dashboard: "true", { "click on the link to verify your account" })}"
+        }
+        render 'mail successfully sent'
+    }*/
+}
