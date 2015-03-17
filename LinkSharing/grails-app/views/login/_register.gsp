@@ -4,7 +4,7 @@
     </div>
 
     <div class="panel-body">
-        <g:uploadForm name="registration" controller="login">
+        <g:uploadForm name="registration" controller="login" id="register">
             <div>
                 <span class="span-label1">FirstName</span>
                 <g:textField name="firstName"/>
@@ -27,7 +27,7 @@
 
             <div>
                 <span class="span-label1">Password</span>
-                <g:passwordField name="password" placeholder="Password"/>
+                <g:passwordField name="password" id="password" placeholder="Password"/>
             </div><br>
 
             <div>

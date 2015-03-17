@@ -11,12 +11,13 @@
 <head>
     <meta name="layout" content="master">
     <title>Page2</title>
+    %{--    <asset:javascript src="jquery-1.11.1.min.js"/>
+        <asset:javascript src="jquery.validate.js"/>
+        <asset:javascript src="register.js"/>--}%
+    %{--    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.js"></script>
+        <script type="text/javascript" src="js/register.js"></script>--}%
 
-   %{-- <asset:stylesheet src="bootstrap.min.css"/>
-    <asset:stylesheet src="bootstrap-theme.min.css"/>
-    <asset:stylesheet src="span.css"/>
-    <asset:javascript src="bootstrap.min.js"/>
---}%
 </head>
 
 <body>
@@ -25,16 +26,16 @@
 </g:if>
 <div class="row">
     <div class="col-md-8">
-        <g:if test="${session['username'] != null}">
-            <div id="recentshares">
-                <ls:recentShare resources="${res}" resCnt="${resCount}"/>
-                %{--<g:render template="/login/recentshare" model="[resources: res, resCount: resCount]"/>--}%
-            </div>
+        %{--<g:if test="${session['username'] != null}">--}%
+        <div id="recentshares">
+            <ls:recentShare resources="${res}" resCnt="${resCount}"/>
+            %{--<g:render template="/login/recentshare" model="[resources: res, resCount: resCount]"/>--}%
+        </div>
 
-            <ls:top rate="${rating}"/>
-            %{--<g:render template="/login/topposts" model="[ratings: rating]"/>--}%
+        <ls:top rate="${rating}"/>
+        %{--<g:render template="/login/topposts" model="[ratings: rating]"/>--}%
 
-        </g:if>
+        %{--</g:if>--}%
     </div>
 
     <div class="col-md-4">

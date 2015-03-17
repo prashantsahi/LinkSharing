@@ -7,17 +7,23 @@ class LoginController {
     static defaultAction = "index"
 
     def index() {
-        params.max = params.max ?: 10
+        params.max = params.max ?: 5
         params.offset = params.offset ?: 0
         params.sort = params.sort ?: 'id'
         params.order = params.order ?: 'desc'
-        List<Resource> resources = Resource.list(params)
+//        List<Resource> resources = Resource.list(params)
+        List<Resource> resources = Resource.createCriteria().list {
+            'topic' {
+                eq('visibility',Visibility.Public )
+            }
+        }
+        resources.sort {it.createdBy}
+
         List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
             eq("score", 5)
             order("score", "desc")
         }
-        render(view: "login1", model: [res: resources, resCount: Resource.count, rating: rating])
-//        render(template: "/templates/recentshare", model: [res: resources, resCount: Resource.count, rating: rating])
+        render(view: "login", model: [res: resources, resCount: Resource.count, rating: rating])
     }
 
     def loginHandler(RegisterCommand registerCommand) {
@@ -29,8 +35,7 @@ class LoginController {
             println(session["username"])
             redirect(controller: 'home', action: "dashboard")
         } else {
-//            session.invalidate()
-            render(view: "login1")
+            render(view: "login")
         }
     }
 
@@ -38,12 +43,15 @@ class LoginController {
         println "from register action before validation"
 
         def file = request.getFile('file')
-        if (file.empty) {
+        if (!file.empty) {
+            registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
+        }
+        /*if (file.empty) {
             registerCommand.photoPath = "/home/intelligrape/Upload/imageUpload/user.jpg"
 //            flash.message = "please uploaded the photo"
         } else {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
-        }
+        }*/
         if (registerCommand.validate()) {
             session["username"] = registerCommand.username
             User user = new User()
@@ -53,7 +61,7 @@ class LoginController {
             render(view: "/user/dashboard")
         } else if (registerCommand.hasErrors()) {
             println registerCommand.errors
-            render(view: "login1")
+            render(view: "login")
         }
     }
 }

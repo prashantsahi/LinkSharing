@@ -33,7 +33,7 @@
 
     %{--<g:paginate total="${resCount}" controller="login" action="index"/>--}%
 
-        <util:remotePaginate controller="login" action="index" total="${resCount}"
+        %{--<util:remotePaginate controller="login" action="index" total="${resCount}"
                              update="#recentshares" pageSizes="[5, 10, 20, 50, 100]"/>
-    </div>
+--}%    </div>
 </div>

@@ -32,11 +32,9 @@ class TopicController {
     @Transactional
     def save(Topic topicInstance) {
 
-        if (session['username']) {
-            User user = User.findByUsername(session['username'])
-            topicInstance.createdBy = user
-            println "from to[pic save action -----------------------------------------------"+topicInstance.validate()
-        }
+        User user = User.findByUsername(session['username'])
+        topicInstance.createdBy = user
+        println "from topic save action -----------------------------------------------" + topicInstance.validate()
 
         if (topicInstance == null) {
             notFound()
@@ -47,16 +45,7 @@ class TopicController {
             respond topicInstance.errors, view: 'create'
             return
         }
-        topicInstance.save(flush: true, failOnError:true )
-
-//        if(topicInstance.save(flush: true, failOnError:true ))
-//        {
-//            Subscription subscription = new Subscription(user: topicInstance.createdBy, topic: topicInstance, seriousness: Seriousness.Serious)
-//            topicInstance.addToSubscriptions(subscription)
-//            println "subscription validation : \t" + subscription.validate()
-//            subscription.save(failOnError: true)
-//        }
-
+        topicInstance.save(flush: true, failOnError: true)
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'topic.label', default: 'Topic'), topicInstance.id])
@@ -124,8 +113,8 @@ class TopicController {
     }
 
     def viewAllTemp() {
-        params.max=params.max?:10
-        params.offset=params.offset?:0
+        params.max = params.max ?: 10
+        params.offset = params.offset ?: 0
         List<Topic> topicList = Topic.createCriteria().list(params) {
 
         }
