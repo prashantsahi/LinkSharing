@@ -5,10 +5,7 @@ class LinksharingFilters {
     def filters = {
         restrictLogin(controller: 'login|assets', action: 'loginHandler|index|register', invert: true) {
             before = {
-                println params
-                if(params.controller=='user'&&params.action=='showImage')
-                {
-                    println 'inside if++++++++++++++++++++++++++++++++++'
+                if (params.controller == 'user' && params.action == 'showImage') {
                     return
                 }
                 if (!session['username']) {

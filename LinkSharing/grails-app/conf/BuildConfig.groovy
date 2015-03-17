@@ -64,7 +64,7 @@ grails.project.dependency.resolution = {
         compile ":asset-pipeline:1.9.9"
         compile ":mail:1.0.7"
         compile ":remote-pagination:0.4.8"
-
+//        compile ":jquery-validation:1.9"
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"

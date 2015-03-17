@@ -37,6 +37,7 @@ class LoginController {
             session["username"] = registerCommand.username
             println("session created successfully !!!!")
             println(session["username"])
+            flash.message="User ${session["username"]} has successfully logged into the system"
             redirect(controller: 'home', action: "dashboard")
         } else {
             render(view: "login")

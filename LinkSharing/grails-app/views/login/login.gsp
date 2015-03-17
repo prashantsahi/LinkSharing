@@ -11,9 +11,10 @@
 <head>
     <meta name="layout" content="master">
     <title>Page2</title>
-    %{--    <asset:javascript src="jquery-1.11.1.min.js"/>
+        %{--<asset:javascript src="jquery-1.11.1.min.js"/>
         <asset:javascript src="jquery.validate.js"/>
         <asset:javascript src="register.js"/>--}%
+
     %{--    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
         <script type="text/javascript" src="js/register.js"></script>--}%
