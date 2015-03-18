@@ -6,8 +6,31 @@ import linkSharingCommandClass.RegisterCommand
 class LoginController {
     static defaultAction = "index"
 
+    def changePassword() {
+        render view: 'changePassword'
+    }
+
+    def updatePassword() {
+        int x = User.executeUpdate("update User set password='${params.password}' where email ='${params.email}'")
+        render 'password successfully updated'
+    }
+
+    def sendingMail() {
+        sendMail {
+            async true
+            to "$params.email"
+            subject "Change Password request"
+            html "${g.link(controller: "login", action: "changePassword", absolute: "true", { "click on the link to change your password" })}"
+        }
+        render "check your mail"
+    }
+
+
+    def showForgotPassword() {
+        render(view: 'forgotPassword')
+    }
+
     def index() {
-        println('::::::::::::::::::::::::::::::from login/index:::::::::::::::::::::::::::::::::')
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
         params.sort = params.sort ?: 'id'
@@ -77,5 +100,4 @@ class LoginController {
             redirect(action: 'index')
         }
     }
-
 }

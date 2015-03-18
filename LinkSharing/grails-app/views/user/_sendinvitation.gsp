@@ -1,4 +1,5 @@
-<div id="sendInvitation" class="modal fade">
+<div id="sendInvitation" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTopicModal"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
             <div class="panel panel-default">
@@ -31,7 +32,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Invite" action="mail"/>
                             <span class="span-label"></span>
-                            <g:actionSubmit value="Cancel"/>
+                            <input type="button" value="cancel" data-dismiss="modal"/>
                         </div>
                     </g:form>
                 </div>

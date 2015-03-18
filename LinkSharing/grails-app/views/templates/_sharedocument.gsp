@@ -1,4 +1,5 @@
-<div id="document" class="modal fade">
+<div id="document" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTopicModal"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
 
@@ -48,8 +49,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Share" action="save"/>
                             <span class="span-label"></span>
-                            <g:actionSubmit value="Cancel" action="delete"/>
-                        </div>
+                            <input type="button" value="cancel" data-dismiss="modal"/>                        </div>
                     </g:uploadForm>
                 </div>
 

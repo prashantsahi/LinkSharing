@@ -6,6 +6,7 @@
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="jquery.validate.js"/>
+    %{--<asset:javascript src="register.js"/>--}%
     <g:layoutHead/>
 </head>
 
