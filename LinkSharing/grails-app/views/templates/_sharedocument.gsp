@@ -35,7 +35,7 @@
 
 
                             <g:select name="documentResourceInstance.topic" style="width:175px"
-                                      from="${com.intelligrape.prashant.linksharing.Topic.list()}"
+                                      from="${subscribedTopics}"
                                       optionKey="id"
                                       optionValue="name"/>
                         </div>

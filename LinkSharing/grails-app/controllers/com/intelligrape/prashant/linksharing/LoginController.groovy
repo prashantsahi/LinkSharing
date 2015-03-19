@@ -11,10 +11,11 @@ class LoginController {
     }
 
     def updatePassword() {
-        println "======================+$params+=================================="
         int x = User.executeUpdate("update User set password=$params.password where email =$params.email")
-        println x
-        render 'password successfully updated'
+        if (x) {
+            flash.message='password successfully updated'
+            redirect(action:'index')
+        }
     }
 
     def sendingMail() {
@@ -35,17 +36,15 @@ class LoginController {
     def index() {
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
-        params.sort = params.sort ?: 'id'
-        params.order = params.order ?: 'desc'
+
         List<Resource> resources = Resource.createCriteria().list(params) {
+            order("id","desc")
             'topic' {
                 eq('visibility', Visibility.Public)
             }
         }
         resources.sort { it.dateCreated }
-
         List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
-//            eq("score", 5)
             order("score", "desc")
             'resource' {
                 'topic' {
@@ -54,6 +53,37 @@ class LoginController {
             }
         }
         render(view: "login", model: [res: resources, resCount: Resource.count, rating: rating])
+    }
+
+
+    def showAll()
+    {
+        params.max = params.max ?: 5
+        params.offset = params.offset ?: 0
+
+        List<Resource> resources = Resource.createCriteria().list(params) {
+            order("id","desc")
+            'topic' {
+                eq('visibility', Visibility.Public)
+            }
+        }
+        resources.sort { it.dateCreated }
+        render(view: 'showAllRecentresources',model: [res: resources, resCount: Resource.count ])
+    }
+
+
+    def recent(){
+        params.max = params.max ?: 5
+        params.offset = params.offset ?: 0
+
+        List<Resource> resources = Resource.createCriteria().list(params) {
+            order("id","desc")
+            'topic' {
+                eq('visibility', Visibility.Public)
+            }
+        }
+        resources.sort { it.dateCreated }
+        render(template: 'allRecentResources',model: [resources:resources,resCount:Resource.count ])
     }
 
     def loginHandler(RegisterCommand registerCommand) {
@@ -95,7 +125,7 @@ class LoginController {
             }
             render 'mail successfully sent'
 
-        } else{
+        } else {
             println registerCommand.errors
             redirect(action: 'index')
         }

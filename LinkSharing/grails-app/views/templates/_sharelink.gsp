@@ -28,8 +28,6 @@
                             <span class="span-label middletext">Description*</span>
                             <g:textArea name="linkResourceInstance.description" id="id" rows="4" cols="20"/>
                         </div>
-
-
                         <br>
 
                         <div>
@@ -37,13 +35,9 @@
 
 
                             <g:select name="linkResourceInstance.topic" style="width:175px"
-                                      from="${com.intelligrape.prashant.linksharing.Topic.list()}"
+                                      from="${subscribedTopics}"
                                       optionKey="id"
                                       optionValue="name"/>
-
-
-                            <%--             from="${['Grails', 'Mobility','AWS','Adobe CQ']}"/> --%>
-
                         </div>
 
                         <br>

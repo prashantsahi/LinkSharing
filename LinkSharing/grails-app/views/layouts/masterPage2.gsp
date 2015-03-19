@@ -54,11 +54,11 @@
                     </ul>
                 </div>
             </g:form>
-            <g:render template="/user/createtopic"/>
-            <g:render template="/templates/sharelink"/>
-            <g:render template="/templates/sharedocument"/>
-            <g:render template="/user/sendinvitation"/>
-        </div>
+        %{--  <g:render template="/user/createtopic"/>
+          <g:render template="/templates/sharelink"/>
+          <g:render template="/templates/sharedocument"/>
+          <g:render template="/user/sendinvitation"/>
+--}%</div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -76,14 +76,6 @@
         ${flash.error}
     </div>
 </g:if>
-
-
-
-%{--<div style="color:#0000ff;font-size:15px ;border:none;text-align: center">
-    <g:if test="${flash.message}">
-        ${flash.message}
-    </g:if>
-</div>--}%
 <g:layoutBody/>
 </body>
 </html>

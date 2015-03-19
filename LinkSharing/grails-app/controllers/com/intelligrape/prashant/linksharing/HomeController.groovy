@@ -9,20 +9,22 @@ class HomeController {
     }
 
     def logout() {
+        String user=session['username']
         session.invalidate()
+        flash.message="${user} has logged out"
         redirect(controller: 'login', action: 'index')
     }
 
     def dashboard() {
         def userObj = User.findByUsername(session['username'])
-//        List<Topic> subscription = userObj.subscriptions.topic.toList().sort { it.dateCreated }.reverse()
         List<Topic> subscription=Topic.list(sort: 'lastUpdated',order: 'desc')
+        def subscribedTopics=userObj.subscriptions.topic
         List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
             readingitems {
                 eq('isRead', false)
             }
         }
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
-            render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources, trending: trend1])
+            render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources, trending: trend1,subscribedTopics:subscribedTopics])
     }
 }

@@ -5,8 +5,10 @@
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
+
     <g:layoutHead/>
 </head>
 
@@ -27,6 +29,18 @@
         </div>
     </div>
 </nav>
+<g:if test="${flash.message}">
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        ${flash.message}
+    </div>
+</g:if>
+<g:if test="${flash.error}">
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        ${flash.error}
+    </div>
+</g:if>
 <g:layoutBody/>
 </body>
 </html>

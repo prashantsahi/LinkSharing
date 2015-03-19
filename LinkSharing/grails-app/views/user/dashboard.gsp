@@ -14,6 +14,10 @@
 
 <body>
 
+<g:render template="/user/createtopic"/>
+<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/user/sendinvitation" model='[subscribeTopics: "${subscribedTopics}"]'/>
 <div class="row">
     <div class="col-md-4">
         <g:render template="/templates/userInformation"/>

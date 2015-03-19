@@ -19,10 +19,9 @@
                         <div>
                             <span class="span-label">Topic*</span>
                             <g:select name="emailTopic" style="width:175px"
-                                      from="${com.intelligrape.prashant.linksharing.Topic.list()}"
-                                      optionKey="name"
-                                      optionValue="name"/>
-                        </div>
+                                      from="${subscribedTopics}"
+                                      optionKey="id"
+                                      optionValue="name"/></div>
 
                         <br>
 
