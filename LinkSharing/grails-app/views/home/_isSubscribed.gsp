@@ -5,19 +5,19 @@
 
             <g:link controller="user" action="showProfile">
                 <img width="70px" height="70px"
-                     src="${createLink(controller: "user", action: 'showImage', params: [path: subs.user.photoPath])}"/>
+                     src="${createLink(controller: "user", action: 'showImage', params: [path: subs.createdBy.photoPath])}"/>
             </g:link>
         </div>
 
         <div class="media-body">
             <h4 class="media-heading"></h4>
 
-            <a href="#">${subs?.topic?.name}</a>
+            <a href="#">${subs?.name}</a>
             <br><br>
-            <h5 class="des-head">@${subs.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <g:link>Subscriptions</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<g:link>Posts</g:link></h5>
+            <h5 class="des-head">@${subs.createdBy.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <g:link>Subscriptions</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<g:link>Posts</g:link></h5>
             <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.topic?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                ${subs?.topic?.resources?.size()}</h5>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ${subs?.resources?.size()}</h5>
 
             <g:select name="subs.seriousness"
                       from="${bootcamp.Seriousness.values()}"/>

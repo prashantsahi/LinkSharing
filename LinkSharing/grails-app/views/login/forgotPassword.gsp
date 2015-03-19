@@ -16,20 +16,9 @@
                 <span style="width: 50%;">Email*</span>
                 <g:textField name="email" placeholder="Email"/>
             </div><br>
-
-            %{--<div>
-                <span class="span-label1">Password*</span>
-                <g:textField name="password" placeholder="Password"/>
-            </div><br>
-
-            <div>
-                <span class="span-label1">Confirm Password*</span>
-                <g:textField name="confirmPassword" placeholder="Confirm your Password"/>
-            </div><br>--}%
             <g:actionSubmit name="button" value="submit" action="sendingMail"
                             style="float:left;margin-left: 50px"/>
         </g:form>
-
     </div>
 </div>
 

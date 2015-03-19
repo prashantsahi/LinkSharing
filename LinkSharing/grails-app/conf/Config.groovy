@@ -135,14 +135,17 @@ environments {
     development {
         uploadFolder = "/home/intelligrape/Upload/documentUpload/"
         imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
+        dafaultImage="/home/intelligrape/Upload/imageUpload/user.jpg"
     }
     test {
         uploadFolder = "/home/intelligrape/Upload/documentUpload/"
         imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
+        dafaultImage="/home/intelligrape/Upload/imageUpload/user.jpg"
     }
     production {
         uploadFolder = "/home/intelligrape/Upload/documentUpload/"
         imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
+        dafaultImage="/home/intelligrape/Upload/imageUpload/user.jpg"
     }
 }
 

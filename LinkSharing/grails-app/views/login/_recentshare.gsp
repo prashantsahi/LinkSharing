@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Recent Shares
-        <span style="float:right "><g:link> View ALL</g:link></span>
+            <span style="float:right "><g:link>View ALL</g:link></span>
         </h3>
     </div>
 
@@ -13,7 +13,6 @@
                         <img width="60px" height="60px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
                     </g:link>
-
                 </div>
 
                 <div class="media-body media-marg">

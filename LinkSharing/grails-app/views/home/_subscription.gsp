@@ -4,8 +4,11 @@
     </div>
 
     <div class="panel-body">
-        <ls:isSubscribed sub1="${subscriptions}" />
-        <ls:isNotSubscribed sub1="${subscriptions}" />
+        <g:each in="${subscript}" var="subst">
+        <ls:isSubscribed sub1="${subst}" />
+        %{--<ls:isNotSubscribed sub1="subst" />--}%
+        </g:each>
+        %{--</g:each>--}%
         %{--<g:each in="${subscriptions}" var="subs">
 
             <div class="media">

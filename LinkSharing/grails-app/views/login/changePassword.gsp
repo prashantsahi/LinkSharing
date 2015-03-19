@@ -3,6 +3,9 @@
 <title>Change Password</title>
 <asset:stylesheet src="bootstrap.min.css"/>
 <asset:stylesheet src="bootstrap-theme.min.css"/>
+<asset:javascript src="jquery-2.1.3.js"/>
+<asset:javascript src="jquery.validate.js"/>
+<asset:javascript src="register.js"/>
 
 <body>
 
@@ -12,7 +15,7 @@
     </div>
 
     <div class="panel-body">
-        <g:form class="form-box" name="login" controller="login">
+        <g:form class="form-box" name="changePassword" controller="login">
             <div>
                 <span style="width: 50%;">Email*</span>
                 <g:textField name="email" placeholder="Email"/>

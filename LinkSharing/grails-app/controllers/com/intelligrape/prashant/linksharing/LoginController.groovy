@@ -11,7 +11,9 @@ class LoginController {
     }
 
     def updatePassword() {
-        int x = User.executeUpdate("update User set password='${params.password}' where email ='${params.email}'")
+        println "======================+$params+=================================="
+        int x = User.executeUpdate("update User set password=$params.password where email =$params.email")
+        println x
         render 'password successfully updated'
     }
 
@@ -69,14 +71,12 @@ class LoginController {
 
     def register(RegisterCommand registerCommand) {
         println "from register action before validation"
-
         def file = request.getFile('file')
         /*if (!file.empty) {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
         }
         */ if (file.empty) {
-            registerCommand.photoPath = "/home/intelligrape/Upload/imageUpload/user.jpg"
-//            flash.message = "please uploaded the photo"
+            registerCommand.photoPath = grailsApplication.config.defaultImage
         } else {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
         }
@@ -95,7 +95,7 @@ class LoginController {
             }
             render 'mail successfully sent'
 
-        } else if (registerCommand.hasErrors()) {
+        } else{
             println registerCommand.errors
             redirect(action: 'index')
         }

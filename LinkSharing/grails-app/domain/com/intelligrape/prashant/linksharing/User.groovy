@@ -19,7 +19,7 @@ class User {
         photoPath nullable: true
         admin nullable :true
         active nullable: true
-
+        username unique: true
         email(unique: true, blank: false, email: true)
         password(size: 5..15, blank: false)
         lastName(validator: { val, obj ->

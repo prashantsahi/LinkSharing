@@ -15,20 +15,14 @@ class HomeController {
 
     def dashboard() {
         def userObj = User.findByUsername(session['username'])
-        List<Subscription> subscription = userObj.subscriptions.asList().sort { it.dateCreated }
+//        List<Topic> subscription = userObj.subscriptions.topic.toList().sort { it.dateCreated }.reverse()
+        List<Topic> subscription=Topic.list(sort: 'lastUpdated',order: 'desc')
         List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
-
             readingitems {
                 eq('isRead', false)
             }
         }
-        List<Topic> topic = Topic.list().sort { it.resources.size() }
-        /* List<Resource> resource = Resource.list()
-println("map----------------")
-Map map = resource.groupBy { it.topic }
-map.each {
- println("${it.key} -- ${it.value?.size()}")
-}*/
-        render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources])
+        List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
+            render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources, trending: trend1])
     }
 }

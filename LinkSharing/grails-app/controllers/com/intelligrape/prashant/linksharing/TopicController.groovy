@@ -45,13 +45,9 @@ class TopicController {
             respond topicInstance.errors, view: 'create'
             return
         }
-        topicInstance.save(flush: true, failOnError: true)
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'topic.label', default: 'Topic'), topicInstance.id])
-                redirect topicInstance
-            }
-            '*' { respond topicInstance, [status: CREATED] }
+        if (topicInstance.save(flush: true, failOnError: true)) {
+            flash.message = "${topicInstance.name} topic has successfully created "
+            redirect(controller: 'home', action: 'dashboard')
         }
     }
 

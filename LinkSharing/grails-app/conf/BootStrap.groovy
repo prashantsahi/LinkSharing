@@ -8,10 +8,10 @@ class BootStrap {
     def init = { servletContext ->
 //           if(!User.count()){
 
-//        bootstrapService.createUser()
-//        bootstrapService.topics()
-//        bootstrapService.resources()
-//        bootstrapService.readingItems()
+        /*bootstrapService.createUser()
+        bootstrapService.topics()
+        bootstrapService.resources()
+*///        bootstrapService.readingItems()
        if(!ResourceRating.count())
         bootstrapService.ratings()
 //    }

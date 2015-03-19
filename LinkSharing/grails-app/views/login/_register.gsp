@@ -27,12 +27,12 @@
 
             <div>
                 <span class="span-label1">Password</span>
-                <g:passwordField name="password" id="password" placeholder="Password"/>
+                <g:textField name="password"  placeholder="Password"/>
             </div><br>
 
             <div>
                 <span class="span-label1">Confirm Password</span>
-                <g:passwordField name="confirmPassword" placeholder="Retype Password"/>
+                <g:textField name="confirmPassword" placeholder="Retype Password"/>
             </div><br>
 
             <div>

@@ -25,19 +25,17 @@ class LinkResourceController {
     @Transactional
     def save(LinkResource linkResourceInstance) {
 
-        if(session['username'])
-        {
-            User user = User.findByUsername(session['username'])
-            println "***************************************************"
+        User user = User.findByUsername(session['username'])
+        println "***************************************************"
 //            println linkResourceInstance
-            println params
-            linkResourceInstance.createdBy=user
-            println linkResourceInstance.topic
+        println params
+        linkResourceInstance.createdBy = user
+        println linkResourceInstance.topic
 
-            println "***************************************************"
+        println "***************************************************"
 //            println linkResourceInstance
-            linkResourceInstance.validate()
-        }
+        linkResourceInstance.validate()
+
 
         if (linkResourceInstance == null) {
             notFound()
@@ -49,15 +47,11 @@ class LinkResourceController {
             return
         }
 
-        linkResourceInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'linkResource.label', default: 'LinkResource'), linkResourceInstance.id])
-                redirect linkResourceInstance
-            }
-            '*' { respond linkResourceInstance, [status: CREATED] }
+        if (linkResourceInstance.save(flush: true)) {
+            flash.message = "${linkResourceInstance.title} resource has successfully created "
+//           redirect(controller: 'home', action: 'dashboard')
         }
+
     }
 
     def edit(LinkResource linkResourceInstance) {

@@ -12,7 +12,7 @@
 
             <div>
                 <span class="span-label1">Password*</span>
-                <g:passwordField name="password" placeholder="Password"/>
+                <g:passwordField name="password"  placeholder="Password"/>
             </div><br>
 
             <div>

@@ -25,23 +25,23 @@ class DocumentResourceController {
     @Transactional
     def save(DocumentResource documentResourceInstance) {
 
-        if (session['username']) {
-            User user = User.findByUsername(session['username'])
-            documentResourceInstance.createdBy = user
 
-            def file = request.getFile('file')
-            if(file.empty) {
-                flash.message = "File cannot be empty"
-            } else {
+        User user = User.findByUsername(session['username'])
+        documentResourceInstance.createdBy = user
+
+        def file = request.getFile('file')
+        if (file.empty) {
+            flash.message = "File cannot be empty"
+        } else {
 //                def documentInstance = new Document()
-                documentResourceInstance.fileType=file.contentType
-                println(documentResourceInstance.fileType)
-                documentResourceInstance.fileName = file.originalFilename
-                documentResourceInstance.filePath = grailsApplication.config.uploadFolder + documentResourceInstance.fileName
-                file.transferTo(new File(documentResourceInstance.filePath))
-            }
-            documentResourceInstance.validate()
+            documentResourceInstance.fileType = file.contentType
+            println(documentResourceInstance.fileType)
+            documentResourceInstance.fileName = file.originalFilename
+            documentResourceInstance.filePath = grailsApplication.config.uploadFolder + documentResourceInstance.fileName
+            file.transferTo(new File(documentResourceInstance.filePath))
         }
+        documentResourceInstance.validate()
+
         if (documentResourceInstance == null) {
             notFound()
             return
@@ -52,15 +52,11 @@ class DocumentResourceController {
             return
         }
 
-        documentResourceInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'documentResource.label', default: 'DocumentResource'), documentResourceInstance.id])
-                redirect documentResourceInstance
-            }
-            '*' { respond documentResourceInstance, [status: CREATED] }
+        if (documentResourceInstance.save(flush: true)) {
+            flash.message = "${documentResourceInstance.title} resource has successfully created "
+            redirect(controller: 'home', action: 'dashboard')
         }
+
     }
 
     def edit(DocumentResource documentResourceInstance) {

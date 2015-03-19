@@ -1,5 +1,6 @@
 package linksharing
 
+import com.intelligrape.prashant.linksharing.Subscription
 import com.intelligrape.prashant.linksharing.User
 
 class ApplicationTagLib {
@@ -20,26 +21,29 @@ class ApplicationTagLib {
     }
 
     def isSubscribed = { attr ->
-        def subscribed = attr.sub1.user.username
-        if (subscribed.contains(session['username'])) {
+        User currentUser=User.findByUsername(session['username'])
+        Subscription subscribed=Subscription.findByUserAndTopic(currentUser,attr.sub1)
+        if (subscribed) {
             out << g.render(template: "/home/isSubscribed", model: [sub: attr.sub1])
         }
-
-    }
-
-    def isNotSubscribed = { attr ->
-        def subscribed = attr.sub1.user.username
-        if (!subscribed.contains(session['username'])) {
+        else{
             out << g.render(template: "/home/isNotSubscribed", model: [sub: attr.sub1])
         }
     }
 
+    /*def isNotSubscribed = { attr ->
+        def subscribed = attr.sub1.createdBy.username
+        if (subscribed!=session['username']) {
+            out << g.render(template: "/home/isNotSubscribed", model: [sub: attr.sub1])
+        }
+    }
+*/
     def isEditable = { attr ->
-        def created = attr?.subscriber?.user?.topics?.createdBy
-        def current = User.findByUsername(session['username'])
-        println current
+        def created = attr?.subscriber?.createdBy.username
+//        def current = User.findByUsername(session['username'])
+//        println current
 
-        if (created.contains(current))
+        if (created==session['username'])
             out << g.render(template: "/home/isEditable")
     }
 }
