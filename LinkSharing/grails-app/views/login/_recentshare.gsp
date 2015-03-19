@@ -1,11 +1,10 @@
-%{--
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Recent Shares
-            <span style="float:right "><g:link >View ALL</g:link></span>
+            <span style="float:right "><g:link controller="login" action="showAll">View ALL</g:link></span>
         </h3>
     </div>
---}%
+
 
     <div class="panel-body">
         <g:each in="${resources}" var="resource">
@@ -33,10 +32,6 @@
                 </div>
             </div>
         </g:each>
-%{--
 
-        <util:remotePaginate controller="login" action="recent" total="${resCount}"
-                             update="recentshares" pageSizes="[5, 10, 20, 50, 100]"/>
---}%
     </div>
-%{--</div>--}%
+</div>

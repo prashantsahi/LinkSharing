@@ -13,8 +13,8 @@ class LoginController {
     def updatePassword() {
         int x = User.executeUpdate("update User set password=$params.password where email =$params.email")
         if (x) {
-            flash.message='password successfully updated'
-            redirect(action:'index')
+            flash.message = 'password successfully updated'
+            redirect(action: 'index')
         }
     }
 
@@ -38,7 +38,7 @@ class LoginController {
         params.offset = params.offset ?: 0
 
         List<Resource> resources = Resource.createCriteria().list(params) {
-            order("id","desc")
+            order("id", "desc")
             'topic' {
                 eq('visibility', Visibility.Public)
             }
@@ -55,35 +55,33 @@ class LoginController {
         render(view: "login", model: [res: resources, resCount: Resource.count, rating: rating])
     }
 
-
-    def showAll()
-    {
+    def showAll() {
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
 
         List<Resource> resources = Resource.createCriteria().list(params) {
-            order("id","desc")
+            order("id", "desc")
             'topic' {
                 eq('visibility', Visibility.Public)
             }
         }
         resources.sort { it.dateCreated }
-        render(view: 'showAllRecentresources',model: [res: resources, resCount: Resource.count ])
+        render(view: 'showAllRecentresources', model: [res: resources, resCount: Resource.count])
     }
 
 
-    def recent(){
+    def recent() {
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
 
         List<Resource> resources = Resource.createCriteria().list(params) {
-            order("id","desc")
+            order("id", "desc")
             'topic' {
                 eq('visibility', Visibility.Public)
             }
         }
         resources.sort { it.dateCreated }
-        render(template: 'allRecentResources',model: [resources:resources,resCount:Resource.count ])
+        render(template: 'allRecentResources', model: [resources: resources, resCount: Resource.count])
     }
 
     def loginHandler(RegisterCommand registerCommand) {

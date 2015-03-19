@@ -18,7 +18,6 @@
 
             <div id="allRecentShares">
                 <g:render template="allRecentResources" model="[resources:res,resCount:resCount]"/>
-                %{--<ls:recentShare resources="${res}" resCnt="${resCount}"/>--}%
             </div>
         </div>
     </div>
