@@ -52,10 +52,40 @@ class LoginController {
                 }
             }
         }
+
         render(view: "login", model: [res: resources, resCount: Resource.count, rating: rating])
     }
 
-    def showAll() {
+
+    def showAllPosts() {
+        params.max = params.max ?: 5
+        params.offset = params.offset ?: 0
+        List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
+            order("score", "desc")
+            'resource' {
+                'topic' {
+                    eq('visibility', Visibility.Public)
+                }
+            }
+        }
+        render(view: 'showAllPosts', model: [rating: rating, rateCount: ResourceRating.count])
+    }
+
+    def topPosts() {
+        params.max = params.max ?: 5
+        params.offset = params.offset ?: 0
+        List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
+            order("score", "desc")
+            'resource' {
+                'topic' {
+                    eq('visibility', Visibility.Public)
+                }
+            }
+        }
+        render(template: 'allTopPosts', model: [ratings: rating, rateCount: ResourceRating.count])
+    }
+
+    def showAllResources() {
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
 

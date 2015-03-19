@@ -1,16 +1,15 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Top Stories
-            <span style="float:right "><g:link> View ALL</g:link></span>
+            <span style="float:right "><g:link controller="login" action="showAllPosts">View ALL</g:link></span>
         </h3>
     </div>
 
     <div class="panel-body">
-
         <g:each in="${ratings}" var="rating">
             <div class="media">
                 <div class="media-left">
-            <g:link controller="user" action="showProfile">
+                    <g:link controller="user" action="showProfile">
                         <img width="60px" height="60px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: rating?.user?.photoPath])}"/>
                     </g:link>
