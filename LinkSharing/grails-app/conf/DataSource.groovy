@@ -66,7 +66,6 @@ environments {
             //  logSql=true
             username="prashant-sahi"
             password="igdefault"
-            pooled="true"
             dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/prashant-sahi_QA"
         }
