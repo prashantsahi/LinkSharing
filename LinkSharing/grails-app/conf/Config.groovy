@@ -106,6 +106,22 @@ environments {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
+
+    QA {
+        grails.logging.jul.usebridge = true
+        grails {
+            mail {
+                host = "smtp.gmail.com"
+                port = 465
+                username = "prashant.sahi@intelligrape.com"
+                password = "130891sahi"
+                props = ["mail.smtp.auth"                  : "true",
+                         "mail.smtp.socketFactory.port"    : "465",
+                         "mail.smtp.socketFactory.class"   : "javax.net.ssl.SSLSocketFactory",
+                         "mail.smtp.socketFactory.fallback": "false"]
+            }
+        }
+    }
 }
 
 // log4j configuration
@@ -135,20 +151,20 @@ environments {
     development {
         uploadFolder = "/home/intelligrape/Upload/documentUpload/"
         imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
-        dafaultImage="/home/intelligrape/Upload/imageUpload/user.jpg"
+        dafaultImage = "/home/intelligrape/Upload/imageUpload/user.jpg"
     }
     test {
         uploadFolder = "/home/intelligrape/Upload/documentUpload/"
         imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
-        dafaultImage="/home/intelligrape/Upload/imageUpload/user.jpg"
+        dafaultImage = "/home/intelligrape/Upload/imageUpload/user.jpg"
     }
     production {
         uploadFolder = "/home/intelligrape/Upload/documentUpload/"
         imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
-        dafaultImage="/home/intelligrape/Upload/imageUpload/user.jpg"
+        dafaultImage = "/home/intelligrape/Upload/imageUpload/user.jpg"
     }
 }
 
 // for g:remote paginate to use twitter bootstrap classes in g:paginate
-grails.plugins.remotepagination.enableBootstrap=true
-grails.app.context='/'
+grails.plugins.remotepagination.enableBootstrap = true
+grails.app.context = '/'

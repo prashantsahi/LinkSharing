@@ -59,4 +59,16 @@ environments {
             }
         }
     }
+
+    QA{
+        dataSource {
+            driverClassName="com.mysql.jdbc.Driver"
+            //  logSql=true
+            username="root"
+            password="igdefault"
+            pooled="true"
+            dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:mysql://localhost:3306/prashant-sahi_QA"
+        }
+    }
 }
