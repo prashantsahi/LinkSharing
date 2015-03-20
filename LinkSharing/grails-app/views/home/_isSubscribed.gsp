@@ -20,7 +20,7 @@
                 ${subs?.resources?.size()}</h5>
 
             <g:select name="seriousness" from="${bootcamp.Seriousness.values()}"
-                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'index', params: [subscribedTopic: subs,subscribedUser:subs.createdBy])}')"/>
+                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}')"/>
 
             <ls:isEditable subscriber="${subs}"/>
 
