@@ -7,10 +7,11 @@ class LoginController {
     static defaultAction = "index"
 
     def changePassword() {
-        render (view: 'changePassword')
+        render (view: 'changePassword', model: [emailId: params.emailId])//use params.emailId
     }
 
     def updatePassword() {
+        println "-------------------------------------------+${params}+--------------------------------------"
         int x = User.executeUpdate("update User set password='$params.password' where email ='$params.email'")
         if (x) {
             flash.message = 'password successfully updated'
@@ -23,7 +24,7 @@ class LoginController {
             async true
             to "$params.email"
             subject "Change Password request"
-            html "${g.link(controller: "login", action: "changePassword", absolute: "true",params: params.email, { "click on the link to change your password" })}"
+            html "${g.link(controller: "login", action: "changePassword",params:[emailId:params.email] , absolute: "true", { "click on the link to change your password" })}"
         }
         flash.message= "check your mail to update the password"
         redirect(action: 'index')
@@ -116,9 +117,8 @@ class LoginController {
     def loginHandler(RegisterCommand registerCommand) {
 
         if (User.findByUsernameAndPasswordAndActive(registerCommand.username, registerCommand.password, true)) {
+
             session["username"] = registerCommand.username
-            println("session created successfully !!!!")
-            println(session["username"])
             flash.message = "User ${session["username"]} has successfully logged into the system"
             redirect(controller: 'home', action: "dashboard")
         } else {

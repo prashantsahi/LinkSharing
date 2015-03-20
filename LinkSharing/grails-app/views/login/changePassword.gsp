@@ -18,10 +18,12 @@
 
     <div class="panel-body">
         <g:form class="form-box" name="changePassword" controller="login">
-            <div>
+            %{--<div>
                 <span class="span-label1">Email*</span>
-                <g:textField name="email" placeholder="Email"/>
+                <g:textField name="" placeholder="Email"/>
             </div><br>
+--}%
+            <g:hiddenField name="email" value="${emailId}"/>
 
             <div>
                 <span class="span-label1">Password*</span>

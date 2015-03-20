@@ -18,7 +18,6 @@
             success:function(data){
 //                $("#change-"+topicId).css('visibility','visible')
 //                $('#changed').html()
-
             }
         });
     }

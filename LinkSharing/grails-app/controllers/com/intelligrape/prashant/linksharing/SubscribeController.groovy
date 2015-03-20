@@ -11,11 +11,8 @@ class SubscribeController {
         Topic topic=Topic.load(params.subscribedTopic)
         Subscription subscription=Subscription.createCriteria().get {
             eq('topic',topic)
-//            eq('user',params.subscribedUser)
         }
         subscription.seriousness=params.ajax
         subscription.save(flush: true,failOnError: true)
-
-        println "------------------------------------------------------${subscription.properties}-----------------------------------------------------"
     }
 }

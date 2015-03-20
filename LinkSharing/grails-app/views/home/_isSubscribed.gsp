@@ -11,9 +11,11 @@
 
         <div class="media-body">
             <h4 class="media-heading"></h4>
-
-            <a href="#">${subs?.name}</a>
-            <br><br>
+            %{-- <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic?.name])}"
+                                   style="float: right;">${resource?.topic?.name}</a></h4>
+            --}%
+            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': subs?.name])}">${subs?.name}</a>
+            <br>
             <h5 class="des-head">@${subs?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
             <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -36,9 +38,8 @@
             <g:link class="btn btn-default" title='Delete'>&nbsp;&nbsp;
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </g:link>
-
         </div>
 
-%{--<span id="change-${subs.id}" style="visibility: hidden;color: #0000cc">seriousness changed</span>--}%
+        %{--<span id="change-${subs.id}" style="visibility: hidden;color: #0000cc">seriousness changed</span>--}%
     </div>
 </g:each>
