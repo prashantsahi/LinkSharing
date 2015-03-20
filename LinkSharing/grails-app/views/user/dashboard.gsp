@@ -9,12 +9,16 @@
 <html>
 <head>
     <script>
-    function seriousNess(subscriptionUrl) {
+    function seriousNess(subscriptionUrl,topicId) {
+        alert('hiiiiiiiii')
+        console.log(topicId)
         $.ajax({
             url:subscriptionUrl,
-            data: "ajax="+$("#seriousness").val(),
+            data: "ajax="+$("#seriousness-"+topicId).val(),
             success:function(data){
-                alert(data)
+//                $("#change-"+topicId).css('visibility','visible')
+//                $('#changed').html()
+
             }
         });
     }

@@ -15,7 +15,7 @@ class SubscribeController {
         }
         subscription.seriousness=params.ajax
         subscription.save(flush: true,failOnError: true)
-        render subscription
+
         println "------------------------------------------------------${subscription.properties}-----------------------------------------------------"
     }
 }

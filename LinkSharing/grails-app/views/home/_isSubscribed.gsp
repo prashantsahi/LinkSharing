@@ -19,8 +19,8 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 ${subs?.resources?.size()}</h5>
 
-            <g:select name="seriousness" from="${bootcamp.Seriousness.values()}"
-                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}')"/>
+            <g:select name="seriousness-${subs.id}" from="${bootcamp.Seriousness.values()}"
+                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}',${subs.id})"/>
 
             <ls:isEditable subscriber="${subs}"/>
 
@@ -39,5 +39,6 @@
 
         </div>
 
+%{--<span id="change-${subs.id}" style="visibility: hidden;color: #0000cc">seriousness changed</span>--}%
     </div>
 </g:each>
