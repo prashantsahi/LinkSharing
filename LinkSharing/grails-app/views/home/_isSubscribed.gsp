@@ -19,13 +19,8 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 ${subs?.resources?.size()}</h5>
 
-            %{--<g:select name="subs.seriousness"
-                      from="${bootcamp.Seriousness.values()}"
-                      onchange="${remoteFunction(
-                              controller: 'subscribe',
-                              action: 'index',
-                              params: "subs.seriousness='+this.value"
-                      )}"/>--}%
+            <g:select name="seriousness" from="${bootcamp.Seriousness.values()}"
+                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'index', params: [subscribedTopic: subs,subscribedUser:subs.createdBy])}')"/>
 
             <ls:isEditable subscriber="${subs}"/>
 

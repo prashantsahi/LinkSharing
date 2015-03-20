@@ -10,24 +10,25 @@
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
 
+    %{--<script>--}%
+    %{--$(document).ready(function(){--}%
+
+        %{--alert("hi")--}%
+    %{--});--}%
+        %{--function seriousNess(subscriptionUrl) {--}%
+
+            %{--console.log(subscriptionUrl);--}%
+        %{--}--}%
+            %{--/* var value = $(this).val();--}%
+             %{--var topicId = $(this).data('topic-Id');--}%
+             %{--var username = $(this).data('user')--}%
+
+             %{--$.post(subscriptionUrl, {topicId: topicId, seriousness: value, username: username}, function (data) {--}%
+             %{--console.log(data);--}%
+             %{--$('#seriousness').select(value);--}%
+
+    %{--</script>--}%
     <g:layoutHead/>
-
-
-    %{--<script>
-
-        var subscriptionUrl= <g:createLink controller="subscribe" action="index"/>
-                $('#seriousness').change(function () {
-                    var value = $(this).val();
-                    var topicId = $(this).data('topic-Id');
-                    var username=$(this).data('user')
-
-                    $.post(subscriptionUrl, {topicId: topicId, seriousness: value,username:username}, function (data) {
-                        console.log(data);
-$('#seriousness').select(value);
-                    });
-                });
-    </script>
---}%
 </head>
 
 <body>

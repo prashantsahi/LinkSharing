@@ -8,6 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <script>
+    function seriousNess(subscriptionUrl) {
+        $.ajax({
+            url:subscriptionUrl,
+            data: "ajax="+$("#seriousness").val(),
+            success:function(data){
+                alert(data)
+            }
+        });
+    }
+
+    </script>
     <meta name="layout" content="dashboardLayout">
     <title>Dashboard</title>
 </head>
@@ -20,11 +32,13 @@
 <g:render template="/user/sendinvitation" model='[subscribeTopics: "${subscribedTopics}"]'/>
 <div class="row">
     <div class="col-md-1"></div>
+
     <div class="col-md-4">
         <g:render template="/templates/userInformation"/>
         <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
         <g:render template="/templates/trendingtopics" model="[trend: trending]"/>
     </div>
+
     <div class="col-md-1"></div>
 
     <div class="col-md-5">
