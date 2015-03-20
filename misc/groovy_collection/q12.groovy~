@@ -1,0 +1,5 @@
+def r='a'..'z'
+println r 
+
+r.indexOf('j')
+r.subList(9,r.size)

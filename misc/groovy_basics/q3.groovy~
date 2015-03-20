@@ -1,0 +1,6 @@
+4.times{
+
+println(" ")
+(2**it).times{print "*" }
+
+}

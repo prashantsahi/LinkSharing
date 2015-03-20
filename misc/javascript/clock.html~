@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>clock
+</title>
+<script src="clock.js"></script>
+</head>
+<body>
+
+<div id="one">
+<span id="hr">hh</span>:
+<span id="min">mm</span>:
+<span id="sec">ss</span>
+<span id="ap">AM</span>
+
+</br>
+<button onClick="start()">start</button>
+<button onClick="clearInterval(t)">stop</button>
+
+</div>
+</body>
