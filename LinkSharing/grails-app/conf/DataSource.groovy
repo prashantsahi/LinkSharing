@@ -64,7 +64,7 @@ environments {
         dataSource {
             driverClassName="com.mysql.jdbc.Driver"
             //  logSql=true
-            username="root"
+            username="prashant-sahi"
             password="igdefault"
             pooled="true"
             dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
