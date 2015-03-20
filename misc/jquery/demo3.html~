@@ -1,0 +1,40 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.0.js">
+</script>
+<script>
+ $(document).ready(function(){
+    $('#id1').hover(function (){
+//console.log("I am here");
+	$(this).css("color","green");
+});
+	
+$('div:not(#id1)').hover(function (){
+
+	$(this).css("color","red");
+	
+});
+        
+    
+	
+});
+	
+</script>
+</head>
+<body>
+<a href="http://www.google.com/policy.pdf">Policy</a>
+<a href='www.yahoo.com/logo.png' title="yahoo logo">View Logo</a>
+<a href='http://www.facebook.com' title='Facebook'>Facebook</a>
+
+<p class="message">hii i m prashant sahi 
+I m from TTN digital
+</p>
+
+<div class="div1"> i m from div1 </div>
+<div id="id1"> i m from div2 </div>
+<div class="div1"> i m from div3</div> 
+<div id="id2" class="div12"> i m from div4 </div>
+<div class="div12"> i m from div5 </div>
+</body>
+</html>
+

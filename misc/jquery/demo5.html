@@ -1,0 +1,46 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.0.js">
+</script>
+<script>
+ $(document).ready(function(){
+    ('from1:text').find(".div121").hover(function (){
+
+	$(this).css("color","green");
+});
+
+$( "form" ).submit(function( event ) {
+if( $( "input:text" ).val() === "sahi" ) {
+$( "input:radio" ).val( "Male" ).show();
+return;
+}
+//$( "input:checkbox" ).text( "Not valid!" ).show().fadeOut( 1000 );
+//event.preventDefault();
+});
+	
+alert("hiiii");
+
+        
+    
+	
+});
+
+	
+</script>
+</head>
+<body>
+	<form class="form1" action ="javascript:alert( 'success!' );">
+		Name <input type = "textbox"/><br/>
+		Password <input type = "password"/><br/>
+		Sex:<br/>&nbsp&nbsp&nbsp&nbsp 
+		<input type = "radio" name="sex" />Male<br/>&nbsp&nbsp&nbsp&nbsp 
+		<input type = "radio" name="sex" />Female<br/>
+		Hobbies <br/>
+		Playing Cricket<input type = "checkbox"/><br/>
+		Listening to music<input type = "checkbox"/><br/>
+		Travelling<input type = "checkbox"/><br/>
+		<input type = "submit" value = "submit"/>
+	</form>
+</body>
+</html>
+

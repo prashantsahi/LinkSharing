@@ -1,0 +1,18 @@
+List l = [1,2,3,5,4,7,8,9,6,4,2,3,5,7,8,9,4,40]
+l.add(11)
+println "list is : "+l
+
+/*
+for(i in l)      // why not working
+{
+ //   println i
+ if((l.indexOf(i))%2 != 0)
+   {  l.remove(i)
+ }
+} */
+for(int i=1;i<l.size;i++) // why it moves loop by 2 instead of 1.
+{
+ l.remove(i) 
+} 
+
+print "List after removing odd elements"+l

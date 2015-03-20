@@ -1,0 +1,4 @@
+def r= 1..10
+println r.head()
+println r.to
+println r.get(1)

@@ -1,0 +1,250 @@
+Ques 1. Change the background colour of target
+
+$("#target").css("background-color","red");
+
+Ques2.Change the text in the span, a child of '#target'
+
+$('#target span').text('Changed');
+or
+$("#target").children().text("changed text");
+
+Ques 3.Create a clone of the span in '#target' and position it under the orgin.
+
+ $("#target span").click(function () {
+       $(this).clone().insertAfter(this);
+    });
+
+Ques 4.Chage background color of the second '.target'. 
+
+$('.target').eq(1).css('background', 'blue');
+
+Ques 5.Disabled the button.
+
+$('.target button').attr('button', 'disabled');
+or
+$('button').prop('disabled', true);
+
+Ques 6.Uncheck all checkbox by script
+
+q6. $(':checkbox').attr('checked',false);
+
+Ques 7.Move '#child' from '#parent1' to '#parent2'
+
+$('#child').appendTo('#parent2');
+
+Ques 8.Make the textbox in '#target' read-only
+
+$('#target input').attr('readonly', 'readonly') 
+or 
+$(':text').attr('readonly',true);
+
+Ques 9.Select the second option in the selectbox by script
+
+$('#target select option').eq(1).attr('selected', 'selected')
+or 
+$('#target select option:eq(1)').prop('selected',true);
+
+Ques 10.Make '#target' double size.
+
+var target=$('#target');
+target.css({
+ width:target.width() * 2,
+ height:target.height() * 2});
+
+Ques 11.Remove all children and text of '#target'
+
+$('#target').empty();
+or 
+$('#target').remove();
+
+
+Ques 12.Show Alert with 1 second delay.(Use 'setTimeout')
+
+setTimeout(function(){alert("india beat pak by 76 runs ")},1000)
+
+Ques 13.Show the number of children in alert
+
+alert($('#target').find('.child').size());
+or 
+alert($('#target .child' ).length);
+
+Ques 14.Make '#target' double size with animation.
+
+var target=$('#target');
+target.animate({
+ width:target.width() * 2,
+ height:target.height() * 2}, 1000);
+
+Ques 15.Make the list-box color alternating.(Make odd options diffrent color)
+
+$('#target select option:odd').css('color','blue');
+$('#target select option:even').css('color','red');
+
+Ques 16.Change the h2 to h3
+
+$("#target" ).html($('#target').html().replace('h2','h3'));
+
+Ques 17.Replace word 'cat' with 'dog'.
+
+$('#target').html($('#target').html().replace(/cat/g,'dog'));
+
+Ques 18.Remove all children of '#target' but h2.
+
+$('#target').children().not('h2').remove();
+
+Ques 19.Remove all 'div' whitch has no child elements.
+
+$('.target').not(':parent').remove();
+
+Ques 20.Sort the list-box options in lecxial order
+
+var tar=$('#target select option')
+tar.sort(function(a,b){
+x=a.text;
+y=b.text;
+return (x>y)?1:(-1);
+});
+$('select').empty().html(tar);
+
+
+Ques 21. Present confirm dialog.When yes choosed, show the dialog again.
+
+var d= function(){
+if(confirm('want to confirm again ??'))
+{
+  d();
+}
+};		
+d();
+
+Ques 22.Count up the number in the textbox each 1 second.
+
+var func=function(){
+var c= parseInt($('#target :text').val());
+$('#target :text').val(++c);
+setTimeout(func,1000);
+};
+func();
+
+Ques 23. Turn word 'red' red, 'blue' blue, 'green' green.
+
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.0.js">
+</script>
+<script>
+ $(document).ready(function(){
+$('#button1').click(function(){
+$('#target').html($('#target').html().replace(/red/g,"<span style ='color:$&' >$&</span>").replace(/blue/g,"<span style ='color:blue' >$&</span>").replace(/green/g,"<span style ='color:green' >$&</span>"));
+});
+
+
+});
+	
+</script>
+</head>
+
+<body>
+<div id ="target">
+<span>
+red redredredbluegreenblue
+<br>
+blue
+<br>
+green
+<br>
+</span>
+<input type = "button" id ="button1"value="click to change"/>
+</div>
+</body>
+</html>
+
+Ques 24. Turn border color of text-box which contains only numeric into green, wich not into red.
+
+var tar=$('#target :text');
+tar.each(function(){
+var v = $(this).val();
+if(!isNaN(v))
+{
+$(this).css('border-color',"green");
+}
+else if(isNaN(v))
+$(this).css('border-color',"red");
+});
+ 
+
+ques 25.Switch positon of the table rows
+
+var r= $("#target table tr");
+r.eq(0).insertAfter(r.eq(1));
+
+Ques 26. Compelete the equations:
+
+
+var r=$('#target tr')
+r.each(function(){
+var c=($(this))
+var n1= parseInt($("td",c).eq(0).text());
+var n2= parseInt($("td",c).eq(2).text());
+var res= n1 + n2;
+$('td',c).eq(4).text(res);
+});
+
+Ques 27. Chagne Color Of Every Cell Which Has Number Larger Than 10.
+
+var tar = $('#target td');
+tar.each(function(){
+         r=$(this);
+             var v =r.text();
+              if(v>10)
+              {
+                   $(this).css('background','green');
+               }
+               else
+                   $(this).css('background','red');
+
+         });	
+
+Ques 28.Add a blink effect on '#target'.(Change color repeatedly)
+
+var x=0;
+var func= function(){
+
+if((x%2)==0)
+{
+$('#target').css('background','blue');
+++x;
+}
+else
+{
+$('#target').css('background','red');
+++x;
+}
+setTimeout(func,500);
+};
+
+
+func();
+
+Ques 29. Make word Bold bold
+
+$('#target').html($('#target').html().replace(/bold/,"<span><b>$&</b></span>"));
+
+Ques 30.Switch table columns and rows.
+
+ 
+Ques 31. Format the number in the textbox to comma separted form.(like '123,456,789')
+
+var v=$('#target input').val();
+var str= "";
+for(var i=0;i<v.length;i++)
+{
+str +=v.substring(i,i+1);
+
+if((i%3==2)&&(i<v.length-1))
+str+=",";
+};
+ 
+$('#target input').val(str);
+				
+

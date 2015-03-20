@@ -1,0 +1,14 @@
+Map m =['s':"vrdoib"]
+println Map.class
+
+
+List l =[]
+
+//[1,5].class
+println l.class
+println l.getClass()
+
+println m.class
+println m.getClass()
+
+println Map.getClass()

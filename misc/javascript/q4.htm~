@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>button click
+</title>
+<script src="q4.js"></script>
+</head>
+<body>
+
+Display<input type = "textbox" id = "one">
+</br>
+Display<input type = "textbox" id = "two">
+</br>
+<button onClick="calc()" >click</button>
+</div>
+</body>
+</html>
