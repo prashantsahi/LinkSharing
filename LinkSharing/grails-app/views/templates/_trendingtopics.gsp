@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Trending Topics</h3>
+        <h3 class="panel-title">Trending Topics <g:link style="float:right;">View All</g:link></h3>
     </div>
 
     <div class="panel-body">

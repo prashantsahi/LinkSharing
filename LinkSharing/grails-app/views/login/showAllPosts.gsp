@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="master">
+    <meta name="layout" content="homeLayout">
     <title>
         ALL Top Posts
     </title>
@@ -17,7 +17,7 @@
             </div>
 
             <div id="allTopPosts">
-                <g:render template="allTopPosts" model="[ratings:rating,rateCount:rateCount]"/>
+                <g:render template="allTopPosts" model="[ratings: rating, rateCount: rateCount]"/>
             </div>
         </div>
     </div>

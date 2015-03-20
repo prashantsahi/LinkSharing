@@ -7,11 +7,11 @@ class LoginController {
     static defaultAction = "index"
 
     def changePassword() {
-        render view: 'changePassword'
+        render (view: 'changePassword')
     }
 
     def updatePassword() {
-        int x = User.executeUpdate("update User set password=$params.password where email =$params.email")
+        int x = User.executeUpdate("update User set password='$params.password' where email ='$params.email'")
         if (x) {
             flash.message = 'password successfully updated'
             redirect(action: 'index')
@@ -23,11 +23,11 @@ class LoginController {
             async true
             to "$params.email"
             subject "Change Password request"
-            html "${g.link(controller: "login", action: "changePassword", absolute: "true", { "click on the link to change your password" })}"
+            html "${g.link(controller: "login", action: "changePassword", absolute: "true",params: params.email, { "click on the link to change your password" })}"
         }
-        render "check your mail"
+        flash.message= "check your mail to update the password"
+        redirect(action: 'index')
     }
-
 
     def showForgotPassword() {
         render(view: 'forgotPassword')
@@ -99,7 +99,6 @@ class LoginController {
         render(view: 'showAllRecentresources', model: [res: resources, resCount: Resource.count])
     }
 
-
     def recent() {
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
@@ -116,14 +115,15 @@ class LoginController {
 
     def loginHandler(RegisterCommand registerCommand) {
 
-        if (User.findByUsernameAndPassword(registerCommand.username, registerCommand.password)) {
+        if (User.findByUsernameAndPasswordAndActive(registerCommand.username, registerCommand.password, true)) {
             session["username"] = registerCommand.username
             println("session created successfully !!!!")
             println(session["username"])
             flash.message = "User ${session["username"]} has successfully logged into the system"
             redirect(controller: 'home', action: "dashboard")
         } else {
-            render(view: "login")
+            flash.error = "Login Failed !!!! Please enter the correct details "
+            redirect(action: 'index')
         }
     }
 
@@ -143,6 +143,7 @@ class LoginController {
             User user = new User()
             file.transferTo(new File(registerCommand.photoPath))
             user.properties = registerCommand
+            user.active = true
             user.save(failOnError: true, flush: true)
 
             sendMail {

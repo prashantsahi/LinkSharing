@@ -4,6 +4,7 @@
     <title><g:layoutTitle default="Linksharing"/></title>
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
+    %{--<asset:stylesheet src="span.css">--}%
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
@@ -16,7 +17,8 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <g:link class="navbar-brand" controller="home" action="index" style="color:#0000ff">Link Sharing</g:link>
+            <g:link class="navbar-brand" controller="home" action="index"
+                    style="color:#0000ff">Link Sharing</g:link>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,7 +38,7 @@
     </div>
 </g:if>
 <g:if test="${flash.error}">
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
         ${flash.error}
     </div>

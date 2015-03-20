@@ -6,12 +6,12 @@
     <div class="panel-body">
         <g:form class="form-box" name="login" controller="login">
             <div>
-                <span style="width: 50%;">UserName*</span>
+                <span style="width: 50px">UserName*</span>
                 <g:textField name="username" placeholder="UserName"/>
             </div><br>
 
             <div>
-                <span class="span-label1">Password*</span>
+                <span style="width: 50px">Password*</span>
                 <g:passwordField name="password"  placeholder="Password"/>
             </div><br>
 

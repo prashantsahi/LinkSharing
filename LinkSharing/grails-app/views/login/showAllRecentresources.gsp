@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="master">
+    <meta name="layout" content="homeLayout">
     <title>
         ALL Recent Resources
     </title>
@@ -17,7 +17,7 @@
             </div>
 
             <div id="allRecentShares">
-                <g:render template="allRecentResources" model="[resources:res,resCount:resCount]"/>
+                <g:render template="allRecentResources" model="[resources: res, resCount: resCount]"/>
             </div>
         </div>
     </div>

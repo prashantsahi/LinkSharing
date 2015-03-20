@@ -14,21 +14,20 @@
 
             <a href="#">${subs?.name}</a>
             <br><br>
-            <h5 class="des-head">@${subs.createdBy.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <g:link>Subscriptions</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<g:link>Posts</g:link></h5>
+            <h5 class="des-head">@${subs?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
             <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 ${subs?.resources?.size()}</h5>
 
-            <g:select name="subs.seriousness"
-                      from="${bootcamp.Seriousness.values()}"/>
+            %{--<g:select name="subs.seriousness"
+                      from="${bootcamp.Seriousness.values()}"
+                      onchange="${remoteFunction(
+                              controller: 'subscribe',
+                              action: 'index',
+                              params: "subs.seriousness='+this.value"
+                      )}"/>--}%
 
             <ls:isEditable subscriber="${subs}"/>
-        %{--<g:render template="isEditable"/>--}%
-        %{--<select>
-            <option>Private</option>
-            <option>Edit</option>
-            <option>Delete</option>
-        </select>--}%
 
             <g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"
                     action="">

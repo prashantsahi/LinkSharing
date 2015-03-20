@@ -18,7 +18,7 @@
                 <div class="media-body">
                     ${res?.createdBy?.firstName} &nbsp;${res?.createdBy?.lastName}&nbsp;&nbsp;&nbsp;&nbsp; @${res?.createdBy.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <g:link>
-                        ${res?.topic}
+                        ${res?.topic.name}
                     </g:link>
                     <br><br>
 

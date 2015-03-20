@@ -4,12 +4,30 @@
     <title><g:layoutTitle default="Linksharing"/></title>
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
+    <asset:stylesheet src="span.css"/>
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
 
     <g:layoutHead/>
+
+
+    %{--<script>
+
+        var subscriptionUrl= <g:createLink controller="subscribe" action="index"/>
+                $('#seriousness').change(function () {
+                    var value = $(this).val();
+                    var topicId = $(this).data('topic-Id');
+                    var username=$(this).data('user')
+
+                    $.post(subscriptionUrl, {topicId: topicId, seriousness: value,username:username}, function (data) {
+                        console.log(data);
+$('#seriousness').select(value);
+                    });
+                });
+    </script>
+--}%
 </head>
 
 <body>
@@ -54,11 +72,7 @@
                     </ul>
                 </div>
             </g:form>
-        %{--  <g:render template="/user/createtopic"/>
-          <g:render template="/templates/sharelink"/>
-          <g:render template="/templates/sharedocument"/>
-          <g:render template="/user/sendinvitation"/>
---}%</div>
+        </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -71,11 +85,12 @@
     </div>
 </g:if>
 <g:if test="${flash.error}">
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
         ${flash.error}
     </div>
 </g:if>
 <g:layoutBody/>
+
 </body>
 </html>
