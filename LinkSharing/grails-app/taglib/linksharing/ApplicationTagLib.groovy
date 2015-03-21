@@ -22,7 +22,6 @@ class ApplicationTagLib {
 
     def isSubscribed = { attr ->
         User currentUser = User.findByUsername(session['username'])
-        println "---------------------------------------${attr.sub1}----------------------------------------------------"
         Subscription subscribed = Subscription.findByUserAndTopic(currentUser, attr.sub1)
         if (subscribed) {
             out << g.render(template: "/home/isSubscribed", model: [sub: attr.sub1])
@@ -33,7 +32,10 @@ class ApplicationTagLib {
 
     def isEditable = { attr ->
         def created = attr?.subscriber?.createdBy.username
-        if (created == session['username'])
-            out << g.render(template: "/home/isEditable")
+        if (created == session['username']) {
+            out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber])
+        } else {
+            out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
+        }
     }
 }

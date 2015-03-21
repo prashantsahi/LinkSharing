@@ -25,8 +25,6 @@ class RegisterCommand {
     String photoPath
     String confirmPassword
 
-
-
     static hasMany = [subscriptions: Subscription, resources: Resource, readingitems: ReadingItem, resourceratings: ResourceRating, topics: Topic]
     static constraints = {
         username unique: true

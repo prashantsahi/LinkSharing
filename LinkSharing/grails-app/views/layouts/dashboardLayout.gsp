@@ -9,25 +9,7 @@
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
-
-    %{--<script>--}%
-    %{--$(document).ready(function(){--}%
-
-        %{--alert("hi")--}%
-    %{--});--}%
-        %{--function seriousNess(subscriptionUrl) {--}%
-
-            %{--console.log(subscriptionUrl);--}%
-        %{--}--}%
-            %{--/* var value = $(this).val();--}%
-             %{--var topicId = $(this).data('topic-Id');--}%
-             %{--var username = $(this).data('user')--}%
-
-             %{--$.post(subscriptionUrl, {topicId: topicId, seriousness: value, username: username}, function (data) {--}%
-             %{--console.log(data);--}%
-             %{--$('#seriousness').select(value);--}%
-
-    %{--</script>--}%
+    <asset:javascript src="linkSharingAjax.js"/>
     <g:layoutHead/>
 </head>
 

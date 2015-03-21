@@ -21,25 +21,8 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 ${subs?.resources?.size()}</h5>
 
-            <g:select name="seriousness-${subs.id}" from="${bootcamp.Seriousness.values()}"
-                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}',${subs.id})"/>
-
             <ls:isEditable subscriber="${subs}"/>
-
-            <g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"
-                    action="">
-                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-            </g:link>
-            <g:link class="btn btn-default" aria-label="Left Align" title='create topic' controller="home"
-                    action="">
-                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-            </g:link>
-
-            <g:link class="btn btn-default" title='Delete'>&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </g:link>
         </div>
-
         %{--<span id="change-${subs.id}" style="visibility: hidden;color: #0000cc">seriousness changed</span>--}%
     </div>
 </g:each>

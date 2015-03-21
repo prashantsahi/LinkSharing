@@ -8,22 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <script>
-    function seriousNess(subscriptionUrl,topicId) {
-        alert('hiiiiiiiii')
-        console.log(topicId)
-        $.ajax({
-            url:subscriptionUrl,
-            data: "ajax="+$("#seriousness-"+topicId).val(),
-            success:function(data){
-//                $("#change-"+topicId).css('visibility','visible')
-//                $('#changed').html()
-            }
-        });
-    }
-
-    </script>
-    <meta name="layout" content="dashboardLayout">
+      <meta name="layout" content="dashboardLayout">
     <title>Dashboard</title>
 </head>
 
@@ -36,7 +21,7 @@
 <div class="row">
     <div class="col-md-1"></div>
 
-    <div class="col-md-4">
+    <div class="col-md-5">
         <g:render template="/templates/userInformation"/>
         <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
         <g:render template="/templates/trendingtopics" model="[trend: trending]"/>
@@ -47,7 +32,7 @@
     <div class="col-md-5">
         <ls:inbox resource="${res}"/>
     </div><!--col 8-->
-    <div class="col-md-1"></div>
+    %{--<div class="col-md-1"></div>--}%
 
 </div><!--row-->
 </body>

@@ -15,6 +15,12 @@ class TopicController {
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 
+    def changeVisibility(){
+        Topic topic =Topic.get(params.subscribedTopic)
+        topic.visibility=params.ajax
+        topic.save(failOnError: true,flush: true)
+    }
+
     //to render the showTopic page
     def topicShow() {
         println "from top posts : " + params.topic

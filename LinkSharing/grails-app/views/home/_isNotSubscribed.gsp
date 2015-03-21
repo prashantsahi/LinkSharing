@@ -18,7 +18,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${subs?.resources?.size()}</h5>
 
             <g:select name="seriousness-${subs.id}" from="${bootcamp.Seriousness.values()}"
-                      onchange="seriousNess('${createLink(controller: 'subscribe', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}',${subs.id})"/>
+                      onchange="seriousNess('${createLink(controller: 'subscription', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}',${subs.id})"/>
 
 
             <g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"

@@ -17,8 +17,9 @@ class HomeController {
 
     def dashboard() {
         def userObj = User.findByUsername(session['username'])
-        List<Topic> subscription = Topic.list(sort: 'lastUpdated', order: 'desc', max: 5, offset: 0)
         def subscribedTopics = userObj.subscriptions.topic
+        def subscription = subscribedTopics.size() < 5 ? subscribedTopics.asList() : subscribedTopics.subList(0, 5)
+        subscription.sort{it.dateCreated}
 
         List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
             readingitems {

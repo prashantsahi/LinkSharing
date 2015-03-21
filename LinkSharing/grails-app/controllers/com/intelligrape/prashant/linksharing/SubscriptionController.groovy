@@ -15,6 +15,53 @@ class SubscriptionController {
         respond Subscription.list(params), model: [subscriptionInstanceCount: Subscription.count()]
     }
 
+    @Transactional
+    def changeSeriousness() {
+        Topic topic = Topic.load(params.subscribedTopic)
+        Subscription subscription = Subscription.createCriteria().get {
+            eq('topic', topic)
+        }
+        subscription.seriousness = params.ajax
+        subscription.save(flush: true, failOnError: true)
+    }
+
+    /*
+    def recent() {
+        params.max = params.max ?: 5
+        params.offset = params.offset ?: 0
+
+        List<Resource> resources = Resource.createCriteria().list(params) {
+            order("id", "desc")
+            'topic' {
+                eq('visibility', Visibility.Public)
+            }
+        }
+        resources.sort { it.dateCreated }
+        render(template: 'allRecentResources', model: [resources: resources, resCount: Resource.count])
+    }
+
+    */
+
+    @Transactional
+    def viewAllSubscriptions() {
+        params.max = params.max ?: 3
+        params.offset = params.offset ?: 3
+        def user = User.findByUsername(session['username'])
+        def subscribedTopics = user.subscriptions.topic
+        render(view: '/home/allSubscription', model: [subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count/*, max: params.max, offset: params.offset*/])
+    }
+
+    @Transactional
+    showSubscriptions(){
+        params.max = params.max ?: 3
+        params.offset = params.offset ?: 3
+        def user = User.findByUsername(session['username'])
+        def subscribedTopics = user.subscriptions.topic
+        render(template: '/home/viewAllSubscriptions', model: [subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count, max: params.max, offset: params.offset])
+
+    }
+
+
     def show(Subscription subscriptionInstance) {
         respond subscriptionInstance
     }
@@ -25,10 +72,6 @@ class SubscriptionController {
 
     @Transactional
     def save(Subscription subscriptionInstance) {
-
-
-
-
         if (subscriptionInstance == null) {
             notFound()
             return

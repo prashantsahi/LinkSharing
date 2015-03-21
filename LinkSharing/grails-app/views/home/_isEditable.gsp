@@ -1,16 +1,18 @@
-<select>
-    <option>Private</option>
-    <option>Edit</option>
-    <option>Delete</option>
-</select>
+<g:select name="visibility-${subs.id}" from="${bootcamp.Visibility.values()}"
+          onchange="changeVisibility('${createLink(controller: 'topic', action: 'changeVisibility', params: [subscribedTopic: subs.id])}',${subs.id})"/>
 
-%{--
+<g:select name="seriousness-${subs.id}" from="${bootcamp.Seriousness.values()}"
+          onchange="seriousNess('${createLink(controller: 'subscription', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}',${subs.id})"/>
 
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><g:link role="menuitem" tabindex="-1" >Profile</g:link></li>
-    <li role="presentation"><g:link role="menuitem" tabindex="-1" >Users</g:link></li>
-    <li role="presentation"><g:link role="menuitem" tabindex="-1" >Topic</g:link></li>
-    <li role="presentation"><g:link role="menuitem" tabindex="-1" >Post</g:link></li>
-    <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
-                                    action="logout">Logout</g:link></li>
-</ul>--}%
+<g:link class="btn btn-default" aria-label="Left Align" title='send invitation' controller="home"
+        action="">
+    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+</g:link>
+<g:link class="btn btn-default" aria-label="Left Align" title='create topic' controller="home"
+        action="">
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+</g:link>
+
+<g:link class="btn btn-default" title='Delete'>&nbsp;&nbsp;
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+</g:link>
