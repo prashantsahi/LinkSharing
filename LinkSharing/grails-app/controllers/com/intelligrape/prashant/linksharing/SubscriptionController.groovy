@@ -1,5 +1,6 @@
 package com.intelligrape.prashant.linksharing
 
+import bootcamp.Seriousness
 import com.intelligrape.prashant.linksharing.Subscription
 import grails.transaction.Transactional
 
@@ -52,7 +53,7 @@ class SubscriptionController {
     }
 
     @Transactional
-    showSubscriptions(){
+    def showSubscriptions() {
         params.max = params.max ?: 3
         params.offset = params.offset ?: 3
         def user = User.findByUsername(session['username'])
@@ -61,6 +62,16 @@ class SubscriptionController {
 
     }
 
+    @Transactional
+    def subscribed() {
+        User userObj = User.findByUsername(session['username'])
+        Topic topicObj = Topic.findByName(params.topic)
+        Subscription subscription = new Subscription(user: userObj, topic: topicObj, seriousness: Seriousness.Serious)
+        if ((subscription.validate())) {
+            subscription.save(failOnError: true, flush: true)
+        }
+        redirect(controller: 'home', action: 'dashboard')
+    }
 
     def show(Subscription subscriptionInstance) {
         respond subscriptionInstance
@@ -72,6 +83,7 @@ class SubscriptionController {
 
     @Transactional
     def save(Subscription subscriptionInstance) {
+
         if (subscriptionInstance == null) {
             notFound()
             return

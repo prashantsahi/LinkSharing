@@ -19,13 +19,32 @@ class HomeController {
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = userObj.subscriptions.topic
         def subscription = subscribedTopics.size() < 5 ? subscribedTopics.asList() : subscribedTopics.subList(0, 5)
-        subscription.sort{it.dateCreated}
+        subscription.sort { it.dateCreated }
 
-        List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
+        List<Resource> resources=subscribedTopics.resources.flatten()
+        resources.sort {it.lastUpdated}.reverse()
+        println resources.id
+        /* List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
             readingitems {
-                eq('isRead', false)
+                eq('isRead',false)
             }
         }
+        */
+      /*  println '--------------------------------------------------------'
+        println subscription.resources.flatten().id
+        println( "--------------------------------------------------------\n\n")
+        println resources
+        println "\n\n-------------------------------------------------------------"
+        List l=subscription.resources.flatten().id-resources
+
+        println '--------------------------------------------------------'
+        println l
+        println( "--------------------------------------------------------\n\n")
+*/
+
+
+
+
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
         trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
         render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources, trending: trend1, subscribedTopics: subscribedTopics])
