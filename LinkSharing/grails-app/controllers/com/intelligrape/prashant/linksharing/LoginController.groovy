@@ -7,7 +7,7 @@ class LoginController {
     static defaultAction = "index"
 
     def changePassword() {
-        render (view: 'changePassword', model: [emailId: params.emailId])//use params.emailId
+        render(view: 'changePassword', model: [emailId: params.emailId])//use params.emailId
     }
 
     def updatePassword() {
@@ -24,9 +24,9 @@ class LoginController {
             async true
             to "$params.email"
             subject "Change Password request"
-            html "${g.link(controller: "login", action: "changePassword",params:[emailId:params.email] , absolute: "true", { "click on the link to change your password" })}"
+            html "${g.link(controller: "login", action: "changePassword", params: [emailId: params.email], absolute: "true", { "click on the link to change your password" })}"
         }
-        flash.message= "check your mail to update the password"
+        flash.message = "check your mail to update the password"
         redirect(action: 'index')
     }
 

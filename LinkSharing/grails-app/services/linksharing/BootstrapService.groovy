@@ -11,9 +11,11 @@ class BootstrapService {
 
     void createUser() {
 
-        (1..5).each {
-            User user = new User(username: "prashantsahi$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "true", active: "true")
-            user.save(flush: true, failOnError: true)
+        (1..3).each {
+            User user = new User(username: "user$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "false", active: "true",photoPath: "/home/intelligrape/Upload/imageUpload/user.jpg")
+            if (user.validate()) {
+                user.save(flush: true, failOnError: true)
+            }
         }
     }
 
@@ -24,20 +26,19 @@ class BootstrapService {
     void createTopics(User user) {
         5.times {
             if ((it % 2) != 0) {
-                Topic topic = new Topic(name: "$user.firstName" + "-topic$it", createdBy: user, visibility: Visibility.Public)
-                topic.save(flush: true, failOnError: true)
+                Topic topic = new Topic(name: "$user.username" + "-topic$it", createdBy: user, visibility: Visibility.Public)
+                if (topic.validate())
+                    topic.save(flush: true, failOnError: true)
 
             } else {
-                Topic topic1 = new Topic(name: "$user.firstName" + "-topic$it", createdBy: user, visibility: Visibility.Private)
+                Topic topic1 = new Topic(name: "$user.username" + "-topic$it", createdBy: user, visibility: Visibility.Private)
                 topic1.save(flush: true, failOnError: true)
             }
-
         }
     }
 
-
     void topics() {
-        (1..5).each {
+        (1..3).each {
             User user = User.get(it)
             createTopics(user)
         }
@@ -57,10 +58,9 @@ class BootstrapService {
     }
 
     void resources() {
-        (1..5).each {
+        (1..3).each {
             User user = User.get(it)
             def topic = Topic.findAllByCreatedBy(user)
-
             topic.each {
                 createResources(user, it)
             }
@@ -98,7 +98,7 @@ class BootstrapService {
 
     void ratings() {
         int count = 1
-        (1..2).each {
+        (1..3).each {
             User user = User.get(it)
             def resource = Resource.findAllByCreatedBy(user)
             resource.each {
@@ -107,8 +107,6 @@ class BootstrapService {
                 if (count == 6)
                     count = 1
             }
-
         }
     }
-
 }

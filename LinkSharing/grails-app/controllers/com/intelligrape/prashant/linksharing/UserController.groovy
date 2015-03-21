@@ -53,7 +53,7 @@ class UserController {
             notFound()
             return
         }
-        userInstance.photoPath = params.photo           //convert to byte array and den validate and den save..
+//        userInstance.photoPath = params.photo           //convert to byte array and den validate and den save..
         if (userInstance.hasErrors()) {
             respond userInstance.errors, view: 'create'
             return

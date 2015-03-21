@@ -8,15 +8,14 @@ class BootStrap {
     def init = { servletContext ->
 //           if(!User.count()){
 
-        /*bootstrapService.createUser()
+        bootstrapService.createUser()
         bootstrapService.topics()
         bootstrapService.resources()
-*///        bootstrapService.readingItems()
-       if(!ResourceRating.count())
+//        bootstrapService.readingItems()
+//       if(!ResourceRating.count())
         bootstrapService.ratings()
-//    }
-//    }
-        def destroy = {
-        }
+    }
+
+    def destroy = {
     }
 }

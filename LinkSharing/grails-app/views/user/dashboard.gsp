@@ -9,18 +9,36 @@
 <html>
 <head>
     <script>
-    function seriousNess(subscriptionUrl,topicId) {
-        alert('hiiiiiiiii')
-        console.log(topicId)
-        $.ajax({
-            url:subscriptionUrl,
-            data: "ajax="+$("#seriousness-"+topicId).val(),
-            success:function(data){
+        function seriousNess(subscriptionUrl, topicId) {
+//            alert('hiiiiiiiii')
+//            console.log(topicId)
+            $.ajax({
+                url: subscriptionUrl,
+                data: "ajax=" + $("#seriousness-" + topicId).val(),
+                success: function (data) {
 //                $("#change-"+topicId).css('visibility','visible')
 //                $('#changed').html()
-            }
-        });
-    }
+                }
+            });
+        }
+
+        function changeVisibility(topicChangeSeriousnessUrl, topicId) {
+            alert('hiiiii')
+            console.log(topicId)
+            $.ajax({
+                url: topicChangeSeriousnessUrl,
+                data: "ajax=" + $("#visibility-" + topicId).val(),
+                success: function (data) {
+                    alert("successfully updated")
+//                $("#change-"+topicId).css('visibility','visible')
+//                $('#changed').html()
+                }
+            });
+        }
+
+
+
+
 
     </script>
     <meta name="layout" content="dashboardLayout">
