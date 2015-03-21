@@ -117,7 +117,6 @@ class LoginController {
     def loginHandler(RegisterCommand registerCommand) {
 
         if (User.findByUsernameAndPasswordAndActive(registerCommand.username, registerCommand.password, true)) {
-
             session["username"] = registerCommand.username
             flash.message = "User ${session["username"]} has successfully logged into the system"
             redirect(controller: 'home', action: "dashboard")
@@ -130,10 +129,7 @@ class LoginController {
     def register(RegisterCommand registerCommand) {
         println "from register action before validation"
         def file = request.getFile('file')
-        /*if (!file.empty) {
-            registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
-        }
-        */ if (file.empty) {
+        if (file.empty) {
             registerCommand.photoPath = grailsApplication.config.defaultImage
         } else {
             registerCommand.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename

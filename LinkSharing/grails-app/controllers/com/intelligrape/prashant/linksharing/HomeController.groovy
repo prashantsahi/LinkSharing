@@ -19,7 +19,7 @@ class HomeController {
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = userObj.subscriptions.topic
         def subscription = subscribedTopics.size() < 5 ? subscribedTopics.asList() : subscribedTopics.subList(0, 5)
-        subscription.sort {it.lastUpdated}.reverse()
+        subscription.sort{it.dateCreated}
 
         List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
             readingitems {

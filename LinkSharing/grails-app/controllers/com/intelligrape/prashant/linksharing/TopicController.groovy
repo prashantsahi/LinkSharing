@@ -16,10 +16,8 @@ class TopicController {
     }
 
     def changeVisibility(){
-        println("from change visibility"+params.ajax)
         Topic topic =Topic.get(params.subscribedTopic)
         topic.visibility=params.ajax
-        println 'after get-------------------------------------->>>>>>>> '+topic
         topic.save(failOnError: true,flush: true)
     }
 

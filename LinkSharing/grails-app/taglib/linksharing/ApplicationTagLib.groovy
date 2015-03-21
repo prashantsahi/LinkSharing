@@ -33,10 +33,8 @@ class ApplicationTagLib {
     def isEditable = { attr ->
         def created = attr?.subscriber?.createdBy.username
         if (created == session['username']) {
-           println 'from if'
             out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber])
         } else {
-            println 'from else'
             out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
         }
     }
