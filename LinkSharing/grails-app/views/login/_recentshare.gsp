@@ -10,7 +10,7 @@
         <g:each in="${resources}" var="resource">
             <div class="media">
                 <div class="media-left">
-                    <g:link controller="user" action="showProfile">
+                    <g:link controller="user" action="showPublicProfile" params="[user:resource?.createdBy?.id]">
                         <img width="60px" height="60px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
                     </g:link>

@@ -15,23 +15,27 @@ class UserController {
             async true
             to "$params.emailId"
             subject "$params.emailTopic"
-            html "${g.link(action:"showProfile", controller:"user",absolute:"true", {"text of the link here"})}"
+            html "${g.link(action: "showPublicProfile", controller: "user", absolute: "true", { "text of the link here" })}"
         }
         render 'mail successfully sent'
     }
 
 // to show the user images
-    def showImage(String path){
+    def showImage(String path) {
         println("path: ${path}")
-        File file=new File(path)
-        response.contentLength=file.bytes.length
-        response.outputStream<<file.bytes
+        File file = new File(path)
+        response.contentLength = file.bytes.length
+        response.outputStream << file.bytes
     }
 
-    def showProfile()
-    {
-        render(view: 'editProfile')
+    def showPublicProfile() {
+        User userObj = User.findById(params.user)
+        render(view: 'publicUserProfile', model: [user: userObj])//here i have to implement publicUserProfile
+    }
 
+    def editProfile(){
+        User obj=User.findByUsername(session['username'])
+        render(view: 'editProfile',model: [user: obj])
     }
 
     def index(Integer max) {

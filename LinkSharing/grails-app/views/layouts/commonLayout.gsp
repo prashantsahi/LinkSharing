@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: intelligrape
-  Date: 2/3/15
-  Time: 7:45 PM
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -34,8 +27,14 @@
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
                             class="glyphicon-apple" style="font-size: 40px "/></a>
 
-                    <img width="35px" height="35px title="${user.username}""
-                src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
+                    <g:if test="if(${user.username})">
+                        <img width="35px" height="35px" title="${user.username}"
+                             src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
+                    </g:if>
+                    <g:else>
+                        <asset:image src="apple-touch-icon-retina.png"/>
+                    </g:else>
+
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" aria-expanded="true">
                         <span>${session['username']}</span>
@@ -43,7 +42,7 @@
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
-                                                        action="showProfile">Profile</g:link></li>
+                                                        action="editProfile">Profile</g:link></li>
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
                                                         action="logout">Logout</g:link></li>
                     </ul>

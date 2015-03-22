@@ -9,7 +9,7 @@
 
             <div class="media">
                 <div class="media-left">
-                    <g:link controller="user" action="showProfile">
+                    <g:link controller="user" action="showPublicProfile" params="[user:res?.createdBy?.id]" >
                         <img width="60px" height="60px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: res?.createdBy?.photoPath])}"/>
                     </g:link>

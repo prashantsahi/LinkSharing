@@ -2,8 +2,8 @@
     <g:each in="${ratings}" var="rating">
         <div class="media">
             <div class="media-left">
-                <g:link controller="user" action="showProfile">
-                    <img width="60px" height="60px"
+                <g:link controller="user" action="showPublicProfile" params="[user:rating?.user?.id]" >
+                    <img width="60px" height="60px  "
                          src="${createLink(controller: "user", action: 'showImage', params: [path: rating?.user?.photoPath])}"/>
                 </g:link>
             </div>

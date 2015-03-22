@@ -14,7 +14,7 @@
     <asset:stylesheet src="bootstrap-theme.min.css"></asset:stylesheet>
     <asset:javascript src="bootstrap.min.js"></asset:javascript>
     <script type="text/javascript" src="jquery.min.js"></script>
-    <meta name ="layout" content ="masterPage3">
+    <meta name ="layout" content ="commonLayout">
 </head>
 
 <body>

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="masterPage3">
+    <meta name="layout" content="commonLayout">
     <asset:javascript src="linkSharingAjax.js"/>
     <title>::topicShow::</title>
 </head>
