@@ -1,6 +1,7 @@
 package com.intelligrape.prashant.linksharing
 
 import bootcamp.Seriousness
+
 //import spock.util.mop.Use
 
 import static org.springframework.http.HttpStatus.*
@@ -24,9 +25,9 @@ class TopicController {
 
     //to render the showTopic page
     def topicShow() {
-        Topic topic=Topic.findByName(params.topic)
-        User currentUser=User.findByUsername(session['username'])
-        render(view: '/topic/topicShow', model: [topics:topic,user:currentUser ])
+        Topic topic = Topic.findByName(params.topic)
+        User currentUser = User.findByUsername(session['username'])
+        render(view: '/topic/topicShow', model: [topics: topic, user: currentUser])
     }
 
     def show(Topic topicInstance) {
@@ -40,9 +41,8 @@ class TopicController {
     @Transactional
     def save(Topic topicInstance) {
 
-        User user = User.findByUsername(session['username'])
-        topicInstance.createdBy = user
-
+        User userObj = User.findByUsername(session['username'])
+        topicInstance.createdBy = userObj
         if (topicInstance == null) {
             notFound()
             return
@@ -52,7 +52,8 @@ class TopicController {
             respond topicInstance.errors, view: 'create'
             return
         }
-        if (topicInstance.save(flush: true, failOnError: true)) {
+        if (topicInstance.validate()) {
+            topicInstance.save(flush: true, failOnError: true)
             flash.message = "${topicInstance.name} topic has successfully created "
             redirect(controller: 'home', action: 'dashboard')
         }
