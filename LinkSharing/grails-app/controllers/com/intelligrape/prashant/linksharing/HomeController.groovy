@@ -23,30 +23,19 @@ class HomeController {
 
         List<Resource> resources=subscribedTopics.resources.flatten()
         resources.sort {it.lastUpdated}.reverse()
-        println resources.id
-        /* List<Resource> resources = Resource.createCriteria().list([order: 'desc', sort: 'dateCreated']) {
-            readingitems {
-                eq('isRead',false)
-            }
-        }
-        */
-      /*  println '--------------------------------------------------------'
-        println subscription.resources.flatten().id
-        println( "--------------------------------------------------------\n\n")
-        println resources
-        println "\n\n-------------------------------------------------------------"
-        List l=subscription.resources.flatten().id-resources
-
-        println '--------------------------------------------------------'
-        println l
-        println( "--------------------------------------------------------\n\n")
-*/
-
-
-
 
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
         trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
-        render(view: '/user/dashboard', model: [user: userObj, subscriptions: subscription, res: resources, trending: trend1, subscribedTopics: subscribedTopics])
+        render(view: '/home/dashboard', model: [user: userObj, subscriptions: subscription, res: resources, trending: trend1, subscribedTopics: subscribedTopics])
     }
+
+    def viewAllTrendingTopic(){
+        List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
+        render(view: '/home/allTrending', model: [trend :trend1])
+    }
+
+    def showAllTrendingTopic(){
+
+    }
+
 }

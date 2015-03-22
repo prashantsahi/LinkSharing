@@ -33,8 +33,9 @@
                             class="glyphicon-comment" style="font-size: 40px "/></a>
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
                             class="glyphicon-apple" style="font-size: 40px "/></a>
-                    <a href="#" data-toggle="modal" title="User" style="text-decoration: none"><span
-                            class="glyphicon-bishop" style="font-size: 40px "/></a>
+
+                    <img width="35px" height="35px title="${user.username}""
+                src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" aria-expanded="true">
                         <span>${session['username']}</span>

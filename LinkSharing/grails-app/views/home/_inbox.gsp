@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Inbox  <input type="text" placeholder="search" style="float:right;"></h3>
     </div>
@@ -17,15 +17,13 @@
 
                 <div class="media-body">
                     ${res?.createdBy?.firstName} &nbsp;${res?.createdBy?.lastName}&nbsp;&nbsp;&nbsp;&nbsp; @${res?.createdBy.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <g:link>
-                        ${res?.topic.name}
-                    </g:link>
+                    <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': res?.topic?.name])}">${res?.topic?.name}</a>
                     <br><br>
 
                     <p>${res?.description}</p>
 
                     <g:render template="/templates/logos"/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <g:link>Download</g:link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <g:link>Full Size</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

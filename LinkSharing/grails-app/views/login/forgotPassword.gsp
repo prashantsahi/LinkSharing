@@ -5,7 +5,7 @@
 
 <body>
 
-<div class="panel panel-default" style="height:200px; width:350px;">
+<div class="panel panel-primary" style="height:200px; width:350px;">
     <div class="panel-heading">
         <h3 class="panel-title">Forgot Password</h3>
     </div>

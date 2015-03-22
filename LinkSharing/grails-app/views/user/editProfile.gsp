@@ -85,7 +85,7 @@
 
                     <div class="media-body">
                         <h4 class="media-heading"></h4>
-                        <input type="text" style="width:200;" placeholder="Grails">
+                        <input type="text" style="width:200px;" placeholder="Grails">
                         <input type="button" class="btn btn-primary" autocomplete="off" value="Save"><br>
                         <a href="#">grails</a>
                         <h5 class="des-head">@uday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
@@ -161,7 +161,7 @@
                         <g:submitButton name="submit" value="Update" class="btn btn-primary" autocomplete="off"/>
                     </div>
 
-                    <form>
+                    </form>
             </div>
         </div>
 

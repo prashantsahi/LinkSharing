@@ -1,0 +1,32 @@
+
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head>
+    <meta name="layout" content="homeLayout">
+
+    <title>All Trending</title>
+</head>
+
+<body>
+
+<div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align: center">All Trending</h3>
+            </div>
+
+            <div class="panel-body">
+                <g:each in="${trend}" var="subst">
+                    <ls:isSubscribed sub1="${subst}"/>
+                </g:each>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+

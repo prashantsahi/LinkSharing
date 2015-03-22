@@ -11,7 +11,7 @@
 
 <body>
 
-<div class="panel panel-default" style="height:350px; width:500px;">
+<div class="panel panel-primary" style="height:350px; width:500px;">
     <div class="panel-heading">
         <h3 class="panel-title">Change Password</h3>
     </div>

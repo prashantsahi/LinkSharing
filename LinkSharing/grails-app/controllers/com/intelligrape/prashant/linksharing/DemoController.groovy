@@ -43,7 +43,7 @@ class DemoController {
 
     def loginController() {
         println("from login controller")
-        render(view: '/user/dashboard')
+        render(view: '/home/dashboard')
     }
 
     def hello() {

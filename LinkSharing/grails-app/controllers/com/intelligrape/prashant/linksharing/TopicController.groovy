@@ -1,6 +1,7 @@
 package com.intelligrape.prashant.linksharing
 
 import bootcamp.Seriousness
+//import spock.util.mop.Use
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -15,16 +16,17 @@ class TopicController {
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 
-    def changeVisibility(){
-        Topic topic =Topic.get(params.subscribedTopic)
-        topic.visibility=params.ajax
-        topic.save(failOnError: true,flush: true)
+    def changeVisibility() {
+        Topic topic = Topic.get(params.subscribedTopic)
+        topic.visibility = params.ajax
+        topic.save(failOnError: true, flush: true)
     }
 
     //to render the showTopic page
     def topicShow() {
-        println "from top posts : " + params.topic
-        render(view: '/topic/topicShow', model: [topics: params.topic])
+        Topic topic=Topic.findByName(params.topic)
+        User currentUser=User.findByUsername(session['username'])
+        render(view: '/topic/topicShow', model: [topics:topic,user:currentUser ])
     }
 
     def show(Topic topicInstance) {
@@ -40,7 +42,6 @@ class TopicController {
 
         User user = User.findByUsername(session['username'])
         topicInstance.createdBy = user
-        println "from topic save action -----------------------------------------------" + topicInstance.validate()
 
         if (topicInstance == null) {
             notFound()

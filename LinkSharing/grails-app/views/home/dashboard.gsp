@@ -21,15 +21,15 @@
 <div class="row">
     <div class="col-md-1"></div>
 
-    <div class="col-md-5">
+    <div class="col-md-4">
         <g:render template="/templates/userInformation"/>
         <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
-        <g:render template="/templates/trendingtopics" model="[trend: trending]"/>
+        <g:render template="/home/trendingtopics" model="[trend: trending]"/>
     </div>
 
     <div class="col-md-1"></div>
 
-    <div class="col-md-5">
+    <div class="col-md-6">
         <ls:inbox resource="${res}"/>
     </div><!--col 8-->
     %{--<div class="col-md-1"></div>--}%

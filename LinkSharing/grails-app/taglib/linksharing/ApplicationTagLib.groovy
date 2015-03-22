@@ -17,7 +17,7 @@ class ApplicationTagLib {
     }
 
     def inbox = { attr ->
-        out << g.render(template: '/user/inbox', model: [resources: attr.resource])
+        out << g.render(template: '/home/inbox', model: [resources: attr.resource])
     }
 
     def isSubscribed = { attr ->

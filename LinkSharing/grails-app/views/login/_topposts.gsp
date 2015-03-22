@@ -1,7 +1,7 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Top Stories
-            <span style="float:right "><g:link controller="login" action="showAllPosts">View ALL</g:link></span>
+            <span style="float:right " class="panel-title"><g:link controller="login" action="showAllPosts">View ALL</g:link></span>
         </h3>
     </div>
 
