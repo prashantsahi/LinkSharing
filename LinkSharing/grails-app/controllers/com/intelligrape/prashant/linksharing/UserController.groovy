@@ -30,7 +30,7 @@ class UserController {
 
     def showPublicProfile() {
         User userObj = User.findById(params.user)
-        render(view: 'publicUserProfile', model: [user: userObj])//here i have to implement publicUserProfile
+        render(view: 'publicUserProfile', model: [user: userObj])
     }
 
     def editProfile(){

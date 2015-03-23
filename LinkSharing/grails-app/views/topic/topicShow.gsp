@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="layout" content="commonLayout">
-    <asset:javascript src="linkSharingAjax.js"/>
+    %{--<asset:javascript src="linkSharingAjax.js"/>--}%
     <title>::topicShow::</title>
 </head>
 
@@ -18,8 +18,14 @@
     %{--<div class="col-md-1"></div>--}%
 
     <div class="col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Inbox :"${topics.name}" <input type="text" placeholder="search" style="float:right;">
+            </h3>
+        </div>
         <g:render template="/topic/posts" model="[topic: topics]"/>
     </div>
+    </div>>
     <div class="col-md-1"></div>
 
 </div>

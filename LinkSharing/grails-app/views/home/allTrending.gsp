@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="homeLayout">
+    <meta name="layout" content="commonLayout">
 
     <title>All Trending</title>
 </head>
@@ -18,7 +18,7 @@
                 <h3 class="panel-title" style="text-align: center">All Trending</h3>
             </div>
 
-            <div class="panel-body">
+            <div class="panel-body" id="viewAllTrending">
                 <g:each in="${trend}" var="subst">
                     <ls:isSubscribed sub1="${subst}"/>
                 </g:each>

@@ -3,6 +3,9 @@
  */
 //<script>
 function seriousNess(subscriptionUrl, topicId) {
+    alert('seriousness')
+    console.log(topicId)
+
     $.ajax({
         url: subscriptionUrl,
         data: "ajax=" + $("#seriousness-" + topicId).val(),

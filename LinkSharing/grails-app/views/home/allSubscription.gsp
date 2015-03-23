@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="homeLayout">
+    <meta name="layout" content="commonLayout">
 
     <title>All Subscriptions</title>
 </head>

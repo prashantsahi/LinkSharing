@@ -19,11 +19,16 @@ class SubscriptionController {
     @Transactional
     def changeSeriousness() {
         Topic topic = Topic.load(params.subscribedTopic)
-        Subscription subscription = Subscription.createCriteria().get {
+        User user=User.findByUsername(session['username'])
+       Subscription subscription=Subscription.findByUserAndTopic(user,topic)
+        /*Subscription subscription = Subscription.createCriteria().get {
             eq('topic', topic)
-        }
+        }*/
+
+        println('------------------------------'+subscription+'----------------------------------------')
         subscription.seriousness = params.ajax
         subscription.save(flush: true, failOnError: true)
+        println('after save from subscription')
     }
 
     /*
@@ -49,7 +54,8 @@ class SubscriptionController {
         params.offset = params.offset ?: 3
         def user = User.findByUsername(session['username'])
         def subscribedTopics = user.subscriptions.topic
-        render(view: '/home/allSubscription', model: [subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count/*, max: params.max, offset: params.offset*/])
+        User currentUser = User.findByUsername(session['username'])
+        render(view: '/home/allSubscription', model: [user:currentUser ,subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count/*, max: params.max, offset: params.offset*/])
     }
 
     @Transactional

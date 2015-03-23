@@ -86,7 +86,8 @@
                             <h4 class="media-heading"></h4>
                             <input type="text" style="width:200px;" placeholder="Grails">
                             <input type="button" class="btn btn-primary" autocomplete="off" value="Save"><br>
-                            <a href="#">${topic.name}</a>
+                            %{--<a href="#">${topic.name}</a>--}%
+                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.name])}">${topic?.name}</a>
                             <h5 class="des-head">@${topic.createdBy.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;Posts</h5>
                             <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic.subscriptions.size()} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic.resources.size()}</h5>

@@ -1,19 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
-    <asset:stylesheet src="bootstrap.min.css"></asset:stylesheet>
-    <asset:stylesheet src="styling.css"></asset:stylesheet>
-    <asset:stylesheet src="bootstrap-theme.min.css"></asset:stylesheet>
-    <asset:javascript src="bootstrap.min.js"></asset:javascript>
-    <asset:javascript src="bs-glyphicons-data-generator.js"></asset:javascript>
-    <asset:javascript src="dropdown.js"></asset:javascript>
-    <asset:javascript src="jquery-2.1.3.min.js"></asset:javascript>
-    <script type="text/javascript" src="jquery.min.js"></script>
+    <title>PublicUserProfile</title>
+    <meta name="layout" content="homeLayout"/>
+    %{--    <asset:stylesheet src="bootstrap.min.css"></asset:stylesheet>
+        <asset:stylesheet src="styling.css"></asset:stylesheet>
+        <asset:stylesheet src="bootstrap-theme.min.css"></asset:stylesheet>
+        <asset:javascript src="bootstrap.min.js"></asset:javascript>
+        <asset:javascript src="bs-glyphicons-data-generator.js"></asset:javascript>
+        <asset:javascript src="dropdown.js"></asset:javascript>
+        <asset:javascript src="jquery-2.1.3.min.js"></asset:javascript>
+        <script type="text/javascript" src="jquery.min.js"></script>--}%
 </head>
 
 <body>
-<nav class="navbar navbar-default">
+%{--<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Link Sharing</a>
@@ -27,9 +28,9 @@
             </form>
         </div>
     </div>
-</nav>
+</nav>--}%
 
-<div class="well well-lg">Public Profile</div>
+<div class="well well-lg panel">Public Profile</div>
 
 <div class="row">
     <div class="col-md-1">
@@ -64,7 +65,8 @@
                 <g:each in="${user.topics}" var="topic">
                     <div class="media">
                         <div class="media-left">
-                            <a href="#">${topic.name}</a>
+                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.name])}">${topic?.name}</a>
+                            %{--<a href="#">${topic.name}</a>--}%
                         </div>
 
                         <div class="media-body">
@@ -95,23 +97,10 @@
                 <h3 class="panel-title">Posts</h3>
             </div>
 
-            <div class="panel-body">
-                <g:each in="${user.topics}" var="topic">
-                    <div class="media"></div>
+            <g:each in="${user.topics}" var="topics">
+                <g:render template="/topic/posts" model="[topic: topics]"/>
+            </g:each>
 
-                    <div class="media-body">
-                        ${topic.resources.description}
-                        <br> <br>
-                        <a href="#"><asset:image class="icon-size" src="facebook.png"></asset:image></a>
-                        <a href="#"><asset:image class="icon-size" src="google_plus.png"></asset:image></a>
-                        <a href="#"><asset:image class="icon-size" src="twitter.png"></asset:image></a>
-                        <a href="#">Download</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#">View Full Size</a>&nbsp;&nbsp;
-                        <a href="#">Mark As Read</a>&nbsp;&nbsp;
-                        <a href="#">View Post</a>
-                    </div> <!--media body-->
-                </g:each>
-            </div><!--media-->
         </div> <!--panel body-->
     </div>
 

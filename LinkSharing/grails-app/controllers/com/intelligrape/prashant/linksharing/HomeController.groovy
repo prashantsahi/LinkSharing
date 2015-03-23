@@ -30,8 +30,9 @@ class HomeController {
     }
 
     def viewAllTrendingTopic(){
+        User currentUser = User.findByUsername(session['username'])
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
-        render(view: '/home/allTrending', model: [trend :trend1])
+        render(view: '/home/allTrending', model: [trend :trend1,user: currentUser])
     }
 
     def showAllTrendingTopic(){

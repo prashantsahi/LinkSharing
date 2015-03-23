@@ -1,9 +1,3 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Inbox :"${topic.name}" <input type="text" placeholder="search" style="float:right;">
-        </h3>
-    </div>
-
     <div class="panel-body">
 
         <g:each in="${topic.resources}" var="res">
@@ -37,4 +31,3 @@
             </div><!--media-->
         </g:each>
     </div> <!--panel body-->
-</div>

@@ -166,8 +166,8 @@ environments {
 
     //set the path of the folders according to the QA env
     QA{
-        uploadFolder = "/home/prashant-sahi/Upload/documentUpload"
-        imageUploadFolder = "/home/prashant-sahi/Upload/imageUpload"
+        uploadFolder = "/home/prashant-sahi/Upload/documentUpload/"
+        imageUploadFolder = "/home/prashant-sahi/Upload/imageUpload/"
         dafaultImage = "/home/prashant-sahi/Upload/imageUpload/user.jpg"
 
     }
