@@ -50,9 +50,11 @@
                     </ul>
                 </div>
             </g:form>
+        %{--
 
-            <g:render template="/templates/sharelink"/>
-            <g:render template="/templates/sharedocument"/>
+                    <g:render template="/templates/sharelink"/>
+                    <g:render template="/templates/sharedocument"/>
+        --}%
         </div>
         <!-- /.navbar-collapse -->
     </div>

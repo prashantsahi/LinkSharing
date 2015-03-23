@@ -9,6 +9,9 @@
 
 <body>
 
+<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
+
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-4">
@@ -25,7 +28,7 @@
         </div>
         <g:render template="/topic/posts" model="[topic: topics]"/>
     </div>
-    </div>>
+    </div>
     <div class="col-md-1"></div>
 
 </div>

@@ -25,7 +25,7 @@ class DemoController {
     }*/
 
     def posts() {
-        render(view: "/post")
+        render(view: "/templates/post")
     }
 
     def editProfile() {

@@ -9,48 +9,12 @@
 <html>
 <head>
     <title></title>
-    <asset:stylesheet src="bootstrap.min.css"></asset:stylesheet>
-    %{--<asset:stylesheet src="styling.css"></asset:stylesheet>--}%
-    <asset:stylesheet src="bootstrap-theme.min.css"></asset:stylesheet>
-    <asset:javascript src="bootstrap.min.js"></asset:javascript>
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <meta name ="layout" content ="commonLayout">
+    <meta name="layout" content="commonLayout">
 </head>
 
 <body>
-%{--<nav class="navbar navbar-default">
-    <div class="container-fluid">
-
-        <div class="navbar-header">
-
-            <a class="navbar-brand" href="#">Link Sharing</a>
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <form class="navbar-form navbar-right form-box" role="search">
-                <div class="form-group">
-
-                    <button type="button" class="btn btn-default" aria-label="Right Align">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
-
-                    <button type="button" class="btn btn-default" aria-label="Right Align">
-                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                    </button>
-
-
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</nav>--}%
+<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
 
 <div class="row">
     <div class="col-md-1">
@@ -61,38 +25,37 @@
             <div class="panel-body">
                 <div class="media">
                     <div class="media-left">
-                        <a href="#">
-                            <asset:image class="media-object img-size" src="profile-icon.png"></asset:image></a>
+                        <g:link controller="user" action="showPublicProfile" params="[user: resource?.createdBy?.id]">
+                            <img width="60px" height="60px"
+                                 src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
+                        </g:link>
+
                     </div>
 
                     <div class="media-body">
-                        <h4 class="media-heading">Prashant &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                href="#">Grails</a></h4>
+                        <h4 class="media-heading">${resource?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#">Grails</a></h4>
 
-                        @Prashant<span class="span-label"></span>2:45 pm 22,Feb,2015
-                        <span class="span-label"></span>
+                        @${resource?.createdBy?.firstName}<span class="span-label"></span>
+                        <span class="span-label" style="float: right ">${resource?.lastUpdated}</span>
                         <br>
                         <br>
 
+                        <span style="float: right;">rating:<g:select name="score" from="[1,2,3,4,5]" /></span>
+                        %{--${resource.resourceratings.size()}--}%
+                       %{-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-
+--}%
                     </div>
                 </div>
                 <br>
                 <br>
-                Lorem ipsum is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. Replacing meaningful content that could be distracting with placeholder text may allow viewers to focus on graphic aspects such as font, typography, and page layout. It also reduces the need for the designer to come up with meaningful text, as they can instead use hastily generated lorem ipsum text.
-                The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.
-                A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word processing templates for its desktop publishing program, PageMaker, for the Apple Macintosh.
+                ${resource?.description}
                 <br><br>
-                <a href="#"><asset:image class="icon-size" src="facebook.png"></asset:image></a>
 
-                <a href="#"><asset:image class="icon-size" src="google_plus.png"></asset:image></a>
-
-                <a href="#"><asset:image class="icon-size" src="twitter.png"></asset:image></a>
-
+                <g:render template="/templates/logos"/>
                 <a href="#">Download</a>&nbsp;&nbsp;&nbsp;
                 <a href="#">View Full Size</a>&nbsp;&nbsp;&nbsp;
                 <a href="#">Mark As Read</a>&nbsp;&nbsp;&nbsp;

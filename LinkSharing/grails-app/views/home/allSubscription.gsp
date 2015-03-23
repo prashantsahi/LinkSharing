@@ -7,6 +7,8 @@
 </head>
 
 <body>
+<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
 <div class="row">
     <div class="col-md-2"></div>
 

@@ -16,7 +16,7 @@
                 <p>${resource?.description}</p>
                 <h4 class="media-heading">
                     <g:render template="/templates/logos"/>
-                    <a href="${createLink(controller: 'demo', action: 'posts')}"
+                    <a href="${createLink(controller: 'home', action: 'posts',params: ['resource':resource?.id])}"
                        style="float: right;">View post</a>
                 </h4>
 

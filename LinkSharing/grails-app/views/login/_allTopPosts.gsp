@@ -14,9 +14,9 @@
 
                 <p>Resource Name : ${rating?.resource?.title}</p>
 
-                <h4 class="media-heading"><g:render template="/templates/logos"/><a
-                        href="${createLink(controller: 'demo', action: 'posts')}"
-                        style="float: right;">View post</a></h4>
+                <h4 class="media-heading"><g:render template="/templates/logos"/>
+                    <a href="${createLink(controller: 'home', action: 'posts',params: ['resource':rating?.resource?.id ])}"
+                       style="float: right;">View post</a></h4>
 
             </div>
         </div>

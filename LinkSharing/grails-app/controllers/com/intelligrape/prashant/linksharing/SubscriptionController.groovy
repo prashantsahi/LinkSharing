@@ -31,31 +31,14 @@ class SubscriptionController {
         println('after save from subscription')
     }
 
-    /*
-    def recent() {
-        params.max = params.max ?: 5
-        params.offset = params.offset ?: 0
-
-        List<Resource> resources = Resource.createCriteria().list(params) {
-            order("id", "desc")
-            'topic' {
-                eq('visibility', Visibility.Public)
-            }
-        }
-        resources.sort { it.dateCreated }
-        render(template: 'allRecentResources', model: [resources: resources, resCount: Resource.count])
-    }
-
-    */
-
     @Transactional
     def viewAllSubscriptions() {
-        params.max = params.max ?: 3
-        params.offset = params.offset ?: 3
+/*        params.max = params.max ?: 3
+        params.offset = params.offset ?: 3*/
         def user = User.findByUsername(session['username'])
         def subscribedTopics = user.subscriptions.topic
-        User currentUser = User.findByUsername(session['username'])
-        render(view: '/home/allSubscription', model: [user:currentUser ,subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count/*, max: params.max, offset: params.offset*/])
+//        User currentUser = User.findByUsername(session['username'])
+        render(view: '/home/allSubscription', model: [user:user ,subscribedTopics:subscribedTopics,subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count])
     }
 
     @Transactional
@@ -74,9 +57,13 @@ class SubscriptionController {
         Topic topicObj = Topic.findByName(params.topic)
         Subscription subscription = new Subscription(user: userObj, topic: topicObj, seriousness: Seriousness.Serious)
         if ((subscription.validate())) {
+            println "validated"
             subscription.save(failOnError: true, flush: true)
+            render (template: "/home/ajaxSubscription" ,model: [subst:topicObj])
+            render(true)
         }
-        redirect(controller: 'home', action: 'dashboard')
+//        redirect(controller: 'home', action: 'dashboard')
+   render false
     }
 
     def show(Subscription subscriptionInstance) {

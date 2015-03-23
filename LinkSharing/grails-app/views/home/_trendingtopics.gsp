@@ -9,7 +9,9 @@
     <div class="panel-body">
 
         <g:each in="${trend}" var="subst">
-            <ls:isSubscribed sub1="${subst}"/>
+            <div class="renderSubscribedDiv">
+                <g:render template="ajaxSubscription" model="[subst: subst]"/>
+            </div>
         </g:each>
     </div>
 </div>

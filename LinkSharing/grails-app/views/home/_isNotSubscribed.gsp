@@ -1,7 +1,7 @@
 <g:each in="${sub}" var="subs">
     <div class="media">
         <div class="media-left">
-            <g:link controller="user" action="showPublicProfile" params="[user:subs?.createdBy?.id]" >
+            <g:link controller="user" action="showPublicProfile" params="[user: subs?.createdBy?.id]">
                 <img width="70px" height="70px"
                      src="${createLink(controller: "user", action: 'showImage', params: [path: subs.createdBy.photoPath])}"/>
             </g:link>
@@ -17,7 +17,10 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subs?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${subs?.resources?.size()}</h5>
 
-            <g:link controller="subscription" action="subscribed" params="[topic:subs.name]">Subscribe</g:link>
+            %{--<g:link controller="subscription" action="subscribed" params="[topic:subs.name]">Subscribe</g:link>--}%
+            <a href="#"
+               data-ajax-url="${createLink(controller: "subscription", action: "subscribed"/*, params:[topic:subs.name]*/)}"
+               data-topic="${subs.name}" class="subscribeTopic" >Subscribe</a>
         </div>
     </div>
 </g:each>

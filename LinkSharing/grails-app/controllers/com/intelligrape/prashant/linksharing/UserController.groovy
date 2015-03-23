@@ -17,7 +17,7 @@ class UserController {
 
         sendMailService.sendMailMethod("$params.emailId", "$topicObj.name", htmlString)
 
-        flash.message = 'invite of '+topicObj.name  +' topic successfully sent'
+        flash.message = 'invite of ' + topicObj.name + ' topic successfully sent'
         redirect(controller: 'home', action: 'dashboard')
     }
 
@@ -65,14 +65,6 @@ class UserController {
         }
 
         userInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-                redirect userInstance
-            }
-            '*' { respond userInstance, [status: CREATED] }
-        }
     }
 
     def edit(User userInstance) {
