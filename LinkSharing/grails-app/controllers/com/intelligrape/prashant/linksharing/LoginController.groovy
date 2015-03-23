@@ -2,9 +2,11 @@ package com.intelligrape.prashant.linksharing
 
 import bootcamp.Visibility
 import linkSharingCommandClass.RegisterCommand
+import linksharing.SendMailService
 
 class LoginController {
     static defaultAction = "index"
+    SendMailService sendMailService
 
     def changePassword() {
         render(view: 'changePassword', model: [emailId: params.emailId])//use params.emailId
@@ -20,12 +22,7 @@ class LoginController {
     }
 
     def sendingMail() {
-        sendMail {
-            async true
-            to "$params.email"
-            subject "Change Password request"
-            html "${g.link(controller: "login", action: "changePassword", params: [emailId: params.email], absolute: "true", { "click on the link to change your password" })}"
-        }
+        sendMailService.sendMailMethod("$params.email", "Change Password request", "${g.link(controller: "login", action: "changePassword", params: [emailId: params.email], absolute: "true", { "click on the link to change your password" })}")
         flash.message = "check your mail to update the password"
         redirect(action: 'index')
     }
@@ -141,14 +138,10 @@ class LoginController {
             user.properties = registerCommand
             user.active = true
             user.save(failOnError: true, flush: true)
-
-            sendMail {
-                async true
-                to "$registerCommand.email"
-                subject "Verification mail"
-                html "${g.link(controller: "home", action: "dashboard", absolute: "true", { "click on the link to verify your account" })}"
-            }
-            render 'mail successfully sent'
+            String htmlString = "${g.link(controller: "home", action: "dashboard", absolute: "true", { "click on the link to verify your account" })}"
+            sendMailService.sendMailMethod("$registerCommand.email", "Verification mail", htmlString)
+            flash.message = 'Registration mail successfully sent'
+            redirect(action: 'index')
 
         } else {
             println registerCommand.errors

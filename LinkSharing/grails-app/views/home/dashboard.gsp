@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-      <meta name="layout" content="dashboardLayout">
+    <meta name="layout" content="dashboardLayout">
     <title>Dashboard</title>
 </head>
 
@@ -32,7 +32,6 @@
     <div class="col-md-6">
         <ls:inbox resource="${res}"/>
     </div><!--col 8-->
-    %{--<div class="col-md-1"></div>--}%
 
 </div><!--row-->
 </body>

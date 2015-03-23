@@ -1,23 +1,24 @@
 package com.intelligrape.prashant.linksharing
 
+import linksharing.SendMailService
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
-
+    SendMailService sendMailService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def mail() {
         println "from mail"
-        sendMail {
-            async true
-            to "$params.emailId"
-            subject "$params.emailTopic"
-            html "${g.link(action: "showPublicProfile", controller: "user", absolute: "true", { "text of the link here" })}"
-        }
-        render 'mail successfully sent'
+        Topic topicObj = Topic.findById(params.emailTopic)
+        def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.name], absolute: "true", { "text of the link here" })}"
+
+        sendMailService.sendMailMethod("$params.emailId", "$topicObj.name", htmlString)
+
+        flash.message = 'invite of '+topicObj.name  +' topic successfully sent'
+        redirect(controller: 'home', action: 'dashboard')
     }
 
 // to show the user images
@@ -33,9 +34,9 @@ class UserController {
         render(view: 'publicUserProfile', model: [user: userObj])
     }
 
-    def editProfile(){
-        User obj=User.findByUsername(session['username'])
-        render(view: 'editProfile',model: [user: obj])
+    def editProfile() {
+        User obj = User.findByUsername(session['username'])
+        render(view: 'editProfile', model: [user: obj])
     }
 
     def index(Integer max) {
