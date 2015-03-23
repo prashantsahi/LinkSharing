@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: intelligrape
-  Date: 3/3/15
-  Time: 2:03 AM
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -34,20 +27,19 @@
 
                     <div class="media-body">
                         <h4 class="media-heading">${resource?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#">Grails</a></h4>
+                        %{--<a href="#">Grails</a>--}%
+                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic.name])}"
+                               style="float: right;">${resource?.topic?.name}</a>
+                        </h4>
 
                         @${resource?.createdBy?.firstName}<span class="span-label"></span>
                         <span class="span-label" style="float: right ">${resource?.lastUpdated}</span>
                         <br>
                         <br>
 
-                        <span style="float: right;">rating:<g:select name="score" from="[1,2,3,4,5]" /></span>
-                        %{--${resource.resourceratings.size()}--}%
-                       %{-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
---}%
+                        <span style="float: right;">rating:<g:select name="score" from="[1, 2, 3, 4, 5]"/></span>
+                        ${resource.resourceratings.size()}
+
                     </div>
                 </div>
                 <br>
@@ -56,10 +48,12 @@
                 <br><br>
 
                 <g:render template="/templates/logos"/>
-                <a href="#">Download</a>&nbsp;&nbsp;&nbsp;
-                <a href="#">View Full Size</a>&nbsp;&nbsp;&nbsp;
-                <a href="#">Mark As Read</a>&nbsp;&nbsp;&nbsp;
-                <a href="#">View Post</a>
+                <div style="float: right">
+                    <a href="#">Download</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#">View Full Size</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#">Mark As Read</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#">Edit</a>
+                </div>
             </div>
         </div>
     </div>
@@ -68,74 +62,75 @@
     </div>
 
     <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Trending topics</h3>
-            </div>
-
-            <div class="panel-body">
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#">
-                            <asset:image class="media-object img-size" src="profile-icon.png"></asset:image>
-                        </a>
+        <g:render template="/home/trendingtopics" model="[trend: trending]"/>
+        %{--        <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Trending topics</h3>
                     </div>
 
-                    <div class="media-body">
-                        <h5 class="media-heading">Prashant Sahi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                href="#">Grails</a>&nbsp;&nbsp;&nbsp;&nbsp;(Private)</h5>
-                        <h5 class="des-head">@Prashant&nbsp;&nbsp;&nbsp;&nbsp;   Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
-                        <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30</h5>
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <asset:image class="media-object img-size" src="profile-icon.png"></asset:image>
+                                </a>
+                            </div>
+
+                            <div class="media-body">
+                                <h5 class="media-heading">Prashant Sahi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                        href="#">Grails</a>&nbsp;&nbsp;&nbsp;&nbsp;(Private)</h5>
+                                <h5 class="des-head">@Prashant&nbsp;&nbsp;&nbsp;&nbsp;   Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
+                                <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30</h5>
+
+                            </div>
+
+                        </div>
+
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <asset:image class="media-object img-size" src="profile-icon.png"></asset:image>
+
+                                </a>
+                            </div>
+
+                            <div class="media-body">
+                                <h5>class="media-heading">Prashant Sahi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                        href="#">Grails</a></h5>
+
+                                <a href="#">Grails</a>
+                                <h5 class="des-head">@uday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
+                                <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30</h5>
+
+
+
+                                <select align="right">
+                                    <option>Serious</option>
+                                    <option>Imp.</option>
+                                </select>
+
+                                <select>
+                                    <option>Private</option>
+                                    <option>Edit</option>
+                                    <option>Delete</option>
+                                </select>
+
+
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                </button>
+
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+
+                            </div>
+                        </div>
 
                     </div>
-
-                </div>
-
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#">
-                            <asset:image class="media-object img-size" src="profile-icon.png"></asset:image>
-
-                        </a>
-                    </div>
-
-                    <div class="media-body">
-                        <h5>class="media-heading">Prashant Sahi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                href="#">Grails</a></h5>
-
-                        <a href="#">Grails</a>
-                        <h5 class="des-head">@uday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
-                        <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30</h5>
-
-
-
-                        <select align="right">
-                            <option>Serious</option>
-                            <option>Imp.</option>
-                        </select>
-
-                        <select>
-                            <option>Private</option>
-                            <option>Edit</option>
-                            <option>Delete</option>
-                        </select>
-
-
-                        <button type="button" class="btn btn-default" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                        </button>
-
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </button>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
+                </div>--}%
 
         <div class="col-md-1">
         </div>

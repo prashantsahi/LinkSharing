@@ -19,9 +19,11 @@ class HomeController {
     def posts() {
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = userObj.subscriptions.topic
-        Resource res=Resource.findById(params.resource)
-        println res.properties
-        render(view: "/templates/post", model: [user: userObj,subscribedTopics:subscribedTopics,resource:res])
+        Resource res = Resource.findById(params.resource)
+        List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
+        trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
+
+        render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: res,trending: trend1])
     }
 
     def dashboard() {
