@@ -2,7 +2,7 @@
     <g:each in="${resources}" var="resource">
         <div class="media">
             <div class="media-left">
-                <g:link controller="user" action="showProfile">
+                <g:link controller="user" action="showPublicProfile" params="[user:resource?.createdBy?.id]" >
                     <img width="60px" height="60px"
                          src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
                 </g:link>
@@ -16,7 +16,7 @@
                 <p>${resource?.description}</p>
                 <h4 class="media-heading">
                     <g:render template="/templates/logos"/>
-                    <a href="${createLink(controller: 'demo', action: 'posts')}"
+                    <a href="${createLink(controller: 'home', action: 'posts',params: ['resource':resource?.id])}"
                        style="float: right;">View post</a>
                 </h4>
 

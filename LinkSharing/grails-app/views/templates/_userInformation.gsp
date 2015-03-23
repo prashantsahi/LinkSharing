@@ -1,9 +1,9 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-body">
 
         <div class="media">
             <div class="media-left media-middle">
-                <g:link controller="user" action="showProfile">
+                <g:link controller="user" action="showPublicProfile" params="[user:user?.id]">
                     <img width="150px" height="150px"
                          src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
                 </g:link>

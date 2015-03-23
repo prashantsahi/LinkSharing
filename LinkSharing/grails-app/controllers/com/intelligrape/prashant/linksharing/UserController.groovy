@@ -1,37 +1,42 @@
 package com.intelligrape.prashant.linksharing
 
+import linksharing.SendMailService
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
-
+    SendMailService sendMailService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def mail() {
         println "from mail"
-        sendMail {
-            async true
-            to "$params.emailId"
-            subject "$params.emailTopic"
-            html "${g.link(action:"showProfile", controller:"user",absolute:"true", {"text of the link here"})}"
-        }
-        render 'mail successfully sent'
+        Topic topicObj = Topic.findById(params.emailTopic)
+        def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.name], absolute: "true", { "text of the link here" })}"
+
+        sendMailService.sendMailMethod("$params.emailId", "$topicObj.name", htmlString)
+
+        flash.message = 'invite of ' + topicObj.name + ' topic successfully sent'
+        redirect(controller: 'home', action: 'dashboard')
     }
 
 // to show the user images
-    def showImage(String path){
+    def showImage(String path) {
         println("path: ${path}")
-        File file=new File(path)
-        response.contentLength=file.bytes.length
-        response.outputStream<<file.bytes
+        File file = new File(path)
+        response.contentLength = file.bytes.length
+        response.outputStream << file.bytes
     }
 
-    def showProfile()
-    {
-        render(view: 'editProfile')
+    def showPublicProfile() {
+        User userObj = User.findById(params.user)
+        render(view: 'publicUserProfile', model: [user: userObj])
+    }
 
+    def editProfile() {
+        User obj = User.findByUsername(session['username'])
+        render(view: 'editProfile', model: [user: obj])
     }
 
     def index(Integer max) {
@@ -60,14 +65,6 @@ class UserController {
         }
 
         userInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-                redirect userInstance
-            }
-            '*' { respond userInstance, [status: CREATED] }
-        }
     }
 
     def edit(User userInstance) {

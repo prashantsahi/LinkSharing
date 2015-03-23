@@ -1,5 +1,6 @@
 package com.intelligrape.prashant.linksharing
 
+import bootcamp.Seriousness
 import com.intelligrape.prashant.linksharing.Subscription
 import grails.transaction.Transactional
 
@@ -18,41 +19,30 @@ class SubscriptionController {
     @Transactional
     def changeSeriousness() {
         Topic topic = Topic.load(params.subscribedTopic)
-        Subscription subscription = Subscription.createCriteria().get {
+        User user=User.findByUsername(session['username'])
+       Subscription subscription=Subscription.findByUserAndTopic(user,topic)
+        /*Subscription subscription = Subscription.createCriteria().get {
             eq('topic', topic)
-        }
+        }*/
+
+        println('------------------------------'+subscription+'----------------------------------------')
         subscription.seriousness = params.ajax
         subscription.save(flush: true, failOnError: true)
+        println('after save from subscription')
     }
-
-    /*
-    def recent() {
-        params.max = params.max ?: 5
-        params.offset = params.offset ?: 0
-
-        List<Resource> resources = Resource.createCriteria().list(params) {
-            order("id", "desc")
-            'topic' {
-                eq('visibility', Visibility.Public)
-            }
-        }
-        resources.sort { it.dateCreated }
-        render(template: 'allRecentResources', model: [resources: resources, resCount: Resource.count])
-    }
-
-    */
 
     @Transactional
     def viewAllSubscriptions() {
-        params.max = params.max ?: 3
-        params.offset = params.offset ?: 3
+/*        params.max = params.max ?: 3
+        params.offset = params.offset ?: 3*/
         def user = User.findByUsername(session['username'])
         def subscribedTopics = user.subscriptions.topic
-        render(view: '/home/allSubscription', model: [subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count/*, max: params.max, offset: params.offset*/])
+//        User currentUser = User.findByUsername(session['username'])
+        render(view: '/home/allSubscription', model: [user:user ,subscribedTopics:subscribedTopics,subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count])
     }
 
     @Transactional
-    showSubscriptions(){
+    def showSubscriptions() {
         params.max = params.max ?: 3
         params.offset = params.offset ?: 3
         def user = User.findByUsername(session['username'])
@@ -61,6 +51,20 @@ class SubscriptionController {
 
     }
 
+    @Transactional
+    def subscribed() {
+        User userObj = User.findByUsername(session['username'])
+        Topic topicObj = Topic.findByName(params.topic)
+        Subscription subscription = new Subscription(user: userObj, topic: topicObj, seriousness: Seriousness.Serious)
+        if ((subscription.validate())) {
+            println "validated"
+            subscription.save(failOnError: true, flush: true)
+            render (template: "/home/ajaxSubscription" ,model: [subst:topicObj])
+            render(true)
+        }
+//        redirect(controller: 'home', action: 'dashboard')
+   render false
+    }
 
     def show(Subscription subscriptionInstance) {
         respond subscriptionInstance
@@ -72,6 +76,7 @@ class SubscriptionController {
 
     @Transactional
     def save(Subscription subscriptionInstance) {
+
         if (subscriptionInstance == null) {
             notFound()
             return

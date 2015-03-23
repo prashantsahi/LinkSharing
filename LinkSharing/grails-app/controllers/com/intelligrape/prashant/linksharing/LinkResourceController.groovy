@@ -49,7 +49,7 @@ class LinkResourceController {
 
         if (linkResourceInstance.save(flush: true)) {
             flash.message = "${linkResourceInstance.title} resource has successfully created "
-//           redirect(controller: 'home', action: 'dashboard')
+           redirect(controller: 'home', action: 'dashboard')
         }
 
     }
