@@ -56,6 +56,26 @@ class UserController {
         render(view: 'editProfile', model: [user: obj])
     }
 
+
+    def userTable(){
+        User currentUser=User.findByUsername(session['username'])
+        render(view: 'Users_Table',model: [user:currentUser,userList:User.list()])
+    }
+@Transactional
+    def activate(){
+        User user=User.findById(params.userId)
+        user.active=true
+        user.save(failOnError: true,flush: true)
+        redirect(action: 'userTable')
+    }
+@Transactional
+    def deactivate(){
+        User user=User.findById(params.userId)
+        user.active=false
+        user.save(failOnError: true,flush: true)
+        redirect(action: 'userTable')
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model: [userInstanceCount: User.count()]

@@ -36,9 +36,9 @@
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
                             class="glyphicon-apple" style="font-size: 40px "/></a>
                     %{--<a href="#" data-toggle="modal" title="${user.username}" style="text-decoration: none">--}%
-                        <img width="35px" height="35px title="${user.username}""
-                             src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
-                    %{--</a>--}%
+                    <img width="35px" height="35px title="${user.username}""
+                src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
+                %{--</a>--}%
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" aria-expanded="true">
                         <span>${session['username']}</span>
@@ -47,9 +47,12 @@
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
                                                         action="editProfile">Profile</g:link></li>
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1">Users</g:link></li>
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1">Topic</g:link></li>
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1">Post</g:link></li>
+                        <g:if test="${user.admin}">
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user" action="userTable">Users</g:link></li>
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1">Topic</g:link></li>
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1">Post</g:link></li>
+                        </g:if>
+
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
                                                         action="logout">Logout</g:link></li>
                     </ul>

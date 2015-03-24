@@ -8,7 +8,7 @@
         action="">
     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 </g:link>
-<g:link class="btn btn-default" aria-label="Left Align" title='create topic' controller="home"
+<g:link class="btn btn-default" aria-label="Left Align" title='Edit' controller="home"
         action="">
     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
 </g:link>

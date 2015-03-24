@@ -15,7 +15,6 @@ class HomeController {
         redirect(controller: 'login', action: 'index')
     }
 
-
     def posts() {
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = userObj.subscriptions.topic
@@ -23,7 +22,7 @@ class HomeController {
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
         trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
 
-        render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: res,trending: trend1])
+        render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: res, trending: trend1])
     }
 
     def dashboard() {
