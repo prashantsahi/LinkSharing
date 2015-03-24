@@ -2,47 +2,10 @@
 <html>
 <head>
     <title></title>
-    <asset:stylesheet src="bootstrap.min.css"></asset:stylesheet>
-    <asset:stylesheet src="styling.css"></asset:stylesheet>
-    <asset:stylesheet src="bootstrap-theme.min.css"></asset:stylesheet>
-    <asset:javascript src="bootstrap.min.js"></asset:javascript>
-    <script type="text/javascript" src="jquery.min.js"></script>
+    <meta name="layout" content="dashboardLayout">
 </head>
 
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-
-        <div class="navbar-header">
-
-            <a class="navbar-brand" href="#">Link Sharing</a>
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <form class="navbar-form navbar-right form-box" role="search">
-                <div class="form-group">
-
-                    <button type="button" class="btn btn-default" aria-label="Right Align">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
-
-                    <button type="button" class="btn btn-default" aria-label="Right Align">
-                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                    </button>
-
-
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</nav>
 
 <div class="row">
     <div class="col-md-1">
@@ -135,22 +98,21 @@
             </div>
 
             <div class="panel-body">
-                <g:uploadForm name="editForm" controller="user">
+                <g:uploadForm name="editForm" controller="user" action="updateProfile">
                     <div>
                         <span class="span-label">FirstName</span>
-                        <g:textField name="firstName" placeholder="First Name"/>
+                        <g:textField name="firstName" value="${user.firstName}" placeholder="First Name"/>
                     </div><br>
 
                     <div id="div5">
                         <span class="span-label">LastName</span>
-                        <g:textField name="lastName" placeholder="Last Name"/>
+                        <g:textField name="lastName" value="${user.lastName}" placeholder="Last Name"/>
                     </div><br>
 
                     <div>
-                        <span class="span-label">UserName</span>
-                        <g:textField name="username" placeholder="User Name"/>
+                        <span class="span-label">Email</span>
+                        <g:textField name="email" value="${user.email}" placeholder="Email"/>
                     </div><br>
-
 
                     <div>
                         <span class="span-label1">Photo</span>

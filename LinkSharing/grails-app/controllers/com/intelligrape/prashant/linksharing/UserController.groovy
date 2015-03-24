@@ -10,6 +10,23 @@ class UserController {
     SendMailService sendMailService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Transactional
+    def updateProfile() {
+        User current = User.findByUsername(session['username'])
+        def file = request.getFile('file')
+        println file
+        current.properties = params
+        if (file) {
+            current.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
+        }
+        file.transferTo(new File(current.photoPath))
+        println current.validate()
+        if (current.validate() && current.save(flush: true, failOnError: true)) {
+            flash.message = "profile updated successfully"
+        }
+        redirect(action: 'editProfile')
+    }
+
     def mail() {
         println "from mail"
         Topic topicObj = Topic.findById(params.emailTopic)
