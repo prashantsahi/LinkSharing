@@ -133,11 +133,15 @@
             </div>
 
             <div class="panel-body">
-                <g:form class="form-box" name="changePassword">
+                <g:form class="form-box" name="changePassword" controller="login" action="updatePassword">
                     <div>
                         <span class="span-label">Password</span>
-                        <g:textField name="password" placeholder="Password"/>
+                        <g:textField name="password" placeholder="Password" value="${user.password}"/>
                     </div><br>
+
+                    <div>
+                    <g:hiddenField name="email" value="${user.email}"/>
+                    </div>
 
                     <div>
                         <span class="span-label">Confirm Password*</span>
