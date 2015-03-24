@@ -28,7 +28,7 @@ class TopicController {
         Topic topic = Topic.findByName(params.topic)
         User currentUser = User.findByUsername(session['username'])
         def subscribedTopics = currentUser.subscriptions.topic
-        render(view: '/topic/topicShow', model: [topics: topic, user: currentUser,subscribedTopics:subscribedTopics])
+        render(view: '/topic/topicShow', model: [topics: topic, user: currentUser, subscribedTopics: subscribedTopics])
     }
 
     def show(Topic topicInstance) {
@@ -42,21 +42,19 @@ class TopicController {
     @Transactional
     def save(Topic topicInstance) {
 
-        User userObj = User.findByUsername(session['username'])
-        topicInstance.createdBy = userObj
+        User user1 = User.findByUsername(session['username'])
+        topicInstance.createdBy = user1
+
         if (topicInstance == null) {
             notFound()
             return
         }
 
-        if (topicInstance.hasErrors()) {
-            respond topicInstance.errors, view: 'create'
-            return
-        }
-        if (topicInstance.validate()) {
-            topicInstance.save(flush: true, failOnError: true)
+        if (topicInstance.validate() && topicInstance.save(flush: true, failOnError: true)) {
             flash.message = "${topicInstance.name} topic has successfully created "
             redirect(controller: 'home', action: 'dashboard')
+        } else {
+            respond topicInstance.errors, view: 'create'
         }
     }
 
