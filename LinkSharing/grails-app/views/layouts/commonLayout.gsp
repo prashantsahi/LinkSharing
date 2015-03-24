@@ -7,6 +7,7 @@
     <asset:stylesheet src="span.css"/>
     <asset:javascript src="jquery-2.1.3.min.js"/>
     <asset:javascript src="bootstrap.min.js"/>
+    <asset:javascript src="register.js"/>
     <asset:javascript src="linkSharingAjax.js"/>
 
     <g:layoutHead/>
@@ -50,11 +51,6 @@
                     </ul>
                 </div>
             </g:form>
-        %{--
-
-                    <g:render template="/templates/sharelink"/>
-                    <g:render template="/templates/sharedocument"/>
-        --}%
         </div>
         <!-- /.navbar-collapse -->
     </div>

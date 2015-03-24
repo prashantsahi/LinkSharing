@@ -147,31 +147,9 @@ log4j.main = {
     info 'grails.app'
 }
 
-environments {
-    development {
-        uploadFolder = "/home/intelligrape/Upload/documentUpload/"
-        imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
-        dafaultImage = "/home/intelligrape/Upload/imageUpload/user.jpg"
-    }
-    test {
-        uploadFolder = "/home/intelligrape/Upload/documentUpload/"
-        imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
-        dafaultImage = "/home/intelligrape/Upload/imageUpload/user.jpg"
-    }
-    production {
-        uploadFolder = "/home/intelligrape/Upload/documentUpload/"
-        imageUploadFolder = "/home/intelligrape/Upload/imageUpload/"
-        dafaultImage = "/home/intelligrape/Upload/imageUpload/user.jpg"
-    }
-
-    //set the path of the folders according to the QA env
-    QA{
-        uploadFolder = "/home/prashant-sahi/Upload/documentUpload/"
-        imageUploadFolder = "/home/prashant-sahi/Upload/imageUpload/"
-        dafaultImage = "/home/prashant-sahi/Upload/imageUpload/user.jpg"
-
-    }
-}
+uploadFolder = "${userHome}/Upload/documentUpload/"
+imageUploadFolder = "${userHome}/Upload/imageUpload/"
+dafaultImage = "${userHome}/Upload/imageUpload/user.jpg"
 
 // for g:remote paginate to use twitter bootstrap classes in g:paginate
 grails.plugins.remotepagination.enableBootstrap = true

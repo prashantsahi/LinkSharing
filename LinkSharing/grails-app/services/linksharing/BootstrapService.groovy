@@ -12,7 +12,7 @@ class BootstrapService {
     void createUser() {
 
         (1..3).each {
-            User user = new User(username: "user$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "false", active: "true",photoPath: "/home/intelligrape/Upload/imageUpload/user.jpg")
+            User user = new User(username: "user$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "false", active: "true",photoPath: grailsApplication.config.defaultImage)
             if (user.validate()) {
                 user.save(flush: true, failOnError: true)
             }
