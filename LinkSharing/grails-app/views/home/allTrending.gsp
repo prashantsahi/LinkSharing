@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -19,8 +18,8 @@
             </div>
 
             <div class="panel-body" id="viewAllTrending">
-                <g:each in="${trend}" var="subst">
-                    <ls:isSubscribed sub1="${subst}"/>
+                <g:each in="${trend}" var="topic">
+                    <g:render template="ajaxSubscription" model="[topic: topic]"/>
                 </g:each>
             </div>
         </div>

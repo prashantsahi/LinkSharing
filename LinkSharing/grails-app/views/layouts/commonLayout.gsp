@@ -7,7 +7,7 @@
     <asset:stylesheet src="span.css"/>
     <asset:javascript src="jquery-2.1.3.min.js"/>
     <asset:javascript src="bootstrap.min.js"/>
-    <asset:javascript src="register.js"/>
+    %{--<asset:javascript src="register.js"/>--}%
     <asset:javascript src="linkSharingAjax.js"/>
 
     <g:layoutHead/>

@@ -1,5 +1,8 @@
 package linksharing
 
+import com.intelligrape.prashant.linksharing.DocumentResource
+import com.intelligrape.prashant.linksharing.LinkResource
+import com.intelligrape.prashant.linksharing.Resource
 import com.intelligrape.prashant.linksharing.Subscription
 import com.intelligrape.prashant.linksharing.User
 
@@ -24,9 +27,9 @@ class ApplicationTagLib {
         User currentUser = User.findByUsername(session['username'])
         Subscription subscribed = Subscription.findByUserAndTopic(currentUser, attr.sub1)
         if (subscribed) {
-            out << g.render(template: "/home/isSubscribed", model: [sub: attr.sub1])
+            out << g.render(template: "/home/isSubscribed", model: [sub1: attr.sub1])
         } else {
-            out << g.render(template: "/home/isNotSubscribed", model: [sub: attr.sub1])
+            out << g.render(template: "/home/isNotSubscribed", model: [sub1: attr.sub1])
         }
     }
 
@@ -37,5 +40,18 @@ class ApplicationTagLib {
         } else {
             out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
         }
+    }
+
+    def checkRes={attr ->
+        def resType=attr?.resource?.class
+        if(resType==LinkResource){
+            LinkResource linkResource=Resource.findById(attr?.resource.id)
+            def link=linkResource.linkUrl
+            out<< "<a href="+link+">View FullSite</a>"
+        }
+        else{
+         out<<g.link{"Download"}
+        }
+
     }
 }

@@ -61,7 +61,7 @@ class DemoController {
     }
 
     def a() {
-        render(view: "hello")
+        render(view: "/demoPage")
 
     }
 

@@ -7,8 +7,11 @@
     </div>
 
     <div class="panel-body">
-        <g:each in="${subscript}" var="subst">
-            <ls:isSubscribed sub1="${subst}"/>
+        <g:each in="${subscript}" var="topic">
+            <div class="renderSubscribedDiv">
+                <g:render template="ajaxSubscription" model="[topic: topic]"/>
+            </div>
+            %{--<ls:isSubscribed sub1="${subst}"/>--}%
         </g:each>
     </div>
 </div>

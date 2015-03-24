@@ -8,9 +8,9 @@
 
     <div class="panel-body">
 
-        <g:each in="${trend}" var="subst">
+        <g:each in="${trendingTopics}" var="topic">
             <div class="renderSubscribedDiv">
-                <g:render template="ajaxSubscription" model="[subst: subst]"/>
+                <g:render template="ajaxSubscription" model="[topic: topic]"/>
             </div>
         </g:each>
     </div>

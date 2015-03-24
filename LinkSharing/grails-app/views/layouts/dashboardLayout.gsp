@@ -8,7 +8,7 @@
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
-    <asset:javascript src="register.js"/>
+    %{--<asset:javascript src="register.js"/>--}%
     <asset:javascript src="linkSharingAjax.js"/>
     <g:layoutHead/>
 </head>

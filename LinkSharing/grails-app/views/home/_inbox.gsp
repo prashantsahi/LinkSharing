@@ -25,9 +25,10 @@
                     <g:render template="/templates/logos"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <g:link>Download</g:link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <g:link>Full Size</g:link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <g:link>Mark As Read</g:link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <ls:checkRes resource="${res}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <g:link>MarkAsRead</g:link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                     <g:link controller="home" action="posts" params="[resource :res?.id]">View Post</g:link>
                     <br>
                     <br>

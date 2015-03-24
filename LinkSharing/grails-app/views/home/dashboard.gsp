@@ -24,7 +24,7 @@
     <div class="col-md-4">
         <g:render template="/templates/userInformation"/>
         <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
-        <g:render template="/home/trendingtopics" model="[trend: trending]"/>
+        <g:render template="/home/trendingtopics" model="[trendingTopics: trending]"/>
     </div>
 
     <div class="col-md-1"></div>

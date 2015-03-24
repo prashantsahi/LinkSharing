@@ -1,19 +1,18 @@
-/**
- * Created by intelligrape on 22/3/15.
- */
-//<script>
-$(document).ready(function(){
-    var $doc=$(document)
+$(document).ready(function () {
+    var $doc = $(document)
 
-    $doc.on("click",".subscribeTopic",function(){
-        console.log($(this).attr('data-ajax-url') )
-        console.log($(this).attr('data-topic') )
+    $(".subscribeTopic").click(function () {
+        console.log($(this).attr('data-ajax-url'))
+        console.log($(this).attr('data-topic'))
+        console.log($(this).attr('data-id'))
+        var id = $(this).attr('data-id')
         $.ajax({
-           url:$(this).attr('data-ajax-url'),
-            data:"topic="+$(this).attr('data-topic'),
-            success:function(data){
-             console.log(data)
-            $(this).closest(".renderSubscribedDiv").html(data)
+            url: $(this).attr('data-ajax-url'),
+            data: "topic=" + $(this).attr('data-topic'),
+            success: function (data) {
+                console.log(data)
+                console.log("#tren-" + id)
+                $("#tren-" + id).html(data)
             }
         });
     });
@@ -32,8 +31,8 @@ function seriousNess(subscriptionUrl, topicId) {
 }
 
 function changeVisibility(topicChangeSeriousnessUrl, topicId) {
-            alert('hiiiii')
-            console.log(topicId)
+    alert('hiiiii')
+    console.log(topicId)
     $.ajax({
         url: topicChangeSeriousnessUrl,
         data: "ajax=" + $("#visibility-" + topicId).val(),
