@@ -1,6 +1,5 @@
 package linksharing
 
-import com.intelligrape.prashant.linksharing.DocumentResource
 import com.intelligrape.prashant.linksharing.LinkResource
 import com.intelligrape.prashant.linksharing.Resource
 import com.intelligrape.prashant.linksharing.Subscription

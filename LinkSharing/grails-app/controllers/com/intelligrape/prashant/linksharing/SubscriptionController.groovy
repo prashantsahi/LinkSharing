@@ -1,7 +1,6 @@
 package com.intelligrape.prashant.linksharing
 
 import bootcamp.Seriousness
-import com.intelligrape.prashant.linksharing.Subscription
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*

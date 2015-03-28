@@ -1,9 +1,5 @@
 package com.intelligrape.prashant.linksharing
 
-import bootcamp.Seriousness
-
-import javax.xml.soap.Text
-
 abstract class Resource {
     User createdBy
     String title

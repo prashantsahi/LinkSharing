@@ -1,10 +1,6 @@
 package linkSharingCommandClass
 
-import com.intelligrape.prashant.linksharing.ReadingItem
-import com.intelligrape.prashant.linksharing.Resource
-import com.intelligrape.prashant.linksharing.ResourceRating
-import com.intelligrape.prashant.linksharing.Subscription
-import com.intelligrape.prashant.linksharing.Topic
+import com.intelligrape.prashant.linksharing.*
 import grails.validation.Validateable
 
 /**

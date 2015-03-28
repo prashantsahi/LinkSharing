@@ -154,3 +154,11 @@ defaultImage = "${userHome}/Upload/imageUpload/user.jpg"
 // for g:remote paginate to use twitter bootstrap classes in g:paginate
 grails.plugins.remotepagination.enableBootstrap = true
 grails.app.context = '/'
+
+simian {
+    reportsDir = "target/simian-reports"
+    fileDir = "."
+    cludesFiles = [includes  : "**/*.groovy **/*.java"
+                   , excludes: "**/*Spec.groovy **/Config.groovy **/ApplicationResources.groovy **/target/"]
+    methodParams = [threshold: 4]
+}

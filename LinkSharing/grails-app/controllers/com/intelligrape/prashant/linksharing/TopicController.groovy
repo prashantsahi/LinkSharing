@@ -1,12 +1,10 @@
 package com.intelligrape.prashant.linksharing
 
-import bootcamp.Seriousness
-
-//import spock.util.mop.Use
-
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+import static org.springframework.http.HttpStatus.*
+
+//import spock.util.mop.Use
 @Transactional
 class TopicController {
 

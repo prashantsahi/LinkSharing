@@ -1,9 +1,7 @@
 package linksharing
 
-import bootcamp.Seriousness
 import bootcamp.Visibility
 import com.intelligrape.prashant.linksharing.*
-
 import grails.transaction.Transactional
 
 @Transactional

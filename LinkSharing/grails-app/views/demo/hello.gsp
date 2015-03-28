@@ -14,21 +14,21 @@
 <body>
 <label> hey dude wassup !!!</label>
 <label>First name is ${name}</label>
-<gt:cusDate format="MM-dd-yyyy" >
+<g:cusDate format="MM-dd-yyyy" >
 
  <h1>   custom date </h1>
 
-</gt:cusDate>
+</g:cusDate>
 
-<gt:cusRep min="2" max="10">
+<g:cusRep min="2" max="10">
     repeated printing<br>
-    <gt:cusDate format="MM-dd-yyyy" >
+    <g:cusDate format="MM-dd-yyyy" >
 
         <h1>   custom date </h1>
 
-    </gt:cusDate>
+    </g:cusDate>
     <br>
-</gt:cusRep>
+</g:cusRep>
 
 <g:render template="demoTemplate" model="[lastName:name]"/>
 </body>

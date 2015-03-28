@@ -1,6 +1,4 @@
-import bootcamp.Seriousness
-import bootcamp.Visibility
-import com.intelligrape.prashant.linksharing.*
+import com.intelligrape.prashant.linksharing.User
 
 class BootStrap {
 

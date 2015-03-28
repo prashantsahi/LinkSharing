@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var $doc = $(document)
+    //var $doc = $(document)
 
     $(".subscribeTopic").click(function () {
         console.log($(this).attr('data-ajax-url'))

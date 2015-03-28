@@ -24,19 +24,19 @@ $(document).ready(function () {
 
         messages: {
             firstName: "Please Enter your first name",
-            lastName: "Please enter your lastname",
+            lastName: "Please enter your last name",
             username: {
                 required: "Please Enter username",
-                minlength: "your username must consists of atleast 3 characters"
+                minlength: "Your username must consist of at least 3 characters"
             },
             password: {
                 required: "Please provide the password",
-                minlength: "your password must consists of atleast 5 characters"
+                minlength: "yYour password must consist of at least 5 characters"
             },
             confirmPassword: {
                 required: "Please provide the password",
-                minlength: "your password must consists of atleast 5 characters",
-                equalTo: "please enter the same pasword as above"
+                minlength: "Your password must consist of at least 5 characters",
+                equalTo: "Please enter the same password as above"
             },
             email: {
                 required: "Please enter the email",
