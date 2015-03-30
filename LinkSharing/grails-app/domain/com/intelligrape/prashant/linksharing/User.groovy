@@ -11,13 +11,12 @@ class User {
     Date dateCreated
     Date lastUpdated
     String photoPath
-//    static transients =['confirmPassword']
-
 
     static hasMany = [subscriptions: Subscription, resources: Resource, readingitems: ReadingItem, resourceratings: ResourceRating, topics: Topic]
     static constraints = {
+
         photoPath nullable: true
-        admin nullable :true
+        admin nullable: true
         active nullable: true
         username unique: true
         email(unique: true, blank: false, email: true)
@@ -27,15 +26,5 @@ class User {
                 return false
             }
         })
-//        confirmPassword(validator: {val,obj->
-//            if(val?.equals(obj.password)){
-//                return true
-//            }
-//        })
-//    }
-//    String getConfirmPassword()
-//    {
-//        return password
-//    }
     }
 }

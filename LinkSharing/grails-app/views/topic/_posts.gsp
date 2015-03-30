@@ -27,5 +27,7 @@
             </div> <!--media body-->
 
         </div><!--media-->
+
+        
     </g:each>
 </div> <!--panel body-->

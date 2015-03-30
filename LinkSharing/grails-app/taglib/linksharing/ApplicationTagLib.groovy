@@ -2,6 +2,7 @@ package linksharing
 
 import com.intelligrape.prashant.linksharing.DocumentResource
 import com.intelligrape.prashant.linksharing.LinkResource
+import com.intelligrape.prashant.linksharing.ReadingItem
 import com.intelligrape.prashant.linksharing.Resource
 import com.intelligrape.prashant.linksharing.Subscription
 import com.intelligrape.prashant.linksharing.User
@@ -42,16 +43,25 @@ class ApplicationTagLib {
         }
     }
 
-    def checkRes={attr ->
-        def resType=attr?.resource?.class
-        if(resType==LinkResource){
-            LinkResource linkResource=Resource.findById(attr?.resource.id)
-            def link=linkResource.linkUrl
-            out<< "<a href="+link+">View FullSite</a>"
+    def checkRes = { attr ->
+        def resType = attr?.resource?.class
+        if (resType == LinkResource) {
+            LinkResource linkResource = Resource.findById(attr?.resource?.id)
+            def link = linkResource.linkUrl
+            out << "<a href=" + link + ' target = "_blank" ' + ">View FullSite</a>"
+        } else {
+            out << g.render(template: "/home/resourceDownload", model: [resourceId: attr?.resource?.id])
         }
-        else{
-         out<<g.link{"Download"}
-        }
+    }
+    def checkReading = { attr ->
+        User currentUser = User.findByUsername(session['username'])
+        ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser, attr?.resource)
+        if (!readingItem) return
 
+        if (readingItem.isRead) {
+            out << g.render(template: '/home/readResource', model: [resource: attr?.resource])
+        } else {
+            out << g.render(template: '/home/unreadResource', model: [resource: attr?.resource])
+        }
     }
 }
