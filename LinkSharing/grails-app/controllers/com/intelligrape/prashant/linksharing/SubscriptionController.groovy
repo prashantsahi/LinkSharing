@@ -26,9 +26,14 @@ class SubscriptionController {
 
     @Transactional
     def viewAllSubscriptions() {
-        def user = User.findByUsername(session['username'])
-        def subscribedTopics = user.subscriptions.topic
-        render(view: '/home/allSubscription', model: [user: user, subscribedTopics: subscribedTopics, subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count])
+        User user = User.findByUsername(session['username'])
+        List<Topic> subscribedTopics = []
+        if (user.admin) {
+            subscribedTopics = Topic.list(sort: 'name')
+        } else {
+            subscribedTopics = user.subscriptions.topic.sort { it.name }
+        }
+        render(view: '/home/allSubscription', model: [user: user, subscribedTopics: subscribedTopics, subscriptionCount: subscribedTopics.count])
     }
 
     @Transactional

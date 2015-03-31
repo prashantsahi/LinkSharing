@@ -7,8 +7,8 @@
 </head>
 
 <body>
-<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
-<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/templates/sharedocument" model='[subscribeTopics: subscribedTopics]'/>
+<g:render template="/templates/sharelink" model='[subscribeTopics: subscribedTopics]'/>
 <div class="row">
     <div class="col-md-1"></div>
 
@@ -20,7 +20,7 @@
 
             <div>
                 <g:render template="/home/viewAllSubscriptions"
-                          model="[[subscriptions: subscriptions, subscriptionCount: subscriptionCount/*, max: max, offset: offset*/]]"/>
+                          model="[subscriptions: subscribedTopics, subscriptionCount: subscriptionCount/*, max: max, offset: offset*/]"/>
             </div>
         </div>
     </div>

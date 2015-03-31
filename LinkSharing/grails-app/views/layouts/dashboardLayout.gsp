@@ -49,7 +49,8 @@
                         <g:if test="${user.admin}">
                             <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
                                                             action="userTable">Users</g:link></li>
-                            <li role="presentation"><g:link role="menuitem" tabindex="-1">Topic</g:link></li>
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="subscription"
+                                                            action="viewAllSubscriptions">Topic</g:link></li>
                             <li role="presentation"><g:link role="menuitem" tabindex="-1">Post</g:link></li>
                         </g:if>
 

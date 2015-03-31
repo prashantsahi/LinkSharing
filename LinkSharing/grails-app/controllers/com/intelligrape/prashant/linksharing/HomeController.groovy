@@ -39,6 +39,7 @@ class HomeController {
                 eq("user", userObj)
                 eq('isRead', false)
             }
+
         }
 
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
@@ -80,8 +81,8 @@ class HomeController {
 
     def subscriptionResources(){
         Topic topic =Topic.get(params.topic)
-        List<Resource> resources=Resource.findAllByTopic(topic)
-        render(template: '/topic/posts' ,model: [resources:resources,topic:topic])
+        Resource resources=Resource.findAllByTopic(topic)
+        render(template: '/topic/posts' ,model: [resources:res])
     }
 
 
