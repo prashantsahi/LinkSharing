@@ -1,6 +1,7 @@
 <div class="panel-body">
     <g:each in="${subscriptions}" var="topic">
-        <div class="renderSubscribedDiv">
+        <div class="renderSubscribedDiv" id="topic-${topic?.id}" data-ajax-url="${createLink(controller: "home", action: "subscriptionResources")}"
+              data-topic-id="${topic?.id}" >
             <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
         </div>
     </g:each>

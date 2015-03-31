@@ -78,5 +78,11 @@ class HomeController {
         }
     }
 
+    def subscriptionResources(){
+        Topic topic =Topic.get(params.topic)
+        List<Resource> resources=Resource.findAllByTopic(topic)
+        render(template: '/topic/posts' ,model: [resources:resources,topic:topic])
+    }
+
 
 }

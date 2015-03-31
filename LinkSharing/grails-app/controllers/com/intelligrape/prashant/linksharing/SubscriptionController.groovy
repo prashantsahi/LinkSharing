@@ -20,19 +20,12 @@ class SubscriptionController {
         Topic topic = Topic.load(params.subscribedTopic)
         User user = User.findByUsername(session['username'])
         Subscription subscription = Subscription.findByUserAndTopic(user, topic)
-        /*Subscription subscription = Subscription.createCriteria().get {
-            eq('topic', topic)
-        }*/
-
-        println('------------------------------' + subscription + '----------------------------------------')
         subscription.seriousness = params.ajax
         subscription.save(flush: true, failOnError: true)
-        println('after save from subscription')
     }
 
     @Transactional
     def viewAllSubscriptions() {
-        println '---------------------from viewAllSubscriptions--------------------------------'
         def user = User.findByUsername(session['username'])
         def subscribedTopics = user.subscriptions.topic
         render(view: '/home/allSubscription', model: [user: user, subscribedTopics: subscribedTopics, subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count])
@@ -52,16 +45,11 @@ class SubscriptionController {
     def subscribed() {
         User userObj = User.findByUsername(session['username'])
         Topic topicObj = Topic.findByName(params.topic)
-        println 'topic object' + topicObj
-        println "-----------------------------------------------------" + params + "--------------------------------------"
         Subscription subscription = new Subscription(user: userObj, topic: topicObj, seriousness: Seriousness.Serious)
         if ((subscription.validate())) {
-            println "validated"
             subscription.save(failOnError: true, flush: true)
             render(template: "/home/isSubscribed", model: [sub1: topicObj])
         }
-//        redirect(controller: 'home', action: 'dashboard')
-
     }
 
     def show(Subscription subscriptionInstance) {

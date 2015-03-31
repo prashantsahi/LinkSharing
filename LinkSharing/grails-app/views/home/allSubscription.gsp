@@ -10,7 +10,7 @@
 <g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
 <g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
 <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
 
     <div class="col-md-5">
         <div id="one" class="panel panel-primary">
@@ -21,6 +21,21 @@
             <div>
                 <g:render template="/home/viewAllSubscriptions"
                           model="[[subscriptions: subscriptions, subscriptionCount: subscriptionCount/*, max: max, offset: offset*/]]"/>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Posts :%{--"${topic.name}"--}% <input type="text" placeholder="search"
+                                                                      style="float:right;">
+                </h3>
+            </div>
+
+            <div id="resources">
+
             </div>
         </div>
     </div>
