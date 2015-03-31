@@ -26,7 +26,7 @@
             <h3 class="panel-title">Inbox :"${topics.name}" <input type="text" placeholder="search" style="float:right;">
             </h3>
         </div>
-        <g:render template="/topic/posts" model="[topic: topics]"/>
+        <g:render template="/topic/posts" model="[resources: topics.resources]"/>
     </div>
     </div>
     <div class="col-md-1"></div>

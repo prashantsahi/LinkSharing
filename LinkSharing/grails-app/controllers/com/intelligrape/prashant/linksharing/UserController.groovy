@@ -1,6 +1,7 @@
 package com.intelligrape.prashant.linksharing
 
 import grails.transaction.Transactional
+import bootcamp.Visibility
 import linksharing.SendMailService
 
 import static org.springframework.http.HttpStatus.*
@@ -48,7 +49,13 @@ class UserController {
 
     def showPublicProfile() {
         User userObj = User.findById(params.user)
-        render(view: 'publicUserProfile', model: [user: userObj])
+        List<Resource> publicResources = Resource.createCriteria().list {
+            eq("createdBy", userObj)
+            topic {
+                eq("visibility", Visibility.Public)
+            }
+        }
+        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources])
     }
 
     def editProfile() {
@@ -57,22 +64,24 @@ class UserController {
     }
 
 
-    def userTable(){
-        User currentUser=User.findByUsername(session['username'])
-        render(view: 'Users_Table',model: [user:currentUser,userList:User.list()])
+    def userTable() {
+        User currentUser = User.findByUsername(session['username'])
+        render(view: 'Users_Table', model: [user: currentUser, userList: User.list()])
     }
-@Transactional
-    def activate(){
-        User user=User.findById(params.userId)
-        user.active=true
-        user.save(failOnError: true,flush: true)
+
+    @Transactional
+    def activate() {
+        User user = User.findById(params.userId)
+        user.active = true
+        user.save(failOnError: true, flush: true)
         redirect(action: 'userTable')
     }
-@Transactional
-    def deactivate(){
-        User user=User.findById(params.userId)
-        user.active=false
-        user.save(failOnError: true,flush: true)
+
+    @Transactional
+    def deactivate() {
+        User user = User.findById(params.userId)
+        user.active = false
+        user.save(failOnError: true, flush: true)
         redirect(action: 'userTable')
     }
 

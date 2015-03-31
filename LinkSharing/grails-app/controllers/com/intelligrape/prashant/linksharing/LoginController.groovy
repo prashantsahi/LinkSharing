@@ -13,7 +13,6 @@ class LoginController {
     }
 
     def updatePassword() {
-        println "-------------------------------------------+${params}+--------------------------------------"
         int x = User.executeUpdate("update User set password='$params.password' where email ='$params.email'")
         if (x) {
             flash.message = 'password successfully updated'
@@ -41,7 +40,7 @@ class LoginController {
                 eq('visibility', Visibility.Public)
             }
         }
-        resources.sort { it.dateCreated }
+        resources.sort { it.dateCreated}
         List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
             order("score", "desc")
             'resource' {
@@ -124,7 +123,6 @@ class LoginController {
     }
 
     def register(RegisterCommand registerCommand) {
-        println "from register action before validation"
         def file = request.getFile('file')
         if (file.empty) {
             registerCommand.photoPath = grailsApplication.config.defaultImage
@@ -144,7 +142,6 @@ class LoginController {
             redirect(action: 'index')
 
         } else {
-            println registerCommand.errors
             redirect(action: 'index')
         }
     }
