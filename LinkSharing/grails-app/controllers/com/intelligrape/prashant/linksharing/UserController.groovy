@@ -49,20 +49,25 @@ class UserController {
 
     def showPublicProfile() {
         User userObj = User.findById(params.user)
-        List<Resource> publicResources = Resource.createCriteria().list {
-            eq("createdBy", userObj)
-            topic {
-                eq("visibility", Visibility.Public)
-            }
-        }
+        List<Resource> publicResources = []
 
-//        List<Topic> userTopics
-//        if (userObj.admin == true) {
-//            userTopics = userObj.topics
-//        } else {
-//            userTopics=Topic.findAllByCreatedByAndVisibility(userObj,Visibility.Public)
-//        }
-        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources/*,userTopics:userTopics*/])
+        List<Topic> userTopics = []
+        if (userObj.admin == true) {
+            userTopics = Topic.findAllByCreatedBy(userObj)
+            publicResources = Resource.findAllByCreatedBy(userObj)
+
+        } else {
+
+            publicResources = Resource.createCriteria().list {
+                eq("createdBy", userObj)
+                topic {
+                    eq("visibility", Visibility.Public)
+                }
+            }
+
+            userTopics = Topic.findAllByCreatedByAndVisibility(userObj, Visibility.Public)
+        }
+        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources, userTopics: userTopics])
     }
 
 

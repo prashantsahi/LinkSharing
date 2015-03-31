@@ -39,11 +39,21 @@
             </div>
 
             <div class="panel-body">
-                <g:each in="${user.topics}" var="topic">
+
+
+
+                <g:each in="${userTopics}" var="topic">
+                    <div class="renderSubscribedDiv">
+                        <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
+                    </div>
+                </g:each>
+
+
+            %{--    <g:each in="${userTopics}" var="topic">
                     <div class="media">
                         <div class="media-left">
                             <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.id])}">${topic?.name}</a>
-                            %{--<a href="#">${topic.name}</a>--}%
+                            --}%%{--<a href="#">${topic.name}</a>--}%%{--
                         </div>
 
                         <div class="media-body">
@@ -61,6 +71,8 @@
                         </div>
                     </div>
                 </g:each>
+            --}%
+
             </div>
             <!--panel body-->
         </div>
