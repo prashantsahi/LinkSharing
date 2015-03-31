@@ -1,11 +1,6 @@
 package linksharing
 
-import com.intelligrape.prashant.linksharing.DocumentResource
-import com.intelligrape.prashant.linksharing.LinkResource
-import com.intelligrape.prashant.linksharing.ReadingItem
-import com.intelligrape.prashant.linksharing.Resource
-import com.intelligrape.prashant.linksharing.Subscription
-import com.intelligrape.prashant.linksharing.User
+import com.intelligrape.prashant.linksharing.*
 
 class ApplicationTagLib {
     static defaultEncodeAs = [taglib: 'raw']
@@ -35,8 +30,9 @@ class ApplicationTagLib {
     }
 
     def isEditable = { attr ->
+        User currentUser = User.findByUsername(session['username'])
         def created = attr?.subscriber?.createdBy.username
-        if (created == session['username']) {
+        if (created == session['username'] || currentUser.admin==true) {
             out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber])
         } else {
             out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
@@ -56,12 +52,14 @@ class ApplicationTagLib {
     def checkReading = { attr ->
         User currentUser = User.findByUsername(session['username'])
         ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser, attr?.resource)
-        if (!readingItem) return
+        if (!readingItem) {
+            return
+        }
 
         if (readingItem.isRead) {
-            out << g.render(template: '/home/readResource', model: [resource: attr?.resource])
+            out << g.render(template: '/home/readResource', model: [resource: attr?.resource, ajaxClass: attr.ajaxClass])
         } else {
-            out << g.render(template: '/home/unreadResource', model: [resource: attr?.resource])
+            out << g.render(template: '/home/unreadResource', model: [resource: attr?.resource, ajaxClass: attr.ajaxClass])
         }
     }
 }

@@ -11,18 +11,15 @@ class ReadingItemController {
 
     @Transactional
     def markAsRead() {
-       Resource resource=Resource.get(params.readingItemId)
+        Resource resource = Resource.get(params.readingItemId)
         User currentUser = User.findByUsername(session['username'])
 
-        ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser,resource)
+        ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser, resource)
         println params.readingItemId
-        if (!readingItem.isRead) {
-            readingItem.isRead=true
-            render "true"
-        }
-        else{
-            readingItem.isRead=false
-            render "false"
+        if (readingItem) {
+            readingItem.isRead = !readingItem.isRead
+            readingItem.save(failOnError: true,flush: true)
+            render(template: "/templates/inbox0rPostResource",model:[resource:resource])
         }
     }
 }

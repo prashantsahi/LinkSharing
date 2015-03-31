@@ -3,32 +3,9 @@
 <head>
     <title>PublicUserProfile</title>
     <meta name="layout" content="homeLayout"/>
-    %{--    <asset:stylesheet src="bootstrap.min.css"></asset:stylesheet>
-        <asset:stylesheet src="styling.css"></asset:stylesheet>
-        <asset:stylesheet src="bootstrap-theme.min.css"></asset:stylesheet>
-        <asset:javascript src="bootstrap.min.js"></asset:javascript>
-        <asset:javascript src="bs-glyphicons-data-generator.js"></asset:javascript>
-        <asset:javascript src="dropdown.js"></asset:javascript>
-        <asset:javascript src="jquery-2.1.3.min.js"></asset:javascript>
-        <script type="text/javascript" src="jquery.min.js"></script>--}%
 </head>
 
 <body>
-%{--<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Link Sharing</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-right form-box" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
-        </div>
-    </div>
-</nav>--}%
 
 <div class="well well-lg panel">Public Profile</div>
 
@@ -94,12 +71,12 @@
     <div class="col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Posts</h3>
+                <h3 class="panel-title">Posts </h3>
             </div>
 
-            <g:each in="${user.topics}" var="topics">
-                <g:render template="/topic/posts" model="[topic: topics]"/>
-            </g:each>
+            %{--<g:each in="${user.topics}" var="topics">--}%
+                <g:render template="/topic/posts" model="[resources: publicResources]"/>
+            %{--</g:each>--}%
 
         </div> <!--panel body-->
     </div>

@@ -8,7 +8,6 @@
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
-    %{--<asset:javascript src="register.js"/>--}%
     <asset:javascript src="linkSharingAjax.js"/>
     <g:layoutHead/>
 </head>
@@ -48,7 +47,8 @@
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
                                                         action="editProfile">Profile</g:link></li>
                         <g:if test="${user.admin}">
-                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user" action="userTable">Users</g:link></li>
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
+                                                            action="userTable">Users</g:link></li>
                             <li role="presentation"><g:link role="menuitem" tabindex="-1">Topic</g:link></li>
                             <li role="presentation"><g:link role="menuitem" tabindex="-1">Post</g:link></li>
                         </g:if>
