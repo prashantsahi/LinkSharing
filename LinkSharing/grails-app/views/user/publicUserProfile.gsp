@@ -42,7 +42,7 @@
                 <g:each in="${user.topics}" var="topic">
                     <div class="media">
                         <div class="media-left">
-                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.name])}">${topic?.name}</a>
+                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.id])}">${topic?.name}</a>
                             %{--<a href="#">${topic.name}</a>--}%
                         </div>
 
@@ -73,7 +73,6 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Posts </h3>
             </div>
-
             %{--<g:each in="${user.topics}" var="topics">--}%
                 <g:render template="/topic/posts" model="[resources: publicResources]"/>
             %{--</g:each>--}%

@@ -7,7 +7,7 @@ abstract class Resource {
     Date dateCreated
     Date lastUpdated
 
-    static hasMany = [readingitems: ReadingItem, resourceratings: ResourceRating]
+    static hasMany = [readingItems: ReadingItem, resourceRatings: ResourceRating]
     static belongsTo = [topic: Topic]
     static constraints = {
         description maxSize: 1024
@@ -21,9 +21,9 @@ abstract class Resource {
     def afterInsert = {
         topic.subscriptions.each {
             if (it.user == createdBy)
-                addToReadingitems(user: it.user, resource: this, isRead: true)
+                addToReadingItems(user: it.user, resource: this, isRead: true)
             else {
-                addToReadingitems(user: it.user, resource: this, isRead: false)
+                addToReadingItems(user: it.user, resource: this, isRead: false)
             }
         }
     }

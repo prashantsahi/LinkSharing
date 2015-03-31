@@ -23,7 +23,7 @@
     <div class="col-md-6">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Inbox :"${topics.name}" <input type="text" placeholder="search" style="float:right;">
+            <h3 class="panel-title">Posts :"${topics.name}" <input type="text" placeholder="search" style="float:right;">
             </h3>
         </div>
         <g:render template="/topic/posts" model="[resources: topics.resources]"/>

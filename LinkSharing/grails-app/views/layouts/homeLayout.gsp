@@ -3,12 +3,11 @@
 <head>
     <title><g:layoutTitle default="Linksharing"/></title>
     <asset:stylesheet src="bootstrap.min.css"/>
-    %{--<asset:stylesheet src="bootstrap-theme.min.css"/>--}%
-    %{--<asset:stylesheet src="span.css">--}%
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
+    <asset:javascript src="linkSharingAjax.js"/>
 
     <g:layoutHead/>
 </head>
@@ -26,6 +25,7 @@
                 <div class="form-group">
                     <g:textField name="search" class="form-control" placeholder="Search"/>
                     <g:submitButton name="search" value="Search"/>
+
                 </div>
             </g:form>
         </div>

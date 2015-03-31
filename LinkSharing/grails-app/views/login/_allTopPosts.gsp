@@ -9,7 +9,7 @@
             </div>
 
             <div class="media-body media-marg">
-                <h4><a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': rating?.resource?.topic?.name])}"
+                <h4><a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': rating?.resource?.topic?.id])}"
                        style="float: right;">${rating?.resource?.topic?.name}</a></h4>
 
                 <p>Resource Name : ${rating?.resource?.title}</p>

@@ -55,8 +55,16 @@ class UserController {
                 eq("visibility", Visibility.Public)
             }
         }
-        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources])
+
+//        List<Topic> userTopics
+//        if (userObj.admin == true) {
+//            userTopics = userObj.topics
+//        } else {
+//            userTopics=Topic.findAllByCreatedByAndVisibility(userObj,Visibility.Public)
+//        }
+        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources/*,userTopics:userTopics*/])
     }
+
 
     def editProfile() {
         User obj = User.findByUsername(session['username'])

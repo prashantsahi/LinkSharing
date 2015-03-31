@@ -18,8 +18,8 @@ $(document).ready(function () {
     });
 
     $(".topicPostClass").click(function () {
-        console.log($(this).attr('data-ajax-url'))
-        console.log($(this).attr('data-resource-id'))
+        console.log($(this).attr('data-ajax-url'));
+        console.log($(this).attr('data-resource-id'));
         var id = $(this).attr('data-resource-id')
 
         $.ajax({

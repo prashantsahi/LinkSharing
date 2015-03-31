@@ -27,7 +27,7 @@
 
                     <div class="media-body">
                         <h4 class="media-heading">${resource?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic.name])}"
+                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic?.id])}"
                                style="float: right;">${resource?.topic?.name}</a>
                         </h4>
 
@@ -37,7 +37,7 @@
                         <br>
 
                         <span style="float: right;">rating:<g:select name="score" from="[1, 2, 3, 4, 5]"/></span>
-                        ${resource.resourceratings.size()}
+                        ${resource.resourceRatings.size()}
 
                     </div>
                 </div>

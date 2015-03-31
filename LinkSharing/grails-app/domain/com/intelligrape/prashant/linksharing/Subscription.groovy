@@ -9,4 +9,11 @@ class Subscription {
     static constraints = {
         user unique: 'topic'
     }
+
+    def afterInsert = {
+        topic.resources.each {
+            it.addToReadingItems(user: user, resource: it, isRead: false)
+        }
+    }
 }
+
