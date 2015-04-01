@@ -15,10 +15,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic?.subscriptions?.size()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${topic?.resources?.size()}</h5>
 
-        %{--<g:link controller="subscription" action="subscribed" params="[topic:subs.name]">Subscribe</g:link>--}%
         <div id="tren-${topic.id}">
             <ls:isSubscribed sub1="${topic}"/>
         </div>
     </div>
 </div>
-%{--<ls:isSubscribed sub1="${topic}"/>--}%

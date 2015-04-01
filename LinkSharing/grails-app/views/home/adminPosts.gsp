@@ -21,45 +21,7 @@
                 <h3 class="panel-title" style="text-align: center">All Subscriptions</h3>
             </div>
             <g:each in="${resources}" var="resource">
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="media-left">
-                            <g:link controller="user" action="showPublicProfile"
-                                    params="[user: resource?.createdBy?.id]">
-                                <img width="60px" height="60px"
-                                     src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
-                            </g:link>
-                        </div>
-
-                        <div class="media-body">
-                            <h4 class="media-heading">${resource?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic?.id])}"
-                                   style="float: right;">${resource?.topic?.name}</a>
-                            </h4>
-
-                            @${resource?.createdBy?.firstName}<span class="span-label"></span>
-                            <span class="span-label" style="float: right ">${resource?.lastUpdated}</span>
-                            <br>
-                            <br>
-
-                            <span style="float: right;">rating:<g:select name="score" from="[1, 2, 3, 4, 5]"/></span>
-                            ${resource.resourceRatings.size()}
-
-                        </div>
-                    </div>
-                    <br>
-                    ${resource?.description}
-                    <br><br>
-
-                    <g:render template="/templates/logos"/>
-                    <div style="float: right">
-                        <a href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#">Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <ls:checkRes resource="${resource}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                    </div>
-                </div>
-            %{--</div>--}%
+                <g:render template="/templates/resourceRatingPosts" model="[resource: resource.resource,average:resource.avgRating]"/>
             </g:each>
         </div>
     </div>

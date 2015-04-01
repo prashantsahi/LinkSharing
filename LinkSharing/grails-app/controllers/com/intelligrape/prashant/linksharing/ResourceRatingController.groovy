@@ -9,6 +9,16 @@ class ResourceRatingController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Transactional
+    def ratingResource() {
+        Resource resource = Resource.get(params.resourceId)
+        ResourceRating resourceRating = ResourceRating.findByResource(resource)
+        println "before------------------->"+resourceRating.properties
+        resourceRating.score = Integer.parseInt(params.rating)
+        resourceRating.save(failOnError: true, flush: true)
+        println "after------------------->"+resourceRating.properties
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond ResourceRating.list(params), model: [resourceRatingInstanceCount: ResourceRating.count()]

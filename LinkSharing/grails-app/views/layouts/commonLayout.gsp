@@ -5,9 +5,10 @@
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:stylesheet src="span.css"/>
+    <asset:stylesheet src="jquery.raty.css"/>
     <asset:javascript src="jquery-2.1.3.min.js"/>
     <asset:javascript src="bootstrap.min.js"/>
-    %{--<asset:javascript src="register.js"/>--}%
+    <asset:javascript src="jquery.raty.js"/>
     <asset:javascript src="linkSharingAjax.js"/>
 
     <g:layoutHead/>

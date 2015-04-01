@@ -1,4 +1,4 @@
-<div id="document" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTopicModal"
+    <div id="document" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTopicModal"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
@@ -11,27 +11,27 @@
                 <div class="panel-body">
                     <g:uploadForm name="document" controller="documentResource" class="form-box">
                         <div>
-                            <span class="span-label">Document*</span>
+                                <span class="span-label1">Document*</span>
                             <input type="file" name="file"/>
                         </div>
 
                         <br>
 
                         <div>
-                            <span class="span-label">Title*</span>
+                            <span class="span-label1">Title*</span>
                             <g:textField name="documentResourceInstance.title"/>
                         </div>
                         <br>
 
                         <div>
-                            <span class="span-label middletext">Description*</span>
+                            <span class="span-label1 middletext">Description*</span>
                             <g:textArea name="documentResourceInstance.description" id="id" rows="4" cols="20"/>
                         </div>
 
                         <br>
 
                         <div>
-                            <span class="span-label">Topic*</span>
+                            <span class="span-label1">Topic*</span>
 
 
                             <g:select name="documentResourceInstance.topic" style="width:175px"
@@ -48,7 +48,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Share" action="save"/>
-                            <span class="span-label"></span>
+                            <span class="span-label1"></span>
                             <input type="button" value="cancel" data-dismiss="modal"/>                        </div>
                     </g:uploadForm>
                 </div>

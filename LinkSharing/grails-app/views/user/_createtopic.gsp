@@ -12,24 +12,23 @@
                 <div class="panel-body">
                     <g:form class="form-box" name='topic' controller="topic">
                         <div>
-                            <span class="span-label">Name*</span>
+                            <span class="span-label1">Name*</span>
                             <g:textField name="topicInstance.name"/>
                         </div>
                         <br>
 
                         <div>
-                            <span class="span-label">Visibility*</span>
+                            <span class="span-label1">Visibility*</span>
                             <g:select name="topicInstance.visibility" from="${['Public', 'Private']}"/>
 
                         </div>
-
                         <br>
 
                         <div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Save" action="save"/>
-                            <span class="span-label"></span>
+                            <span class="span-label1"></span>
                             <input type="button" value="cancel" data-dismiss="modal"/>
                         </div>
                     </g:form>

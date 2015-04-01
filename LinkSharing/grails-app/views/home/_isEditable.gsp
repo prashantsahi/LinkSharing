@@ -13,6 +13,6 @@
     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
 </g:link>
 
-<g:link class="btn btn-default" aria-label="Left Align" title='Delete'>
+<g:link class="btn btn-default" aria-label="Left Align" title='Delete' controller="topic" action="deleteTopic" params="[topicId:subs?.id]">
     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 </g:link>

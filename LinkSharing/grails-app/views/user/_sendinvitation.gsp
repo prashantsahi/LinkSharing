@@ -10,14 +10,14 @@
                 <div class="panel-body">
                     <g:form class="form-box" controller="user">
                         <div>
-                            <span class="span-label">Email Id*</span>
+                            <span class="span-label1">Email Id*</span>
                             <g:textField name="emailId" placeholder="Email"/>
                         </div>
 
                         <br>
 
                         <div>
-                            <span class="span-label">Topic*</span>
+                            <span class="span-label1">Topic*</span>
                             <g:select name="emailTopic" style="width:175px"
                                       from="${subscribedTopics}"
                                       optionKey="id"
@@ -26,11 +26,10 @@
                         <br>
 
                         <div><br> <br>
-
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Invite" action="mail"/>
-                            <span class="span-label"></span>
+                            <span class="span-label1"></span>
                             <input type="button" value="cancel" data-dismiss="modal"/>
                         </div>
                     </g:form>

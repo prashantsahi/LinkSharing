@@ -8,7 +8,7 @@
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
     <asset:javascript src="linkSharingAjax.js"/>
-
+    <asset:stylesheet src="span.css"/>
     <g:layoutHead/>
 </head>
 
