@@ -85,5 +85,16 @@ class HomeController {
         render(template: '/topic/posts', model: [resources: resources])
     }
 
+    def adminPosts() {
+        def userObj = User.findByUsername(session['username'])
+        def subscribedTopics = Topic.list(sort: 'dateCreated',order: "desc")
+        List<Resource> allResources = Resource.list(sort: 'lastUpdated')
+        List<Topic> trendingTopics = Topic.list().sort { it.resources.size() }.reverse()
+        trendingTopics = trendingTopics.size() < 5 ? trendingTopics.asList() : trendingTopics.subList(0, 5)
+//        render(allResources)
+        render(view: "/home/adminPosts", model: [user: userObj, subscribedTopics: subscribedTopics,resources: allResources, trending: trendingTopics])
+    }
+
+
 
 }

@@ -51,7 +51,7 @@
                                                             action="userTable">Users</g:link></li>
                             <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="subscription"
                                                             action="viewAllSubscriptions">Topic</g:link></li>
-                            <li role="presentation"><g:link role="menuitem" tabindex="-1">Post</g:link></li>
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home" action="adminPosts">Post</g:link></li>
                         </g:if>
 
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"

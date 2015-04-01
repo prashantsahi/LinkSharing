@@ -15,10 +15,12 @@
     <div class="col-md-1">
     </div>
 
-
     <div class="col-md-5">
-        <g:each in="${resources}" var="resource">
-            <div class="panel panel-primary">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align: center">All Subscriptions</h3>
+            </div>
+            <g:each in="${resources}" var="resource">
                 <div class="panel-body">
                     <div class="media">
                         <div class="media-left">
@@ -27,7 +29,6 @@
                                 <img width="60px" height="60px"
                                      src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
                             </g:link>
-
                         </div>
 
                         <div class="media-body">
@@ -47,7 +48,6 @@
                         </div>
                     </div>
                     <br>
-                    <br>
                     ${resource?.description}
                     <br><br>
 
@@ -59,8 +59,9 @@
 
                     </div>
                 </div>
-            </div>
-        </g:each>
+            %{--</div>--}%
+            </g:each>
+        </div>
     </div>
 
     <div class="col-md-1">
