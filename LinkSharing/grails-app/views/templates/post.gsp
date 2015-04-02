@@ -10,7 +10,7 @@
 <g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
 
 <div class="row">
-    <div class="col-md-1">
+    %{--<div class="col-md-1">--}%
     </div>
 
     <div class="col-md-5">
@@ -22,7 +22,7 @@
     <div class="col-md-1">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-5">
         <g:render template="/home/trendingtopics" model="[trendingTopics: trending]"/>
 
         <div class="col-md-1">

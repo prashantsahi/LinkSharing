@@ -7,4 +7,7 @@ class ResourceRating {
     static constraints = {
         score range: 1..5
     }
+    static mapping = {
+        score defaultValue :"2"
+    }
 }

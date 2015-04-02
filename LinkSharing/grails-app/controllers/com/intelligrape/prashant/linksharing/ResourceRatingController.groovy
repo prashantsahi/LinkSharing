@@ -12,7 +12,8 @@ class ResourceRatingController {
     @Transactional
     def ratingResource() {
         Resource resource = Resource.get(params.resourceId)
-        ResourceRating resourceRating = ResourceRating.findByResource(resource)
+        def userObj = User.findByUsername(session['username'])
+        ResourceRating resourceRating = ResourceRating.findOrCreateByResourceAndUser(resource,userObj)
         println "before------------------->"+resourceRating.properties
         resourceRating.score = Integer.parseInt(params.rating)
         resourceRating.save(failOnError: true, flush: true)

@@ -5,7 +5,7 @@
     </div>
 
     <div class="panel-body">
-        <div class="media">
+        %{--<div class="media">
             <div class="media-left">
                 <g:link controller="user" action="showPublicProfile" params="[user: topic?.createdBy?.id]">
                     <img width="60px" height="60px"
@@ -29,12 +29,17 @@
                           onchange="seriousNess('${createLink(controller: 'subscription', action: 'changeSeriousness', params: [subscribedTopic: topic.id])}',${topic.id})"/>
 
 
-                <button type="button" class="button button-small" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                </button>
+                <a href="#topicInvite-${topic.id}" id="topic-${topic?.id}" data-toggle="modal" title="Send invitation" class="btn btn-default" aria-label="Left Align"
+                   style="text-decoration: none"><span class="glyphicon-envelope" style="font-size: 40px"/>
+                </a>
+
 
             </div>
 
+        </div>--}%
+        <div class="renderSubscribedDiv">
+            <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
+            <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
         </div>
 
     </div>

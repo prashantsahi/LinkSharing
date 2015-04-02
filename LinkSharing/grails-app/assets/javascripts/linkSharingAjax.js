@@ -20,14 +20,14 @@ $(document).on('click', '.topicPostClass',
 $(document).ready(function () {
 
     $(".rating").raty({
-        numberMax:5,
+        numberMax: 5,
 
         click: function (score) {
             //alert("score : "+score+"\nId:"+$(this).attr('data-resource-id')+"\nurl : "+$(this).attr('data-url'));
-            var id=$(this).attr('data-resource-id');
-            var url=$(this).attr('data-url');
-            console.log(id+"\n"+url)
-            $.get(url,{resourceId:id, rating:score});
+            var id = $(this).attr('data-resource-id');
+            var url = $(this).attr('data-url');
+            console.log(id + "\n" + url)
+            $.get(url, {resourceId: id, rating: score});
         },
         score: function () {
             return $(this).attr('resource-score');
@@ -38,32 +38,6 @@ $(document).ready(function () {
         starOff: '/assets/star_off.png'
     });
 
-    /*  $('#rating').raty({
-     */
-    /* score: function () {
-     return $(this).data('avg')
-     },*/
-    /*
-     half: true,
-     //            score:2,
-     showHalf: true,
-     starHalf: '/assets/star_half.png',
-     starOn: '/assets/star_on.png',
-     starOff: '/assets/star_off.png'
-     */
-    /*  click: function (score) {
-     alert(score)
-     var url = "${g.createLink(controller: 'ResourceRating', action: 'ratingResource')}";
-     //                alert("hii")
-
-     var id = jQuery(this).data('id');
-     alert("hssssii")
-     $.get(url, {resourceId: id, rating: score}, function (jsonData) {
-     })
-     }
-     */
-    /*    });
-     */
     $(".renderSubscribedDiv").click(function () {
         console.log($(this).attr('data-ajax-url'))
         console.log($(this).attr('data-topic-id'))

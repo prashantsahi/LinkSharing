@@ -1,9 +1,12 @@
 package com.intelligrape.prashant.linksharing
 
+import linksharing.TopicService
+
 import javax.print.Doc
 
 class HomeController {
 
+    TopicService topicService
     def index() {
         redirect(action: 'dashboard')
     }
@@ -30,7 +33,7 @@ class HomeController {
             }
         }
         Integer avg = average[0]
-        println('average  :  ' + avg.class)
+        println('average  :  ' + avg)
         render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: resource, average: avg, trending: trend1])
     }
 
@@ -45,7 +48,6 @@ class HomeController {
 
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = Topic.list(sort: 'dateCreated', order: "desc")
-//        List<Resource> allResources = Resource.list(sort: 'lastUpdated')
         List<Topic> trendingTopics = Topic.list().sort { it.resources.size() }.reverse()
         trendingTopics = trendingTopics.size() < 5 ? trendingTopics.asList() : trendingTopics.subList(0, 5)
         render(view: "/home/adminPosts", model: [user: userObj, subscribedTopics: subscribedTopics, resources: resourceAndAverageScore, trending: trendingTopics])
@@ -76,7 +78,8 @@ class HomeController {
     def viewAllTrendingTopic() {
         User currentUser = User.findByUsername(session['username'])
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
-        render(view: '/home/allTrending', model: [trend: trend1, user: currentUser])
+        List<Topic> subscribedTopics = topicService.returnSubscribedTopics()
+        render(view: '/home/allTrending', model: [trend: trend1, user: currentUser,subscribedTopics: subscribedTopics])
     }
 
 

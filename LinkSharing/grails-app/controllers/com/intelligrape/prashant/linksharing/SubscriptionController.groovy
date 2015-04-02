@@ -2,11 +2,13 @@ package com.intelligrape.prashant.linksharing
 
 import bootcamp.Seriousness
 import grails.transaction.Transactional
+import linksharing.TopicService
 
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class SubscriptionController {
+    TopicService topicService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -27,13 +29,8 @@ class SubscriptionController {
     @Transactional
     def viewAllSubscriptions() {
         User user = User.findByUsername(session['username'])
-        List<Topic> subscribedTopics = []
-        if (user.admin) {
-            subscribedTopics = Topic.list(sort: 'name')
-        } else {
-            subscribedTopics = user.subscriptions.topic.sort { it.name }
-        }
-        render(view: '/home/allSubscription', model: [user: user, subscribedTopics: subscribedTopics, subscriptionCount: subscribedTopics.count])
+        List<Topic> subscribedTopics = topicService.returnSubscribedTopics()
+              render(view: '/home/allSubscription', model: [user: user, subscribedTopics: subscribedTopics, subscriptionCount: subscribedTopics.count])
     }
 
     @Transactional

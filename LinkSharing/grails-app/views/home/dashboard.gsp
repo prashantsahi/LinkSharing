@@ -15,13 +15,13 @@
 <body>
 
 <g:render template="/user/createtopic"/>
-<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
-<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
-<g:render template="/user/sendinvitation" model='[subscribeTopics: "${subscribedTopics}"]'/>
+<g:render template="/user/sendinvitation" model='[subscribeTopics: subscribedTopics]'/>
+<g:render template="/templates/sharelink" model='[subscribedTopics: subscribedTopics]'/>
+<g:render template="/templates/sharedocument" model='[subscribedTopics: subscribedTopics]'/>
 <div class="row">
-    <div class="col-md-1"></div>
-
-    <div class="col-md-4">
+ %{--   <div class="col-md-1"></div>
+--}%
+    <div class="col-md-5">
         <g:render template="/templates/userInformation"/>
         <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
         <g:render template="/home/trendingtopics" model="[trendingTopics: trending]"/>

@@ -40,39 +40,12 @@
 
             <div class="panel-body">
 
-
-
                 <g:each in="${userTopics}" var="topic">
                     <div class="renderSubscribedDiv">
                         <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
-                        <g:render template="/user/sendinvitation" model='[subscribedTopics: topic]'/>
+                        <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
                     </div>
                 </g:each>
-
-
-            %{--    <g:each in="${userTopics}" var="topic">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.id])}">${topic?.name}</a>
-                            --}%%{--<a href="#">${topic.name}</a>--}%%{--
-                        </div>
-
-                        <div class="media-body">
-                            <h4 class="media-heading"></h4>
-                            <h5 class="des-head">@${user.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
-                            <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic.subscriptions.size()} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic.resources.size()}</h5>
-                            <select align="right">
-                                <option>Serious</option>
-                                <option>Imp.</option>
-                            </select>
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </g:each>
-            --}%
 
             </div>
             <!--panel body-->
@@ -84,12 +57,9 @@
     <div class="col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Posts </h3>
+                <h3 class="panel-title">Posts</h3>
             </div>
-            %{--<g:each in="${user.topics}" var="topics">--}%
-                <g:render template="/topic/posts" model="[resources: publicResources]"/>
-            %{--</g:each>--}%
-
+            <g:render template="/topic/posts" model="[resources: publicResources]"/>
         </div> <!--panel body-->
     </div>
 

@@ -32,7 +32,7 @@ class TopicController {
         Topic topic = Topic.findById(params.topic)
         User currentUser = User.findByUsername(session['username'])
         def subscribedTopics = currentUser.subscriptions.topic
-        render(view: '/topic/topicShow', model: [topics: topic, user: currentUser, subscribedTopics: subscribedTopics])
+        render(view: '/topic/topicShow', model: [topic: topic, user: currentUser, subscribedTopics: subscribedTopics])
     }
 
     def show(Topic topicInstance) {

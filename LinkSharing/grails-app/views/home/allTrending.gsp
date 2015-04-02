@@ -7,7 +7,8 @@
 </head>
 
 <body>
-
+<g:render template="/templates/sharelink" model='[subscribedTopics: subscribedTopics]'/>
+<g:render template="/templates/sharedocument" model='[subscribedTopics: subscribedTopics]'/>
 <div class="row">
     <div class="col-md-2"></div>
 
@@ -20,6 +21,7 @@
             <div class="panel-body" id="viewAllTrending">
                 <g:each in="${trend}" var="topic">
                     <g:render template="ajaxSubscription" model="[topic: topic]"/>
+                    <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
                 </g:each>
             </div>
         </div>

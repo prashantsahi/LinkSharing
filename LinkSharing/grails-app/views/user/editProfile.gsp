@@ -38,51 +38,10 @@
             </div>
 
             <g:each in="${user.topics}" var="topic">
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="media-left">
-                            <img width="60px" height="60px"
-                                 src="${createLink(controller: "user", action: 'showImage', params: [path: topic.createdBy.photoPath])}"/>
-                        </div>
-
-                        <div class="media-body">
-                            <h4 class="media-heading"></h4>
-                            <input type="text" style="width:200px;" placeholder="Grails">
-                            <input type="button" class="btn btn-primary" autocomplete="off" value="Save"><br>
-                            %{--<a href="#">${topic.name}</a>--}%
-                            <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.name])}">${topic?.name}</a>
-                            <h5 class="des-head">@${topic.createdBy.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subscriptions &nbsp;&nbsp;Posts</h5>
-                            <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic.subscriptions.size()} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${topic.resources.size()}</h5>
-
-
-
-                            <select align="right">
-                                <option>Serious</option>
-                                <option>Imp.</option>
-                            </select>
-
-                            <select>
-                                <option>Private</option>
-                                <option>Edit</option>
-                                <option>Delete</option>
-                            </select>
-
-
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            </button>
-
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            </button>
-
-                        </div>
-                    </div>
-
-                </div>
+                <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
+                <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
             </g:each>
-        <!--panel body-->
+            <!--panel body-->
         </div>
 
     </div>
@@ -140,7 +99,7 @@
                     </div><br>
 
                     <div>
-                    <g:hiddenField name="email" value="${user.email}"/>
+                        <g:hiddenField name="email" value="${user.email}"/>
                     </div>
 
                     <div>

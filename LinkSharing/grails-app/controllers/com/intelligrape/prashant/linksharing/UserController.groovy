@@ -31,7 +31,7 @@ class UserController {
     def mail() {
         println "from mail"
         Topic topicObj = Topic.findById(params.emailTopic)
-        def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.name], absolute: "true", { "text of the link here" })}"
+        def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.id], absolute: "true", { "text of the link here" })}"
 
         sendMailService.sendMailMethod("$params.emailId", "$topicObj.name", htmlString)
 
