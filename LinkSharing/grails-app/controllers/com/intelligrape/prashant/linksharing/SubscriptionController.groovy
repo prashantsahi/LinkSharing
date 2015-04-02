@@ -29,7 +29,7 @@ class SubscriptionController {
     @Transactional
     def viewAllSubscriptions() {
         User user = User.findByUsername(session['username'])
-        List<Topic> subscribedTopics = topicService.returnSubscribedTopics()
+        List<Topic> subscribedTopics = topicService.returnSubscribedTopics(params.topicFlag)
               render(view: '/home/allSubscription', model: [user: user, subscribedTopics: subscribedTopics, subscriptionCount: subscribedTopics.count])
     }
 

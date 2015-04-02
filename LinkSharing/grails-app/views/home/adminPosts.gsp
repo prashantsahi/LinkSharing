@@ -18,7 +18,7 @@
     <div class="col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title" style="text-align: center">All Subscriptions</h3>
+                <h3 class="panel-title" style="text-align: center">All Posts</h3>
             </div>
             <g:each in="${resources}" var="resource">
                 <g:render template="/templates/resourceRatingPosts" model="[resource: resource.resource,average:resource.avgRating]"/>
@@ -29,7 +29,7 @@
     <div class="col-md-1">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-5">
         <g:render template="/home/trendingtopics" model="[trendingTopics: trending]"/>
 
         <div class="col-md-1">

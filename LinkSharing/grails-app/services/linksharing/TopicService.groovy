@@ -14,13 +14,18 @@ class TopicService {
         return RequestContextHolder.currentRequestAttributes().getSession()
     }
 
-    def returnSubscribedTopics() {
+    def returnSubscribedTopics(def flag) {
         User user = User.findByUsername(session['username'])
         List<Topic> subscribedTopics = []
-        if (user.admin) {
-            subscribedTopics = Topic.list(sort: 'name')
+
+        if (flag) {
+            subscribedTopics = Topic.findAllByCreatedBy(user)
         } else {
-            subscribedTopics = user.subscriptions.topic.sort { it.name }
+            if (user.admin) {
+                subscribedTopics = Topic.list(sort: 'name')
+            } else {
+                subscribedTopics = user.subscriptions.topic.sort { it.name }
+            }
         }
         return subscribedTopics
     }
