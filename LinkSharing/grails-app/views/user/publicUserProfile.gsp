@@ -45,6 +45,7 @@
                 <g:each in="${userTopics}" var="topic">
                     <div class="renderSubscribedDiv">
                         <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
+                        <g:render template="/user/sendinvitation" model='[subscribedTopics: topic]'/>
                     </div>
                 </g:each>
 
