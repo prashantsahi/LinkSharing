@@ -1,10 +1,6 @@
 package linkSharingCommandClass
 
 import com.intelligrape.prashant.linksharing.*
-<<<<<<< HEAD
-=======
-
->>>>>>> 220f0b284cc4fd2c24ce111e973c4c4ef506fc73
 import grails.validation.Validateable
 
 @Validateable
@@ -25,8 +21,8 @@ class RegisterCommand {
         importFrom(User)
         dateCreated nullable: true
         lastUpdated nullable: true
-        confirmPassword(validator: {val,obj->
-            if(val!=obj.password){
+        confirmPassword(validator: { val, obj ->
+            if (val != obj.password) {
                 return false
             }
         })
