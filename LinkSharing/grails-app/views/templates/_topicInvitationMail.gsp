@@ -1,4 +1,4 @@
-<div id="sendInvitation" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTopicModal"
+<div id="topicInvite-${topic.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTopicModal"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
@@ -8,34 +8,30 @@
                 </div>
 
                 <div class="panel-body">
-                    <g:form class="form-box" controller="user">
+                    <g:form class="form-box" controller="user" params="[emailTopic: topic.id]">
                         <div>
-                            <span class="span-label">Email Id*</span>
+                            <span class="span-label1">Email Id*</span>
                             <g:textField name="emailId" placeholder="Email"/>
                         </div>
 
                         <br>
 
                         <div>
-                            <span class="span-label">Topic*</span>
-                            <g:select name="emailTopic" style="width:175px"
-                                      from="${subscribedTopics}"
-                                      optionKey="id"
-                                      optionValue="name"/></div>
+                            <span class="span-label1">Topic*</span>
+                            <g:textField name="topicName" value="${topic.name}"/>
+                        </div>
 
                         <br>
 
                         <div><br> <br>
-
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <g:actionSubmit value="Invite" action="mail"/>
-                            <span class="span-label"></span>
+                            <span class="span-label1"></span>
                             <input type="button" value="cancel" data-dismiss="modal"/>
                         </div>
                     </g:form>
                 </div>
-
             </div>
         </div>
     </div>

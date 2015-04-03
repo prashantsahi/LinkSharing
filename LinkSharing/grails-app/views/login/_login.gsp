@@ -6,18 +6,18 @@
     <div class="panel-body">
         <g:form class="form-box" name="login" controller="login">
             <div>
-                <span style="width: 50px">UserName*</span>
+                <span class="span-label1">UserName*</span>
                 <g:textField name="username" placeholder="UserName"/>
             </div><br>
 
             <div>
-                <span style="width: 50px">Password*</span>
+                <span class="span-label1">Password*</span>
                 <g:passwordField name="password" placeholder="Password"/>
             </div><br>
 
             <div>
-                <span class="span-label1"><g:link controller="login"
-                                                  action="showForgotPassword">Forgot Password</g:link></span>
+                <span><g:link controller="login"
+                              action="showForgotPassword">Forgot Password</g:link></span>
                 <span></span>
                 <g:actionSubmit name="button" value="Login" action="loginHandler"
                                 style="float:right;margin-right: 150px"/>

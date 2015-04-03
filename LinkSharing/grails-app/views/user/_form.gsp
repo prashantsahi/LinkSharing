@@ -65,7 +65,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'readingitems', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'readingItems', 'error')} ">
 	<label for="readingitems">
 		<g:message code="user.readingitems.label" default="Readingitems" />
 
@@ -83,7 +83,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'resourceratings', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'resourceRatings', 'error')} ">
 	<label for="resourceratings">
 		<g:message code="user.resourceratings.label" default="Resourceratings" />
 

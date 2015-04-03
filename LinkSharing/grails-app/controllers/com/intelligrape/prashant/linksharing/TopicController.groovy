@@ -21,12 +21,18 @@ class TopicController {
         topic.save(failOnError: true, flush: true)
     }
 
+    def deleteTopic() {
+        Topic.get(params.topicId).delete()
+        flash.message="Topic deleted successfully"
+        redirect(controller: 'home', action: 'dashboard')
+    }
+
     //to render the showTopic page
     def topicShow() {
-        Topic topic = Topic.findByName(params.topic)
+        Topic topic = Topic.findById(params.topic)
         User currentUser = User.findByUsername(session['username'])
         def subscribedTopics = currentUser.subscriptions.topic
-        render(view: '/topic/topicShow', model: [topics: topic, user: currentUser, subscribedTopics: subscribedTopics])
+        render(view: '/topic/topicShow', model: [topic: topic, user: currentUser, subscribedTopics: subscribedTopics])
     }
 
     def show(Topic topicInstance) {

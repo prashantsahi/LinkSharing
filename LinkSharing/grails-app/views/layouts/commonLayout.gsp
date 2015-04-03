@@ -5,9 +5,10 @@
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:stylesheet src="span.css"/>
+    <asset:stylesheet src="jquery.raty.css"/>
     <asset:javascript src="jquery-2.1.3.min.js"/>
     <asset:javascript src="bootstrap.min.js"/>
-    %{--<asset:javascript src="register.js"/>--}%
+    <asset:javascript src="jquery.raty.js"/>
     <asset:javascript src="linkSharingAjax.js"/>
 
     <g:layoutHead/>
@@ -23,8 +24,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <g:form controller="home" class="navbar-form navbar-right form-box" role="search">
                 <div class="form-group">
-                    <g:textField name="search" class="form-control" placeholder="Search"/>
-                    <g:submitButton name="search" value="Search"/>
+                    <g:textField name="search" class="form-control globalSearch" placeholder="Search"
+                                 data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>
                     <a href="#link" data-toggle="modal" title="Share Link" style="text-decoration: none"><span
                             class="glyphicon-comment" style="font-size: 40px "/></a>
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span

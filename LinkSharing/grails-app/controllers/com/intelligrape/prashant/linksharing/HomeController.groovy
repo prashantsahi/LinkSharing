@@ -1,8 +1,12 @@
 package com.intelligrape.prashant.linksharing
 
+import linksharing.TopicService
+
 import javax.print.Doc
 
 class HomeController {
+
+    TopicService topicService
 
     def index() {
         redirect(action: 'dashboard')
@@ -18,11 +22,36 @@ class HomeController {
     def posts() {
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = userObj.subscriptions.topic
-        Resource res = Resource.findById(params.resource)
+        Resource resource = Resource.findById(params.resource)
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
         trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
+        def average = ResourceRating.createCriteria().list {
+            projections {
+                avg('score')
+            }
+            and {
+                eq('resource', resource)
+            }
+        }
+        Integer avg = average[0]
+        println('average  :  ' + avg)
+        render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: resource, average: avg, trending: trend1])
+    }
 
-        render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: res, trending: trend1])
+    def adminPosts() {
+
+        def resourceAndAverageScore = ResourceRating.createCriteria().list() {
+            projections {
+                groupProperty("resource")
+                avg("score")
+            }
+        }.collect { [resource: it[0], avgRating: it[1]] }
+
+        def userObj = User.findByUsername(session['username'])
+        def subscribedTopics = Topic.list(sort: 'dateCreated', order: "desc")
+        List<Topic> trendingTopics = Topic.list().sort { it.resources.size() }.reverse()
+        trendingTopics = trendingTopics.size() < 5 ? trendingTopics.asList() : trendingTopics.subList(0, 5)
+        render(view: "/home/adminPosts", model: [user: userObj, subscribedTopics: subscribedTopics, resources: resourceAndAverageScore, trending: trendingTopics])
     }
 
     def dashboard() {
@@ -49,13 +78,14 @@ class HomeController {
     def viewAllTrendingTopic() {
         User currentUser = User.findByUsername(session['username'])
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
-        render(view: '/home/allTrending', model: [trend: trend1, user: currentUser])
+        List<Topic> subscribedTopics = topicService.returnSubscribedTopics()
+        render(view: '/home/allTrending', model: [trend: trend1, user: currentUser, subscribedTopics: subscribedTopics])
     }
+
 
     def showAllTrendingTopic() {
 
     }
-
 
     def downloadDocument() {
         DocumentResource documentInstance = DocumentResource.get(params.resourceId)
@@ -78,5 +108,9 @@ class HomeController {
         }
     }
 
-
+    def subscriptionResources() {
+        Topic topic = Topic.get(params.topic)
+        List<Resource> resources = Resource.findAllByTopic(topic)
+        render(template: '/topic/posts', model: [resources: resources])
+    }
 }

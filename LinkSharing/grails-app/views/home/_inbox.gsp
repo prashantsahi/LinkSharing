@@ -1,6 +1,8 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Inbox  <input type="text" placeholder="search" style="float:right;"></h3>
+        <h3 class="panel-title">Inbox
+        <g:textField name="search" placeholder="search" style="float:right;color: #080808"/>
+        </h3>
     </div>
 
     <div class="panel-body">

@@ -29,7 +29,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'readingitems', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'readingItems', 'error')} ">
 	<label for="readingitems">
 		<g:message code="linkResource.readingitems.label" default="Readingitems" />
 
@@ -47,7 +47,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'resourceratings', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'resourceRatings', 'error')} ">
 	<label for="resourceratings">
 		<g:message code="linkResource.resourceratings.label" default="Resourceratings" />
 

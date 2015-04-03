@@ -3,23 +3,26 @@
 <head>
     <meta name="layout" content="homeLayout">
     <title>Login Page</title>
+
 </head>
 
 <body>
+<div class="globalSearchDiv">
 
-<div class="row">
-    <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-8">
 
-        <div id="recentshares">
-            <ls:recentShare resources="${res}" resCnt="${resCount}"/>
+            <div id="recentshares">
+                <ls:recentShare resources="${res}" resCnt="${resCount}"/>
+            </div>
+            <ls:top rate="${rating}"/>
         </div>
-        <ls:top rate="${rating}"/>
-    </div>
 
-    <div class="col-md-4">
-        <g:render template="/login/login"/>
-        <g:render template="/login/register"/>
+        <div class="col-md-4">
+            <g:render template="/login/login"/>
+            <g:render template="/login/register"/>
+        </div>
     </div>
-</div>
+</div>>
 </body>
 </html>

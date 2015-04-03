@@ -25,6 +25,27 @@
                 <div class="form-group">
                     <g:textField name="search" class="form-control globalSearch" placeholder="Search"
                                  data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>
+
+
+                    <g:if test="if(${user.username})">
+                        <img width="35px" height="35px" title="${user.username}"
+                             src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
+                    </g:if>
+                    <g:else>
+                        <asset:image src="apple-touch-icon-retina.png"/>
+                    </g:else>
+
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown" aria-expanded="true">
+                        <span>${session['username']}</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
+                                                        action="editProfile">Profile</g:link></li>
+                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
+                                                        action="logout">Logout</g:link></li>
+                    </ul>
                 </div>
             </g:form>
         </div>

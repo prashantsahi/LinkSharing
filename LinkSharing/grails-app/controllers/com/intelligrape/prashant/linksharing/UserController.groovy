@@ -31,7 +31,7 @@ class UserController {
     def mail() {
         println "from mail"
         Topic topicObj = Topic.findById(params.emailTopic)
-        def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.name], absolute: "true", { "text of the link here" })}"
+        def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.id], absolute: "true", { "text of the link here" })}"
 
         sendMailService.sendMailMethod("$params.emailId", "$topicObj.name", htmlString)
 
@@ -49,14 +49,27 @@ class UserController {
 
     def showPublicProfile() {
         User userObj = User.findById(params.user)
-        List<Resource> publicResources = Resource.createCriteria().list {
-            eq("createdBy", userObj)
-            topic {
-                eq("visibility", Visibility.Public)
+        List<Resource> publicResources = []
+
+        List<Topic> userTopics = []
+        if (userObj.admin == true) {
+            userTopics = Topic.findAllByCreatedBy(userObj)
+            publicResources = Resource.findAllByCreatedBy(userObj)
+
+        } else {
+
+            publicResources = Resource.createCriteria().list {
+                eq("createdBy", userObj)
+                topic {
+                    eq("visibility", Visibility.Public)
+                }
             }
+
+            userTopics = Topic.findAllByCreatedByAndVisibility(userObj, Visibility.Public)
         }
-        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources])
+        render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources, userTopics: userTopics])
     }
+
 
     def editProfile() {
         User obj = User.findByUsername(session['username'])
@@ -66,7 +79,7 @@ class UserController {
 
     def userTable() {
         User currentUser = User.findByUsername(session['username'])
-        render(view: 'Users_Table', model: [user: currentUser, userList: User.list()])
+        render(view: 'Users_Table', model: [user: currentUser, subscribedTopics: Topic.list(), userList: User.list()])
     }
 
     @Transactional
@@ -104,7 +117,6 @@ class UserController {
             notFound()
             return
         }
-//        userInstance.photoPath = params.photo           //convert to byte array and den validate and den save..
         if (userInstance.hasErrors()) {
             respond userInstance.errors, view: 'create'
             return

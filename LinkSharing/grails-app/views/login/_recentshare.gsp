@@ -19,7 +19,7 @@
 
                 <div class="media-body media-marg">
                     <h4 class="media-heading">${resource?.createdBy?.username}
-                        <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic.name])}"
+                        <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic.id])}"
                            style="float: right;">${resource?.topic?.name}</a></h4>
 
                     <p>${resource?.description}</p>

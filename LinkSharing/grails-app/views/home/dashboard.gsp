@@ -13,26 +13,24 @@
 </head>
 
 <body>
+<g:render template="/user/createTopic"/>
+<g:render template="/user/sendInvitation" model='[subscribeTopics: subscribedTopics]'/>
+<g:render template="/templates/shareLink" model='[subscribedTopics: subscribedTopics]'/>
+<g:render template="/templates/shareDocument" model='[subscribedTopics: subscribedTopics]'/>
+<div class="globalSearchDiv">
+    <div class="row">
+        <div class="col-md-5">
+            <g:render template="/templates/userInformation"/>
+            <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
+            <g:render template="/home/trendingTopics" model="[trendingTopics: trending]"/>
+        </div>
 
-<g:render template="/user/createtopic"/>
-<g:render template="/templates/sharelink" model='[subscribeTopics: "${subscribedTopics}"]'/>
-<g:render template="/templates/sharedocument" model='[subscribeTopics: "${subscribedTopics}"]'/>
-<g:render template="/user/sendinvitation" model='[subscribeTopics: "${subscribedTopics}"]'/>
-<div class="row">
-    <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
 
-    <div class="col-md-4">
-        <g:render template="/templates/userInformation"/>
-        <g:render template="/home/subscription" model="[subscript: subscriptions]"/>
-        <g:render template="/home/trendingtopics" model="[trendingTopics: trending]"/>
+        <div class="col-md-6">
+            <ls:inbox resource="${res}"/>
+        </div><!--col 8-->
     </div>
-
-    <div class="col-md-1"></div>
-
-    <div class="col-md-6">
-        <ls:inbox resource="${res}"/>
-    </div><!--col 8-->
-
 </div><!--row-->
 </body>
 </html>
