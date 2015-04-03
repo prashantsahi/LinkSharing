@@ -7,6 +7,7 @@ import javax.print.Doc
 class HomeController {
 
     TopicService topicService
+
     def index() {
         redirect(action: 'dashboard')
     }
@@ -67,7 +68,6 @@ class HomeController {
                 eq("user", userObj)
                 eq('isRead', false)
             }
-
         }
 
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
@@ -79,7 +79,7 @@ class HomeController {
         User currentUser = User.findByUsername(session['username'])
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
         List<Topic> subscribedTopics = topicService.returnSubscribedTopics()
-        render(view: '/home/allTrending', model: [trend: trend1, user: currentUser,subscribedTopics: subscribedTopics])
+        render(view: '/home/allTrending', model: [trend: trend1, user: currentUser, subscribedTopics: subscribedTopics])
     }
 
 

@@ -26,8 +26,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <g:form controller="home" class="navbar-form navbar-right form-box" role="search">
                 <div class="form-group">
-                    <g:textField name="search" class="form-control" placeholder="Search"/>
-                    <g:submitButton name="search" value="Search"/>
+                    <g:textField name="search" class="form-control globalSearch" placeholder="Search"
+                                 data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>
                     <a href="#createTopic" data-toggle="modal" title="Create topic" style="text-decoration: none"><span
                             class="glyphicon-user" style="font-size: 40px "/></a>
                     <a href="#sendInvitation" data-toggle="modal" title="Send invitation"
@@ -54,7 +54,8 @@
                                                             action="userTable">Users</g:link></li>
                             <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="subscription"
                                                             action="viewAllSubscriptions">Topic</g:link></li>
-                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home" action="adminPosts">Post</g:link></li>
+                            <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
+                                                            action="adminPosts">Post</g:link></li>
                         </g:if>
 
                         <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"

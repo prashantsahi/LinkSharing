@@ -17,6 +17,20 @@ $(document).on('click', '.topicPostClass',
         });
     });
 
+$(document).on('keyup', '.globalSearch', function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).val());
+    var searchedText = $(this).val();
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "searchedText="+searchedText,
+        success: function (data) {
+            console.log(data)
+            $(".globalSearchDiv").html(data)
+        }
+    });
+});
+
 $(document).ready(function () {
 
     $(".rating").raty({
@@ -101,7 +115,7 @@ function seriousNess(subscriptionUrl, topicId) {
 }
 
 function changeVisibility(topicChangeSeriousnessUrl, topicId) {
-    alert('hiiiii')
+    alert('Visibility')
     console.log(topicId)
     $.ajax({
         url: topicChangeSeriousnessUrl,

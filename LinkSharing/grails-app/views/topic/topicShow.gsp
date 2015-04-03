@@ -7,39 +7,34 @@
 
 <body>
 
-<g:render template="/templates/sharelink" model='[subscribedTopics: subscribedTopics]'/>
-<g:render template="/templates/sharedocument" model='[subscribedTopics: subscribedTopics]'/>
+<g:render template="/templates/shareLink" model='[subscribedTopics: subscribedTopics]'/>
+<g:render template="/templates/shareDocument" model='[subscribedTopics: subscribedTopics]'/>
 
-<div class="row">
-    <div class="col-md-1"></div>
+<div class="globalSearchDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
 
-    <div class="col-md-4">
-        <g:render template="/topic/topic" model="[topic: topic]"/>
-
-%{--        <div class="renderSubscribedDiv">
-            <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
+        <div class="col-md-4">
+            <g:render template="/topic/topic" model="[topic: topic]"/>
+            <g:render template="/topic/users" model="[topic: topic]"/>
             <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
-        </div>--}%
-
-        <g:render template="/topic/users" model="[topic: topic]"/>
-        <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Posts :"${topic.name}" <input type="text" placeholder="search"
-                                                                       style="float:right;">
-                </h3>
-            </div>
-            <g:render template="/topic/posts" model="[resources: topic.resources]"/>
         </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Posts :"${topic.name}" <input type="text" placeholder="search"
+                                                                          style="float:right;">
+                    </h3>
+                </div>
+                <g:render template="/topic/posts" model="[resources: topic.resources]"/>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+
     </div>
-
-    <div class="col-md-1"></div>
-
 </div>
-
 </body>
 </html>
 

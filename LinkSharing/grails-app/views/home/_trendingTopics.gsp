@@ -10,7 +10,7 @@
 
         <g:each in="${trendingTopics}" var="topic">
             <div class="renderSubscribedDiv">
-                <g:render template="ajaxSubscription" model="[topic: topic]"/>
+                <g:render template="/home/ajaxSubscription" model="[topic: topic]"/>
                 <g:render template="/templates/topicInvitationMail" model='[topic: topic]'/>
             </div>
         </g:each>

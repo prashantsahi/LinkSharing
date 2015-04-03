@@ -11,7 +11,7 @@ class ApplicationTagLib {
     }
 
     def top = { attr ->
-        out << g.render(template: "/login/topposts", model: [ratings: attr.rate])
+        out << g.render(template: "/login/topPosts", model: [ratings: attr.rate])
     }
 
     def inbox = { attr ->

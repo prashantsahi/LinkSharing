@@ -79,7 +79,7 @@ class UserController {
 
     def userTable() {
         User currentUser = User.findByUsername(session['username'])
-        render(view: 'Users_Table', model: [user: currentUser, userList: User.list()])
+        render(view: 'Users_Table', model: [user: currentUser, subscribedTopics: Topic.list(), userList: User.list()])
     }
 
     @Transactional
@@ -117,7 +117,6 @@ class UserController {
             notFound()
             return
         }
-//        userInstance.photoPath = params.photo           //convert to byte array and den validate and den save..
         if (userInstance.hasErrors()) {
             respond userInstance.errors, view: 'create'
             return
