@@ -23,9 +23,8 @@ $(document).on('keyup', '.globalSearch', function () {
     var searchedText = $(this).val();
     $.ajax({
         url: $(this).attr('data-ajax-url'),
-        data: "searchedText="+searchedText,
+        data: "searchedText=" + searchedText,
         success: function (data) {
-            console.log(data)
             $(".globalSearchDiv").html(data)
         }
     });
