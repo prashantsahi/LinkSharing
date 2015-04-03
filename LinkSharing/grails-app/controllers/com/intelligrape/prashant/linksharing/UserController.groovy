@@ -15,13 +15,11 @@ class UserController {
     def updateProfile() {
         User current = User.findByUsername(session['username'])
         def file = request.getFile('file')
-        println file
         current.properties = params
         if (file) {
             current.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
         }
         file.transferTo(new File(current.photoPath))
-        println current.validate()
         if (current.validate() && current.save(flush: true, failOnError: true)) {
             flash.message = "profile updated successfully"
         }
@@ -29,7 +27,6 @@ class UserController {
     }
 
     def mail() {
-        println "from mail"
         Topic topicObj = Topic.findById(params.emailTopic)
         def htmlString = "${g.link(action: "topicShow", controller: "topic", params: [topic: topicObj.id], absolute: "true", { "text of the link here" })}"
 
@@ -41,7 +38,6 @@ class UserController {
 
 // to show the user images
     def showImage(String path) {
-        println("path: ${path}")
         File file = new File(path)
         response.contentLength = file.bytes.length
         response.outputStream << file.bytes
@@ -55,16 +51,13 @@ class UserController {
         if (userObj.admin == true) {
             userTopics = Topic.findAllByCreatedBy(userObj)
             publicResources = Resource.findAllByCreatedBy(userObj)
-
         } else {
-
             publicResources = Resource.createCriteria().list {
                 eq("createdBy", userObj)
                 topic {
                     eq("visibility", Visibility.Public)
                 }
             }
-
             userTopics = Topic.findAllByCreatedByAndVisibility(userObj, Visibility.Public)
         }
         render(view: 'publicUserProfile', model: [user: userObj, publicResources: publicResources, userTopics: userTopics])
