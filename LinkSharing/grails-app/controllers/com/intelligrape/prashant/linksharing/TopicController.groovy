@@ -23,8 +23,8 @@ class TopicController {
 
     def deleteTopic() {
         Topic.get(params.topicId).delete()
-        flash.message="Topic deleted successfully"
-        redirect(controller: 'home', action: 'dashboard')
+        flash.message = "Topic deleted successfully"
+        render "true"
     }
 
     //to render the showTopic page

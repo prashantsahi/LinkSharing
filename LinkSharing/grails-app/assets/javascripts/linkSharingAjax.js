@@ -1,3 +1,20 @@
+$(document).on('click', ".deleteTopic", function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).attr('data-topicId'));
+    var topicId = $(this).attr('data-topicId');
+    console.log($(this).attr('id'));
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "topicId=" + topicId,
+        success: function (data) {
+            console.log(data)
+            if(data){
+                $("#topic-"+topicId).hide();
+            }
+        }
+    });
+});
+
 //for inbox
 $(document).on('click', ".inboxClass", function () {
     console.log($(this).attr('data-ajax-url'));
@@ -154,5 +171,3 @@ function changeVisibility(topicChangeSeriousnessUrl, topicId) {
         }
     });
 }
-
-//${document}(subscriptionUrl,)
