@@ -17,6 +17,11 @@ $(document).on('click', ".deleteResource", function () {
 });
 
 
+$(document).on('click',".editTopic",function(){
+
+});
+
+
 $(document).on('click', ".deleteTopic", function () {
     console.log($(this).attr('data-ajax-url'));
     console.log($(this).attr('data-topicId'));

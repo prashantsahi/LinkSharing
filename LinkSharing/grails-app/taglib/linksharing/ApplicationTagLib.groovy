@@ -1,6 +1,7 @@
 package linksharing
 
 import com.intelligrape.prashant.linksharing.*
+
 class ApplicationTagLib {
     static defaultEncodeAs = [taglib: 'raw']
 //    static defaultEncodeAs = [taglib: 'html']
@@ -22,7 +23,7 @@ class ApplicationTagLib {
         User currentUser = User.findByUsername(session['username'])
         Subscription subscribed = Subscription.findByUserAndTopic(currentUser, attr.sub1)
         if (subscribed) {
-            out << g.render(template: "/home/isSubscribed", model: [sub1: attr.sub1])
+            out << g.render(template: "/home/isSubscribed", model: [sub1: attr.sub1, flag: attr.flag])
         } else {
             out << g.render(template: "/home/isNotSubscribed", model: [sub1: attr.sub1])
         }
@@ -31,8 +32,8 @@ class ApplicationTagLib {
     def isEditable = { attr ->
         User currentUser = User.findByUsername(session['username'])
         def created = attr?.subscriber?.createdBy.username
-        if (created == session['username'] || currentUser.admin==true) {
-            out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber])
+        if (created == session['username'] || currentUser.admin == true) {
+            out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber, flag: attr.flag])
         } else {
             out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
         }

@@ -58,7 +58,7 @@ class HomeController {
         def userObj = User.findByUsername(session['username'])
         def subscribedTopics = userObj.subscriptions.topic
         def subscription = subscribedTopics.size() < 5 ? subscribedTopics.asList() : subscribedTopics.subList(0, 5)
-        subscription.sort { it.dateCreated }
+        subscription.sort { it.dateCreated }.reverse()
 
         def readingItemList = ReadingItem.createCriteria().list() {
             projections {

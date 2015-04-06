@@ -8,16 +8,23 @@
    class="btn btn-default" aria-label="Left Align"
    style="text-decoration: none"><span class="glyphicon-envelope" style="font-size: 40px"/>
 </a>
-<g:link class="btn btn-default" aria-label="Left Align" title='Edit' controller="home"
-        action="">
+<a href="javascript:void(0)" class="btn btn-default editTopic" aria-label="Left Align" title='Edit'>
     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-</g:link>
-
-<a href="javascript:void(0)" class="btn btn-default deleteTopic" id="topic-${subs.id}" aria-label="Left Align"
-   title='Delete'
-   data-ajax-url="${createLink(controller: "topic", action: "deleteTopic")}"
-   data-topicId="${subs?.id}">
-    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 </a>
 
+<g:if test="${flag}">
+    <g:link class="btn btn-default" aria-label="Left Align"
+            title='Delete' controller="topic" action="deleteTopic" params="[topicId: subs?.id, flag: flag]">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </g:link>
+</g:if>
+
+<g:else>
+    <a href="javascript:void(0)" class="btn btn-default deleteTopic" id="topic-${subs.id}" aria-label="Left Align"
+       title='Delete'
+       data-ajax-url="${createLink(controller: "topic", action: "deleteTopic")}"
+       data-topicId="${subs?.id}">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </a>
+</g:else>
 

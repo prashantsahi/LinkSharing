@@ -1,1 +1,1 @@
-<ls:isEditable subscriber="${sub1}"/>
+<ls:isEditable subscriber="${sub1}" flag="${flag}"/>
