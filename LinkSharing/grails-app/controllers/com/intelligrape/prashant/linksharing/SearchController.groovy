@@ -1,15 +1,17 @@
 package com.intelligrape.prashant.linksharing
 
 import bootcamp.Visibility
+import linksharing.SearchService
 
 class SearchController {
+    SearchService searchService
 
     def globalSearch() {
         def userObj = User.findByUsername(session['username'])
-        List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
+        def trend1 = Topic.list().sort { it.resources.size() }.reverse()
         trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
 
-        List<ResourceRating> rating = ResourceRating.createCriteria().list(max: 5, offset: 0) {
+        def rating = ResourceRating.createCriteria().list(max: 5, offset: 0) {
             order("score", "desc")
             'resource' {
                 'topic' {
@@ -18,24 +20,17 @@ class SearchController {
             }
         }
         String searchedText = params.searchedText
-        List<Resource> resourcesMatched = searchedResources(searchedText)
+        def resourcesMatched = searchService.searchGlobalResources(searchedText)
         render(template: '/search/search', model: [user: userObj, rating: rating, resources: resourcesMatched, trending: trend1, searchedText: searchedText])
     }
 
-    List<Resource> searchedResources(String searchedText) {
-        List<Resource> resourcesMatched = []
-        List<Resource> resources = Resource.createCriteria().list {
-            ilike("description", searchedText + "%")
-        }
-        List<Topic> topics = Topic.createCriteria().list {
-            ilike("name", searchedText + "%")
-        }
-        List<Resource> topicResources = []
-        topics.each {
-            topicResources += it.resources
-        }
+    def searchInbox(String searchedText) {
+        def resources = searchService.searchInboxResources(searchedText)
+        render(template: '/home/inbox', model: [resources: resources])
+    }
 
-        resourcesMatched = resources + topicResources
-        return resourcesMatched
+    def searchPost(String searchedText ){
+        def resources = searchService.searchPostsResources(searchedText)
+        render(template:'/topic/posts', model:[resources: resources])
     }
 }

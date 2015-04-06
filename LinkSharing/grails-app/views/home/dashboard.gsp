@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: intelligrape
-  Date: 26/2/15
-  Time: 6:51 PM
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -28,7 +21,15 @@
         <div class="col-md-1"></div>
 
         <div class="col-md-6">
-            <ls:inbox resource="${res}"/>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Inbox
+                    <g:textField name="search" class="inbox" placeholder="search" style="float:right;color: #080808"
+                                 data-ajax-url="${createLink(controller: "search", action: "searchInbox")}"/>
+                    </h3>
+                </div>
+                <ls:inbox resource="${res}"/>
+            </div>
         </div><!--col 8-->
     </div>
 </div><!--row-->

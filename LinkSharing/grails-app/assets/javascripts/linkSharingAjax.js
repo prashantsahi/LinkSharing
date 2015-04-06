@@ -1,3 +1,39 @@
+$(document).on('click', ".deleteTopic", function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).attr('data-topicId'));
+    var topicId = $(this).attr('data-topicId');
+    console.log($(this).attr('id'));
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "topicId=" + topicId,
+        success: function (data) {
+            console.log(data)
+            if(data){
+                $("#topic-"+topicId).hide();
+            }
+        }
+    });
+});
+
+//for inbox
+$(document).on('click', ".inboxClass", function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).attr('data-resource-id'));
+    var id = $(this).attr('data-resource-id');
+
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "readingItemId=" + $(this).attr('data-resource-id'),
+        success: function (data) {
+            if (data) {
+                console.log(".unreadResourceHide-" + id)
+                $(".unreadResourceHide-" + id).hide()
+            }
+        }
+    });
+});
+
+//for  posts
 $(document).on('click', '.topicPostClass',
     function () {
         console.log($(this).attr('data-ajax-url'));
@@ -17,19 +53,46 @@ $(document).on('click', '.topicPostClass',
         });
     });
 
+$(document).on('keyup', '.inbox', function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).val());
+    var searchedText = $(this).val();
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "searchedText=" + searchedText,
+        success: function (data) {
+            $(".searchedInboxResources").html(data)
+        }
+    });
+});
+
+$(document).on('keyup', '.postsResources', function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).val());
+    var searchedText = $(this).val();
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "searchedText=" + searchedText,
+        success: function (data) {
+            $(".searchedPostResources").html(data)
+        }
+    });
+});
+
+
 $(document).on('keyup', '.globalSearch', function () {
     console.log($(this).attr('data-ajax-url'));
     console.log($(this).val());
     var searchedText = $(this).val();
     $.ajax({
         url: $(this).attr('data-ajax-url'),
-        data: "searchedText="+searchedText,
+        data: "searchedText=" + searchedText,
         success: function (data) {
-            console.log(data)
             $(".globalSearchDiv").html(data)
         }
     });
 });
+
 
 $(document).ready(function () {
 
@@ -83,25 +146,8 @@ $(document).ready(function () {
         });
     });
 
-//for inbox
-    $(".inboxClass").click(function () {
-        console.log($(this).attr('data-ajax-url'))
-        console.log($(this).attr('data-resource-id'))
-        var id = $(this).attr('data-resource-id')
-
-        $.ajax({
-            url: $(this).attr('data-ajax-url'),
-            data: "readingItemId=" + $(this).attr('data-resource-id'),
-            success: function (data) {
-                if (data) {
-                    console.log(".unreadResourceHide-" + id)
-                    $(".unreadResourceHide-" + id).hide()
-                }
-            }
-        });
-    });
-
 });
+
 function seriousNess(subscriptionUrl, topicId) {
     alert('seriousness')
     console.log(topicId)
@@ -125,5 +171,3 @@ function changeVisibility(topicChangeSeriousnessUrl, topicId) {
         }
     });
 }
-
-//${document}(subscriptionUrl,)

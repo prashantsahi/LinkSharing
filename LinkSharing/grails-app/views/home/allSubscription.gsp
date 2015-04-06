@@ -35,9 +35,10 @@
         <div class="col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Posts :%{--"${topic.name}"--}% <input type="text" placeholder="search"
-                                                                                  style="float:right;">
-                    </h3>
+                    <h3 class="panel-title">Posts :%{--"${topic.name}"--}%
+                    <g:textField name="search" placeholder="search" style="color: black;float:right;"
+                                 class="postsResources"
+                                 data-ajax-url="${createLink(controller: "search", action: "searchPost")}"/></h3>
                 </div>
 
                 <div id="resources">

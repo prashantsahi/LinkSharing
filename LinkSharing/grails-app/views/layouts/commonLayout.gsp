@@ -53,11 +53,21 @@
                 </div>
             </g:form>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>
 
+<g:if test="${flash.message}">
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        ${flash.message}
+    </div>
+</g:if>
+<g:if test="${flash.error}">
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        ${flash.error}
+    </div>
+</g:if>
 <g:layoutBody/>
 </body>
 </html>
