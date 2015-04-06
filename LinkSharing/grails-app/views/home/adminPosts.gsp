@@ -22,7 +22,7 @@
                 </div>
                 <g:each in="${resources}" var="resource">
                     <g:render template="/templates/resourceRatingPosts"
-                              model="[resource: resource.resource, average: resource.avgRating]"/>
+                              model="[resource: resource.resource, average: resource.avgRating,flag:'true']"/>
                 </g:each>
             </div>
         </div>

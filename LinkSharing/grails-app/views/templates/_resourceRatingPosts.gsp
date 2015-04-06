@@ -1,4 +1,4 @@
-<div class="panel-body" style="border: solid;border-color:dodgerblue  ">
+<div class="panel-body resourceDiv-${resource?.id}" style="border: solid;border-color:dodgerblue  ">
     <div class="media">
         <div class="media-left">
             <g:link controller="user" action="showPublicProfile"
@@ -19,7 +19,9 @@
             <br>
             <br>
 
-            <div class ="rating" resource-score="${average}" data-resource-id="${resource.id}" data-url="${createLink(controller: "resourceRating", action: "ratingResource")}" style="float: right;"> rating</div>
+            <div class="rating" resource-score="${average}" data-resource-id="${resource.id}"
+                 data-url="${createLink(controller: "resourceRating", action: "ratingResource")}"
+                 style="float: right;">rating</div>
             ${resource.resourceRatings.size()}
 
         </div>
@@ -31,8 +33,24 @@
     <g:render template="/templates/logos"/>
     <div style="float: right">
         <a href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <ls:checkRes resource="${resource}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <g:if test="${flag}">
+            <a href="javascript:void(0)" class="deleteResource" id="resource-${resource?.id}" aria-label="Left Align"
+               title='Delete'
+               data-ajax-url="${createLink(controller: "resource", action: "deletePost")}"
+               data-resourceId="${resource?.id}" data-flag="${flag}">
+                Delete
+            </a>
+        </g:if>
+
+        <g:else>
+            <g:link aria-label="Left Align"
+                    title='Delete' controller="resource" action="deletePost"
+                    params="[resourceId: resource?.id]">Delete</g:link>
+
+        </g:else>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ls:checkRes resource="${resource}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     </div>
 </div>

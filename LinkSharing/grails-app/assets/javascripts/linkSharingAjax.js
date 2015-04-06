@@ -1,3 +1,22 @@
+$(document).on('click', ".deleteResource", function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).attr('data-resourceId'));
+    var resourceId = $(this).attr('data-resourceId');
+    console.log($(this).attr('id'));
+    console.log($(this).attr('data-flag'));
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: {resourceId: resourceId, flag: $(this).attr('data-flag')},
+        success: function (data) {
+            console.log(data)
+            if (data) {
+                $(".resourceDiv-" + resourceId).hide();
+            }
+        }
+    });
+});
+
+
 $(document).on('click', ".deleteTopic", function () {
     console.log($(this).attr('data-ajax-url'));
     console.log($(this).attr('data-topicId'));
@@ -8,8 +27,8 @@ $(document).on('click', ".deleteTopic", function () {
         data: "topicId=" + topicId,
         success: function (data) {
             console.log(data)
-            if(data){
-                $("#topic-"+topicId).hide();
+            if (data) {
+                $("#topic-" + topicId).hide();
             }
         }
     });
