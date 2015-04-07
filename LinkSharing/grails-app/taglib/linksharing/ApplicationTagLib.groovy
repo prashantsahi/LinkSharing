@@ -19,6 +19,15 @@ class ApplicationTagLib {
         out << g.render(template: '/home/inbox', model: [resources: attr.resource])
     }
 
+    def logo = { attr ->
+        Resource resource = attr.resource
+        if (resource?.class == LinkResource)
+            out << g.render(template: '/templates/logos', model: [resource: resource])
+        else {
+            out << g.render(template: "/templates/logosDocument", model: [resource: resource])
+        }
+    }
+
     def isSubscribed = { attr ->
         User currentUser = User.findByUsername(session['username'])
         Subscription subscribed = Subscription.findByUserAndTopic(currentUser, attr.sub1)

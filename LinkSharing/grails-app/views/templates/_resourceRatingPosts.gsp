@@ -30,7 +30,7 @@
     ${resource?.description}
     <br><br>
 
-    <g:render template="/templates/logos"/>
+    <ls:logo resource="${resource}"/>
     <div style="float: right">
         <a href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <g:if test="${flag}">

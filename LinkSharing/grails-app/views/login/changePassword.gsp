@@ -4,6 +4,7 @@
 
 <asset:stylesheet src="bootstrap.min.css"/>
 <asset:stylesheet src="bootstrap-theme.min.css"/>
+<asset:stylesheet src="span.css"/>
 <asset:javascript src="jquery-2.1.3.js"/>
 <asset:javascript src="bootstrap.min.js"/>
 <asset:javascript src="jquery.validate.js"/>
@@ -18,11 +19,6 @@
 
     <div class="panel-body">
         <g:form class="form-box" name="changePassword" controller="login">
-            %{--<div>
-                <span class="span-label1">Email*</span>
-                <g:textField name="" placeholder="Email"/>
-            </div><br>
---}%
             <g:hiddenField name="email" value="${emailId}"/>
 
             <div>

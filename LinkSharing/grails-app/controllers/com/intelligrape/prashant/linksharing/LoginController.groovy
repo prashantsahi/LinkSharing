@@ -40,7 +40,7 @@ class LoginController {
                 eq('visibility', Visibility.Public)
             }
         }
-        resources.sort { it.dateCreated}
+        resources.sort { it.dateCreated }
         List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
             order("score", "desc")
             'resource' {
