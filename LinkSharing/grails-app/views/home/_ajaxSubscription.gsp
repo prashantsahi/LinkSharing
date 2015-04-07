@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media" >
     <div class="media-left">
         <g:link controller="user" action="showPublicProfile" params="[user: topic?.createdBy?.id]">
             <img width="70px" height="70px"
@@ -8,7 +8,10 @@
 
     <div class="media-body">
         <h4 class="media-heading"></h4>
-        <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': topic?.id])}">${topic?.name}</a>
+
+        <div class=topicEdited-${topic.id}>
+           <g:render template="/topic/editTopicLink" model="[topic:topic]"/>
+        </div>
 
         <h5 class="des-head">@${topic?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subscriptions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts</h5>
         <h5 class="des-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

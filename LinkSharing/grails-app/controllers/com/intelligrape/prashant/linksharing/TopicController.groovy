@@ -4,7 +4,6 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-//import spock.util.mop.Use
 @Transactional
 class TopicController {
 
@@ -15,6 +14,22 @@ class TopicController {
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 
+    def renderEditTopic() {
+        println "from Render edit topic ----->>>  " + params
+        Topic topic = Topic.get(params.topicId)
+        render(template: "/topic/editTopic", model: [topic: topic])
+    }
+
+    def editTopic() {
+        Topic topic = Topic.get(params.topicId)
+        println "params ------->>>>>"+params
+        topic.name=params.topicName
+        println "from editTopic---------->>"+ topic.name
+        topic.save(failOnError: true,flush: true)
+        flash.message="Topic editted to "+topic.name
+        render(template: '/topic/editTopicLink',model: [topic: topic])
+    }
+
     def changeVisibility() {
         Topic topic = Topic.get(params.subscribedTopic)
         topic.visibility = params.ajax
@@ -22,7 +37,6 @@ class TopicController {
     }
 
     def deleteTopic() {
-        println params
         Topic.get(params.topicId).delete()
         flash.message = "Topic deleted successfully"
         if (params.flag) {

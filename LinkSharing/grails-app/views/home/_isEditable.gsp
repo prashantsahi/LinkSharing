@@ -8,7 +8,15 @@
    class="btn btn-default" aria-label="Left Align"
    style="text-decoration: none"><span class="glyphicon-envelope" style="font-size: 40px"/>
 </a>
-<a href="javascript:void(0)" class="btn btn-default editTopic" aria-label="Left Align" title='Edit'>
+
+%{--
+<span id="editTopicLinkDiv-${subs.id}">
+    <g:render template="/topic/editTopicLink" model="[subs: subs]"/>
+</span>
+--}%
+
+<a href="javascript:void(0)" class="btn btn-default editTopic" data-topicId="${subs?.id}"
+   aria-label="Left Align" title='Edit' data-ajax-url="${createLink(controller: "topic", action: "renderEditTopic")}">
     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
 </a>
 

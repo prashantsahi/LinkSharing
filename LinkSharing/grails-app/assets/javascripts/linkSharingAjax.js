@@ -10,15 +10,45 @@ $(document).on('click', ".deleteResource", function () {
         success: function (data) {
             console.log(data)
             if (data) {
-                $(".resourceDiv-" + resourceId).hide();
+                $(".resourceDiv-" + resourceId).hide(500).empty();
+                location.reload();
             }
         }
     });
 });
 
 
-$(document).on('click',".editTopic",function(){
+$(document).on('click', ".editTopic", function () {
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).attr('data-topicId'));
+    var topicId = $(this).attr('data-topicId');
+    console.log($(this).attr('id'));
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: "topicId=" + topicId,
+        success: function (data) {
+            console.log(data)
+            $(".topicEdited-" + topicId).html(data)
+        }
+    });
+});
 
+$(document).on('click', "#Submit", function (e) {
+    e.preventDefault();
+    var topicId = $(this).attr('data-topicId');
+    var topicName = $("#topicName-" + topicId).val()
+    //alert("topic NAMe : "+topicName)
+    console.log("topic-Name :----" + topicName)
+    console.log($(this).attr('data-ajax-url'));
+    console.log($(this).attr('data-topicId'));
+    $.ajax({
+        url: $(this).attr('data-ajax-url'),
+        data: {topicId: topicId, topicName: topicName},
+        success: function (data) {
+            //alert(data)
+            $(".topicEdited-" + topicId).html(data);
+        }
+    });
 });
 
 
@@ -33,11 +63,13 @@ $(document).on('click', ".deleteTopic", function () {
         success: function (data) {
             console.log(data)
             if (data) {
-                $("#topic-" + topicId).hide();
+                $("#topic-" + topicId).hide(500).empty();
+                location.reload();
             }
         }
     });
 });
+
 
 //for inbox
 $(document).on('click', ".inboxClass", function () {
@@ -51,7 +83,7 @@ $(document).on('click', ".inboxClass", function () {
         success: function (data) {
             if (data) {
                 console.log(".unreadResourceHide-" + id)
-                $(".unreadResourceHide-" + id).hide()
+                $(".unreadResourceHide-" + id).hide(500)
             }
         }
     });
@@ -71,6 +103,7 @@ $(document).on('click', '.topicPostClass',
                 if (data) {
                     console.log(".changeIsRead-" + id)
                     $(".changeIsRead-" + id).html(data)
+                    location.reload();
                 }
             }
 
@@ -119,7 +152,6 @@ $(document).on('keyup', '.globalSearch', function () {
 
 
 $(document).ready(function () {
-
     $(".rating").raty({
         numberMax: 5,
 

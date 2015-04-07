@@ -6,11 +6,6 @@
 
     <div class="panel-body">
         <div class="renderSubscribedDiv">
-            %{--<g:render template="/home/ajaxSubscription" model="[topic: topic]"/>--}%
-
-
-
-
             <div class="media">
                 <div class="media-left">
                     <g:link controller="user" action="showPublicProfile" params="[user: topic?.createdBy?.id]">
