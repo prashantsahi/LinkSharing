@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-<head>
-    <title><g:layoutTitle default="Linksharing"/></title>
-    <asset:stylesheet src="bootstrap.min.css"/>
+<head >
+    <title ><g:layoutTitle default="Linksharing"/></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
@@ -12,8 +13,8 @@
     <g:layoutHead/>
 </head>
 
-<body>
-<nav class="navbar navbar-default">
+<body >
+<nav  class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <g:link class="navbar-brand" controller="home" action="index"

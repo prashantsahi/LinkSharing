@@ -6,11 +6,11 @@
 
 <a href="#topicInvite-${subs.id}" id="topic-${subs?.id}" data-toggle="modal" title="Send invitation"
    class="btn btn-default" aria-label="Left Align"
-   style="text-decoration: none"><span class="glyphicon-envelope" style="font-size: 40px"/>
+   style="text-decoration: none"><span class="glyphicon glyphicon-envelope" style="font-size: 20px"/>
 </a>
 <g:link class="btn btn-default" aria-label="Left Align" title='Edit' controller="home"
         action="">
-    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
 </g:link>
 
 <a href="javascript:void(0)" class="btn btn-default deleteTopic" id="topic-${subs.id}" aria-label="Left Align"

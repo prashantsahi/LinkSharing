@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Edit Profile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
     <meta name="layout" content="userLayout">
 </head>
 
@@ -59,22 +63,22 @@
                 <div class="panel-body">
                     <g:uploadForm name="editForm" controller="user" action="updateProfile">
                         <div>
-                            <span class="span-label">FirstName</span>
+                            <span class="span-label span-label1">FirstName</span>
                             <g:textField name="firstName" value="${user.firstName}" placeholder="First Name"/>
                         </div><br>
 
                         <div id="div5">
-                            <span class="span-label">LastName</span>
+                            <span class="span-label span-label1">LastName</span>
                             <g:textField name="lastName" value="${user.lastName}" placeholder="Last Name"/>
                         </div><br>
 
                         <div>
-                            <span class="span-label">Email</span>
+                            <span class="span-label span-label1">Email</span>
                             <g:textField name="email" value="${user.email}" placeholder="Email"/>
                         </div><br>
 
                         <div>
-                            <span class="span-label1">Photo</span>
+                            <span class="span-label1 span-label">Photo</span>
                             <input type="file" name="file">
                         </div><br>
 
@@ -94,7 +98,7 @@
                 <div class="panel-body">
                     <g:form class="form-box" name="changePassword" controller="login" action="updatePassword">
                         <div>
-                            <span class="span-label">Password</span>
+                            <span class="span-label span-label1">Password</span>
                             <g:textField name="password" placeholder="Password" value="${user.password}"/>
                         </div><br>
 
@@ -103,7 +107,7 @@
                         </div>
 
                         <div>
-                            <span class="span-label">Confirm Password*</span>
+                            <span class="span-label span-label1">Confirm Password*</span>
                             <g:passwordField name="confirmPassword" placeholder="Confirm Password"/>
                         </div><br>
 
