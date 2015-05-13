@@ -2,8 +2,8 @@
 <html>
 <head>
     <title><g:layoutTitle default="Linksharing"/></title>
-    <asset:stylesheet src="bootstrap.min.css"/>
-    <asset:stylesheet src="bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <asset:stylesheet src="span.css"/>
     <asset:stylesheet src="jquery.raty.css"/>
     <asset:javascript src="jquery-2.1.3.min.js"/>

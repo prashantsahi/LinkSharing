@@ -2,15 +2,12 @@ package linksharing
 
 import bootcamp.Visibility
 import com.intelligrape.prashant.linksharing.*
-import grails.transaction.Transactional
 
-@Transactional
 class BootstrapService {
 
     void createUser() {
-
         (1..3).each {
-            User user = new User(username: "user$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "false", active: "true",photoPath: grailsApplication.config.defaultImage)
+            User user = new User(username: "user$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "false", active: "true")
             if (user.validate()) {
                 user.save(flush: true, failOnError: true)
             }

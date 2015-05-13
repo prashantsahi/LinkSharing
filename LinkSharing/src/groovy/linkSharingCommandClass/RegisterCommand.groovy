@@ -21,8 +21,8 @@ class RegisterCommand {
         importFrom(User)
         dateCreated nullable: true
         lastUpdated nullable: true
-        confirmPassword(validator: {val,obj->
-            if(val!=obj.password){
+        confirmPassword(validator: { val, obj ->
+            if (val != obj.password) {
                 return false
             }
         })

@@ -2,8 +2,11 @@
 <html>
 <head>
     <title><g:layoutTitle default="Linksharing"/></title>
-    <asset:stylesheet src="bootstrap.min.css"/>
-    <asset:stylesheet src="bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    %{--<asset:stylesheet src="bootstrap.min.css"/>--}%
+    %{--<asset:stylesheet src="bootstrap-theme.min.css"/>--}%
     <asset:stylesheet src="span.css"/>
     <asset:stylesheet src="jquery.raty.css"/>
     <asset:stylesheet src="span.css"/>
@@ -12,6 +15,7 @@
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="jquery.raty.js"/>
     <asset:javascript src="linkSharingAjax.js"/>
+
     <g:layoutHead/>
 </head>
 
@@ -27,16 +31,17 @@
             <g:form controller="home" class="navbar-form navbar-right form-box" role="search">
                 <div class="form-group">
                     <g:textField name="search" class="form-control globalSearch" placeholder="Search"
-                                 data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>
-                    <a href="#createTopic" data-toggle="modal" title="Create topic" style="text-decoration: none"><span
-                            class="glyphicon-user" style="font-size: 40px "/></a>
+                                 data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="text-decoration: none" href="#createTopic" data-toggle="modal" title="Create topic" style="text-decoration: none"><span
+                            class="glyphicon glyphicon-comment" style="font-size: 20px "/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
                     <a href="#sendInvitation" data-toggle="modal" title="Send invitation"
-                       style="text-decoration: none"><span class="glyphicon-envelope" style="font-size: 40px"/>
-                    </a>&nbsp;&nbsp;
+                       style="text-decoration: none"><span class="glyphicon glyphicon-envelope" style="font-size: 20px"/>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#link" data-toggle="modal" title="Share Link" style="text-decoration: none"><span
-                            class="glyphicon-comment" style="font-size: 40px "/></a>
+                            class="glyphicon glyphicon-tags" style="font-size: 20px "/></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
-                            class="glyphicon-apple" style="font-size: 40px "/></a>
+                            class="glyphicon glyphicon-paperclip" style="font-size: 20px "/></a>&nbsp;
                     %{--<a href="#" data-toggle="modal" title="${user.username}" style="text-decoration: none">--}%
                     <img width="35px" height="35px title="${user.username}""
                 src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
