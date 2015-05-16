@@ -6,6 +6,5 @@
                           model='[resource: resource, ajaxClass: "inboxClass"]'/>
             </div>
         </g:each>
-    </div> <!--panel body-->
+    </div>
 </div>
-%{--</div>--}%

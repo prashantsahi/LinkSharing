@@ -8,10 +8,6 @@
    class="btn btn-default" aria-label="Left Align"
    style="text-decoration: none"><span class="glyphicon glyphicon-envelope" style="font-size: 20px"/>
 </a>
-<g:link class="btn btn-default" aria-label="Left Align" title='Edit' controller="home"
-        action="">
-    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-</g:link>
 
 %{--
 <span id="editTopicLinkDiv-${subs.id}">

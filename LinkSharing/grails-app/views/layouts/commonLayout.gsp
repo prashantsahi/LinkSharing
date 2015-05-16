@@ -27,9 +27,9 @@
                     <g:textField name="search" class="form-control globalSearch" placeholder="Search"
                                  data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>
                     <a href="#link" data-toggle="modal" title="Share Link" style="text-decoration: none"><span
-                            class="glyphicon-comment" style="font-size: 40px "/></a>
+                            class="glyphicon glyphicon-tags" style="font-size: 20px "/></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
-                            class="glyphicon-apple" style="font-size: 40px "/></a>
+                            class="glyphicon glyphicon-paperclip" style="font-size: 20px "/></a>&nbsp;
 
                     <g:if test="if(${user.username})">
                         <img width="35px" height="35px" title="${user.username}"
