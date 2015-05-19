@@ -6,14 +6,24 @@ import com.intelligrape.prashant.linksharing.*
 class BootstrapService {
 
     void createUser() {
+        Role admin = new Role(authority: "admin").save(flush: true, failOnError: true);
+        Role normalUser = new Role(authority: "User").save(flush: true, failOnError: true);
+        UserRole userRole;
         (1..3).each {
             User user = new User(username: "user$it", email: "sahi${it}@gmail.com", firstName: "prashant${it}", lastName: "sahi${it}", password: "password${it}", admin: "false", active: "true")
+            println(":::::::::::::::::::::::::::::::::::::::::"+user.validate()+":::::::::::::::::::::::::::::::::::::::::::::")
             if (user.validate()) {
+                println("errors : "+user.hasErrors())
                 user.save(flush: true, failOnError: true)
+                println("after save")
+                if ((it % 2) == 0) {
+                    userRole = new UserRole(user: user, role: admin).save(flush: true, failOnError: true)
+                } else {
+                    userRole = new UserRole(user: user, role: normalUser).save(flush: true, failOnError: true)
+                }
             }
         }
     }
-
 
     int linkCount = 1
     int documentCount = 1

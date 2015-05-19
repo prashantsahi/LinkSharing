@@ -162,3 +162,19 @@ simian {
                    , excludes: "**/*Spec.groovy **/Config.groovy **/ApplicationResources.groovy **/target/"]
     methodParams = [threshold: 4]
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.intelligrape.prashant.linksharing.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.intelligrape.prashant.linksharing.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.intelligrape.prashant.linksharing.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/login/**':                      ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]
+
