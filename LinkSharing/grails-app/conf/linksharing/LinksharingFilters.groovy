@@ -3,7 +3,7 @@ package linksharing
 class LinksharingFilters {
 
     def filters = {
-        restrictLogin(controller: 'login|assets|console|search', action: '*', invert: true) {
+       /* restrictLogin(controller: 'login|assets|console|search', action: '*', invert: true) {
             before = {
                 if (params.controller == 'user' && params.action == 'showImage') {
                     return
@@ -14,6 +14,6 @@ class LinksharingFilters {
                     return false
                 }
             }
-        }
+        }*/
     }
 }

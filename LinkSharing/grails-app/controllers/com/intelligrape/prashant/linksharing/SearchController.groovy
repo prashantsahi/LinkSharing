@@ -1,8 +1,9 @@
 package com.intelligrape.prashant.linksharing
 
 import bootcamp.Visibility
+import grails.plugin.springsecurity.annotation.Secured
 import linksharing.SearchService
-
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class SearchController {
     SearchService searchService
 

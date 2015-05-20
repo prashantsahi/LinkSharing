@@ -1,23 +1,23 @@
 package com.intelligrape.prashant.linksharing
 
+import grails.plugin.springsecurity.annotation.Secured
 import linksharing.TopicService
 
-import javax.print.Doc
-
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class HomeController {
-
+def springSecurityService
     TopicService topicService
 
     def index() {
         redirect(action: 'dashboard')
     }
 
-    def logout() {
+    /*def logout() {
         String user = session['username']
         session.invalidate()
         flash.message = "${user} has logged out"
         redirect(controller: 'login', action: 'index')
-    }
+    }*/
 
     def posts() {
         def userObj = User.findByUsername(session['username'])
@@ -55,7 +55,7 @@ class HomeController {
     }
 
     def dashboard() {
-        def userObj = User.findByUsername(session['username'])
+        def userObj = springSecurityService.currentUser
         def subscribedTopics = userObj.subscriptions.topic
         def subscription = subscribedTopics.size() < 5 ? subscribedTopics.asList() : subscribedTopics.subList(0, 5)
         subscription.sort { it.dateCreated }.reverse()

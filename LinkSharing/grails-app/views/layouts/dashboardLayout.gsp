@@ -32,17 +32,19 @@
                 <div class="form-group">
                     <g:textField name="search" class="form-control globalSearch" placeholder="Search"
                                  data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a style="text-decoration: none" href="#createTopic" data-toggle="modal" title="Create topic" style="text-decoration: none"><span
+                    <a style="text-decoration: none" href="#createTopic" data-toggle="modal" title="Create topic"
+                       style="text-decoration: none"><span
                             class="glyphicon glyphicon-comment" style="font-size: 20px "/></a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <a href="#sendInvitation" data-toggle="modal" title="Send invitation"
-                       style="text-decoration: none"><span class="glyphicon glyphicon-envelope" style="font-size: 20px"/>
+                       style="text-decoration: none"><span class="glyphicon glyphicon-envelope"
+                                                           style="font-size: 20px"/>
                     </a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#link" data-toggle="modal" title="Share Link" style="text-decoration: none"><span
                             class="glyphicon glyphicon-tags" style="font-size: 20px "/></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#document" data-toggle="modal" title="Share Document" style="text-decoration: none"><span
                             class="glyphicon glyphicon-paperclip" style="font-size: 20px "/></a>&nbsp;
-                    %{--<a href="#" data-toggle="modal" title="${user.username}" style="text-decoration: none">--}%
+                %{--<a href="#" data-toggle="modal" title="${user.username}" style="text-decoration: none">--}%
                     <img width="35px" height="35px title="${user.username}""
                 src="${createLink(controller: "user", action: 'showImage', params: [path: user.photoPath])}"/>
                 %{--</a>--}%
@@ -63,8 +65,8 @@
                                                             action="adminPosts">Post</g:link></li>
                         </g:if>
 
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="home"
-                                                        action="logout">Logout</g:link></li>
+                        <li role="presentation"><g:link role="menuitem" tabindex="-1" name="logout" method="post"
+                                                        uri='/j_spring_security_logout'>Logout</g:link></li>
                     </ul>
                 </div>
             </g:form>

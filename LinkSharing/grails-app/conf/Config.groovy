@@ -164,12 +164,20 @@ simian {
 }
 
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.auth.loginFormUrl = '/login/index'
+grails.plugin.springsecurity.logout.afterLogoutUrl = '/login/index'
+grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/home/dashboard'
+grails.plugin.springsecurity.failureHandler.alwaysUseDefault = true
+grails.plugin.springsecurity.failureHandler.defaultTargetUrl = '/login/index'
+
+
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.intelligrape.prashant.linksharing.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.intelligrape.prashant.linksharing.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.intelligrape.prashant.linksharing.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
-	'/login/**':                      ['permitAll'],
+	'/login/**':                   ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/assets/**':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
