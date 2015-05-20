@@ -8,10 +8,10 @@ import javax.servlet.http.HttpSession
 
 @Transactional
 class SearchService {
-
-    private static HttpSession getSession() {
+    def springSecurityService
+   /* private static HttpSession getSession() {
         return RequestContextHolder.currentRequestAttributes().getSession()
-    }
+    }*/
 
     List<Resource> searchGlobalResources(String searchedText) {
         List<Resource> resourcesMatched = []
@@ -34,7 +34,7 @@ class SearchService {
     }
 
     List<Resource> searchInboxResources(String searchedText) {
-        User user = User.findByUsername(session['username'])
+        User user = springSecurityService.currentUser
         List<Resource> resources = Resource.createCriteria().list {
             ilike("description", searchedText + "%")
             readingItems {

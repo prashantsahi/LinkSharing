@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Recent Shares
-            <span style="float:right " class="panel-title"><g:link controller="login"
+            <span style="float:right " class="panel-title"><g:link class="noUnderline" controller="login"
                                                                    action="showAllResources">View ALL</g:link></span>
         </h3>
     </div>
@@ -11,7 +11,7 @@
         <g:each in="${resources}" var="resource">
             <div class="media">
                 <div class="media-left">
-                    <g:link controller="user" action="showPublicProfile" params="[user: resource?.createdBy?.id]">
+                    <g:link class="noUnderline" controller="user" action="showPublicProfile" params="[user: resource?.createdBy?.id]">
                         <img width="60px" height="60px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
                     </g:link>
@@ -19,13 +19,13 @@
 
                 <div class="media-body media-marg">
                     <h4 class="media-heading">${resource?.createdBy?.username}
-                        <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic.id])}"
+                        <a class="noUnderline" href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic.id])}"
                            style="float: right;">${resource?.topic?.name}</a></h4>
 
                     <p>${resource?.description}</p>
                     <h4 class="media-heading">
                         <g:render template="/templates/logos"/>
-                        <a href="${createLink(controller: 'home', action: 'posts',params: [resource:resource?.id])}"
+                        <a class="noUnderline" href="${createLink(controller: 'home', action: 'posts',params: [resource:resource?.id])}"
                            style="float: right;">View post</a>
                     </h4>
 

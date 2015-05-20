@@ -11,7 +11,7 @@ import static org.springframework.http.HttpStatus.*
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class SubscriptionController {
     TopicService topicService
-
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -22,7 +22,7 @@ class SubscriptionController {
     @Transactional
     def changeSeriousness() {
         Topic topic = Topic.load(params.subscribedTopic)
-        User user = User.findByUsername(session['username'])
+        User user = springSecurityService.currentUser
         Subscription subscription = Subscription.findByUserAndTopic(user, topic)
         subscription.seriousness = params.ajax
         subscription.save(flush: true, failOnError: true)
@@ -30,7 +30,7 @@ class SubscriptionController {
 
     @Transactional
     def viewAllSubscriptions() {
-        User user = User.findByUsername(session['username'])
+        User user = springSecurityService.currentUser
         List<Topic> subscribedTopics = topicService.returnSubscribedTopics(params.topicFlag)
               render(view: '/home/allSubscription', model: [user: user,topicFlag:params.topicFlag, subscribedTopics: subscribedTopics, subscriptionCount: subscribedTopics.count])
     }
@@ -39,7 +39,7 @@ class SubscriptionController {
     def showSubscriptions() {
         params.max = params.max ?: 3
         params.offset = params.offset ?: 3
-        def user = User.findByUsername(session['username'])
+        def user = springSecurityService.currentUser
         def subscribedTopics = user.subscriptions.topic
         render(template: '/home/viewAllSubscriptions', model: [subscriptions: subscribedTopics, subscriptionCount: subscribedTopics.count, max: params.max, offset: params.offset])
 
@@ -47,7 +47,7 @@ class SubscriptionController {
 
     @Transactional
     def subscribed() {
-        User userObj = User.findByUsername(session['username'])
+        User userObj = springSecurityService.currentUser
         Topic topicObj = Topic.findByName(params.topic)
         Subscription subscription = new Subscription(user: userObj, topic: topicObj, seriousness: Seriousness.Serious)
         if ((subscription.validate())) {

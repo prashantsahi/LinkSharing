@@ -8,7 +8,7 @@
         <div class="renderSubscribedDiv">
             <div class="media">
                 <div class="media-left">
-                    <g:link controller="user" action="showPublicProfile" params="[user: topic?.createdBy?.id]">
+                    <g:link class="noUnderline" controller="user" action="showPublicProfile" params="[user: topic?.createdBy?.id]">
                         <img width="70px" height="70px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: topic.createdBy.photoPath])}"/>
                     </g:link>

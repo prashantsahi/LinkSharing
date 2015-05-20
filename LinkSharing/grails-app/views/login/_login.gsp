@@ -16,12 +16,13 @@
             </div><br>
 
             <div>
-                <span><g:link controller="login"
+                <span><g:link class="noUnderline" controller="login"
                               action="showForgotPassword">Forgot Password</g:link></span>
-                <p id="remember_me_holder">
+                <span id="remember_me_holder" style="margin-left: 20px; color: #006dba">
                     <input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
                     <label for='remember_me'>Remember Me</label>
-                </p>
+                </span>
+                <br/><br/>
                 <g:actionSubmit name="button" value="Login"
                                 style="float:right;margin-right: 150px"/>
             </div>

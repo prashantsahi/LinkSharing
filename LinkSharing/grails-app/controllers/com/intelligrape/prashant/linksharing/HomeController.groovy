@@ -20,7 +20,7 @@ def springSecurityService
     }*/
 
     def posts() {
-        def userObj = User.findByUsername(session['username'])
+        def userObj = springSecurityService.currentUser
         def subscribedTopics = userObj.subscriptions.topic
         Resource resource = Resource.findById(params.resource)
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
@@ -47,7 +47,7 @@ def springSecurityService
             }
         }.collect { [resource: it[0], avgRating: it[1]] }
 
-        def userObj = User.findByUsername(session['username'])
+        def userObj = springSecurityService.currentUser
         def subscribedTopics = Topic.list(sort: 'dateCreated', order: "desc")
         List<Topic> trendingTopics = Topic.list().sort { it.resources.size() }.reverse()
         trendingTopics = trendingTopics.size() < 5 ? trendingTopics.asList() : trendingTopics.subList(0, 5)
@@ -76,7 +76,7 @@ def springSecurityService
     }
 
     def viewAllTrendingTopic() {
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
         List<Topic> trend1 = Topic.list().sort { it.resources.size() }.reverse()
         List<Topic> subscribedTopics = topicService.returnSubscribedTopics()
         render(view: '/home/allTrending', model: [trend: trend1, user: currentUser, subscribedTopics: subscribedTopics])

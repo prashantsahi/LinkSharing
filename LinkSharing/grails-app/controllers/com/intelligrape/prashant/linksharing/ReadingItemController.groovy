@@ -8,13 +8,13 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class ReadingItemController {
-
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     @Transactional
     def markAsRead() {
         Resource resource = Resource.get(params.readingItemId)
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
 
         ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser, resource)
         println params.readingItemId

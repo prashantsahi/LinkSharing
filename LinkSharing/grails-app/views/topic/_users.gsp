@@ -7,7 +7,7 @@
         <g:each in="${topic.subscriptions.user}" var="subscribers">
             <div class="media">
                 <div class="media-left">
-                    <g:link controller="user" action="showPublicProfile" params="[user:subscribers?.id]" >
+                    <g:link class="noUnderline" controller="user" action="showPublicProfile" params="[user:subscribers?.id]" >
                         <img width="80px" height="80px"
                              src="${createLink(controller: "user", action: 'showImage', params: [path: subscribers.photoPath])}"/>
                     </g:link>

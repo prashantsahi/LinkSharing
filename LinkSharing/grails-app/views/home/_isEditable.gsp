@@ -4,7 +4,7 @@
 <g:select name="seriousness-${subs.id}" from="${bootcamp.Seriousness.values()}"
           onchange="seriousNess('${createLink(controller: 'subscription', action: 'changeSeriousness', params: [subscribedTopic: subs.id])}',${subs.id})"/>
 
-<a href="#topicInvite-${subs.id}" id="topic-${subs?.id}" data-toggle="modal" title="Send invitation"
+<a  href="#topicInvite-${subs.id}" id="topic-${subs?.id}" data-toggle="modal" title="Send invitation"
    class="btn btn-default" aria-label="Left Align"
    style="text-decoration: none"><span class="glyphicon glyphicon-envelope" style="font-size: 20px"/>
 </a>
@@ -21,7 +21,7 @@
 </a>
 
 <g:if test="${flag}">
-    <g:link class="btn btn-default" aria-label="Left Align"
+    <g:link class="noUnderline btn btn-default" aria-label="Left Align"
             title='Delete' controller="topic" action="deleteTopic" params="[topicId: subs?.id, flag: flag]">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
     </g:link>

@@ -6,9 +6,10 @@ import linksharing.SearchService
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class SearchController {
     SearchService searchService
+    def springSecurityService
 
     def globalSearch() {
-        def userObj = User.findByUsername(session['username'])
+        def userObj = springSecurityService.currentUser
         def trend1 = Topic.list().sort { it.resources.size() }.reverse()
         trend1 = trend1.size() < 5 ? trend1.asList() : trend1.subList(0, 5)
 

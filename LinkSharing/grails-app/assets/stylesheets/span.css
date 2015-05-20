@@ -1,4 +1,8 @@
-.span-label1{
-    display :inline-block;
+.span-label1 {
+    display: inline-block;
     width: 100px;
+}
+
+.noUnderline {
+    text-decoration: none !important;
 }

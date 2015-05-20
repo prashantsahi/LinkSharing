@@ -18,7 +18,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <g:link class="navbar-brand" controller="home" action="index" style="color:#0000ff">Link Sharing</g:link>
+            <g:link  class="noUnderline navbar-brand" controller="home" action="index" style="color:#0000ff">Link Sharing</g:link>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,13 +41,13 @@
 
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" aria-expanded="true">
-                        <span>${session['username']}</span>
+                        <span>${user.username}</span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
+                        <li role="presentation"><g:link class="noUnderline" role="menuitem" tabindex="-1" controller="user"
                                                         action="editProfile">Profile</g:link></li>
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1" name="logout" method="post"
+                        <li role="presentation"><g:link class="noUnderline" role="menuitem" tabindex="-1" name="logout" method="post"
                                                         uri='/j_spring_security_logout'>Logout</g:link></li>
                     </ul>
                 </div>

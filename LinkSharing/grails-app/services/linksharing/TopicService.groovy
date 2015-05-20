@@ -9,13 +9,13 @@ import javax.servlet.http.HttpSession
 
 @Transactional
 class TopicService {
-
+    def springSecurityService
     private static HttpSession getSession() {
         return RequestContextHolder.currentRequestAttributes().getSession()
     }
 
     def returnSubscribedTopics(def flag) {
-        User user = User.findByUsername(session['username'])
+        User user = springSecurityService.currentUser
         List<Topic> subscribedTopics = []
 
         if (flag) {

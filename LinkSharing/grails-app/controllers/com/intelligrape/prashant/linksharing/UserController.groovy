@@ -10,12 +10,13 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class UserController {
+    def springSecurityService
     SendMailService sendMailService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     @Transactional
     def updateProfile() {
-        User current = User.findByUsername(session['username'])
+        User current = springSecurityService.currentUser
         def file = request.getFile('file')
         current.properties = params
         if (file) {
@@ -39,11 +40,13 @@ class UserController {
     }
 
 // to show the user images
+    @Secured(['permitAll'])
     def showImage(String path) {
         File file = new File(path)
         response.contentLength = file.bytes.length
         response.outputStream << file.bytes
     }
+
 
     def showPublicProfile() {
         User userObj = User.findById(params.user)
@@ -67,13 +70,13 @@ class UserController {
 
 
     def editProfile() {
-        User obj = User.findByUsername(session['username'])
+        User obj = springSecurityService.currentUser
         render(view: 'editProfile', model: [user: obj])
     }
 
 
     def userTable() {
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
         render(view: 'Users_Table', model: [user: currentUser, subscribedTopics: Topic.list(), userList: User.list()])
     }
 

@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Trending Topics <span class="panel-title"><g:link controller="home"
+        <h3 class="panel-title">Trending Topics <span class="panel-title"><g:link class="noUnderline" controller="home"
                                                                                   action="viewAllTrendingTopic"
                                                                                   style="float:right;">View All</g:link></span>
         </h3>

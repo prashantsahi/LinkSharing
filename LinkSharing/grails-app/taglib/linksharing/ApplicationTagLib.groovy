@@ -3,6 +3,7 @@ package linksharing
 import com.intelligrape.prashant.linksharing.*
 
 class ApplicationTagLib {
+    def springSecurityService
     static defaultEncodeAs = [taglib: 'raw']
 //    static defaultEncodeAs = [taglib: 'html']
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
@@ -29,7 +30,7 @@ class ApplicationTagLib {
     }
 
     def isSubscribed = { attr ->
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
         Subscription subscribed = Subscription.findByUserAndTopic(currentUser, attr.sub1)
         if (subscribed) {
             out << g.render(template: "/home/isSubscribed", model: [sub1: attr.sub1, flag: attr.flag])
@@ -39,7 +40,7 @@ class ApplicationTagLib {
     }
 
     def isEditable = { attr ->
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
         def created = attr?.subscriber?.createdBy.username
         if (created == session['username'] || currentUser.admin == true) {
             out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber, flag: attr.flag])
@@ -53,13 +54,13 @@ class ApplicationTagLib {
         if (resType == LinkResource) {
             LinkResource linkResource = Resource.findById(attr?.resource?.id)
             def link = linkResource.linkUrl
-            out << "<a href=" + link + ' target = "_blank" ' + ">View FullSite</a>"
+            out << "<a class='noUnderline' href=" + link + ' target = "_blank" ' + ">View FullSite</a>"
         } else {
             out << g.render(template: "/home/resourceDownload", model: [resourceId: attr?.resource?.id])
         }
     }
     def checkReading = { attr ->
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
         ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser, attr?.resource)
         if (!readingItem) {
             return

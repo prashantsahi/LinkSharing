@@ -1,14 +1,12 @@
 package com.intelligrape.prashant.linksharing
 
-import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN','ROLE_USER'])
 class DocumentResourceController {
-
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -27,8 +25,7 @@ class DocumentResourceController {
     @Transactional
     def save(DocumentResource documentResourceInstance) {
 
-
-        User user = User.findByUsername(session['username'])
+        User user = springSecurityService.currentUser
         documentResourceInstance.createdBy = user
 
         def file = request.getFile('file')

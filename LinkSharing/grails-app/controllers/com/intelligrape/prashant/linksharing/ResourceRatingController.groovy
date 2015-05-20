@@ -10,11 +10,11 @@ import static org.springframework.http.HttpStatus.*
 class ResourceRatingController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+    def springSecurityService
     @Transactional
     def ratingResource() {
         Resource resource = Resource.get(params.resourceId)
-        def userObj = User.findByUsername(session['username'])
+        def userObj = springSecurityService.currentUser
         ResourceRating resourceRating = ResourceRating.findOrCreateByResourceAndUser(resource,userObj)
         resourceRating.score = Integer.parseInt(params.rating)
         resourceRating.save(failOnError: true, flush: true)

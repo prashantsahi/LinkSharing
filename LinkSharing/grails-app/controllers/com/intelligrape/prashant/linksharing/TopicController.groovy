@@ -6,9 +6,10 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.*
 
 @Transactional
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class TopicController {
 
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -24,12 +25,12 @@ class TopicController {
 
     def editTopic() {
         Topic topic = Topic.get(params.topicId)
-        println "params ------->>>>>"+params
-        topic.name=params.topicName
-        println "from editTopic---------->>"+ topic.name
-        topic.save(failOnError: true,flush: true)
-        flash.message="Topic editted to "+topic.name
-        render(template: '/topic/editTopicLink',model: [topic: topic])
+        println "params ------->>>>>" + params
+        topic.name = params.topicName
+        println "from editTopic---------->>" + topic.name
+        topic.save(failOnError: true, flush: true)
+        flash.message = "Topic editted to " + topic.name
+        render(template: '/topic/editTopicLink', model: [topic: topic])
     }
 
     def changeVisibility() {
@@ -51,7 +52,7 @@ class TopicController {
     //to render the showTopic page
     def topicShow() {
         Topic topic = Topic.findById(params.topic)
-        User currentUser = User.findByUsername(session['username'])
+        User currentUser = springSecurityService.currentUser
         def subscribedTopics = currentUser.subscriptions.topic
         render(view: '/topic/topicShow', model: [topic: topic, user: currentUser, subscribedTopics: subscribedTopics])
     }
@@ -67,7 +68,7 @@ class TopicController {
     @Transactional
     def save(Topic topicInstance) {
 
-        User user1 = User.findByUsername(session['username'])
+        User user1 = springSecurityService.currentUser
         topicInstance.createdBy = user1
 
         if (topicInstance == null) {

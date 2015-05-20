@@ -1,7 +1,7 @@
 <div class="panel-body resourceDiv-${resource?.id}" style="border: solid;border-color:dodgerblue  ">
     <div class="media">
         <div class="media-left">
-            <g:link controller="user" action="showPublicProfile"
+            <g:link class="noUnderline" controller="user" action="showPublicProfile"
                     params="[user: resource?.createdBy?.id]">
                 <img width="60px" height="60px"
                      src="${createLink(controller: "user", action: 'showImage', params: [path: resource?.createdBy?.photoPath])}"/>
@@ -10,7 +10,7 @@
 
         <div class="media-body">
             <h4 class="media-heading">${resource?.createdBy?.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic?.id])}"
+                <a class="noUnderline" href="${createLink(controller: 'topic', action: 'topicShow', params: ['topic': resource?.topic?.id])}"
                    style="float: right;">${resource?.topic?.name}</a>
             </h4>
 
@@ -32,9 +32,9 @@
 
     <ls:logo resource="${resource}"/>
     <div style="float: right">
-        <a href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="noUnderline" href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <g:if test="${flag}">
-            <a href="javascript:void(0)" class="deleteResource" id="resource-${resource?.id}" aria-label="Left Align"
+            <a class="noUnderline" href="javascript:void(0)" class="deleteResource" id="resource-${resource?.id}" aria-label="Left Align"
                title='Delete'
                data-ajax-url="${createLink(controller: "resource", action: "deletePost")}"
                data-resourceId="${resource?.id}" data-flag="${flag}">
@@ -43,7 +43,7 @@
         </g:if>
 
         <g:else>
-            <g:link aria-label="Left Align"
+            <g:link class="noUnderline" aria-label="Left Align"
                     title='Delete' controller="resource" action="deletePost"
                     params="[resourceId: resource?.id]">Delete</g:link>
 

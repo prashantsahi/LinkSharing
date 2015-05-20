@@ -4,12 +4,12 @@
     <title><g:layoutTitle default="Linksharing"/></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <asset:stylesheet src="span.css"/>
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.min.js"/>
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="register.js"/>
     <asset:javascript src="linkSharingAjax.js"/>
-    <asset:stylesheet src="span.css"/>
     <g:layoutHead/>
 </head>
 
@@ -17,7 +17,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <g:link class="navbar-brand" controller="home" action="index"
+            <g:link class="noUnderline navbar-brand" controller="home" action="index"
                     style="color:#0000ff">Link Sharing</g:link>
         </div>
 
@@ -38,13 +38,13 @@
 
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" aria-expanded="true">
-                        <span>${session['username']}</span>
+                        <span>${user.username}</span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1" controller="user"
+                        <li role="presentation"><g:link class="noUnderline" role="menuitem" tabindex="-1" controller="user"
                                                         action="editProfile">Profile</g:link></li>
-                        <li role="presentation"><g:link role="menuitem" tabindex="-1" name="logout" method="post"
+                        <li role="presentation"><g:link class="noUnderline" role="menuitem" tabindex="-1" name="logout" method="post"
                                                         uri='/j_spring_security_logout'>Logout</g:link></li>
                     </ul>
                 </div>

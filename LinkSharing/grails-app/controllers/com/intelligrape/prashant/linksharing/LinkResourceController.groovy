@@ -8,7 +8,7 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class LinkResourceController {
-
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -27,7 +27,7 @@ class LinkResourceController {
     @Transactional
     def save(LinkResource linkResourceInstance) {
 
-        User user = User.findByUsername(session['username'])
+        User user = springSecurityService.currentUser
         println "***************************************************"
 //            println linkResourceInstance
         println params
