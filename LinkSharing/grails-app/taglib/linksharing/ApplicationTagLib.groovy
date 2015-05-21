@@ -32,6 +32,8 @@ class ApplicationTagLib {
     def isSubscribed = { attr ->
         User currentUser = springSecurityService.currentUser
         Subscription subscribed = Subscription.findByUserAndTopic(currentUser, attr.sub1)
+        println("topic---------------------------"+attr.sub1)
+        println("from isSubscribed ---------------------------"+subscribed)
         if (subscribed) {
             out << g.render(template: "/home/isSubscribed", model: [sub1: attr.sub1, flag: attr.flag])
         } else {
@@ -41,8 +43,9 @@ class ApplicationTagLib {
 
     def isEditable = { attr ->
         User currentUser = springSecurityService.currentUser
+        println("IS ADMIN :::::::::::"+currentUser?.admin)
         def created = attr?.subscriber?.createdBy.username
-        if (created == session['username'] || currentUser.admin == true) {
+        if (created ==springSecurityService.currentUser.username  || currentUser.admin == true) {
             out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber, flag: attr.flag])
         } else {
             out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
