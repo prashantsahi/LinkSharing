@@ -31,7 +31,7 @@
                     <g:textField name="search" class="form-control globalSearch" placeholder="Search"
                                  data-ajax-url="${createLink(controller: "search", action: "globalSearch")}"/>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a style="text-decoration: none" href="#createTopic" data-toggle="modal" title="Create topic"
-                       style="text-decoration: none"><span
+                       ><span
                             class="glyphicon glyphicon-comment" style="font-size: 20px "/></a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <a href="#sendInvitation" data-toggle="modal" title="Send invitation"

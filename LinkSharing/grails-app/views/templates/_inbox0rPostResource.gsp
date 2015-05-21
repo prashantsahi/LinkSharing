@@ -11,7 +11,6 @@
         <br><br>
 
         <p>${resource?.description}</p>
-        %{--<g:render template="/templates/logos"/>--}%
         <ls:logo resource="${resource}"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
