@@ -17,7 +17,6 @@ class ReadingItemController {
         User currentUser = springSecurityService.currentUser
 
         ReadingItem readingItem = ReadingItem.findByUserAndResource(currentUser, resource)
-        println params.readingItemId
         if (readingItem) {
             readingItem.isRead = !readingItem.isRead
             readingItem.save(failOnError: true,flush: true)

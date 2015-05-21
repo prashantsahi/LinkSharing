@@ -34,7 +34,6 @@ def springSecurityService
             }
         }
         Integer avg = average[0]
-        println('average  :  ' + avg)
         render(view: "/templates/post", model: [user: userObj, subscribedTopics: subscribedTopics, resource: resource, average: avg, trending: trend1])
     }
 

@@ -3,7 +3,6 @@ package com.intelligrape.prashant.linksharing
 class DemoController {
 
     def mail() {
-        println "from mail"
         sendMail{
             async true
             to "sahiprashant@gmail.com"
@@ -12,17 +11,6 @@ class DemoController {
         }
         render 'mail successfully sent'
     }
-
-    /*def mail() {
-        println "from mail"
-        sendMail {
-            async true
-            to $ { params.emailId }
-            subject $ { params.emailTopic }
-            body 'Subscription link'
-        }
-        render 'mail successfully sent'
-    }*/
 
     def posts() {
         render(view: "/templates/post")
@@ -36,20 +24,13 @@ class DemoController {
         println(params)
     }
 
-    /*def topicShow() {
-        println "from top posts : " + params.topic
-        render(view: '/topicShow', model: [topics: params.topic])
-    }*/
-
     def loginController() {
         println("from login controller")
         render(view: '/home/dashboard')
     }
 
     def hello() {
-
         redirect(action: 'index')
-
     }
 
     def index() {

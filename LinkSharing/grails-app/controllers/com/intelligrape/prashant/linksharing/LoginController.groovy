@@ -58,11 +58,6 @@ class LoginController {
 
         def config = SpringSecurityUtils.securityConfig
 
-        /* if (springSecurityService.isLoggedIn()) {
-             redirect uri: config.successHandler.defaultTargetUrl
-             return
-         }*/
-        println("from login")
         params.max = params.max ?: 5
         params.offset = params.offset ?: 0
 
@@ -147,28 +142,6 @@ class LoginController {
     def ajaxDenied() {
         render([error: 'access denied'] as JSON)
     }
-/*    def index() {
-        params.max = params.max ?: 5
-        params.offset = params.offset ?: 0
-
-        List<Resource> resources = Resource.createCriteria().list(params) {
-            order("id", "desc")
-            'topic' {
-                eq('visibility', Visibility.Public)
-            }
-        }
-        resources.sort { it.dateCreated }
-        List<ResourceRating> rating = ResourceRating.createCriteria().list(params) {
-            order("score", "desc")
-            'resource' {
-                'topic' {
-                    eq('visibility', Visibility.Public)
-                }
-            }
-        }
-        println("from login")
-        render(view: "login", model: [res: resources, resCount: Resource.count, rating: rating])
-    }*/
 
     def showAllPosts() {
         params.max = params.max ?: 5

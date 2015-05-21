@@ -18,16 +18,13 @@ class TopicController {
     }
 
     def renderEditTopic() {
-        println "from Render edit topic ----->>>  " + params
         Topic topic = Topic.get(params.topicId)
         render(template: "/topic/editTopic", model: [topic: topic])
     }
 
     def editTopic() {
         Topic topic = Topic.get(params.topicId)
-        println "params ------->>>>>" + params
         topic.name = params.topicName
-        println "from editTopic---------->>" + topic.name
         topic.save(failOnError: true, flush: true)
         flash.message = "Topic editted to " + topic.name
         render(template: '/topic/editTopicLink', model: [topic: topic])

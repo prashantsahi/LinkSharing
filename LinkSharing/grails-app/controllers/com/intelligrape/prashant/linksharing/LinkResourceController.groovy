@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class LinkResourceController {
     def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -28,16 +28,8 @@ class LinkResourceController {
     def save(LinkResource linkResourceInstance) {
 
         User user = springSecurityService.currentUser
-        println "***************************************************"
-//            println linkResourceInstance
-        println params
         linkResourceInstance.createdBy = user
-        println linkResourceInstance.topic
-
-        println "***************************************************"
-//            println linkResourceInstance
         linkResourceInstance.validate()
-
 
         if (linkResourceInstance == null) {
             notFound()
@@ -51,7 +43,7 @@ class LinkResourceController {
 
         if (linkResourceInstance.save(flush: true)) {
             flash.message = "${linkResourceInstance.title} resource has successfully created "
-           redirect(controller: 'home', action: 'dashboard')
+            redirect(controller: 'home', action: 'dashboard')
         }
 
     }

@@ -34,7 +34,6 @@ class DocumentResourceController {
         } else {
 //                def documentInstance = new Document()
             documentResourceInstance.fileType = file.contentType
-            println(documentResourceInstance.fileType)
             documentResourceInstance.fileName = file.originalFilename
             documentResourceInstance.filePath = grailsApplication.config.uploadFolder + documentResourceInstance.fileName
             file.transferTo(new File(documentResourceInstance.filePath))
