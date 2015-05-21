@@ -25,8 +25,10 @@ class LoginController {
     }
 
     def updatePassword() {
-        int x = User.executeUpdate("update User set password='$params.password' where email ='$params.email'")
-        if (x) {
+        User user=User.findByEmail(params.email)
+        user.password=params.password
+        if(user.validate()&&user.save(failOnError: true,flush: true))
+        {
             flash.message = 'password successfully updated'
             redirect(action: 'index')
         }

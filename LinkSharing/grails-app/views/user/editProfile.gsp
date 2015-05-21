@@ -99,7 +99,7 @@
                     <g:form class="form-box" name="changePassword" controller="login" action="updatePassword">
                         <div>
                             <span class="span-label span-label1">Password</span>
-                            <g:textField name="password" placeholder="Password" value="${user.password}"/>
+                            <g:textField name="password" placeholder="Password"/>
                         </div><br>
 
                         <div>

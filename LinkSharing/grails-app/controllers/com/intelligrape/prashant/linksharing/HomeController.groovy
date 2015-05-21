@@ -3,21 +3,14 @@ package com.intelligrape.prashant.linksharing
 import grails.plugin.springsecurity.annotation.Secured
 import linksharing.TopicService
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class HomeController {
-def springSecurityService
+    def springSecurityService
     TopicService topicService
 
     def index() {
         redirect(action: 'dashboard')
     }
-
-    /*def logout() {
-        String user = session['username']
-        session.invalidate()
-        flash.message = "${user} has logged out"
-        redirect(controller: 'login', action: 'index')
-    }*/
 
     def posts() {
         def userObj = springSecurityService.currentUser

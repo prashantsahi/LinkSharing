@@ -1,9 +1,10 @@
 package com.intelligrape.prashant.linksharing
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class DocumentResourceController {
     def springSecurityService
