@@ -22,9 +22,9 @@ class User {
     transient springSecurityService
 
     static constraints = {
-         accountExpired nullable:true
-         accountLocked nullable:true
-         passwordExpired nullable:true
+        accountExpired nullable: true
+        accountLocked nullable: true
+        passwordExpired nullable: true
         photoPath nullable: true
         admin nullable: true
         active nullable: true

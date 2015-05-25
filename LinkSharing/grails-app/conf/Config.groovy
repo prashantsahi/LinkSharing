@@ -176,14 +176,16 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.intelligrape.
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.intelligrape.prashant.linksharing.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.intelligrape.prashant.linksharing.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/login/**':                   ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll'],
-	'/user/showImage':                ['permitAll']
+        '/'                      : ['permitAll'],
+        '/login/**'              : ['permitAll'],
+        '/login/showAllResources': ['ROLE_ADMIN,ROLE_USER'],
+        '/login/showAllPosts'    : ['ROLE_ADMIN,ROLE_USER'],
+        '/index.gsp'             : ['permitAll'],
+        '/assets/**'             : ['permitAll'],
+        '/**/js/**'              : ['permitAll'],
+        '/**/css/**'             : ['permitAll'],
+        '/**/images/**'          : ['permitAll'],
+        '/**/favicon.ico'        : ['permitAll'],
+        '/user/showImage'        : ['permitAll']
 ]
 

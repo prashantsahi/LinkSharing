@@ -42,7 +42,8 @@ class ApplicationTagLib {
     def isEditable = { attr ->
         User currentUser = springSecurityService.currentUser
         def created = attr?.subscriber?.createdBy.username
-        if (created ==springSecurityService.currentUser.username  || currentUser.admin == true) {
+//        println "authorities------------------>"+currentUser.getAuthorities().authority.contains("ROLE_ADMIN")
+        if (created == springSecurityService.currentUser.username || currentUser.getAuthorities().authority.contains("ROLE_ADMIN")) {
             out << g.render(template: "/home/isEditable", model: [subs: attr.subscriber, flag: attr.flag])
         } else {
             out << g.render(template: "/home/isNotCreater", model: [subs: attr.subscriber])
