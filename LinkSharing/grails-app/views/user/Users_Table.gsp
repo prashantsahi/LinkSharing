@@ -36,7 +36,7 @@
                         <td>${user.lastName}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
-                        <g:if test="${user.active}">
+                        <g:if test="${user.enabled}">
                             <td><g:link class="noUnderline" controller="user" action="deactivate"
                                         params="[userId: user.id]">Active</td></g:link></g:if>
                         <g:else><td><g:link class="noUnderline" controller="user" action="activate"

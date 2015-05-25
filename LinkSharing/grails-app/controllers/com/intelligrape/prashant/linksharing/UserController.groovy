@@ -83,7 +83,7 @@ class UserController {
     @Transactional
     def activate() {
         User user = User.findById(params.userId)
-        user.active = true
+        user.enabled = true
         user.save(failOnError: true, flush: true)
         redirect(action: 'userTable')
     }
@@ -91,7 +91,7 @@ class UserController {
     @Transactional
     def deactivate() {
         User user = User.findById(params.userId)
-        user.active = false
+        user.enabled = false
         user.save(failOnError: true, flush: true)
         redirect(action: 'userTable')
     }
