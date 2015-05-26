@@ -87,7 +87,7 @@ grails.hibernate.osiv.readonly = false
 
 environments {
     development {
-
+        grails.serverURL = "http://localhost:${System.getProperty('server.port', '8080')}"
         grails.logging.jul.usebridge = true
         grails {
             mail {
@@ -120,6 +120,21 @@ environments {
                          "mail.smtp.socketFactory.class"   : "javax.net.ssl.SSLSocketFactory",
                          "mail.smtp.socketFactory.fallback": "false"]
             }
+        }
+    }
+}
+
+oauth {
+    providers {
+        google {
+            api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+            key = '667198394266-877geuokj94uqknhp41inj0j5qthrjh7.apps.googleusercontent.com'
+            secret = '1gKYSu6MaDzVqs17FD2UuUb1'
+            successUri = '/springSecurityOAuth/onSuccess'
+            //failureUri = '/oauth/google/error'
+            failureUri = '/'
+            callback = grails.serverURL+"/oauth/google/callback"
+            scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
         }
     }
 }
@@ -186,6 +201,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/css/**'             : ['permitAll'],
         '/**/images/**'          : ['permitAll'],
         '/**/favicon.ico'        : ['permitAll'],
-        '/user/showImage'        : ['permitAll']
+        '/user/showImage'        : ['permitAll'],
+        '/oauth/**'              : ['permitAll'],
+        '/springSecurityOAuth/**': ['permitAll']
 ]
 
