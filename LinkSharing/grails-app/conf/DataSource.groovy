@@ -23,7 +23,7 @@ environments {
             password="igdefault"
             pooled="true"
             dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost:3306/linksharing"
+            url = "jdbc:mysql://localhost:3306/spring"
         }
     }
     test {

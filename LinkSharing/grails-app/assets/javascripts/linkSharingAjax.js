@@ -198,6 +198,7 @@ $(document).ready(function () {
                 console.log(data)
                 console.log("#tren-" + id)
                 $("#tren-" + id).html(data)
+                location.reload();
             }
         });
     });

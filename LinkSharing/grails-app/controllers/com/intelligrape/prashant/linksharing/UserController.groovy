@@ -8,7 +8,7 @@ import linksharing.SendMailService
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class UserController {
     def springSecurityService
     SendMailService sendMailService
@@ -21,10 +21,14 @@ class UserController {
         current.properties = params
         if (file) {
             current.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
-        }
-        file.transferTo(new File(current.photoPath))
-        if (current.validate() && current.save(flush: true, failOnError: true)) {
-            flash.message = "profile updated successfully"
+            file.transferTo(new File(current.photoPath))
+            if (current.validate() && current.save(flush: true, failOnError: true)) {
+                flash.message = "profile updated successfully"
+            }
+        } else {
+            if (current.validate() && current.save(flush: true, failOnError: true)) {
+                flash.message = "profile updated successfully"
+            }
         }
         redirect(action: 'editProfile')
     }
