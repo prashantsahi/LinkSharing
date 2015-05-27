@@ -124,16 +124,17 @@ environments {
     }
 }
 
+grails.google.api.url = "https://www.googleapis.com/oauth2/v1/userinfo"
 oauth {
     providers {
         google {
             api = org.grails.plugin.springsecurity.oauth.GoogleApi20
             key = '667198394266-877geuokj94uqknhp41inj0j5qthrjh7.apps.googleusercontent.com'
             secret = '1gKYSu6MaDzVqs17FD2UuUb1'
-            successUri = '/springSecurityOAuth/onSuccess'
+            successUri = grails.serverURL+'/SpringSecurityOAuth/onSuccess'
             //failureUri = '/oauth/google/error'
             failureUri = '/'
-            callback = grails.serverURL+"/oauth/google/callback"
+            callback = grails.serverURL + "/oauth/google/callback"
             scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
         }
     }
@@ -203,6 +204,14 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/favicon.ico'        : ['permitAll'],
         '/user/showImage'        : ['permitAll'],
         '/oauth/**'              : ['permitAll'],
-        '/springSecurityOAuth/**': ['permitAll']
+        '/springSecurityOAuth/**': ['permitAll'],
+        '/home/dashboard'        : ['permitAll']
+
 ]
 
+// Added by the Spring Security OAuth plugin:
+grails.plugin.springsecurity.oauth.active = true
+grails.plugin.springsecurity.oauth.domainClass = 'com.intelligrape.prashant.linksharing.OAuthID'
+//grails.plugin.springsecurity.oauth.registration.askToLinkOrCreateAccountUri ='/home/dashboard'
+grails.plugin.springsecurity.oauth.registration.askToLinkOrCreateAccountUri = "/springSecurityOAuth/askToLinkOrCreateAccount"
+grails.plugin.springsecurity.logout.postOnly = false

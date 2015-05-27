@@ -13,7 +13,7 @@ class DemoController {
     }
 
     def posts() {
-        render(view: "/templates/post")
+        render("heloooooooooooooooooooooo")
     }
 
     def editProfile() {

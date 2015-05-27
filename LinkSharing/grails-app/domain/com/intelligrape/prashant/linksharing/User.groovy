@@ -17,7 +17,7 @@ class User {
     boolean accountLocked
     boolean passwordExpired
 
-    static hasMany = [subscriptions: Subscription, resources: Resource, readingitems: ReadingItem, resourceratings: ResourceRating, topics: Topic]
+    static hasMany = [oAuthIds:OAuthID, subscriptions: Subscription, resources: Resource, readingitems: ReadingItem, resourceratings: ResourceRating, topics: Topic]
 
     transient springSecurityService
 

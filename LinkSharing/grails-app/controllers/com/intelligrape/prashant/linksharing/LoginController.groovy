@@ -5,6 +5,7 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.SpringSecurityUtils
 import linkSharingCommandClass.RegisterCommand
 import linksharing.SendMailService
+import org.scribe.model.Token
 import org.springframework.security.authentication.AccountExpiredException
 import org.springframework.security.authentication.CredentialsExpiredException
 import org.springframework.security.authentication.DisabledException
@@ -14,21 +15,20 @@ import org.springframework.security.web.WebAttributes
 
 import javax.servlet.http.HttpServletResponse
 
-
 class LoginController {
     static defaultAction = "index"
     SendMailService sendMailService
     def springSecurityService
+    def oauthService
 
     def changePassword() {
         render(view: 'changePassword', model: [emailId: params.emailId])//use params.emailId
     }
 
     def updatePassword() {
-        User user=User.findByEmail(params.email)
-        user.password=params.password
-        if(user.validate()&&user.save(failOnError: true,flush: true))
-        {
+        User user = User.findByEmail(params.email)
+        user.password = params.password
+        if (user.validate() && user.save(failOnError: true, flush: true)) {
             flash.message = 'password successfully updated'
             redirect(action: 'index')
         }
@@ -225,5 +225,20 @@ class LoginController {
         } else {
             redirect(action: 'index')
         }
+    }
+
+    def google() {
+        Token token = (Token) session[oauthService.findSessionKeyForAccessToken('google')]
+        def googleResource = oauthService.getGoogleResource(token,
+                grailsApplication.config.grails.google.api.url)
+        def googleResponse = JSON.parse(googleResource?.getBody())
+
+        log.info "token = ${token}"
+        log.info "googleResponse = ${googleResponse}"
+        log.info "accesstoken = ${token.token}"
+        log.info "id = ${googleResponse.id}"
+        log.info "name = ${googleResponse.name}"
+
+        redirect(controller: 'home', action: 'dashboard')
     }
 }
