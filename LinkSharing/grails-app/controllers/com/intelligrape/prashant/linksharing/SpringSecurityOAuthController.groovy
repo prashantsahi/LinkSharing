@@ -82,7 +82,7 @@ class SpringSecurityOAuthController {
             // internal account or link to an existing one.
             session[SPRING_SECURITY_OAUTH_TOKEN] = oAuthToken
 
-            def redirectUrl = springSecurityOAuthService.getAskToLinkOrCreateAccountUri()
+            def redirectUrl = "/springSecurityOAuth/askToLinkOrCreateAccount"
             println("redirecturl----------------------------" + redirectUrl)
             if (!redirectUrl) {
                 log.warn "grails.plugin.springsecurity.oauth.registration.askToLinkOrCreateAccountUri configuration option must be set"
