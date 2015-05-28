@@ -47,8 +47,6 @@ class HomeController {
     }
 
     def dashboard() {
-        log.info("dashboard")
-        log.info(springSecurityService.currentUser)
         def userObj = springSecurityService.currentUser
         def subscribedTopics = userObj.subscriptions.topic
         def subscription = subscribedTopics.size() < 5 ? subscribedTopics.asList() : subscribedTopics.subList(0, 5)

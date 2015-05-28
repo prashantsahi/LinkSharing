@@ -165,7 +165,7 @@ log4j.main = {
 
 uploadFolder = "${userHome}/Upload/documentUpload/"
 imageUploadFolder = "${userHome}/Upload/imageUpload/"
-defaultImage = "${userHome}/Upload/imageUpload/user.jpg"
+defaultImage = "${userHome}/Upload/imageUpload/default.jpg"
 
 // for g:remote paginate to use twitter bootstrap classes in g:paginate
 grails.plugins.remotepagination.enableBootstrap = true

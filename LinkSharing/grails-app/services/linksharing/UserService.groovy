@@ -20,10 +20,11 @@ class UserService {
         def response = oauthService.getGoogleResource(googleAccessToken, 'https://www.googleapis.com/oauth2/v1/userinfo')
         def userDetail = JSON.parse(response.body)
         if (!user) {
-            user = new User(email: userDetail?.email, username: userDetail.name, password: "55555", photo: userDetail.picture, firstName: userDetail.given_name, lastName: userDetail.family_name, admin: "false", active: "true")
+            user = new User(email: userDetail?.email, username: userDetail.name, password: "55555", photoPath: userDetail.picture, firstName: userDetail.given_name, lastName: userDetail.family_name, admin: "false", active: "true")
             user.save(failOnError: true, flush: true)
             println(user.properties)
             if (user) {
+                println "USER :------------------------------>>>>>>>>>>>>>>"+user
                 new UserRole(user: user, role: Role.findByAuthority('ROLE_USER')).save(flush: true)
             }
         }

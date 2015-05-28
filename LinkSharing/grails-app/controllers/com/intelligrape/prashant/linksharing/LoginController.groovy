@@ -21,6 +21,15 @@ class LoginController {
     def springSecurityService
     def oauthService
 
+    def index() {
+        if (springSecurityService.isLoggedIn()) {
+            flash.message = springSecurityService.currentUser.username + " logged in successfully"
+            redirect uri: SpringSecurityUtils.securityConfig.successHandler.defaultTargetUrl
+        } else {
+            redirect action: 'auth', params: params
+        }
+    }
+
     def changePassword() {
         render(view: 'changePassword', model: [emailId: params.emailId])//use params.emailId
     }
@@ -42,15 +51,6 @@ class LoginController {
 
     def showForgotPassword() {
         render(view: 'forgotPassword')
-    }
-
-    def index() {
-        if (springSecurityService.isLoggedIn()) {
-            flash.message = springSecurityService.currentUser.username + " logged in successfully"
-            redirect uri: SpringSecurityUtils.securityConfig.successHandler.defaultTargetUrl
-        } else {
-            redirect action: 'auth', params: params
-        }
     }
 
     /**
@@ -203,6 +203,8 @@ class LoginController {
 
     def register(RegisterCommand registerCommand) {
         def file = request.getFile('file')
+        def file1=params.file
+        println("file" +  file.empty)
         if (file.empty) {
             registerCommand.photoPath = grailsApplication.config.defaultImage
         } else {
@@ -215,11 +217,13 @@ class LoginController {
             user.properties = registerCommand
             user.active = true
             user.save(failOnError: true, flush: true)
-            Role role = Role.get(2)
+            Role role = Role.findByAuthority('ROLE_USER')
             UserRole userRole = new UserRole(user: user, role: role).save(flush: true, failOnError: true)
+            springSecurityService.reauthenticate(user.username, user.password)
             String htmlString = "${g.link(controller: "home", action: "dashboard", absolute: "true", { "click on the link to verify your account" })}"
             sendMailService.sendMailMethod("$registerCommand.email", "Verification mail", htmlString)
             flash.message = 'Registration mail successfully sent'
+
             redirect(action: 'index')
 
         } else {
