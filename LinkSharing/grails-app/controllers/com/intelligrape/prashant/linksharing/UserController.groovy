@@ -10,25 +10,15 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class UserController {
+    def userService
     def springSecurityService
     SendMailService sendMailService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     @Transactional
     def updateProfile() {
-        User current = springSecurityService.currentUser
-        def file = request.getFile('file')
-        current.properties = params
-        if (file) {
-            current.photoPath = grailsApplication.config.imageUploadFolder + file.originalFilename
-            file.transferTo(new File(current.photoPath))
-            if (current.validate() && current.save(flush: true, failOnError: true)) {
-                flash.message = "profile updated successfully"
-            }
-        } else {
-            if (current.validate() && current.save(flush: true, failOnError: true)) {
-                flash.message = "profile updated successfully"
-            }
+        if (userService.updateUserProfile(params) == true) {
+            flash.message = "profile updated successfully"
         }
         redirect(action: 'editProfile')
     }
@@ -50,7 +40,6 @@ class UserController {
         response.contentLength = file.bytes.length
         response.outputStream << file.bytes
     }
-
 
     def showPublicProfile() {
         User userObj = User.findById(params.user)

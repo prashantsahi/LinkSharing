@@ -38,6 +38,7 @@ class SpringSecurityOAuthController {
     def springSecurityService
     def springSecurityOAuthService
     def authenticationManager
+    def userService
 
     /**
      * This can be used as a callback for a successful OAuth authentication
@@ -101,6 +102,7 @@ class SpringSecurityOAuthController {
     }
 
     def askToLinkOrCreateAccount() {
+        def provider = "google"
         OAuthToken oAuthToken = session[SPRING_SECURITY_OAUTH_TOKEN]
         println("-------------------------------" + oAuthToken + "-------------------------------")
         if (springSecurityService.isLoggedIn()) {
@@ -120,8 +122,8 @@ class SpringSecurityOAuthController {
         } else {
             //Create new account
             Token googleAccessToken = (Token) session[oauthService.findSessionKeyForAccessToken('google')]
-
-            def providerService = grailsApplication.mainContext.getBean("googleSpringSecurityOAuthService")
+            User user = userService.createNewUser(googleAccessToken, provider)
+            /*def providerService = grailsApplication.mainContext.getBean("googleSpringSecurityOAuthService")
             OAuthToken oAuthToken1 = providerService.createAuthToken(googleAccessToken)
             User user = User.findByEmail(oAuthToken1.socialId)
             def response = oauthService.getGoogleResource(googleAccessToken, 'https://www.googleapis.com/oauth2/v1/userinfo')
@@ -133,7 +135,7 @@ class SpringSecurityOAuthController {
                 if (user) {
                     new UserRole(user: user, role: Role.findByAuthority('ROLE_USER')).save(flush: true)
                 }
-            }
+            }*/
             user.addTooAuthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: user)
             if (user.validate() && user.save()) {
                 oAuthToken = springSecurityOAuthService.updateOAuthToken(oAuthToken, user)
