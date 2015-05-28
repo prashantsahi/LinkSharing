@@ -226,19 +226,4 @@ class LoginController {
             redirect(action: 'index')
         }
     }
-
-    def google() {
-        Token token = (Token) session[oauthService.findSessionKeyForAccessToken('google')]
-        def googleResource = oauthService.getGoogleResource(token,
-                grailsApplication.config.grails.google.api.url)
-        def googleResponse = JSON.parse(googleResource?.getBody())
-
-        log.info "token = ${token}"
-        log.info "googleResponse = ${googleResponse}"
-        log.info "accesstoken = ${token.token}"
-        log.info "id = ${googleResponse.id}"
-        log.info "name = ${googleResponse.name}"
-
-        redirect(controller: 'home', action: 'dashboard')
-    }
 }

@@ -123,19 +123,6 @@ class SpringSecurityOAuthController {
             //Create new account
             Token googleAccessToken = (Token) session[oauthService.findSessionKeyForAccessToken('google')]
             User user = userService.createNewUser(googleAccessToken, provider)
-            /*def providerService = grailsApplication.mainContext.getBean("googleSpringSecurityOAuthService")
-            OAuthToken oAuthToken1 = providerService.createAuthToken(googleAccessToken)
-            User user = User.findByEmail(oAuthToken1.socialId)
-            def response = oauthService.getGoogleResource(googleAccessToken, 'https://www.googleapis.com/oauth2/v1/userinfo')
-            def userDetail = JSON.parse(response.body)
-            if (!user ) {
-                user = new User(email: userDetail?.email, username: userDetail.name, password: "55555", photo: userDetail.picture, firstName: userDetail.given_name, lastName: userDetail.family_name, admin: "false", active: "true")
-                user.save(failOnError: true, flush: true)
-                println(user.properties)
-                if (user) {
-                    new UserRole(user: user, role: Role.findByAuthority('ROLE_USER')).save(flush: true)
-                }
-            }*/
             user.addTooAuthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: user)
             if (user.validate() && user.save()) {
                 oAuthToken = springSecurityOAuthService.updateOAuthToken(oAuthToken, user)

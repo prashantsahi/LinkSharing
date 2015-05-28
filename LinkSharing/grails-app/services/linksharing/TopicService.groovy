@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession
 @Transactional
 class TopicService {
     def springSecurityService
+
     private static HttpSession getSession() {
         return RequestContextHolder.currentRequestAttributes().getSession()
     }
@@ -28,5 +29,19 @@ class TopicService {
             }
         }
         return subscribedTopics
+    }
+
+    def saveTopic(topicInstance) {
+        User user1 = springSecurityService.currentUser
+        topicInstance.createdBy = user1
+
+        if (topicInstance == null) {
+            notFound()
+            return
+        }
+
+        if (topicInstance.validate() && topicInstance.save(flush: true, failOnError: true)) {
+            return true
+        }
     }
 }
