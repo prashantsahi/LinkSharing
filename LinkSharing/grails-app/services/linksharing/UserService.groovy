@@ -25,9 +25,12 @@ class UserService {
             println(user.properties)
             if (user) {
                 println "USER :------------------------------>>>>>>>>>>>>>>"+user
-                new UserRole(user: user, role: Role.findByAuthority('ROLE_USER')).save(flush: true)
+                UserRole userRole= UserRole(user: user, role: Role.findByAuthority('ROLE_USER'))
+                println "USER-ROLE--------------------->>>>>>>>>>"+userRole
+                userRole.save(flush: true,failOnError: true)
             }
         }
+        return user
     }
 
     def updateUserProfile(params) {

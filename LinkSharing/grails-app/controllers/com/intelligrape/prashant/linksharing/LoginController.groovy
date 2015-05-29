@@ -219,7 +219,10 @@ class LoginController {
             user.save(failOnError: true, flush: true)
             Role role = Role.findByAuthority('ROLE_USER')
             UserRole userRole = new UserRole(user: user, role: role).save(flush: true, failOnError: true)
+
+            // authenticate the new uer after login
             springSecurityService.reauthenticate(user.username, user.password)
+
             String htmlString = "${g.link(controller: "home", action: "dashboard", absolute: "true", { "click on the link to verify your account" })}"
             sendMailService.sendMailMethod("$registerCommand.email", "Verification mail", htmlString)
             flash.message = 'Registration mail successfully sent'
